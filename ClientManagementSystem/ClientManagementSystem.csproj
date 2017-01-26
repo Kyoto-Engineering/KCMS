@@ -1,0 +1,633 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BB09A604-025D-4BDB-A7C5-8093C7030027}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClientManagementSystem</RootNamespace>
+    <AssemblyName>ClientManagementSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Ashraf\Desktop\CMSDeploy\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>24</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>952E21D569146A1DB7B4C40F9B2AB5D393DAC036</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ClientManagementSystem_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Client Management System, V16|AnyCPU'">
+    <OutputPath>bin\Client Management System, V16\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>client_management_system_qvO_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Client Management System V22|AnyCPU'">
+    <OutputPath>bin\Client Management System V22\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAO\Addresss.cs" />
+    <Compile Include="DAO\AddressTypes.cs" />
+    <Compile Include="DAO\BillingAddress.cs" />
+    <Compile Include="DAO\Client.cs" />
+    <Compile Include="DAO\ContactPersonDetails.cs" />
+    <Compile Include="DAO\CorporateAddress.cs" />
+    <Compile Include="DAO\FeedBack.cs" />
+    <Compile Include="DAO\FollowUp.cs" />
+    <Compile Include="DAO\InqueryClient.cs" />
+    <Compile Include="DAO\InquiryFollowUp.cs" />
+    <Compile Include="DAO\InstantClient.cs" />
+    <Compile Include="DAO\SalesClient.cs" />
+    <Compile Include="DAO\SalesFollowUp.cs" />
+    <Compile Include="DAO\TraddingAddress.cs" />
+    <Compile Include="DAO\User.cs" />
+    <Compile Include="DBGateway\ConnectionGateway.cs" />
+    <Compile Include="DBGateway\ConnectionString.cs" />
+    <Compile Include="Gateway\ClientGateway.cs" />
+    <Compile Include="Gateway\FeedBackGateway.cs" />
+    <Compile Include="Gateway\UserGateway.cs" />
+    <Compile Include="LoginUI\ChangePass2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\ChangePass2.Designer.cs">
+      <DependentUpon>ChangePass2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUI\ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUI\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUI\ResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\ResetPassword.Designer.cs">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUI\UserManagementUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\UserManagementUI.Designer.cs">
+      <DependentUpon>UserManagementUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUI\UserRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\UserRegistration.Designer.cs">
+      <DependentUpon>UserRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\ClientManager.cs" />
+    <Compile Include="Manager\FeedBackManager.cs" />
+    <Compile Include="Manager\UserManager.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\FeedbackDiary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeedbackDiary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FollowUpInput.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FollowUpInput.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\IndustryCategory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IndustryCategory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FeedBackInput.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeedBackInput.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\InquiryClientProfile.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InquiryClientProfile.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\InquiryClientRegistrationCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InquiryClientRegistrationCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\InstantSalesClientInputReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InstantSalesClientInputReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ListofClientContactPoints.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListofClientContactPoints.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ListofSalesClientContactPoints.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListofSalesClientContactPoints.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewer.Designer.cs">
+      <DependentUpon>ReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SalesClientIndustryCataegory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesClientIndustryCataegory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SalesClientInputReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesClientInputReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SalesClientIProfile.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesClientIProfile.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\ActionByFollowUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ActionByFollowUp.Designer.cs">
+      <DependentUpon>ActionByFollowUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ActionFollowUpProceedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ActionFollowUpProceedForm.Designer.cs">
+      <DependentUpon>ActionFollowUpProceedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ClientApprovedFinalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ClientApprovedFinalForm.Designer.cs">
+      <DependentUpon>ClientApprovedFinalForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ClientEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ClientEditForm.designer.cs">
+      <DependentUpon>ClientEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ClientFeedbackGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ClientFeedbackGrid.Designer.cs">
+      <DependentUpon>ClientFeedbackGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ClientRegistrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ClientRegistrationForm.Designer.cs">
+      <DependentUpon>ClientRegistrationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ConvertToSalesClientGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ConvertToSalesClientGrid.Designer.cs">
+      <DependentUpon>ConvertToSalesClientGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EditFromGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EditFromGrid.Designer.cs">
+      <DependentUpon>EditFromGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FeedBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FeedBack.Designer.cs">
+      <DependentUpon>FeedBack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FirstStepOfIClientFeedbackDairy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FirstStepOfIClientFeedbackDairy.Designer.cs">
+      <DependentUpon>FirstStepOfIClientFeedbackDairy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FirstStepOfSClientFeedBackDairy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FirstStepOfSClientFeedBackDairy.Designer.cs">
+      <DependentUpon>FirstStepOfSClientFeedBackDairy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ForSalseClientMP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ForSalseClientMP.Designer.cs">
+      <DependentUpon>ForSalseClientMP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmAddressType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmAddressType.Designer.cs">
+      <DependentUpon>frmAddressType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmClientType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmClientType.Designer.cs">
+      <DependentUpon>frmClientType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmIndustryCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmIndustryCategory.Designer.cs">
+      <DependentUpon>frmIndustryCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GridForClientDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GridForClientDetails.Designer.cs">
+      <DependentUpon>GridForClientDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GridForInstantClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GridForInstantClient.Designer.cs">
+      <DependentUpon>GridForInstantClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GridForSalesClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GridForSalesClient.Designer.cs">
+      <DependentUpon>GridForSalesClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\InqueiryClientFeedbackDairy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\InqueiryClientFeedbackDairy.Designer.cs">
+      <DependentUpon>InqueiryClientFeedbackDairy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\InstantClientEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\InstantClientEntryForm.Designer.cs">
+      <DependentUpon>InstantClientEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MainUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainUI.Designer.cs">
+      <DependentUpon>MainUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MainUIInquieryClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainUIInquieryClient.Designer.cs">
+      <DependentUpon>MainUIInquieryClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MasterPageOnlyforClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MasterPageOnlyforClient.Designer.cs">
+      <DependentUpon>MasterPageOnlyforClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NatureOfClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NatureOfClient.Designer.cs">
+      <DependentUpon>NatureOfClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SActionByFollowUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SActionByFollowUp.Designer.cs">
+      <DependentUpon>SActionByFollowUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SActionFollowUpProceedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SActionFollowUpProceedForm.Designer.cs">
+      <DependentUpon>SActionFollowUpProceedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SalesClientFeedbackDairy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SalesClientFeedbackDairy.Designer.cs">
+      <DependentUpon>SalesClientFeedbackDairy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WaterMarkTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="LoginUI\ChangePass2.resx">
+      <DependentUpon>ChangePass2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUI\ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUI\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUI\ResetPassword.resx">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUI\UserManagementUI.resx">
+      <DependentUpon>UserManagementUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUI\UserRegistration.resx">
+      <DependentUpon>UserRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Reports\FeedbackDiary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FeedbackDiary.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FollowUpInput.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FollowUpInput.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\IndustryCategory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>IndustryCategory.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FeedBackInput.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FeedBackInput.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InquiryClientProfile.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InquiryClientProfile.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InquiryClientRegistrationCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InquiryClientRegistrationCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InstantSalesClientInputReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InstantSalesClientInputReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ListofClientContactPoints.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ListofClientContactPoints.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ListofSalesClientContactPoints.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ListofSalesClientContactPoints.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportViewer.resx">
+      <DependentUpon>ReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SalesClientIndustryCataegory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalesClientIndustryCataegory.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SalesClientInputReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalesClientInputReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SalesClientIProfile.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalesClientIProfile.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ActionByFollowUp.resx">
+      <DependentUpon>ActionByFollowUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ActionFollowUpProceedForm.resx">
+      <DependentUpon>ActionFollowUpProceedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ClientApprovedFinalForm.resx">
+      <DependentUpon>ClientApprovedFinalForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ClientEditForm.resx">
+      <DependentUpon>ClientEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ClientFeedbackGrid.resx">
+      <DependentUpon>ClientFeedbackGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ClientRegistrationForm.resx">
+      <DependentUpon>ClientRegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ConvertToSalesClientGrid.resx">
+      <DependentUpon>ConvertToSalesClientGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EditFromGrid.resx">
+      <DependentUpon>EditFromGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FeedBack.resx">
+      <DependentUpon>FeedBack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FirstStepOfIClientFeedbackDairy.resx">
+      <DependentUpon>FirstStepOfIClientFeedbackDairy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FirstStepOfSClientFeedBackDairy.resx">
+      <DependentUpon>FirstStepOfSClientFeedBackDairy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ForSalseClientMP.resx">
+      <DependentUpon>ForSalseClientMP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmAddressType.resx">
+      <DependentUpon>frmAddressType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmClientType.resx">
+      <DependentUpon>frmClientType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmIndustryCategory.resx">
+      <DependentUpon>frmIndustryCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GridForClientDetails.resx">
+      <DependentUpon>GridForClientDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GridForInstantClient.resx">
+      <DependentUpon>GridForInstantClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GridForSalesClient.resx">
+      <DependentUpon>GridForSalesClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\InqueiryClientFeedbackDairy.resx">
+      <DependentUpon>InqueiryClientFeedbackDairy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\InstantClientEntryForm.resx">
+      <DependentUpon>InstantClientEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainUI.resx">
+      <DependentUpon>MainUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainUIInquieryClient.resx">
+      <DependentUpon>MainUIInquieryClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MasterPageOnlyforClient.resx">
+      <DependentUpon>MasterPageOnlyforClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NatureOfClient.resx">
+      <DependentUpon>NatureOfClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SActionByFollowUp.resx">
+      <DependentUpon>SActionByFollowUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SActionFollowUpProceedForm.resx">
+      <DependentUpon>SActionFollowUpProceedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SalesClientFeedbackDairy.resx">
+      <DependentUpon>SalesClientFeedbackDairy.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClientManagementSystem_TemporaryKey.pfx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clint managment System 4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clint managment System 404.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clint managment System 4055.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clint managment System 2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clint managment System 205.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="client_management_system_qvO_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
