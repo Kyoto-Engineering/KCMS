@@ -532,32 +532,36 @@ namespace ClientManagementSystem.UI
 
         private void cContactNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-       (e.KeyChar != '.'))
-            {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
                 e.Handled = true;
-            }
+       //     if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+       //(e.KeyChar != '.'))
+       //     {
+       //         e.Handled = true;
+       //     }
 
           
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+       //     if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+       //     {
+       //         e.Handled = true;
+       //     }
         }
 
         private void cPostCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-       (e.KeyChar != '.'))
-            {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
                 e.Handled = true;
-            }
+       //     if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+       //(e.KeyChar != '.'))
+       //     {
+       //         e.Handled = true;
+       //     }
 
            
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+       //     if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+       //     {
+       //         e.Handled = true;
+       //     }
         }
 
         private void tContactNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -1857,6 +1861,24 @@ namespace ClientManagementSystem.UI
                 txtCPEmailAddress.Focus();
 
             }
+        }
+
+        private void cellNumberAPTextBox_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
+        }
+
+        private void tContactNoTextBox_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
+        }
+
+        private void bContactNoTextBox_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
         }
     }
 }

@@ -247,6 +247,7 @@
             this.cellPhoneTextBox.Name = "cellPhoneTextBox";
             this.cellPhoneTextBox.Size = new System.Drawing.Size(214, 26);
             this.cellPhoneTextBox.TabIndex = 106;
+            this.cellPhoneTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cellPhoneTextBox_KeyPress);
             // 
             // txtEndUser
             // 
@@ -417,6 +418,7 @@
             this.cContactNoTextBox.Name = "cContactNoTextBox";
             this.cContactNoTextBox.Size = new System.Drawing.Size(166, 22);
             this.cContactNoTextBox.TabIndex = 39;
+            this.cContactNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cContactNoTextBox_KeyPress);
             // 
             // label27
             // 
