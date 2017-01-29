@@ -254,12 +254,6 @@
     <Compile Include="UI\ClientApprovedFinalForm.Designer.cs">
       <DependentUpon>ClientApprovedFinalForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ClientEditForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\ClientEditForm.designer.cs">
-      <DependentUpon>ClientEditForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\ClientFeedbackGrid.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -494,9 +488,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ClientApprovedFinalForm.resx">
       <DependentUpon>ClientApprovedFinalForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\ClientEditForm.resx">
-      <DependentUpon>ClientEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ClientFeedbackGrid.resx">
       <DependentUpon>ClientFeedbackGrid.cs</DependentUpon>

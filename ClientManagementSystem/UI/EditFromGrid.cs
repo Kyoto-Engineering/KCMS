@@ -895,5 +895,10 @@ namespace ClientManagementSystem.UI
             if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
                 e.Handled = true;
         }
+
+        private void txtEmailAddress_Validating(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }

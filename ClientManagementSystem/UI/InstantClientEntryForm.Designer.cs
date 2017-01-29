@@ -241,6 +241,7 @@
             this.txtCPEmailAddress.Name = "txtCPEmailAddress";
             this.txtCPEmailAddress.Size = new System.Drawing.Size(207, 26);
             this.txtCPEmailAddress.TabIndex = 93;
+            this.txtCPEmailAddress.Enter += new System.EventHandler(this.txtCPEmailAddress_Enter);
             this.txtCPEmailAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCPEmailAddress_KeyPress);
             this.txtCPEmailAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtCPEmailAddress_Validating);
             // 
@@ -271,6 +272,7 @@
             this.cellNumberInsTextBox.Name = "cellNumberInsTextBox";
             this.cellNumberInsTextBox.Size = new System.Drawing.Size(208, 26);
             this.cellNumberInsTextBox.TabIndex = 90;
+            this.cellNumberInsTextBox.Enter += new System.EventHandler(this.cellNumberInsTextBox_Enter);
             this.cellNumberInsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cellNumberInsTextBox_KeyPress_1);
             // 
             // designationInsTextBox
@@ -280,6 +282,7 @@
             this.designationInsTextBox.Name = "designationInsTextBox";
             this.designationInsTextBox.Size = new System.Drawing.Size(208, 26);
             this.designationInsTextBox.TabIndex = 89;
+            this.designationInsTextBox.Enter += new System.EventHandler(this.designationInsTextBox_Enter);
             // 
             // contactPersonNameInsTextBox
             // 
@@ -1457,6 +1460,7 @@
             this.accountNoInsTextBox.Name = "accountNoInsTextBox";
             this.accountNoInsTextBox.Size = new System.Drawing.Size(183, 26);
             this.accountNoInsTextBox.TabIndex = 72;
+            this.accountNoInsTextBox.Enter += new System.EventHandler(this.accountNoInsTextBox_Enter);
             this.accountNoInsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.accountNoInsTextBox_KeyPress);
             // 
             // branchNameInsTextBox
@@ -1466,6 +1470,7 @@
             this.branchNameInsTextBox.Name = "branchNameInsTextBox";
             this.branchNameInsTextBox.Size = new System.Drawing.Size(183, 26);
             this.branchNameInsTextBox.TabIndex = 71;
+            this.branchNameInsTextBox.Enter += new System.EventHandler(this.branchNameInsTextBox_Enter);
             // 
             // bankNameInsTextBox
             // 

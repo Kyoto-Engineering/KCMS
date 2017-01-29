@@ -890,6 +890,7 @@
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(214, 26);
             this.txtEmailAddress.TabIndex = 76;
+            this.txtEmailAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmailAddress_Validating);
             // 
             // label12
             // 

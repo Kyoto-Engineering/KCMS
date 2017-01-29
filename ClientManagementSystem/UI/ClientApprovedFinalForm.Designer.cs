@@ -199,7 +199,7 @@
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1247, 614);
+            this.groupBox1.Size = new System.Drawing.Size(1247, 627);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             // 
@@ -1047,6 +1047,7 @@
             this.accountNoTextBox.Name = "accountNoTextBox";
             this.accountNoTextBox.Size = new System.Drawing.Size(256, 26);
             this.accountNoTextBox.TabIndex = 9;
+            this.accountNoTextBox.Enter += new System.EventHandler(this.accountNoTextBox_Enter);
             this.accountNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.accountNoTextBox_KeyPress);
             // 
             // branchNameTextBox
@@ -1056,6 +1057,7 @@
             this.branchNameTextBox.Name = "branchNameTextBox";
             this.branchNameTextBox.Size = new System.Drawing.Size(256, 26);
             this.branchNameTextBox.TabIndex = 8;
+            this.branchNameTextBox.Enter += new System.EventHandler(this.branchNameTextBox_Enter);
             // 
             // bankNameTextBox
             // 
@@ -1111,9 +1113,11 @@
             // 
             this.groupBox2.Controls.Add(this.groupBox9);
             this.groupBox2.Controls.Add(this.cmbSuperviserName);
+            this.groupBox2.Controls.Add(this.endUserAPTextBox);
             this.groupBox2.Controls.Add(this.label41);
             this.groupBox2.Controls.Add(this.txtIClientId);
             this.groupBox2.Controls.Add(this.lk);
+            this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.txtAPNatureOfClient);
             this.groupBox2.Controls.Add(this.txtAPIndustryCategory);
             this.groupBox2.Controls.Add(this.label40);
@@ -1140,17 +1144,15 @@
             this.groupBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.groupBox9.Controls.Add(this.txtCPEmailAddress);
             this.groupBox9.Controls.Add(this.label60);
-            this.groupBox9.Controls.Add(this.endUserAPTextBox);
             this.groupBox9.Controls.Add(this.cellNumberAPTextBox);
             this.groupBox9.Controls.Add(this.designationAPTextBox);
             this.groupBox9.Controls.Add(this.contactPersonNameAPTextBox);
-            this.groupBox9.Controls.Add(this.label12);
             this.groupBox9.Controls.Add(this.label11);
             this.groupBox9.Controls.Add(this.label10);
             this.groupBox9.Controls.Add(this.label9);
-            this.groupBox9.Location = new System.Drawing.Point(6, 448);
+            this.groupBox9.Location = new System.Drawing.Point(6, 489);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(578, 165);
+            this.groupBox9.Size = new System.Drawing.Size(578, 134);
             this.groupBox9.TabIndex = 71;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Contact Person Details";
@@ -1162,6 +1164,7 @@
             this.txtCPEmailAddress.Name = "txtCPEmailAddress";
             this.txtCPEmailAddress.Size = new System.Drawing.Size(264, 25);
             this.txtCPEmailAddress.TabIndex = 33;
+            this.txtCPEmailAddress.Enter += new System.EventHandler(this.txtCPEmailAddress_Enter);
             this.txtCPEmailAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtCPEmailAddress_Validating);
             // 
             // label60
@@ -1177,9 +1180,9 @@
             // endUserAPTextBox
             // 
             this.endUserAPTextBox.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endUserAPTextBox.Location = new System.Drawing.Point(259, 125);
+            this.endUserAPTextBox.Location = new System.Drawing.Point(295, 246);
             this.endUserAPTextBox.Name = "endUserAPTextBox";
-            this.endUserAPTextBox.Size = new System.Drawing.Size(264, 25);
+            this.endUserAPTextBox.Size = new System.Drawing.Size(266, 25);
             this.endUserAPTextBox.TabIndex = 31;
             // 
             // cellNumberAPTextBox
@@ -1190,6 +1193,7 @@
             this.cellNumberAPTextBox.Name = "cellNumberAPTextBox";
             this.cellNumberAPTextBox.Size = new System.Drawing.Size(264, 25);
             this.cellNumberAPTextBox.TabIndex = 30;
+            this.cellNumberAPTextBox.Enter += new System.EventHandler(this.cellNumberAPTextBox_Enter);
             this.cellNumberAPTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cellNumberAPTextBox_KeyPress_1);
             // 
             // designationAPTextBox
@@ -1199,6 +1203,7 @@
             this.designationAPTextBox.Name = "designationAPTextBox";
             this.designationAPTextBox.Size = new System.Drawing.Size(264, 25);
             this.designationAPTextBox.TabIndex = 29;
+            this.designationAPTextBox.Enter += new System.EventHandler(this.designationAPTextBox_Enter);
             // 
             // contactPersonNameAPTextBox
             // 
@@ -1212,7 +1217,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(164, 128);
+            this.label12.Location = new System.Drawing.Point(184, 248);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(74, 17);
             this.label12.TabIndex = 27;
@@ -1343,7 +1348,7 @@
             this.groupBox6.Controls.Add(this.label39);
             this.groupBox6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.groupBox6.Location = new System.Drawing.Point(6, 240);
+            this.groupBox6.Location = new System.Drawing.Point(6, 277);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(574, 206);
             this.groupBox6.TabIndex = 61;

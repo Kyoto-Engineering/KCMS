@@ -809,18 +809,21 @@ namespace ClientManagementSystem.UI
 
         private void emailAddressInsTextBox_Validating(object sender, CancelEventArgs e)
         {
-            string emailId = emailAddressInsTextBox.Text.Trim();
-            Regex mRegxExpression;
-
-            mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
-
-            if (!mRegxExpression.IsMatch(emailId))
+            if (!string.IsNullOrEmpty(emailAddressInsTextBox.Text))
             {
+                string emailId = emailAddressInsTextBox.Text.Trim();
+                Regex mRegxExpression;
 
-                MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                emailAddressInsTextBox.Clear();
-                emailAddressInsTextBox.Focus();
+                mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
 
+                if (!mRegxExpression.IsMatch(emailId))
+                {
+
+                    MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    emailAddressInsTextBox.Clear();
+                    emailAddressInsTextBox.Focus();
+
+                }
             }
         }
 
@@ -1795,18 +1798,65 @@ namespace ClientManagementSystem.UI
 
         private void txtCPEmailAddress_Validating(object sender, CancelEventArgs e)
         {
-            string emailId2 = txtCPEmailAddress.Text.Trim();
-            Regex mRegxExpression;
-
-            mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
-
-            if (!mRegxExpression.IsMatch(emailId2))
+            if (!string.IsNullOrEmpty(txtCPEmailAddress.Text))
             {
+                string emailId2 = txtCPEmailAddress.Text.Trim();
+                Regex mRegxExpression;
 
-                MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtCPEmailAddress.Clear();
-                txtCPEmailAddress.Focus();
+                mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
 
+                if (!mRegxExpression.IsMatch(emailId2))
+                {
+
+                    MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtCPEmailAddress.Clear();
+                    
+
+                }
+            }
+           
+        }
+
+        private void designationInsTextBox_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(contactPersonNameInsTextBox.Text))
+            {
+                MessageBox.Show("Please  enter  Contact Person Name before designation", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+        }
+
+        private void cellNumberInsTextBox_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(contactPersonNameInsTextBox.Text))
+            {
+                MessageBox.Show("Please  enter  Contact Person Name before cell Number", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+        }
+
+        private void txtCPEmailAddress_Enter(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void branchNameInsTextBox_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(bankNameInsTextBox.Text))
+            {
+                MessageBox.Show("Please  enter  Bank Name before brach Name", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void accountNoInsTextBox_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(bankNameInsTextBox.Text))
+            {
+                MessageBox.Show("Please  enter  Bank Name before account No", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
         }

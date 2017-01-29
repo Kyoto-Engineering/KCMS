@@ -83,11 +83,6 @@ namespace ClientManagementSystem.UI
 
         private void changeButton_Click(object sender, EventArgs e)
         {
-            ClientEditForm afForm = new ClientEditForm();
-            this.Visible = false;
-
-            afForm.ShowDialog();
-            this.Visible = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
