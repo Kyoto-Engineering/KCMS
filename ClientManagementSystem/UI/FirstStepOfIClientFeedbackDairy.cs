@@ -26,7 +26,26 @@ namespace ClientManagementSystem.UI
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            
+            if (string.IsNullOrWhiteSpace(txt1ClientId.Text))
+            {
+                MessageBox.Show("Please select Client", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtClientInquiry.Text))
+            {
+                MessageBox.Show("Please write Client Inquiry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(feedback1TextBox.Text))
+            {
+                MessageBox.Show("Please select type your Feedback", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(action1MultiTextBox.Text))
+            {
+                MessageBox.Show("Please write your probable Action", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 this.Visible = false;
@@ -80,7 +99,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT RTRIM(FollowUp.DeadLineDateTime),RTRIM(IClientFeedbackDairy.Feedback),RTRIM(FollowUp.Actions),RTRIM(Registration.Name),RTRIM(FollowUp.Statuss) FROM  (FollowUp INNER JOIN IClientFeedbackDairy ON FollowUp.IClientFeedbackId = IClientFeedbackDairy.IClientFeedbackId) LEFT JOIN  Registration ON IClientFeedbackDairy.UserId = Registration.UserId  where FollowUp.Statuss='Pending' order by FollowUp.FollowUpId desc", con);
+                cmd = new SqlCommand("SELECT RTRIM(FollowUp.DeadLineDateTime),RTRIM(IClientFeedbackDairy.Feedback),RTRIM(FollowUp.Actions),RTRIM(Registration.Name),RTRIM(FollowUp.Statuss) FROM  (FollowUp INNER JOIN IClientFeedbackDairy ON FollowUp.IClientFeedbackId = IClientFeedbackDairy.IClientFeedbackId) LEFT JOIN  Registration ON IClientFeedbackDairy.UserId = Registration.UserId  where FollowUp.Statuss='Pending' and IClientFeedbackDairy.IClientId='" + txt1ClientId.Text+ "' order by FollowUp.FollowUpId desc", con);
                // cmd = new SqlCommand("SELECT RTRIM(FollowUp.IClientId),RTRIM(FollowUp.DeadLineDateTime),RTRIM(FollowUp.Actions),RTRIM(Registration.Name),RTRIM(FollowUp.Status) FROM  FollowUp,InquieryClient,Registration  where  Registration.UserId=FollowUp.RPUserId and FollowUp.Status='Pending' order by FollowUp.FollowUpId desc", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView2.Rows.Clear();
@@ -235,6 +254,16 @@ namespace ClientManagementSystem.UI
               {
                   MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
               }
+
+          }
+
+          private void txt1ClientId_TextChanged(object sender, EventArgs e)
+          {
+              FollowUpGridLoad2();
+          }
+
+          private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+          {
 
           }
     }

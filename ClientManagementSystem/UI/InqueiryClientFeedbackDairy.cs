@@ -120,7 +120,7 @@ namespace ClientManagementSystem.UI
                  {
                   con = new SqlConnection(cs.DBConn);
                   con.Open();
-                  cmd = new SqlCommand("SELECT   RTRIM(FollowUp.DeadLineDateTime),RTRIM(IClientFeedbackDairy.Feedback),RTRIM(FollowUp.Actions),RTRIM(Registration.Name),RTRIM(FollowUp.Statuss) FROM  (FollowUp INNER JOIN IClientFeedbackDairy ON FollowUp.IClientFeedbackId = IClientFeedbackDairy.IClientFeedbackId) LEFT JOIN  Registration ON IClientFeedbackDairy.UserId = Registration.UserId  where FollowUp.Statuss='Pending' order by FollowUp.FollowUpId desc", con);
+                  cmd = new SqlCommand("SELECT RTRIM(FollowUp.DeadLineDateTime),RTRIM(IClientFeedbackDairy.Feedback),RTRIM(FollowUp.Actions),RTRIM(Registration.Name),RTRIM(FollowUp.Statuss) FROM  (FollowUp INNER JOIN IClientFeedbackDairy ON FollowUp.IClientFeedbackId = IClientFeedbackDairy.IClientFeedbackId) LEFT JOIN  Registration ON IClientFeedbackDairy.UserId = Registration.UserId  where FollowUp.Statuss='Pending' and IClientFeedbackDairy.IClientId='" + txt2ClientId.Text + "' order by FollowUp.FollowUpId desc", con);
                    rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                    dataGridView1.Rows.Clear();
                     while (rdr.Read() == true)
@@ -158,7 +158,7 @@ namespace ClientManagementSystem.UI
         private void InqueiryClientFeedbackDairy_Load(object sender, EventArgs e)
         {
             GetClientDetails();
-            FollowUpGridLoad();
+            DisableMethod();
             userId = LoginForm.uId.ToString();
             feedback2DateTime.MaxDate = DateTime.Now;
             followUp2Deadlinedatetime.MinDate=DateTime.Today;
@@ -170,6 +170,15 @@ namespace ClientManagementSystem.UI
 
         }
 
+        private void DisableMethod()
+        {
+            txt2ClientId.Enabled = false;
+            txt2ClientName.Enabled = false;
+            txtClentInquiry.Enabled = false;
+            feedback2TextBox.Enabled = false;
+            action2MultiTextBox.Enabled = false;
+            txtResposible2Person.Enabled = false;
+        }
       
         private void Report2()
         {
@@ -336,6 +345,41 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txt2ClientId_TextChanged(object sender, EventArgs e)
+        {
+            FollowUpGridLoad();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txt2ClientId.Enabled = true;
+            txt2ClientName.Enabled = true;
+            txtClentInquiry.Enabled = true;
+            feedback2TextBox.Enabled = true;
+            action2MultiTextBox.Enabled = true;
+            txtResposible2Person.Enabled = true;
+
+
+        }
+
+        private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dr = dataGridView1.CurrentRow;
+                txt2ClientId.Text = dr.Cells[0].Value.ToString();
+                txt2ClientName.Text = dr.Cells[1].Value.ToString();
+
+                label7.Text = l12.Text;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
       

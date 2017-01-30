@@ -218,24 +218,35 @@ namespace ClientManagementSystem.UI
                
                 return;
             }
-            if (cThanaCombo.Text == "")
+ 
+            if ((notApplicableBA.Checked == false) && (bASameASCA.Checked == false) && (bASameAsTA.Checked == false))
             {
-                MessageBox.Show("Please select Corporate Thana", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cThanaCombo.Focus();
-                return;
-            }
-            if (cDistrictCombo.Text == "")
-            {
-                MessageBox.Show("Please Select Corporate District", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cDistrictCombo.Focus();
-                return;
-            }
-            if (cContactNoTextBox.Text == "")
-            {
-                MessageBox.Show("Please Enter Corporate Contact No", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cContactNoTextBox.Focus();
-                return;
-            }                      
+                if (string.IsNullOrWhiteSpace(bDivisionCombo.Text))
+                {
+                    MessageBox.Show("Please select billing Address division", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(bDistrictCombo.Text))
+                {
+                    MessageBox.Show("Please Select billing Address district", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(bThanaCombo.Text))
+                {
+                    MessageBox.Show("Please select billing Address Thana", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(bPostOfficeCombo.Text))
+                {
+                    MessageBox.Show("Please Select billing Address Post Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(bPostCodeTextBox.Text))
+                {
+                    MessageBox.Show("Please select billing Address Post Code", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }         
             try
             {
                 con = new SqlConnection(cs.DBConn);
@@ -266,8 +277,14 @@ namespace ClientManagementSystem.UI
                 {
                     SaveInstantSalesClient();
                     SaveCorporateAddress(1);
-                    SaveContactPersonDetails();
-                    SaveBankDetails();
+                    if (!string.IsNullOrEmpty(contactPersonNameInsTextBox.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }
+                    if (!string.IsNullOrEmpty(bankNameInsTextBox.Text))
+                    {
+                        SaveBankDetails();
+                    }
                 }
 
                 //2.Tradding Address Not Applicable &&  Billing Address  same as Corporat Address
@@ -276,8 +293,14 @@ namespace ClientManagementSystem.UI
                     SaveInstantSalesClient();
                     SaveCorporateAddress(1);
                     SaveCorporateAddress(3);//diff Method
-                    SaveContactPersonDetails();
-                    SaveBankDetails();
+                    if (!string.IsNullOrEmpty(contactPersonNameInsTextBox.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }
+                    if (!string.IsNullOrEmpty(bankNameInsTextBox.Text))
+                    {
+                        SaveBankDetails();
+                    }
                 }
                 //3.Tradding Address Not Applicable &&  Billing Address  Applicable
                 else if (notApplicableTACheckBox.Checked && notApplicableBA.Checked == false && bASameASCA.Checked == false && bASameAsTA.Checked == false)
@@ -285,8 +308,14 @@ namespace ClientManagementSystem.UI
                     SaveInstantSalesClient();
                     SaveCorporateAddress(1);
                     SaveBillingAddress(3);
-                    SaveContactPersonDetails();
-                    SaveBankDetails();
+                    if (!string.IsNullOrEmpty(contactPersonNameInsTextBox.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }
+                    if (!string.IsNullOrEmpty(bankNameInsTextBox.Text))
+                    {
+                        SaveBankDetails();
+                    }
                 }
                 //4.Tradding Address same as Corporat Address &&  Billing Address Not Applicable
                 else if (TASameAsCA.Checked && notApplicableBA.Checked)
@@ -294,8 +323,14 @@ namespace ClientManagementSystem.UI
                     SaveInstantSalesClient();
                     SaveCorporateAddress(1);
                     SaveCorporateAddress(2); //diff method  
-                    SaveContactPersonDetails();
-                    SaveBankDetails();
+                    if (!string.IsNullOrEmpty(contactPersonNameInsTextBox.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }
+                    if (!string.IsNullOrEmpty(bankNameInsTextBox.Text))
+                    {
+                        SaveBankDetails();
+                    }
                 }
                 //5.Tradding Address same as Corporat Address &&  Billing Address same as Corporat Address
 
@@ -305,8 +340,14 @@ namespace ClientManagementSystem.UI
                     SaveCorporateAddress(1);
                     SaveCorporateAddress(2); //diff method  
                     SaveCorporateAddress(3); //diff method  
-                    SaveContactPersonDetails();
-                    SaveBankDetails();
+                    if (!string.IsNullOrEmpty(contactPersonNameInsTextBox.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }
+                    if (!string.IsNullOrEmpty(bankNameInsTextBox.Text))
+                    {
+                        SaveBankDetails();
+                    }
                 }
                 //6.Tradding Address same as Corporat Address &&  Billing Address Applicable
 
@@ -316,19 +357,31 @@ namespace ClientManagementSystem.UI
                     SaveCorporateAddress(1);
                     SaveCorporateAddress(2); //diff method  
                     SaveBillingAddress(3);
-                    SaveContactPersonDetails();
-                    SaveBankDetails();
+                    if (!string.IsNullOrEmpty(contactPersonNameInsTextBox.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }
+                    if (!string.IsNullOrEmpty(bankNameInsTextBox.Text))
+                    {
+                        SaveBankDetails();
+                    }
                 }
                 //7.Tradding Address Aplicable  &&  Biling Address Not Applicable
 
                 else if (notApplicableTACheckBox.Checked == false && TASameAsCA.Checked == false && notApplicableBA.Checked)
                 {
-                    SaveInstantSalesClient();
+                   
                     SaveInstantSalesClient();
                     SaveCorporateAddress(1);
                     SaveTraddingAddress(2);
-                    SaveContactPersonDetails();
-                    SaveBankDetails();
+                    if (!string.IsNullOrEmpty(contactPersonNameInsTextBox.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }
+                    if (!string.IsNullOrEmpty(bankNameInsTextBox.Text))
+                    {
+                        SaveBankDetails();
+                    }
                 }
                 //8.Tradding Address Aplicable  &&  Biling Address Same As Corporat Address
 
@@ -338,8 +391,14 @@ namespace ClientManagementSystem.UI
                     SaveCorporateAddress(1);
                     SaveTraddingAddress(2);
                     SaveCorporateAddress(3); //diff method  
-                    SaveContactPersonDetails();
-                    SaveBankDetails();
+                    if (!string.IsNullOrEmpty(contactPersonNameInsTextBox.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }
+                    if (!string.IsNullOrEmpty(bankNameInsTextBox.Text))
+                    {
+                        SaveBankDetails();
+                    }
                 }
                 //9.Tradding Address Aplicable  &&  Biling Address Same As Tradding Address
 
@@ -349,8 +408,14 @@ namespace ClientManagementSystem.UI
                     SaveCorporateAddress(1);
                     SaveTraddingAddress(2);
                     SaveTraddingAddress(3); //diff method
-                    SaveContactPersonDetails();
-                    SaveBankDetails();
+                    if (!string.IsNullOrEmpty(contactPersonNameInsTextBox.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }
+                    if (!string.IsNullOrEmpty(bankNameInsTextBox.Text))
+                    {
+                        SaveBankDetails();
+                    }
                 }
                 //10.Tradding Address Aplicable  &&  Biling Address Applicable
 
@@ -360,8 +425,14 @@ namespace ClientManagementSystem.UI
                     SaveCorporateAddress(1);
                     SaveTraddingAddress(2);
                     SaveBillingAddress(3);
-                    SaveContactPersonDetails();
-                    SaveBankDetails();
+                    if (!string.IsNullOrEmpty(contactPersonNameInsTextBox.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }
+                    if (!string.IsNullOrEmpty(bankNameInsTextBox.Text))
+                    {
+                        SaveBankDetails();
+                    }
                 }
 
 
@@ -424,6 +495,27 @@ namespace ClientManagementSystem.UI
             emailAddressInsTextBox.Clear();
             cmbIndustryCategory.SelectedIndex = -1;
 
+            notApplicableTACheckBox.CheckedChanged -= notApplicableTACheckBox_CheckedChanged;
+            notApplicableTACheckBox.Checked = false;
+            notApplicableTACheckBox.CheckedChanged += notApplicableTACheckBox_CheckedChanged;
+
+
+            TASameAsCA.CheckedChanged -= TASameAsCA_CheckedChanged;
+            TASameAsCA.Checked = false;
+            TASameAsCA.CheckedChanged += TASameAsCA_CheckedChanged;
+
+            notApplicableBA.CheckedChanged -= notApplicableBA_CheckedChanged;
+            notApplicableBA.Checked = false;
+            notApplicableBA.CheckedChanged += notApplicableBA_CheckedChanged;
+
+            bASameASCA.CheckedChanged -= bASameASCA_CheckedChanged;
+            bASameASCA.Checked = false;
+            bASameASCA.CheckedChanged += bASameASCA_CheckedChanged;
+
+            bASameAsTA.CheckedChanged -= bANotApplicableTA_CheckedChanged;
+            bASameAsTA.Checked = false;
+            bASameAsTA.CheckedChanged += bANotApplicableTA_CheckedChanged;
+
             cFlatNoTextBox.Clear();
             cHouseNoTextBox.Clear();
             cRoadNoTextBox.Clear();
@@ -483,8 +575,7 @@ namespace ClientManagementSystem.UI
 
         private void bContactNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-       (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&(e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -498,8 +589,7 @@ namespace ClientManagementSystem.UI
 
         private void bPostCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-       (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -522,8 +612,7 @@ namespace ClientManagementSystem.UI
 
         private void cPostCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-       (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -537,8 +626,7 @@ namespace ClientManagementSystem.UI
 
         private void cellNumberInsTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-       (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -552,8 +640,7 @@ namespace ClientManagementSystem.UI
 
         private void accountNoInsTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-       (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -1839,7 +1926,11 @@ namespace ClientManagementSystem.UI
 
         private void txtCPEmailAddress_Enter(object sender, EventArgs e)
         {
-           
+            if (string.IsNullOrWhiteSpace(contactPersonNameInsTextBox.Text))
+            {
+                MessageBox.Show("Please  enter  Contact Person Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         private void branchNameInsTextBox_Enter(object sender, EventArgs e)
@@ -1857,6 +1948,16 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show("Please  enter  Bank Name before account No", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+        }
+
+        private void contactPersonNameInsTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(contactPersonNameInsTextBox.Text))
+            {
+                 txtCPEmailAddress.Clear();
+                 designationInsTextBox.Clear();
+                 cellNumberInsTextBox.Clear();
             }
         }
         }

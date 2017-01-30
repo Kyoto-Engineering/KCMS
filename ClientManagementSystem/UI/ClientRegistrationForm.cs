@@ -22,12 +22,12 @@ namespace ClientManagementSystem.UI
     public partial class ClientRegistrationForm : Form
     {
         private int affectedRows1, currentClientId, affectedRows2, affectedRows3, affectedRows12;
-         SqlConnection con;
+        private SqlConnection con;
         ConnectionString cs=new ConnectionString();
         private SqlDataReader rdr;
-         SqlCommand cmd;
-         public string fullName, submittedBy, districtIdC, districtIdT, divisionIdC, divisionIdT, thanaIdC,thanaIdC2, thanaIdT,postofficeIdC,postOfficeIdT;
-         public int clientTypeId, natureOfClientId, industryCategoryId, addressTypeId1, addressTypeId2,superviserId;
+        private  SqlCommand cmd;
+        public string fullName, submittedBy, districtIdC, districtIdT, divisionIdC, divisionIdT, thanaIdC,thanaIdC2, thanaIdT,postofficeIdC,postOfficeIdT;
+        public int clientTypeId, natureOfClientId, industryCategoryId, addressTypeId1, addressTypeId2,superviserId;
         public ClientRegistrationForm()
         {
             InitializeComponent();
@@ -124,36 +124,7 @@ namespace ClientManagementSystem.UI
 
         private void CheckFactoryAddress()
         {
-            if (tDivisionCombo.Text == "")
-            {
-                MessageBox.Show("Please select factory division", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tDivisionCombo.Focus();
-                return;
-            }
-            if (tDistrictCombo.Text == "")
-            {
-                MessageBox.Show("Please Select factory district", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tDistrictCombo.Focus();
-                return;
-            }
-            if (tThenaCombo.Text == "")
-            {
-                MessageBox.Show("Please select factory Thana", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tThenaCombo.Focus();
-                return;
-            }
-            if (tPostCombo.Text == "")
-            {
-                MessageBox.Show("Please Select factory Post Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tPostCombo.Focus();
-                return;
-            }
-            if (tPostCodeTextBox.Text == "")
-            {
-                MessageBox.Show("Please select factory Post Code", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tPostCodeTextBox.Focus();
-                return;
-            }
+            
            
         }
 
@@ -166,10 +137,9 @@ namespace ClientManagementSystem.UI
         private void saveButton_Click(object sender, EventArgs e)
         {
 
-            if (clientNameTextBox.Text == "")
+            if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
             {
-                MessageBox.Show("Please Enter Valid Client name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                clientNameTextBox.Focus();
+                MessageBox.Show("Please Enter Valid Client name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                
                 return;
             }
             if (cmbClientType.Text == "")
@@ -206,7 +176,31 @@ namespace ClientManagementSystem.UI
 
             if ((notApplicableCheckBox.Checked==false) && (sameAsCorporatAddCheckBox.Checked == false))
             {
-                CheckFactoryAddress();
+                if (string.IsNullOrWhiteSpace(tDivisionCombo.Text))
+                {
+                    MessageBox.Show("Please select factory division", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                   
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(tDistrictCombo.Text))
+                {
+                    MessageBox.Show("Please Select factory district", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                    
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(tThenaCombo.Text))
+                {
+                    MessageBox.Show("Please select factory Thana", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                    
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(tPostCombo.Text))
+                {
+                    MessageBox.Show("Please Select factory Post Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                    
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(tPostCodeTextBox.Text))
+                {
+                    MessageBox.Show("Please select factory Post Code", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                   
+                    return;
+                }
             }
            
             try
@@ -240,7 +234,11 @@ namespace ClientManagementSystem.UI
                 {
                     SaveInquiryClient();
                     SaveCorporateAddress(1);
-                    SaveContactPersonDetails();                   
+                    if (!string.IsNullOrEmpty(txtContactPerson.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }
+                   
                 }
                //2.Corporate Address Applicable  & Tradding Address Same as  Corporate Address                                        
                 if (sameAsCorporatAddCheckBox.Checked)
@@ -248,7 +246,10 @@ namespace ClientManagementSystem.UI
                     SaveInquiryClient();
                     SaveCorporateAddress(1);
                     SaveCorporateAddress(2);
-                    SaveContactPersonDetails();                                       
+                    if (!string.IsNullOrEmpty(txtContactPerson.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }                                      
                 }
                 //3.Corporate Address Applicable  & Tradding Address  Applicable
                 if (sameAsCorporatAddCheckBox.Checked == false && notApplicableCheckBox.Checked == false)
@@ -256,7 +257,10 @@ namespace ClientManagementSystem.UI
                     SaveInquiryClient();
                     SaveCorporateAddress(1);
                     SaveTraddingAddress(2);
-                    SaveContactPersonDetails();
+                    if (!string.IsNullOrEmpty(txtContactPerson.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }
                 }
                 MessageBox.Show("Registration Completed Successfully,Current Id is:" + currentClientId, "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Reset();

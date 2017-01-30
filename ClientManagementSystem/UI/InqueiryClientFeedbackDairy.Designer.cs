@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InqueiryClientFeedbackDairy));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.feedback2TextBox = new System.Windows.Forms.RichTextBox();
             this.txtClentInquiry = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -69,6 +70,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.labelg = new System.Windows.Forms.Label();
+            this.l12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -91,6 +93,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.feedback2TextBox);
             this.groupBox1.Controls.Add(this.txtClentInquiry);
             this.groupBox1.Controls.Add(this.label4);
@@ -110,6 +113,17 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(295, 559);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(116, 58);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Edit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // feedback2TextBox
             // 
@@ -152,8 +166,9 @@
             this.txt2ClientId.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt2ClientId.Location = new System.Drawing.Point(100, 16);
             this.txt2ClientId.Name = "txt2ClientId";
-            this.txt2ClientId.Size = new System.Drawing.Size(143, 29);
+            this.txt2ClientId.Size = new System.Drawing.Size(149, 29);
             this.txt2ClientId.TabIndex = 16;
+            this.txt2ClientId.TextChanged += new System.EventHandler(this.txt2ClientId_TextChanged);
             // 
             // label6
             // 
@@ -264,6 +279,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(563, 239);
             this.dataGridView2.TabIndex = 7;
+            this.dataGridView2.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseClick);
             this.dataGridView2.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseClick);
             // 
             // dataGridViewTextBoxColumn1
@@ -305,9 +321,9 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dataGridView1.Location = new System.Drawing.Point(39, 350);
+            this.dataGridView1.Location = new System.Drawing.Point(25, 350);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(557, 213);
+            this.dataGridView1.Size = new System.Drawing.Size(546, 248);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
@@ -339,9 +355,9 @@
             // 
             this.submitButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitButton.ForeColor = System.Drawing.Color.Blue;
-            this.submitButton.Location = new System.Drawing.Point(330, 566);
+            this.submitButton.Location = new System.Drawing.Point(444, 559);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(128, 57);
+            this.submitButton.Size = new System.Drawing.Size(105, 57);
             this.submitButton.TabIndex = 7;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -466,12 +482,23 @@
             this.labelg.TabIndex = 2;
             this.labelg.Text = "label4";
             // 
+            // l12
+            // 
+            this.l12.AutoSize = true;
+            this.l12.Location = new System.Drawing.Point(1211, 4);
+            this.l12.Name = "l12";
+            this.l12.Size = new System.Drawing.Size(41, 13);
+            this.l12.TabIndex = 3;
+            this.l12.Text = "label12";
+            this.l12.Visible = false;
+            // 
             // InqueiryClientFeedbackDairy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1258, 719);
+            this.Controls.Add(this.l12);
             this.Controls.Add(this.labelg);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox1);
@@ -536,6 +563,8 @@
         public  System.Windows.Forms.RichTextBox txtClentInquiry;
         private System.Windows.Forms.Label label4;
         public  System.Windows.Forms.RichTextBox action2MultiTextBox;
+        private System.Windows.Forms.Button button1;
+        public  System.Windows.Forms.Label l12;
 
     }
 }

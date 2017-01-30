@@ -791,9 +791,9 @@
             // 
             this.cThanaCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cThanaCombo.FormattingEnabled = true;
-            this.cThanaCombo.Location = new System.Drawing.Point(451, 85);
+            this.cThanaCombo.Location = new System.Drawing.Point(452, 85);
             this.cThanaCombo.Name = "cThanaCombo";
-            this.cThanaCombo.Size = new System.Drawing.Size(199, 30);
+            this.cThanaCombo.Size = new System.Drawing.Size(198, 30);
             this.cThanaCombo.TabIndex = 42;
             this.cThanaCombo.SelectedIndexChanged += new System.EventHandler(this.cThanaCombo_SelectedIndexChanged);
             // 
@@ -803,7 +803,7 @@
             this.cContactNoTextBox.Location = new System.Drawing.Point(158, 167);
             this.cContactNoTextBox.MaxLength = 11;
             this.cContactNoTextBox.Name = "cContactNoTextBox";
-            this.cContactNoTextBox.Size = new System.Drawing.Size(158, 26);
+            this.cContactNoTextBox.Size = new System.Drawing.Size(171, 26);
             this.cContactNoTextBox.TabIndex = 41;
             this.cContactNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cContactNoTextBox_KeyPress);
             // 
@@ -853,7 +853,7 @@
             this.cAreaTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cAreaTextBox.Location = new System.Drawing.Point(158, 138);
             this.cAreaTextBox.Name = "cAreaTextBox";
-            this.cAreaTextBox.Size = new System.Drawing.Size(158, 26);
+            this.cAreaTextBox.Size = new System.Drawing.Size(171, 26);
             this.cAreaTextBox.TabIndex = 15;
             // 
             // label20
@@ -892,7 +892,7 @@
             this.cRoadNoTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cRoadNoTextBox.Location = new System.Drawing.Point(158, 78);
             this.cRoadNoTextBox.Name = "cRoadNoTextBox";
-            this.cRoadNoTextBox.Size = new System.Drawing.Size(158, 26);
+            this.cRoadNoTextBox.Size = new System.Drawing.Size(172, 26);
             this.cRoadNoTextBox.TabIndex = 10;
             // 
             // cHouseNoTextBox
@@ -900,7 +900,7 @@
             this.cHouseNoTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cHouseNoTextBox.Location = new System.Drawing.Point(158, 49);
             this.cHouseNoTextBox.Name = "cHouseNoTextBox";
-            this.cHouseNoTextBox.Size = new System.Drawing.Size(158, 26);
+            this.cHouseNoTextBox.Size = new System.Drawing.Size(172, 26);
             this.cHouseNoTextBox.TabIndex = 9;
             // 
             // cFlatNoTextBox
@@ -908,7 +908,7 @@
             this.cFlatNoTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cFlatNoTextBox.Location = new System.Drawing.Point(158, 20);
             this.cFlatNoTextBox.Name = "cFlatNoTextBox";
-            this.cFlatNoTextBox.Size = new System.Drawing.Size(158, 26);
+            this.cFlatNoTextBox.Size = new System.Drawing.Size(172, 26);
             this.cFlatNoTextBox.TabIndex = 8;
             // 
             // label14
@@ -1194,7 +1194,7 @@
             this.cBlockTextBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cBlockTextBox1.Location = new System.Drawing.Point(158, 108);
             this.cBlockTextBox1.Name = "cBlockTextBox1";
-            this.cBlockTextBox1.Size = new System.Drawing.Size(158, 26);
+            this.cBlockTextBox1.Size = new System.Drawing.Size(171, 26);
             this.cBlockTextBox1.TabIndex = 83;
             this.cBlockTextBox1.WaterMarkColor = System.Drawing.Color.Gray;
             this.cBlockTextBox1.WaterMarkText = "if Any";

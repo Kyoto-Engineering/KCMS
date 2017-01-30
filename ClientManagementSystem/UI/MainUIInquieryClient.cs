@@ -332,7 +332,7 @@ namespace ClientManagementSystem.UI
         private void convertToSalesClientButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ConvertToSalesClientGrid frm=new ConvertToSalesClientGrid();
+            ForSalseClientMP frm = new ForSalseClientMP();
             frm.Show();
         }
 
