@@ -94,7 +94,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT RTRIM(FollowUp.DeadLineDateTime),RTRIM(IClientFeedbackDairy.Feedback),RTRIM(FollowUp.Actions),RTRIM(Registration.Name),RTRIM(FollowUp.Statuss) FROM  (FollowUp INNER JOIN IClientFeedbackDairy ON FollowUp.IClientFeedbackId = IClientFeedbackDairy.IClientFeedbackId) LEFT JOIN  Registration ON IClientFeedbackDairy.UserId = Registration.UserId  where FollowUp.Statuss='Pending' order by FollowUp.FollowUpId desc", con);
+                cmd = new SqlCommand("SELECT RTRIM(FollowUp.DeadLineDateTime),RTRIM(IClientFeedbackDairy.Feedback),RTRIM(FollowUp.Actions),RTRIM(Registration.Name),RTRIM(FollowUp.Statuss) FROM  (FollowUp INNER JOIN IClientFeedbackDairy ON FollowUp.IClientFeedbackId = IClientFeedbackDairy.IClientFeedbackId) LEFT JOIN  Registration ON IClientFeedbackDairy.UserId = Registration.UserId  where FollowUp.Statuss='Pending'  and FollowUp.SClientId='"+txtSClientId.Text+"' order by FollowUp.FollowUpId desc", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)
@@ -111,7 +111,7 @@ namespace ClientManagementSystem.UI
         private void FirstStepOfSClientFeedBackDairy_Load(object sender, EventArgs e)
         {
             RPFillCombo();
-            FollowUpGridLoad();
+            
             GetData();
         }
 
@@ -176,6 +176,11 @@ namespace ClientManagementSystem.UI
             Brush b = SystemBrushes.ControlText;
             e.Graphics.DrawString(strRowNumber, this.Font, b, e.RowBounds.Location.X + 15,
                 e.RowBounds.Location.Y + ((e.RowBounds.Height - size.Height) / 2));
+        }
+
+        private void txtSClientId_TextChanged(object sender, EventArgs e)
+        {
+            FollowUpGridLoad();
         }
     }
 }
