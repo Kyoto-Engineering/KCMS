@@ -47,8 +47,7 @@ namespace ClientManagementSystem.Gateway
           cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(contact.ContactPersonName) ? (object)DBNull.Value : contact.ContactPersonName));
           cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(contact.Designation) ? (object)DBNull.Value : contact.Designation));
           cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(contact.CellNumber) ? (object)DBNull.Value : contact.CellNumber));
-          cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(contact.CPEmailAddress) ? (object)DBNull.Value : contact.CPEmailAddress));          
-          cmd.Parameters.AddWithValue("@d5", iClientId.IClientId);
+          cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(contact.CPEmailAddress) ? (object)DBNull.Value : contact.CPEmailAddress));                  
           cmd.ExecuteReader();
           connection.Close();
          
@@ -59,9 +58,8 @@ namespace ClientManagementSystem.Gateway
        {
            InqueryClient aClient = new InqueryClient();
            connection.Open();
-           string UpdateQuery = "Update Addresses set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,FlatNo=@d5,HouseNo=@d6,RoadNo=@d7,Block=@d8,Area=@d9,ContactNo=@d10,ADTypeId=@d11 Where ADTypeId='" + cAdd.AddTypeId1 + "' and IClientId='" + aClient.IClientId + "'";
-           SqlCommand cmd = new SqlCommand(UpdateQuery, connection);
-           cmd.ExecuteReader();
+           string UpdateQuery = "Update Addresses set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,FlatNo=@d5,HouseNo=@d6,RoadNo=@d7,Block=@d8,Area=@d9,ContactNo=@d10  Where ADTypeId='" + cAdd.AddTypeId1 + "' and IClientId='" + aClient.IClientId + "'";
+           SqlCommand cmd = new SqlCommand(UpdateQuery, connection);           
            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(cAdd.DivisionId.ToString()) ? (object)DBNull.Value : cAdd.DivisionId));
            cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(cAdd.DistrictId.ToString()) ? (object)DBNull.Value : cAdd.DistrictId));
            cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(cAdd.ThanaId.ToString()) ? (object)DBNull.Value : cAdd.ThanaId));
@@ -72,16 +70,15 @@ namespace ClientManagementSystem.Gateway
            cmd.Parameters.Add(new SqlParameter("@d8", string.IsNullOrEmpty(cAdd.CBlock) ? (object)DBNull.Value : cAdd.CBlock));
            cmd.Parameters.Add(new SqlParameter("@d9", string.IsNullOrEmpty(cAdd.CARea) ? (object)DBNull.Value : cAdd.CARea));
            cmd.Parameters.Add(new SqlParameter("@d10", string.IsNullOrEmpty(cAdd.CContactNo) ? (object)DBNull.Value : cAdd.CContactNo));
-           cmd.Parameters.Add(new SqlParameter("@d11", string.IsNullOrEmpty(cAdd.AddTypeId1.ToString()) ? (object)DBNull.Value : cAdd.AddTypeId1));
+           cmd.ExecuteReader();
            connection.Close();
        }
        public void UpdateTraddingAddress(TraddingAddress tAdd)
        {
            InqueryClient atClient=new InqueryClient();
            connection.Open();
-           string UpdateQuery = "Update Addresses set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,FlatNo=@d5,HouseNo=@d6,RoadNo=@d7,Block=@d8,Area=@d9,ContactNo=@d10,ADTypeId=@d11 Where ADTypeId='" + tAdd.AddTypeIdT + "' and IClientId='" + atClient.IClientId + "'";
-           SqlCommand cmd = new SqlCommand(UpdateQuery, connection);
-           cmd.ExecuteReader();
+           string UpdateQuery = "Update Addresses set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,FlatNo=@d5,HouseNo=@d6,RoadNo=@d7,Block=@d8,Area=@d9,ContactNo=@d10  Where  ADTypeId='" + tAdd.AddTypeIdT + "' and IClientId='" + atClient.IClientId + "'";
+           SqlCommand cmd = new SqlCommand(UpdateQuery, connection);           
            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(tAdd.DivisionId.ToString()) ? (object)DBNull.Value : tAdd.DivisionId));
            cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(tAdd.DistrictId.ToString()) ? (object)DBNull.Value : tAdd.DistrictId));
            cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(tAdd.ThanaId.ToString()) ? (object)DBNull.Value : tAdd.ThanaId));
@@ -91,25 +88,24 @@ namespace ClientManagementSystem.Gateway
            cmd.Parameters.Add(new SqlParameter("@d7", string.IsNullOrEmpty(tAdd.TRoadNo) ? (object)DBNull.Value : tAdd.TRoadNo));
            cmd.Parameters.Add(new SqlParameter("@d8", string.IsNullOrEmpty(tAdd.TBlock) ? (object)DBNull.Value : tAdd.TBlock));
            cmd.Parameters.Add(new SqlParameter("@d9", string.IsNullOrEmpty(tAdd.TARea) ? (object)DBNull.Value : tAdd.TARea));
-           cmd.Parameters.Add(new SqlParameter("@d10",string.IsNullOrEmpty(tAdd.TContactNo) ? (object)DBNull.Value : tAdd.TContactNo));           
-           cmd.Parameters.Add(new SqlParameter("@d11",string.IsNullOrEmpty(tAdd.AddTypeIdT.ToString()) ? (object)DBNull.Value : tAdd.AddTypeIdT));          
+           cmd.Parameters.Add(new SqlParameter("@d10",string.IsNullOrEmpty(tAdd.TContactNo) ? (object)DBNull.Value : tAdd.TContactNo));
+           cmd.ExecuteReader();        
            connection.Close();
        }
        public void UpdateClient(InqueryClient  nClient)
        {         
            connection.Open();
-           string UpdateQuery = "Update InquieryClient set ClientName=@d1,ClientTypeId=@d2,NatureOfClientId=@d3,EmailAddress=@d4,IndustryCategoryId=@d5,EndUser=@d6,CurrentDate=@d7,UserId=@d8,Dates=@d9,SupervisorName=@d10,  Where IClientId='" + nClient.IClientId + "'";
+           string UpdateQuery = "Update InquieryClient set ClientName=@d1,ClientTypeId=@d2,NatureOfClientId=@d3,EmailAddress=@d4,IndustryCategoryId=@d5,EndUser=@d6,UserId=@d7,Dates=@d8,SuperviserId=@d9  Where IClientId='" + nClient.IClientId + "'";
            SqlCommand cmd = new SqlCommand(UpdateQuery, connection);
            cmd.Parameters.AddWithValue("@d1", nClient.ClientName);
            cmd.Parameters.AddWithValue("@d2", nClient.ClientTypeId);
            cmd.Parameters.AddWithValue("@d3", nClient.NatureOfClientId);
            cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(nClient.EmailAddress) ? (object)DBNull.Value : nClient.EmailAddress));
            cmd.Parameters.AddWithValue("@d5", nClient.industrycategoryId);
-           cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(nClient.EndUser) ? (object)DBNull.Value : nClient.EndUser));
-           cmd.Parameters.AddWithValue("@d7", System.DateTime.Now);
-           cmd.Parameters.AddWithValue("@d8", nClient.UserId);
-           cmd.Parameters.AddWithValue("@d9", DateTime.UtcNow.ToLocalTime());
-           cmd.Parameters.AddWithValue("@d10", nClient.RMId);
+           cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(nClient.EndUser) ? (object)DBNull.Value : nClient.EndUser));          
+           cmd.Parameters.AddWithValue("@d7", nClient.UserId);
+           cmd.Parameters.AddWithValue("@d8", DateTime.UtcNow.ToLocalTime());
+           cmd.Parameters.AddWithValue("@d9", nClient.RMId);
            cmd.ExecuteReader();
            connection.Close();          
        }
@@ -124,19 +120,7 @@ namespace ClientManagementSystem.Gateway
            cmd.Parameters.AddWithValue("@emailAddress", aClient.EmailAddress);
            cmd.Parameters.AddWithValue("@industryCategory", aClient.IndustryCatagory);
            
-           //cmd.Parameters.AddWithValue("@tFlatNo", aClient.TFlatNo);
-           //cmd.Parameters.AddWithValue("@tHouseNo", aClient.THouseNo);
-           //cmd.Parameters.AddWithValue("@tRoadNo", aClient.TRoadNo);
-           //cmd.Parameters.AddWithValue("@tBlock", aClient.TBlock);
-           //cmd.Parameters.AddWithValue("@tArea", aClient.TARea);
-           //cmd.Parameters.AddWithValue("@tPost", aClient.TPost);
-           //cmd.Parameters.AddWithValue("@tPostCode", aClient.TPostCode);
-           //cmd.Parameters.AddWithValue("@tDistrict", aClient.TDistrict);
-           //cmd.Parameters.AddWithValue("@tContactNo", aClient.TContactNo);
-           //cmd.Parameters.AddWithValue("@contactPersonName", aClient.ContactPersonName);
-           //cmd.Parameters.AddWithValue("@designation", aClient.Designation);
-           //cmd.Parameters.AddWithValue("@cellNumber", aClient.CellNumber);
-           //cmd.Parameters.AddWithValue("@endUser", aClient.EndUser);
+         
            cmd.Parameters.AddWithValue("@d1", System.DateTime.Now);
            currentClientId = (int)cmd.ExecuteScalar();
            connection.Close();
@@ -160,30 +144,7 @@ namespace ClientManagementSystem.Gateway
               aClient.EmailAddress = daraReader[4].ToString();
               aClient.IndustryCatagory = daraReader[5].ToString();
 
-              //aClient.CFlatNo = daraReader[6].ToString();
-              //aClient.CHouseNo = daraReader[7].ToString();
-              //aClient.CRoadNo = daraReader[8].ToString();
-              //aClient.CBlock = daraReader[9].ToString();
-              //aClient.CARea = daraReader[10].ToString();
-              //aClient.CPost = daraReader[11].ToString();
-              //aClient.CPostCode = daraReader[12].ToString();
-              //aClient.CDistrict = daraReader[13].ToString();
-              //aClient.CContactNo = daraReader[14].ToString();
-
-              //aClient.TFlatNo = daraReader[15].ToString();
-              //aClient.THouseNo = daraReader[16].ToString();
-              //aClient.TRoadNo = daraReader[17].ToString();
-              //aClient.TBlock = daraReader[18].ToString();
-              //aClient.TARea = daraReader[19].ToString();
-              //aClient.TPost = daraReader[20].ToString();
-              //aClient.TPostCode = daraReader[21].ToString();
-              //aClient.TDistrict=daraReader[22].ToString();
-              //aClient.TContactNo = daraReader[23].ToString();
-
-              //aClient.ContactPersonName = daraReader[24].ToString();
-              //aClient.Designation = daraReader[25].ToString();
-              //aClient.CellNumber = daraReader[26].ToString();
-              //aClient.EndUser = daraReader[27].ToString();
+              
           }
           daraReader.Close();
           connection.Close();

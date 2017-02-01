@@ -238,6 +238,7 @@
             this.txt1ClientId.ReadOnly = true;
             this.txt1ClientId.Size = new System.Drawing.Size(138, 29);
             this.txt1ClientId.TabIndex = 20;
+            this.txt1ClientId.TextChanged += new System.EventHandler(this.txt1ClientId_TextChanged);
             // 
             // label7
             // 
@@ -269,9 +270,9 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5});
-            this.dataGridView2.Location = new System.Drawing.Point(25, 23);
+            this.dataGridView2.Location = new System.Drawing.Point(13, 23);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(582, 262);
+            this.dataGridView2.Size = new System.Drawing.Size(594, 262);
             this.dataGridView2.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn1
@@ -383,6 +384,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(558, 239);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);

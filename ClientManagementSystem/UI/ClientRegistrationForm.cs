@@ -22,12 +22,12 @@ namespace ClientManagementSystem.UI
     public partial class ClientRegistrationForm : Form
     {
         private int affectedRows1, currentClientId, affectedRows2, affectedRows3, affectedRows12;
-         SqlConnection con;
+        private SqlConnection con;
         ConnectionString cs=new ConnectionString();
         private SqlDataReader rdr;
-         SqlCommand cmd;
-         public string fullName, submittedBy, districtIdC, districtIdT, divisionIdC, divisionIdT, thanaIdC,thanaIdC2, thanaIdT,postofficeIdC,postOfficeIdT;
-         public int clientTypeId, natureOfClientId, industryCategoryId, addressTypeId1, addressTypeId2,superviserId;
+        private  SqlCommand cmd;
+        public string fullName, submittedBy, districtIdC, districtIdT, divisionIdC, divisionIdT, thanaIdC,thanaIdC2, thanaIdT,postofficeIdC,postOfficeIdT;
+        public int clientTypeId, natureOfClientId, industryCategoryId, addressTypeId1, addressTypeId2,superviserId;
         public ClientRegistrationForm()
         {
             InitializeComponent();
@@ -42,7 +42,7 @@ namespace ClientManagementSystem.UI
         {
             con = new SqlConnection(cs.DBConn);
             con.Open();
-            string insertQuery = "insert into InquieryClient(ClientName,ClientTypeId,NatureOfClientId,EmailAddress,IndustryCategoryId,EndUser,CurrentDate,UserId,Dates) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+            string insertQuery = "insert into InquieryClient(ClientName,ClientTypeId,NatureOfClientId,EmailAddress,IndustryCategoryId,EndUser,UserId,Dates,SuperviserId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
             cmd = new SqlCommand(insertQuery);
             cmd.Connection = con;
             cmd.Parameters.AddWithValue("@d1", clientNameTextBox.Text);
@@ -50,10 +50,10 @@ namespace ClientManagementSystem.UI
             cmd.Parameters.AddWithValue("@d3", natureOfClientId);
             cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(emailAddressTextBox.Text) ? (object)DBNull.Value : emailAddressTextBox.Text));
             cmd.Parameters.AddWithValue("@d5", industryCategoryId);
-            cmd.Parameters.AddWithValue("@d6", endUserTextBox.Text);
-            cmd.Parameters.AddWithValue("@d7", System.DateTime.Now);
-            cmd.Parameters.AddWithValue("@d8", submittedBy);
-            cmd.Parameters.AddWithValue("@d9", DateTime.UtcNow.ToLocalTime());
+            cmd.Parameters.AddWithValue("@d6", endUserTextBox.Text);            
+            cmd.Parameters.AddWithValue("@d7", submittedBy);
+            cmd.Parameters.AddWithValue("@d8", DateTime.UtcNow.ToLocalTime());
+            cmd.Parameters.AddWithValue("@d9", superviserId);
             currentClientId = (int)cmd.ExecuteScalar();
             con.Close();
         }
@@ -73,7 +73,7 @@ namespace ClientManagementSystem.UI
             cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(cFlatNoTextBox.Text) ? (object)DBNull.Value : cFlatNoTextBox.Text));
             cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(cHouseNoTextBox.Text) ? (object)DBNull.Value : cHouseNoTextBox.Text));
             cmd.Parameters.Add(new SqlParameter("@d7", string.IsNullOrEmpty(cRoadNoTextBox.Text) ? (object)DBNull.Value : cRoadNoTextBox.Text));
-            cmd.Parameters.Add(new SqlParameter("@d8", string.IsNullOrEmpty(cBlockTextBox.Text) ? (object)DBNull.Value : cBlockTextBox.Text));
+            cmd.Parameters.Add(new SqlParameter("@d8", string.IsNullOrEmpty(cBlockTextBox1.Text) ? (object)DBNull.Value : cBlockTextBox1.Text));
             cmd.Parameters.Add(new SqlParameter("@d9", string.IsNullOrEmpty(cAreaTextBox.Text) ? (object)DBNull.Value : cAreaTextBox.Text));            
             cmd.Parameters.Add(new SqlParameter("@d10", string.IsNullOrEmpty(cContactNoTextBox.Text) ? (object)DBNull.Value : cContactNoTextBox.Text));
             cmd.Parameters.AddWithValue("@d11", addressTypeId1);
@@ -94,11 +94,10 @@ namespace ClientManagementSystem.UI
             cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdT) ? (object)DBNull.Value : districtIdT));
             cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdT) ? (object)DBNull.Value : thanaIdT));
             cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdT) ? (object)DBNull.Value : postOfficeIdT));
-
             cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(tFlatNoTextBox.Text) ? (object)DBNull.Value : tFlatNoTextBox.Text));
             cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(tHouseNoTextBox.Text) ? (object)DBNull.Value : tHouseNoTextBox.Text));
             cmd.Parameters.Add(new SqlParameter("@d7", string.IsNullOrEmpty(tRoadNoTextBox.Text) ? (object)DBNull.Value : tRoadNoTextBox.Text));
-            cmd.Parameters.Add(new SqlParameter("@d8", string.IsNullOrEmpty(tBlockTextBox.Text) ? (object)DBNull.Value : tBlockTextBox.Text));
+            cmd.Parameters.Add(new SqlParameter("@d8", string.IsNullOrEmpty(tBlockTextBox2.Text) ? (object)DBNull.Value : tBlockTextBox2.Text));
             cmd.Parameters.Add(new SqlParameter("@d9", string.IsNullOrEmpty(tAreaTextBox.Text) ? (object)DBNull.Value : tAreaTextBox.Text));          
             cmd.Parameters.Add(new SqlParameter("@d10", string.IsNullOrEmpty(tContactNoTextBox.Text) ? (object)DBNull.Value : tContactNoTextBox.Text));
             cmd.Parameters.AddWithValue("@d11", addressTypeId2);
@@ -114,21 +113,33 @@ namespace ClientManagementSystem.UI
             string qury = "insert into ContactPersonDetails(ContactPersonName,Designation,CellNumber,EmailId,IClientId) Values(@d1,@d2,@d3,@d4,@d5)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
             cmd = new SqlCommand(qury);
             cmd.Connection = con;
-            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(contactPersonNameTextBox.Text) ? (object)DBNull.Value : contactPersonNameTextBox.Text));
-            cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(designationTextBox.Text) ? (object)DBNull.Value : designationTextBox.Text));
-            cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(cellNumberTextBox.Text) ? (object)DBNull.Value : cellNumberTextBox.Text));
+            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(txtContactPerson.Text) ? (object)DBNull.Value : txtContactPerson.Text));
+            cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(txtDesignation.Text) ? (object)DBNull.Value : txtDesignation.Text));
+            cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(txtCellNumber.Text) ? (object)DBNull.Value : txtCellNumber.Text));
             cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(txtCPEmailAddress.Text) ? (object)DBNull.Value : txtCPEmailAddress.Text));
             cmd.Parameters.AddWithValue("@d5", currentClientId);
             affectedRows3 = (int)cmd.ExecuteScalar();
             con.Close();
         }
+
+        private void CheckFactoryAddress()
+        {
+            
+           
+        }
+
+        private void ClearContactPersonDetails()
+        {
+            txtDesignation.Clear();
+            txtCellNumber.Clear();
+            txtCPEmailAddress.Clear();
+        }
         private void saveButton_Click(object sender, EventArgs e)
         {
 
-            if (clientNameTextBox.Text == "")
+            if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
             {
-                MessageBox.Show("Please Enter Valid Client name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                clientNameTextBox.Focus();
+                MessageBox.Show("Please Enter Valid Client name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                
                 return;
             }
             if (cmbClientType.Text == "")
@@ -162,6 +173,35 @@ namespace ClientManagementSystem.UI
                 cDistCombo.Focus();
                 return;
             }
+
+            if ((notApplicableCheckBox.Checked==false) && (sameAsCorporatAddCheckBox.Checked == false))
+            {
+                if (string.IsNullOrWhiteSpace(tDivisionCombo.Text))
+                {
+                    MessageBox.Show("Please select factory division", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                   
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(tDistrictCombo.Text))
+                {
+                    MessageBox.Show("Please Select factory district", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                    
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(tThenaCombo.Text))
+                {
+                    MessageBox.Show("Please select factory Thana", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                    
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(tPostCombo.Text))
+                {
+                    MessageBox.Show("Please Select factory Post Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                    
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(tPostCodeTextBox.Text))
+                {
+                    MessageBox.Show("Please select factory Post Code", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                   
+                    return;
+                }
+            }
            
             try
             {
@@ -194,7 +234,11 @@ namespace ClientManagementSystem.UI
                 {
                     SaveInquiryClient();
                     SaveCorporateAddress(1);
-                    SaveContactPersonDetails();                   
+                    if (!string.IsNullOrEmpty(txtContactPerson.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }
+                   
                 }
                //2.Corporate Address Applicable  & Tradding Address Same as  Corporate Address                                        
                 if (sameAsCorporatAddCheckBox.Checked)
@@ -202,7 +246,10 @@ namespace ClientManagementSystem.UI
                     SaveInquiryClient();
                     SaveCorporateAddress(1);
                     SaveCorporateAddress(2);
-                    SaveContactPersonDetails();                                       
+                    if (!string.IsNullOrEmpty(txtContactPerson.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }                                      
                 }
                 //3.Corporate Address Applicable  & Tradding Address  Applicable
                 if (sameAsCorporatAddCheckBox.Checked == false && notApplicableCheckBox.Checked == false)
@@ -210,7 +257,10 @@ namespace ClientManagementSystem.UI
                     SaveInquiryClient();
                     SaveCorporateAddress(1);
                     SaveTraddingAddress(2);
-                    SaveContactPersonDetails();
+                    if (!string.IsNullOrEmpty(txtContactPerson.Text))
+                    {
+                        SaveContactPersonDetails();
+                    }
                 }
                 MessageBox.Show("Registration Completed Successfully,Current Id is:" + currentClientId, "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Reset();
@@ -229,12 +279,7 @@ namespace ClientManagementSystem.UI
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            
-            ClientEditForm aForm=new ClientEditForm();
-            this.Visible = false;
-            aForm.ShowDialog();
-            this.Visible = true;
-
+        
         }
 
         private void getDataButton_Click(object sender, EventArgs e)
@@ -244,11 +289,12 @@ namespace ClientManagementSystem.UI
 
         private void ResetTradingAddress()
         {
+           
             tFlatNoTextBox.Clear();
             tHouseNoTextBox.Clear();
             tRoadNoTextBox.Clear();
             tAreaTextBox.Clear();
-            tBlockTextBox.Clear();
+            tBlockTextBox2.Clear();
             tContactNoTextBox.Text = "";
 
             tDivisionCombo.SelectedIndex = -1;
@@ -268,10 +314,11 @@ namespace ClientManagementSystem.UI
             cmbSuperviser.SelectedIndex = -1;
             txtCPEmailAddress.Clear();
 
+            
             cFlatNoTextBox.Clear();
             cHouseNoTextBox.Clear();
             cRoadNoTextBox.Clear();
-            cBlockTextBox.Clear();
+            cBlockTextBox1.Clear();
             cAreaTextBox.Clear();
             cContactNoTextBox.Clear();
             cDivisionCombo.SelectedIndex = -1;
@@ -280,11 +327,21 @@ namespace ClientManagementSystem.UI
             cPostOfficeCombo.SelectedIndex = -1;
             cPostCodeTextBox.Clear();
 
-            ResetTradingAddress();    
+            notApplicableCheckBox.CheckedChanged -= NotApplicableCheckBox_CheckedChanged;
+            notApplicableCheckBox.Checked = false;
+            notApplicableCheckBox.CheckedChanged += NotApplicableCheckBox_CheckedChanged;
+
+            sameAsCorporatAddCheckBox.CheckedChanged -= sameAsCorporatAddCheckBox_CheckedChanged;
+            sameAsCorporatAddCheckBox.Checked = false;
+            sameAsCorporatAddCheckBox.CheckedChanged += sameAsCorporatAddCheckBox_CheckedChanged;
+            if ((notApplicableCheckBox.Checked== false) && (sameAsCorporatAddCheckBox.Checked == false))
+            {
+                ResetTradingAddress(); 
+            }   
       
-            contactPersonNameTextBox.Clear();
-            designationTextBox.Clear();
-            cellNumberTextBox.Clear();
+            txtContactPerson.Clear();
+            txtDesignation.Clear();
+            txtCellNumber.Clear();
             endUserTextBox.Clear();            
             saveButton.Enabled = true;
 
@@ -364,16 +421,19 @@ namespace ClientManagementSystem.UI
 
         private void cContactNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
                 e.Handled = true;
-            }
+            
+            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            //{
+            //    e.Handled = true;
+            //}
 
             
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+            //if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            //{
+            //    e.Handled = true;
+            //}
         }
 
         private void cPostCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -393,15 +453,18 @@ namespace ClientManagementSystem.UI
 
         private void tContactNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-             (e.KeyChar != '.'))
-            {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
                 e.Handled = true;
-            }
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+            
+            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            // (e.KeyChar != '.'))
+            //{
+            //    e.Handled = true;
+            //}
+            //if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            //{
+            //    e.Handled = true;
+            //}
         }
 
         private void tPostCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -542,29 +605,7 @@ namespace ClientManagementSystem.UI
             }
         }
        
-        public void FillTDistrictCombo()
-        {
-            try
-            {
-
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string ct = "select RTRIM(Districts.District) from Districts  order by Districts.D_ID desc";
-                cmd = new SqlCommand(ct);
-                cmd.Connection = con;
-                rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {                    
-                    tDistrictCombo.Items.Add(rdr[0]);
-                }
-                con.Close();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
         public void FillCMBSuperviserName()
         {
             try
@@ -593,12 +634,13 @@ namespace ClientManagementSystem.UI
         {
             submittedBy = LoginForm.uId.ToString();
             FillCMBSuperviserName();
+
             FillClientType();
-            FillCDivisionCombo();
-            FillTDivisionCombo();
-            FillTDistrictCombo();
             FillNatureOfClient();
             FillIndustryCategory();
+
+            FillCDivisionCombo();
+            FillTDivisionCombo();
         }
         private void Report2()
         {
@@ -803,18 +845,21 @@ namespace ClientManagementSystem.UI
 
         private void emailAddressTextBox_Validating(object sender, CancelEventArgs e)
         {
-            string emailId = emailAddressTextBox.Text.Trim();
-            Regex mRegxExpression;
-
-            mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
-
-            if (!mRegxExpression.IsMatch(emailId))
+            if (!string.IsNullOrEmpty(emailAddressTextBox.Text))
             {
+                string emailId = emailAddressTextBox.Text.Trim();
+                Regex mRegxExpression;
 
-                MessageBox.Show("Please type your  valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                emailAddressTextBox.Clear();
-                emailAddressTextBox.Focus();
+                mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
 
+                if (!mRegxExpression.IsMatch(emailId))
+                {
+
+                    MessageBox.Show("Please type your  valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    emailAddressTextBox.Clear();
+                    emailAddressTextBox.Focus();
+
+                }
             }
         }
 
@@ -909,35 +954,7 @@ namespace ClientManagementSystem.UI
 
         private void ifApplicableCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (notApplicableCheckBox.Checked)
-            {
-
-                if (sameAsCorporatAddCheckBox.Checked)
-                {
-                    sameAsCorporatAddCheckBox.CheckedChanged -= sameAsCorporatAddCheckBox_CheckedChanged;
-                    sameAsCorporatAddCheckBox.Checked = false;
-                    sameAsCorporatAddCheckBox.CheckedChanged += sameAsCorporatAddCheckBox_CheckedChanged;
-                    groupBox3.Enabled = false;
-                }
-                else
-                {
-                    
-                    groupBox3.Enabled = false;
-                }
-                
-            }
-            else
-            {
-                if (sameAsCorporatAddCheckBox.Checked)
-                {
-                    groupBox3.Enabled =false;
-                }
-                else
-                {
-
-                    groupBox3.Enabled = true;
-                }
-            }
+           
             
         }
 
@@ -1224,32 +1241,103 @@ namespace ClientManagementSystem.UI
 
         private void tctCPEmailAddress_Validating_1(object sender, CancelEventArgs e)
         {
-            string emailId2 = txtCPEmailAddress.Text.Trim();
-            Regex mRegxExpression;
-
-            mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
-
-            if (!mRegxExpression.IsMatch(emailId2))
+            if (!String.IsNullOrEmpty(txtCPEmailAddress.Text))
             {
+                string emailId2 = txtCPEmailAddress.Text.Trim();
+                Regex mRegxExpression;
 
-                MessageBox.Show("Please type valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtCPEmailAddress.Clear();
-                txtCPEmailAddress.Focus();
+                mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
 
+                if (!mRegxExpression.IsMatch(emailId2))
+                {
+
+                    MessageBox.Show("Please type valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtCPEmailAddress.Clear();
+                    txtCPEmailAddress.Focus();
+
+                }
             }
         }
 
         private void cellNumberTextBox_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
                 e.Handled = true;
+            
+           
+        }
+
+        private void designationTextBox_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtContactPerson.Text))
+            {
+                MessageBox.Show("Please  enter Contact Person Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+            
+        }
 
-
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+        private void txtCellNumber_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtContactPerson.Text))
             {
-                e.Handled = true;
+                MessageBox.Show("Please  enter Contact Person Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void notApplicableCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (notApplicableCheckBox.Checked)
+            {
+
+                if (sameAsCorporatAddCheckBox.Checked)
+                {
+                    sameAsCorporatAddCheckBox.CheckedChanged -= sameAsCorporatAddCheckBox_CheckedChanged;
+                    sameAsCorporatAddCheckBox.Checked = false;
+                    sameAsCorporatAddCheckBox.CheckedChanged += sameAsCorporatAddCheckBox_CheckedChanged;
+                    groupBox3.Enabled = false;
+                }
+                else
+                {
+
+                    groupBox3.Enabled = false;
+                }
+
+            }
+            else
+            {
+                if (sameAsCorporatAddCheckBox.Checked)
+                {
+                    groupBox3.Enabled = false;
+                }
+                else
+                {
+
+                    groupBox3.Enabled = true;
+                }
+            }
+        }
+
+        private void txtContactPerson_MouseLeave(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txtContactPerson_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtContactPerson.Text))
+            {
+                ClearContactPersonDetails();
+            }
+        }
+
+        private void txtCPEmailAddress_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtContactPerson.Text))
+            {
+                MessageBox.Show("Please  enter Contact Person Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
     }

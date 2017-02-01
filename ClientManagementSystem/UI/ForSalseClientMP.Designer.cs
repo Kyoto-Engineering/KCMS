@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ForSalseClientMP));
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.salesClientGridButton = new System.Windows.Forms.Button();
             this.instanInquiryClientButton = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lg = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +46,7 @@
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(681, 116);
+            this.button3.Location = new System.Drawing.Point(612, 60);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(144, 48);
             this.button3.TabIndex = 23;
@@ -58,7 +59,7 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(520, 116);
+            this.button2.Location = new System.Drawing.Point(462, 60);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(144, 48);
             this.button2.TabIndex = 22;
@@ -71,7 +72,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(360, 116);
+            this.button1.Location = new System.Drawing.Point(312, 59);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 48);
             this.button1.TabIndex = 21;
@@ -84,7 +85,7 @@
             this.salesClientGridButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.salesClientGridButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.salesClientGridButton.ForeColor = System.Drawing.Color.White;
-            this.salesClientGridButton.Location = new System.Drawing.Point(191, 112);
+            this.salesClientGridButton.Location = new System.Drawing.Point(162, 59);
             this.salesClientGridButton.Name = "salesClientGridButton";
             this.salesClientGridButton.Size = new System.Drawing.Size(144, 48);
             this.salesClientGridButton.TabIndex = 2;
@@ -97,7 +98,7 @@
             this.instanInquiryClientButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.instanInquiryClientButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.instanInquiryClientButton.ForeColor = System.Drawing.Color.White;
-            this.instanInquiryClientButton.Location = new System.Drawing.Point(20, 112);
+            this.instanInquiryClientButton.Location = new System.Drawing.Point(12, 59);
             this.instanInquiryClientButton.Name = "instanInquiryClientButton";
             this.instanInquiryClientButton.Size = new System.Drawing.Size(144, 49);
             this.instanInquiryClientButton.TabIndex = 1;
@@ -105,20 +106,10 @@
             this.instanInquiryClientButton.UseVisualStyleBackColor = false;
             this.instanInquiryClientButton.Click += new System.EventHandler(this.instanInquiryClientButton_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 169);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1059, 525);
-            this.dataGridView1.TabIndex = 24;
-            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
-            this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
-            // 
             // lg
             // 
             this.lg.AutoSize = true;
-            this.lg.Location = new System.Drawing.Point(17, 77);
+            this.lg.Location = new System.Drawing.Point(29, 28);
             this.lg.Name = "lg";
             this.lg.Size = new System.Drawing.Size(15, 13);
             this.lg.TabIndex = 25;
@@ -127,7 +118,7 @@
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(999, 7);
+            this.closeButton.Location = new System.Drawing.Point(1275, 12);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 44);
             this.closeButton.TabIndex = 26;
@@ -135,16 +126,34 @@
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dataGridView1.Location = new System.Drawing.Point(12, 109);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1338, 551);
+            this.dataGridView1.TabIndex = 27;
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick_1);
+            // 
             // ForSalseClientMP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(1083, 706);
+            this.ClientSize = new System.Drawing.Size(1362, 672);
             this.ControlBox = false;
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.lg);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -170,8 +179,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lg;
         private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

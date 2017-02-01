@@ -258,12 +258,6 @@
     <Compile Include="UI\ClientApprovedFinalForm.Designer.cs">
       <DependentUpon>ClientApprovedFinalForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ClientEditForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\ClientEditForm.designer.cs">
-      <DependentUpon>ClientEditForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\ClientFeedbackGrid.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,12 +269,6 @@
     </Compile>
     <Compile Include="UI\ClientRegistrationForm.Designer.cs">
       <DependentUpon>ClientRegistrationForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\ConvertToSalesClientGrid.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\ConvertToSalesClientGrid.Designer.cs">
-      <DependentUpon>ConvertToSalesClientGrid.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\EditFromGrid.cs">
       <SubType>Form</SubType>
@@ -499,17 +487,11 @@
     <EmbeddedResource Include="UI\ClientApprovedFinalForm.resx">
       <DependentUpon>ClientApprovedFinalForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ClientEditForm.resx">
-      <DependentUpon>ClientEditForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\ClientFeedbackGrid.resx">
       <DependentUpon>ClientFeedbackGrid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ClientRegistrationForm.resx">
       <DependentUpon>ClientRegistrationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\ConvertToSalesClientGrid.resx">
-      <DependentUpon>ConvertToSalesClientGrid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\EditFromGrid.resx">
       <DependentUpon>EditFromGrid.cs</DependentUpon>

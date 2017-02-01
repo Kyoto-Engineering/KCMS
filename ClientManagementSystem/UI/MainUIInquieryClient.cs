@@ -38,9 +38,8 @@ namespace ClientManagementSystem.UI
         private void InquiryClientDetailsGrid()
         {
             con = new SqlConnection(cs.DBConn);
-            con.Open();
-            //string query = "SELECT RTRIM(InquieryClient.ClientName),RTRIM(ClientTypes.ClientType),RTRIM(InquieryClient.EmailAddress),RTRIM(IndustryCategorys.IndustryCategory),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.Designation),RTRIM(ContactPersonDetails.CellNumber),RTRIM(InquieryClient.EndUser) FROM InquieryClient,ClientTypes,NatureOfClients,IndustryCategorys,ContactPersonDetails WHERE InquieryClient.ClientTypeId=ClientTypes.ClientTypeId and InquieryClient.NatureOfClientId=NatureOfClients.NatureOfClientId  and InquieryClient.IndustryCategoryId=IndustryCategorys.IndustryCategoryId and InquieryClient.IClientId=ContactPersonDetails.IClientId and InquieryClient.IClientId=";
-            sda = new SqlDataAdapter("SELECT RTRIM(InquieryClient.IClientId) ClientId,RTRIM(InquieryClient.ClientName) ClientName,RTRIM(ClientTypes.ClientType) ClientType,RTRIM(NatureOfClients.ClientNature) NatureOfClient,RTRIM(InquieryClient.EmailAddress) EmailAddress,RTRIM(IndustryCategorys.IndustryCategory) IndustryCategory,RTRIM(ContactPersonDetails.ContactPersonName) ContactPersonName,RTRIM(ContactPersonDetails.Designation) Designation,RTRIM(ContactPersonDetails.CellNumber) CellNumber,RTRIM(InquieryClient.EndUser) EndUser,RTRIM(A.FlatNo) CFlatNo,RTRIM(A.HouseNo) CHouseNo,RTRIM(A.RoadNo) CRoadNo,RTRIM(A.Block) CBlock,RTRIM(A.Area) CArea,RTRIM(Thanas.Thana) CPoliceStation,RTRIM(PostOffice.PostOfficeName) CPostCode,RTRIM(Districts.District) CDistrict,RTRIM(A.ContactNo) CContactNo,RTRIM(B.FlatNo) TFlatNo,RTRIM(B.HouseNo) THouseNo,RTRIM(B.RoadNo) TRoadNo,RTRIM(B.Block) TBlock,RTRIM(B.Area) TArea,RTRIM(Thanas.Thana) TPoliceStation ,RTRIM(PostOffice.PostCode) TpostCode,RTRIM(Districts.District) TDistrict,RTRIM(B.ContactNo) TContactNo FROM Addresses A INNER JOIN Addresses B on A.IClientId=B.IClientId  INNER JOIN Divisions ON A.Division_ID = Divisions.Division_ID INNER JOIN Districts ON A.D_ID = Districts.D_ID INNER JOIN Thanas ON A.T_ID = Thanas.D_ID INNER JOIN PostOffice ON A.PostOfficeId = PostOffice.PostOfficeId  INNER JOIN InquieryClient ON A.IClientId = InquieryClient.IClientId  INNER JOIN ClientTypes ON InquieryClient.ClientTypeId = ClientTypes.ClientTypeId INNER JOIN ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId  INNER JOIN IndustryCategorys ON InquieryClient.IndustryCategoryId = IndustryCategorys.IndustryCategoryId  INNER JOIN NatureOfClients ON InquieryClient.NatureOfClientId = NatureOfClients.NatureOfClientId  where A.ADTypeId = 1  and B.ADTypeId = 2", con);
+            con.Open();          
+            sda = new SqlDataAdapter("SELECT RTRIM(Registration.Name) SuperviserName,RTRIM(InquieryClient.IClientId) IClientId,RTRIM(InquieryClient.ClientName) ClientName,RTRIM(ClientTypes.ClientType) ClientType,RTRIM(NatureOfClients.ClientNature) NatureOfClient,RTRIM(InquieryClient.EmailAddress) EmailAddress,RTRIM(IndustryCategorys.IndustryCategory) IndustryCategory,RTRIM(InquieryClient.EndUser) EndUser,RTRIM(ContactPersonDetails.ContactPersonName) ContactPersonName,RTRIM(ContactPersonDetails.Designation) Designation,RTRIM(ContactPersonDetails.CellNumber) CellNumber,RTRIM(ContactPersonDetails.EmailId) CPEmailAddress, RTRIM(A.FlatNo) CFlatNo,RTRIM(A.HouseNo) CHouseNo,RTRIM(A.RoadNo) CRoadNo,RTRIM(A.Block) CBlock,RTRIM(A.ContactNo) CContactNo,RTRIM(A.Area) CArea,RTRIM(Divisions.Division) CDivition,RTRIM(Districts.District) CDistrict,RTRIM(Thanas.Thana) CPoliceStation,RTRIM(PostOffice.PostOfficeName) CPostOfficeName,RTRIM(PostOffice.PostCode) CPostCode,RTRIM(B.FlatNo) TFlatNo,RTRIM(B.HouseNo) THouseNo,RTRIM(B.RoadNo) TRoadNo,RTRIM(B.Block) TBlock,RTRIM(B.ContactNo) TContactNo,RTRIM(B.Area) TArea,RTRIM(Divisions.Division) TDivision, RTRIM(Districts.District) TDistrict,RTRIM(Thanas.Thana) TPoliceStation ,RTRIM(PostOffice.PostOfficeName) TPostOfficeName,RTRIM(PostOffice.PostCode) TPostCode FROM Addresses A INNER JOIN Addresses B on A.IClientId=B.IClientId  INNER JOIN InquieryClient ON A.IClientId = InquieryClient.IClientId INNER JOIN Registration ON InquieryClient.SuperviserId=Registration.UserId INNER JOIN Divisions ON A.Division_ID = Divisions.Division_ID  INNER JOIN Districts ON A.D_ID = Districts.D_ID INNER JOIN Thanas ON A.T_ID = Thanas.T_ID  INNER JOIN PostOffice ON A.PostOfficeId = PostOffice.PostOfficeId  INNER JOIN ClientTypes ON InquieryClient.ClientTypeId = ClientTypes.ClientTypeId  INNER JOIN ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId  INNER JOIN IndustryCategorys ON InquieryClient.IndustryCategoryId = IndustryCategorys.IndustryCategoryId  INNER JOIN NatureOfClients ON InquieryClient.NatureOfClientId = NatureOfClients.NatureOfClientId  where (A.ADTypeId = 1)  and (B.ADTypeId = 2)", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             dataGridView1.DataSource = dt;
@@ -83,11 +82,6 @@ namespace ClientManagementSystem.UI
 
         private void changeButton_Click(object sender, EventArgs e)
         {
-            ClientEditForm afForm = new ClientEditForm();
-            this.Visible = false;
-
-            afForm.ShowDialog();
-            this.Visible = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -282,42 +276,47 @@ namespace ClientManagementSystem.UI
                 this.Hide();
                 EditFromGrid frm = new EditFromGrid();
                 frm.Show();
-                frm.txtClientId.Text = dr.Cells[0].Value.ToString();
-                frm.txtClientName.Text = dr.Cells[1].Value.ToString();
-                //frm.txtClientType.Text = dr.Cells[2].Value.ToString();
-                //frm.txtNatureOfClient.Text = dr.Cells[3].Value.ToString();
-                //frm.txtEmailAddress.Text = dr.Cells[4].Value.ToString();
-                //frm.txtInduxtryCategory.Text = dr.Cells[5].Value.ToString();
+                frm.cmbRM.Text = dr.Cells[0].Value.ToString();
+                frm.txtClientId.Text = dr.Cells[1].Value.ToString();
+                frm.txtClientName.Text = dr.Cells[2].Value.ToString();
+                frm.cmbClientType.Text = dr.Cells[3].Value.ToString();
+                frm.cmbNatureOfClient.Text = dr.Cells[4].Value.ToString();
+                frm.txtEmailAddress.Text = dr.Cells[5].Value.ToString();
+                frm.cmbIndustryCategory.Text = dr.Cells[6].Value.ToString();
+                frm.txtEndUser.Text = dr.Cells[7].Value.ToString();
 
-                frm.cFlatNoTextBox.Text = dr.Cells[6].Value.ToString();
-                frm.cHouseNoTextBox.Text = dr.Cells[7].Value.ToString();
-                frm.cRoadNoTextBox.Text = dr.Cells[8].Value.ToString();
-                frm.cBlockTextBox.Text = dr.Cells[9].Value.ToString();
-                frm.cAreaTextBox.Text = dr.Cells[10].Value.ToString();
-                frm.cPostCodeTextBox.Text = dr.Cells[11].Value.ToString();
-                frm.cThanaCombo.Text = dr.Cells[12].Value.ToString();
-                frm.cDistCombo.Text = dr.Cells[13].Value.ToString();
-                frm.cContactNoTextBox.Text = dr.Cells[14].Value.ToString();
+                frm.txtCPName.Text = dr.Cells[8].Value.ToString();
+                frm.txtDesignation.Text = dr.Cells[9].Value.ToString();
+                frm.cellPhoneTextBox.Text = dr.Cells[10].Value.ToString();
+                frm.txtCPEmailAddress.Text = dr.Cells[11].Value.ToString();
 
-                frm.tFlatNoTextBox.Text = dr.Cells[15].Value.ToString();
-                frm.tHouseNoTextBox.Text = dr.Cells[16].Value.ToString();
-                frm.tRoadNoTextBox.Text = dr.Cells[17].Value.ToString();
-                frm.tBlockTextBox.Text = dr.Cells[18].Value.ToString();
-                frm.tAreaTextBox.Text = dr.Cells[19].Value.ToString();
-                frm.tPostCodeTextBox.Text = dr.Cells[20].Value.ToString();
-                frm.tThanaCombo.Text = dr.Cells[21].Value.ToString();
-                frm.tDistCombo.Text = dr.Cells[22].Value.ToString();
-                frm.tContactNoTextBox.Text = dr.Cells[23].Value.ToString();
+                frm.cFlatNoTextBox.Text = dr.Cells[12].Value.ToString();
+                frm.cHouseNoTextBox.Text = dr.Cells[13].Value.ToString();
+                frm.cRoadNoTextBox.Text = dr.Cells[14].Value.ToString();
+                frm.cBlockTextBox.Text = dr.Cells[15].Value.ToString();
+                frm.cContactNoTextBox.Text = dr.Cells[16].Value.ToString();
+                frm.cAreaTextBox.Text = dr.Cells[17].Value.ToString();
 
-                frm.txtCPName.Text = dr.Cells[24].Value.ToString();
-                frm.txtDesignation.Text = dr.Cells[25].Value.ToString();
-                frm.cellPhoneTextBox.Text = dr.Cells[26].Value.ToString();
-                frm.txtEndUser.Text = dr.Cells[27].Value.ToString();
+                frm.cDivisionCombo.Text = dr.Cells[18].Value.ToString();
+                frm.cDistCombo.Text = dr.Cells[19].Value.ToString();
+                frm.cThanaCombo.Text = dr.Cells[20].Value.ToString();
+                frm.cPostOfficeCombo.Text = dr.Cells[21].Value.ToString();
+                frm.cPostCodeTextBox.Text = dr.Cells[22].Value.ToString();
+                
 
+                frm.tFlatNoTextBox.Text = dr.Cells[23].Value.ToString();
+                frm.tHouseNoTextBox.Text = dr.Cells[24].Value.ToString();
+                frm.tRoadNoTextBox.Text = dr.Cells[25].Value.ToString();
+                frm.tBlockTextBox.Text = dr.Cells[26].Value.ToString();
+                frm.tContactNoTextBox.Text = dr.Cells[27].Value.ToString();
+                frm.tAreaTextBox.Text = dr.Cells[28].Value.ToString();
 
-
+                frm.tDivisionCombo.Text = dr.Cells[29].Value.ToString();
+                frm.tDistCombo.Text = dr.Cells[30].Value.ToString();
+                frm.tThanaCombo.Text = dr.Cells[31].Value.ToString();
+                frm.tPostOfficeCombo.Text = dr.Cells[32].Value.ToString();
+                frm.tPostCodeTextBox.Text = dr.Cells[33].Value.ToString();                
                 frm.labeld.Text = labelh.Text;
-
 
             }
 
@@ -337,7 +336,7 @@ namespace ClientManagementSystem.UI
         private void convertToSalesClientButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ConvertToSalesClientGrid frm=new ConvertToSalesClientGrid();
+            ForSalseClientMP frm = new ForSalseClientMP();
             frm.Show();
         }
 
