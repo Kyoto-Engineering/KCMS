@@ -37,31 +37,28 @@ namespace ClientManagementSystem.UI
 
         private void Reset()
         {
-            txt3ClientId.Text = "";
-            txt3ClientName.Text = "";
-            action2MultiTextBox.Text = "";
+            txt3ClientId.Clear();
+            txt3ClientName.Clear();
+            action2MultiTextBox.Clear();
             responsiblePerson2ComboBox.SelectedIndex = -1;
         }
         private void submitButton_Click(object sender, EventArgs e)
         {
-            if (txt3ClientId.Text == "")
+            if (string.IsNullOrWhiteSpace(txt3ClientId.Text))
             {
-                MessageBox.Show("Please Select  a Client Id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txt3ClientId.Focus();
+                MessageBox.Show("Please Select  a Client Id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);              
                 return;
 
             }
-            if (action2MultiTextBox.Text == "")
+            if (string.IsNullOrWhiteSpace(action2MultiTextBox.Text))
             {
-                MessageBox.Show("You must write your Action Before Submit","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                action2MultiTextBox.Focus();
+                MessageBox.Show("You must write your Action Before Submit","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);                
                 return;
 
             }
-            if (responsiblePerson2ComboBox.Text == "")
+            if (string.IsNullOrWhiteSpace(responsiblePerson2ComboBox.Text))
             {
-                MessageBox.Show("You must write your Action Before Submit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                responsiblePerson2ComboBox.Focus();
+                MessageBox.Show("You must write your Action Before Submit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);               
                 return;
 
             }
@@ -123,26 +120,7 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void GetData()
-        {
-            try
-            {
-                con = new SqlConnection(cs.DBConn2);
-                con.Open();
-                cmd = new SqlCommand("SELECT RTRIM(ProductID),RTRIM(ProductName),RTRIM(Category.ID),RTRIM(CategoryName),RTRIM(SubCategory.ID),RTRIM(SubCategoryName),RTRIM(Features),RTRIM(Price),Image from Product,Category,SubCategory where Product.CategoryID=Category.ID and Product.SubCategoryID=SubCategory.ID order by Productname", con);
-                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                dataGridView1.Rows.Clear();
-                while (rdr.Read() == true)
-                {
-                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5], rdr[6], rdr[7], rdr[8]);
-                }
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
 
         public void FollowUpGridLoad()
         {
@@ -162,29 +140,7 @@ namespace ClientManagementSystem.UI
         
 
 
-        private void MyFollowUpList()
-        {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-
-                cmd = new SqlCommand("SELECT RTRIM(FollowUp.IClientFeedbackId), RTRIM(FollowUp.DeadLineDateTime),RTRIM(FollowUp.Actions),RTRIM(Registration.Name),RTRIM(FollowUp.Statuss) FROM  FollowUp,Registration where FollowUp.SBUserId=Registration.UserId and FollowUp.Statuss='Pending' order by FollowUp.FollowUpId desc", con);
-                //cmd = new SqlCommand("SELECT RTRIM(FollowUp.IClientId),RTRIM(FollowUp.DeadLineDateTime),RTRIM(FollowUp.Actions),RTRIM(Registration.Name),RTRIM(FollowUp.Statuss) FROM  FollowUp,InquieryClient,Registration  where  Registration.UserId=FollowUp.SBUserId and FollowUp.Statuss='Pending' order by FollowUp.FollowUpId desc", con);
-                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                dataGridView1.Rows.Clear();
-                while (rdr.Read() == true)
-                {
-                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3],rdr[4]);
-                }
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        
-        }
+       
         public void LoadClientgGrid()
         {
             try
@@ -196,7 +152,7 @@ namespace ClientManagementSystem.UI
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)
                 {
-                    dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3],rdr[4],rdr[5]);
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3],rdr[4],rdr[5]);
                 }
                 con.Close();
             }
@@ -211,7 +167,7 @@ namespace ClientManagementSystem.UI
             PopulateResponsiblePerson();
             sbUserId = LoginForm.uId.ToString();
             followUpDeadlineDateTimePicker.MinDate=DateTime.Now;
-            MyFollowUpList();
+         
 
         }
 
@@ -303,7 +259,7 @@ namespace ClientManagementSystem.UI
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)
                 {
-                    dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4],rdr[5]);
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4],rdr[5]);
                 }
                 con.Close();
             }
@@ -326,7 +282,7 @@ namespace ClientManagementSystem.UI
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)
                 {
-                    dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4],rdr[5]);
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4],rdr[5]);
                 }
                 con.Close();
             }
@@ -345,7 +301,7 @@ namespace ClientManagementSystem.UI
                 txt3ClientId.Text = dr.Cells[0].Value.ToString();
                 iClientFeedBackId = dr.Cells[1].Value.ToString();
                 txt3ClientName.Text = dr.Cells[2].Value.ToString(); 
-                k.Text = labelh.Text;
+                k.Text = h.Text;
             }
 
             catch (Exception ex)
@@ -358,13 +314,59 @@ namespace ClientManagementSystem.UI
         {
             string strRowNumber = (e.RowIndex + 1).ToString();
             SizeF size = e.Graphics.MeasureString(strRowNumber, this.Font);
-            if (dataGridView1.RowHeadersWidth < Convert.ToInt32((size.Width + 20)))
+            if (dataGridView2.RowHeadersWidth < Convert.ToInt32((size.Width + 20)))
             {
-                dataGridView1.RowHeadersWidth = Convert.ToInt32((size.Width + 20));
+                dataGridView2.RowHeadersWidth = Convert.ToInt32((size.Width + 20));
             }
             Brush b = SystemBrushes.ControlText;
             e.Graphics.DrawString(strRowNumber, this.Font, b, e.RowBounds.Location.X + 15,
                 e.RowBounds.Location.Y + ((e.RowBounds.Height - size.Height) / 2));
+        }
+
+        private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+           
+        }
+        public void FollowUpGridLoad2()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT RTRIM(FollowUp.DeadLineDateTime),RTRIM(IClientFeedbackDairy.Feedback),RTRIM(FollowUp.Actions),RTRIM(Registration.Name),RTRIM(FollowUp.Statuss) FROM  (FollowUp INNER JOIN IClientFeedbackDairy ON FollowUp.IClientFeedbackId = IClientFeedbackDairy.IClientFeedbackId) LEFT JOIN  Registration ON IClientFeedbackDairy.UserId = Registration.UserId  where FollowUp.Statuss='Pending' and IClientFeedbackDairy.IClientId='" + txt3ClientId.Text + "' order by FollowUp.FollowUpId desc", con);                
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView2.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void txt3ClientId_TextChanged(object sender, EventArgs e)
+        {
+            FollowUpGridLoad2();
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dr = dataGridView1.CurrentRow;
+                txt3ClientId.Text = dr.Cells[0].Value.ToString();
+                iClientFeedBackId = dr.Cells[1].Value.ToString();
+                txt3ClientName.Text = dr.Cells[2].Value.ToString();
+                k.Text = h.Text;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

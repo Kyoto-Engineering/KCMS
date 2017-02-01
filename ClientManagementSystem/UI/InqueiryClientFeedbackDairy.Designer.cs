@@ -277,7 +277,7 @@
             this.dataGridView2.GridColor = System.Drawing.Color.Aqua;
             this.dataGridView2.Location = new System.Drawing.Point(23, 79);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(563, 239);
+            this.dataGridView2.Size = new System.Drawing.Size(543, 239);
             this.dataGridView2.TabIndex = 7;
             this.dataGridView2.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseClick);
             this.dataGridView2.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseClick);
@@ -323,7 +323,7 @@
             this.Column5});
             this.dataGridView1.Location = new System.Drawing.Point(25, 350);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(546, 248);
+            this.dataGridView1.Size = new System.Drawing.Size(541, 248);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1

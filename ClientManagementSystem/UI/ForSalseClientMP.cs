@@ -255,7 +255,7 @@ namespace ClientManagementSystem.UI
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-             MainUI frm=new MainUI();
+            MainUIInquieryClient frm = new MainUIInquieryClient();
              frm.Show();
         }
 

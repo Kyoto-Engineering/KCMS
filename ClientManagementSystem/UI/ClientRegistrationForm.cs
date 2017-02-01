@@ -334,7 +334,7 @@ namespace ClientManagementSystem.UI
             sameAsCorporatAddCheckBox.CheckedChanged -= sameAsCorporatAddCheckBox_CheckedChanged;
             sameAsCorporatAddCheckBox.Checked = false;
             sameAsCorporatAddCheckBox.CheckedChanged += sameAsCorporatAddCheckBox_CheckedChanged;
-            if ((notApplicableCheckBox.Checked = false) && (sameAsCorporatAddCheckBox.Checked = false))
+            if ((notApplicableCheckBox.Checked== false) && (sameAsCorporatAddCheckBox.Checked == false))
             {
                 ResetTradingAddress(); 
             }   
@@ -605,29 +605,7 @@ namespace ClientManagementSystem.UI
             }
         }
        
-        public void FillTDistrictCombo()
-        {
-            try
-            {
-
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string ct = "select RTRIM(Districts.District) from Districts  order by Districts.D_ID desc";
-                cmd = new SqlCommand(ct);
-                cmd.Connection = con;
-                rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {                    
-                    tDistrictCombo.Items.Add(rdr[0]);
-                }
-                con.Close();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
         public void FillCMBSuperviserName()
         {
             try
@@ -656,12 +634,13 @@ namespace ClientManagementSystem.UI
         {
             submittedBy = LoginForm.uId.ToString();
             FillCMBSuperviserName();
+
             FillClientType();
-            FillCDivisionCombo();
-            FillTDivisionCombo();
-            FillTDistrictCombo();
             FillNatureOfClient();
             FillIndustryCategory();
+
+            FillCDivisionCombo();
+            FillTDivisionCombo();
         }
         private void Report2()
         {
@@ -1285,23 +1264,14 @@ namespace ClientManagementSystem.UI
             if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
                 e.Handled = true;
             
-            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            //{
-            //    e.Handled = true;
-            //}
-
-
-            //if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            //{
-            //    e.Handled = true;
-            //}
+           
         }
 
         private void designationTextBox_Enter(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtContactPerson.Text))
             {
-                MessageBox.Show("Please  enter Before Contact Person Name", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please  enter Contact Person Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             
@@ -1311,7 +1281,7 @@ namespace ClientManagementSystem.UI
         {
             if (string.IsNullOrWhiteSpace(txtContactPerson.Text))
             {
-                MessageBox.Show("Please  enter Before Contact Person Name", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please  enter Contact Person Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }
@@ -1359,6 +1329,15 @@ namespace ClientManagementSystem.UI
             if (string.IsNullOrEmpty(txtContactPerson.Text))
             {
                 ClearContactPersonDetails();
+            }
+        }
+
+        private void txtCPEmailAddress_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtContactPerson.Text))
+            {
+                MessageBox.Show("Please  enter Contact Person Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
     }

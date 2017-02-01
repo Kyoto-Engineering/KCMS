@@ -270,9 +270,9 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5});
-            this.dataGridView2.Location = new System.Drawing.Point(25, 23);
+            this.dataGridView2.Location = new System.Drawing.Point(13, 23);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(582, 262);
+            this.dataGridView2.Size = new System.Drawing.Size(594, 262);
             this.dataGridView2.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn1

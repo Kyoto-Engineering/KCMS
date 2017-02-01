@@ -437,9 +437,7 @@ namespace ClientManagementSystem.UI
 
 
                 MessageBox.Show("Registration Completed Successfully,Current Id is:" + currentClientId, "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Reset();
-                Report2();
-               instantApprovalButton.Enabled = false;
+                Reset();                             
             }
             catch (FormatException formatException)
             {
@@ -494,6 +492,7 @@ namespace ClientManagementSystem.UI
             cmbNatureOfClient.SelectedIndex = -1;
             emailAddressInsTextBox.Clear();
             cmbIndustryCategory.SelectedIndex = -1;
+            endUserInsTextBox.Clear();
 
             notApplicableTACheckBox.CheckedChanged -= notApplicableTACheckBox_CheckedChanged;
             notApplicableTACheckBox.Checked = false;
@@ -531,11 +530,11 @@ namespace ClientManagementSystem.UI
 
             ResetTraddingAddress();   
          
-            contactPersonNameInsTextBox.Text = "";
-            designationInsTextBox.Text = "";
-            cellNumberInsTextBox.Text = "";
-            endUserInsTextBox.Text = "";
-
+            contactPersonNameInsTextBox.Clear();
+            designationInsTextBox.Clear();
+            cellNumberInsTextBox.Clear();
+            txtCPEmailAddress.Clear();
+ 
             ResetBillingAddress();
                        
             bankNameInsTextBox.Text = "";
@@ -1783,18 +1782,18 @@ namespace ClientManagementSystem.UI
 
         private void bANotApplicableTA_CheckedChanged(object sender, EventArgs e)
         {
-            if (bASameASCA.Checked)
+            if (bASameAsTA.Checked)
             {
 
-                if (notApplicableBA.Checked || bASameAsTA.Checked)
+                if (notApplicableBA.Checked || bASameASCA.Checked)
                 {
                     notApplicableBA.CheckedChanged -= notApplicableBA_CheckedChanged;
                     notApplicableBA.Checked = false;
                     notApplicableBA.CheckedChanged += notApplicableBA_CheckedChanged;
 
-                    bASameAsTA.CheckedChanged -= bANotApplicableTA_CheckedChanged;
-                    bASameAsTA.Checked = false;
-                    bASameAsTA.CheckedChanged += bANotApplicableTA_CheckedChanged;
+                    bASameASCA.CheckedChanged -= bASameASCA_CheckedChanged;
+                    bASameASCA.Checked = false;
+                    bASameASCA.CheckedChanged += bASameASCA_CheckedChanged;
 
                     groupBox9.Enabled = false;
                     ResetBillingAddress();
@@ -1809,7 +1808,7 @@ namespace ClientManagementSystem.UI
             }
             else
             {
-                if (notApplicableBA.Checked || bASameAsTA.Checked)
+                if (notApplicableBA.Checked || bASameASCA.Checked)
                 {
                     groupBox9.Enabled = false;
                     ResetBillingAddress();
@@ -1937,7 +1936,7 @@ namespace ClientManagementSystem.UI
         {
             if (string.IsNullOrWhiteSpace(bankNameInsTextBox.Text))
             {
-                MessageBox.Show("Please  enter  Bank Name before brach Name", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please  enter  Bank Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }
@@ -1946,7 +1945,7 @@ namespace ClientManagementSystem.UI
         {
             if (string.IsNullOrWhiteSpace(bankNameInsTextBox.Text))
             {
-                MessageBox.Show("Please  enter  Bank Name before account No", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please  enter  Bank Name  first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

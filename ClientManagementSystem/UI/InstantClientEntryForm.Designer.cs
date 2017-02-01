@@ -35,15 +35,14 @@
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.txtCPEmailAddress = new System.Windows.Forms.TextBox();
             this.label59 = new System.Windows.Forms.Label();
-            this.endUserInsTextBox = new System.Windows.Forms.TextBox();
             this.cellNumberInsTextBox = new System.Windows.Forms.TextBox();
             this.designationInsTextBox = new System.Windows.Forms.TextBox();
             this.contactPersonNameInsTextBox = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbSuperviserName = new System.Windows.Forms.ComboBox();
+            this.endUserInsTextBox = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label52 = new System.Windows.Forms.Label();
@@ -75,6 +74,7 @@
             this.cmbIndustryCategory = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbNatureOfClient = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.cmbClientType = new System.Windows.Forms.ComboBox();
             this.emailAddressInsTextBox = new System.Windows.Forms.TextBox();
             this.clientNameInsTextBox = new System.Windows.Forms.TextBox();
@@ -256,14 +256,6 @@
             this.label59.TabIndex = 92;
             this.label59.Text = "Email Address ";
             // 
-            // endUserInsTextBox
-            // 
-            this.endUserInsTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endUserInsTextBox.Location = new System.Drawing.Point(218, 213);
-            this.endUserInsTextBox.Name = "endUserInsTextBox";
-            this.endUserInsTextBox.Size = new System.Drawing.Size(240, 26);
-            this.endUserInsTextBox.TabIndex = 91;
-            // 
             // cellNumberInsTextBox
             // 
             this.cellNumberInsTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -292,16 +284,6 @@
             this.contactPersonNameInsTextBox.Size = new System.Drawing.Size(208, 26);
             this.contactPersonNameInsTextBox.TabIndex = 88;
             this.contactPersonNameInsTextBox.Leave += new System.EventHandler(this.contactPersonNameInsTextBox_Leave);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(116, 213);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(79, 19);
-            this.label12.TabIndex = 87;
-            this.label12.Text = "End  User ";
             // 
             // label11
             // 
@@ -343,6 +325,14 @@
             this.cmbSuperviserName.Size = new System.Drawing.Size(240, 27);
             this.cmbSuperviserName.TabIndex = 86;
             this.cmbSuperviserName.SelectedIndexChanged += new System.EventHandler(this.cmbSuperviserName_SelectedIndexChanged);
+            // 
+            // endUserInsTextBox
+            // 
+            this.endUserInsTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endUserInsTextBox.Location = new System.Drawing.Point(218, 213);
+            this.endUserInsTextBox.Name = "endUserInsTextBox";
+            this.endUserInsTextBox.Size = new System.Drawing.Size(240, 26);
+            this.endUserInsTextBox.TabIndex = 91;
             // 
             // label40
             // 
@@ -671,6 +661,16 @@
             this.cmbNatureOfClient.TabIndex = 73;
             this.cmbNatureOfClient.SelectedIndexChanged += new System.EventHandler(this.cmbNatureOfClient_SelectedIndexChanged);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(116, 213);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(79, 19);
+            this.label12.TabIndex = 87;
+            this.label12.Text = "End  User ";
+            // 
             // cmbClientType
             // 
             this.cmbClientType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -783,7 +783,7 @@
             this.bASameAsTA.AutoSize = true;
             this.bASameAsTA.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bASameAsTA.ForeColor = System.Drawing.Color.Yellow;
-            this.bASameAsTA.Location = new System.Drawing.Point(379, 14);
+            this.bASameAsTA.Location = new System.Drawing.Point(379, 16);
             this.bASameAsTA.Name = "bASameAsTA";
             this.bASameAsTA.Size = new System.Drawing.Size(199, 23);
             this.bASameAsTA.TabIndex = 82;

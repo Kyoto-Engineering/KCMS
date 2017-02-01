@@ -24,7 +24,7 @@ namespace ClientManagementSystem.UI
         public string divisionIdC, divisionIdT, districtIdC, districtIdT, thanaIdC, thanaIdT, postOfficeIdC, postOfficeIdT;
         public string rMId;
         public string nUserId;
-        public int clientTypeId1, natureOfClientId, industryCategoryId;
+        public string clientTypeId1, natureOfClientId, industryCategoryId;
         public EditFromGrid()
         {
             InitializeComponent();
@@ -77,48 +77,172 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public void FillClientType()
+        {
+            try
+            {
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select RTRIM(ClientType) from ClientTypes order by ClientTypeId desc";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    cmbClientType.Items.Add(rdr[0]);
+                }
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void FillIndustryCategory()
+        {
+            try
+            {
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select RTRIM(IndustryCategory) from IndustryCategorys order by IndustryCategoryId desc";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    cmbIndustryCategory.Items.Add(rdr[0]);
+                }
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void FillNatureOfClient()
+        {
+            try
+            {
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select RTRIM(ClientNature) from NatureOfClients order by NatureOfClientId desc";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    cmbNatureOfClient.Items.Add(rdr[0]);
+                }
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void FillCMBSuperviserName()
+        {
+            try
+            {
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select RTRIM(Name) from Registration order by UserId desc";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    cmbRM.Items.Add(rdr[0]);
+                }
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void EditFromGrid_Load(object sender, EventArgs e)
         {
             nUserId = LoginForm.uId.ToString();
+            FillCMBSuperviserName();
+
+            FillClientType();
+            FillNatureOfClient();
+            FillIndustryCategory();
+            
             FillCDivisionCombo();
             FillTDivisionCombo();
         }
+
+        public void ClearTraddingAddress()
+        {
+            tFlatNoTextBox.Clear();
+            tRoadNoTextBox.Clear();
+            tHouseNoTextBox.Clear();
+            tBlockTextBox.Clear();
+            tContactNoTextBox.Clear();
+            tAreaTextBox.Clear();
+
+            tDivisionCombo.SelectedIndex = -1;
+            tDistCombo.SelectedIndex = -1;
+            tThanaCombo.SelectedIndex = -1;
+            tPostOfficeCombo.SelectedIndex = -1;
+            tPostCodeTextBox.Clear();
+           
+        }
         private void Reset()
         {
-            txtClientId.Text = "";
-            txtClientName.Text="";
-            cmbClientType.Text ="";
-            cmbNatureOfClient.Text = "";
-            txtEmailAddress.Text = "";
-            cmbIndustryCategory.Text = "";
+            cmbRM.SelectedIndex = -1;
+            txtClientId.Clear();
+            txtClientName.Clear();
+            cmbClientType.SelectedIndex=-1;
+            cmbNatureOfClient.SelectedIndex = -1;
+            txtEmailAddress.Clear();
+            cmbIndustryCategory.SelectedIndex = -1;
+            txtEndUser.Clear();
 
-            cFlatNoTextBox.Text = "";
-            cHouseNoTextBox.Text = "";
-            cRoadNoTextBox.Text = "";
-            cBlockTextBox.Text = "";
-            cAreaTextBox.Text = "";
-            cPostCodeTextBox.Text = "";
-            cThanaCombo.Text = "";
-            cDistCombo.Text = "";
-            cContactNoTextBox.Text = "";
 
-            tFlatNoTextBox.Text = "";
-            tRoadNoTextBox.Text = "";
-            tHouseNoTextBox.Text = "";
-            tBlockTextBox.Text = "";
-            tAreaTextBox.Text = "";
-            tPostCodeTextBox.Text = "";
-            tThanaCombo.Text = "";
-            tDistCombo.Text = "";
-            tContactNoTextBox.Text = "";
+            cFlatNoTextBox.Clear();
+            cHouseNoTextBox.Clear();
+            cRoadNoTextBox.Clear();
+            cBlockTextBox.Clear();
+            cContactNoTextBox.Clear();
+            cAreaTextBox.Clear();
 
-            txtCPName.Text = "";
-            txtDesignation.Text = "";
-            cellPhoneTextBox.Text = "";
-            txtEndUser.Text = "";
+            cDivisionCombo.SelectedIndex = -1;
+            cDistCombo.SelectedIndex=-1;
+            cThanaCombo.SelectedIndex = -1;
+            cPostOfficeCombo.SelectedIndex = -1;
+            cPostCodeTextBox.Clear();
 
+            notApplicableCheckBox.CheckedChanged -= ifApplicableCheckBox_CheckedChanged;
+            notApplicableCheckBox.Checked = false;
+            notApplicableCheckBox.CheckedChanged += ifApplicableCheckBox_CheckedChanged;
+            sameAsCorporatAddCheckBox.CheckedChanged -= sameAsCorporatAddCheckBox_CheckedChanged;
+            sameAsCorporatAddCheckBox.Checked = false;
+            sameAsCorporatAddCheckBox.CheckedChanged += sameAsCorporatAddCheckBox_CheckedChanged;
+            ClearTraddingAddress();
+
+            txtCPName.Clear();
+            txtDesignation.Clear();
+            cellPhoneTextBox.Clear();
+            txtCPEmailAddress.Clear();
+           
         }
-        private void SaveContactPersonDetails()
+        private void UpdateContactPersonDetails()
         {
             ClientGateway aClientGateway4 = new ClientGateway();
             try
@@ -129,9 +253,8 @@ namespace ClientManagementSystem.UI
                     ContactPersonName = txtCPName.Text,
                     Designation = txtDesignation.Text,
                     CellNumber = cellPhoneTextBox.Text,
-                    CPEmailAddress = txtCPEmailAddress.Text,
-                    EndUser = txtEndUser.Text
-                    
+                    CPEmailAddress = txtCPEmailAddress.Text
+ 
                 };
                 aClientGateway4.UpdateContactPersonDetails(aContact);
             }
@@ -215,10 +338,10 @@ namespace ClientManagementSystem.UI
                 {
                     IClientId = Convert.ToInt64(txtClientId.Text),
                     ClientName = txtClientName.Text,
-                    ClientTypeId = clientTypeId1,
-                    NatureOfClientId = natureOfClientId,
+                    ClientTypeId = Convert.ToInt32(clientTypeId1),
+                    NatureOfClientId = Convert.ToInt32(natureOfClientId),
                     EmailAddress = txtEmailAddress.Text,
-                    IndustryCategoryId = industryCategoryId,
+                    IndustryCategoryId = Convert.ToInt32(industryCategoryId),
                     EndUser = txtEndUser.Text,
                     CurrentDates = DateTime.UtcNow,
                     UserId = nUserId,
@@ -245,8 +368,11 @@ namespace ClientManagementSystem.UI
                 if (notApplicableCheckBox.Checked)
                 {
                     UpdateClient();
-                    UpdateCorporatAddress(1);                       
-                    SaveContactPersonDetails();
+                    UpdateCorporatAddress(1);
+                    if (!string.IsNullOrEmpty(txtCPName.Text))
+                    {
+                        UpdateContactPersonDetails();
+                    }
                     
                 }
                 //2.Corporate Address Applicable  & Tradding Address Same as  Corporate Address                                        
@@ -255,7 +381,10 @@ namespace ClientManagementSystem.UI
                     UpdateClient();
                     UpdateCorporatAddress(1);
                     UpdateCorporatAddress(2);
-                    SaveContactPersonDetails();
+                    if (!string.IsNullOrEmpty(txtCPName.Text))
+                    {
+                        UpdateContactPersonDetails();
+                    }
                     
                 }
                 //3.Corporate Address Applicable  & Tradding Address  Applicable
@@ -264,7 +393,10 @@ namespace ClientManagementSystem.UI
                     UpdateClient();
                     UpdateCorporatAddress(1);
                     UpdateTraddingAddress(2);
-                    SaveContactPersonDetails();
+                    if (!string.IsNullOrEmpty(txtCPName.Text))
+                    {
+                        UpdateContactPersonDetails();
+                    }
                 }
                 MessageBox.Show("Successfully Updated", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Reset();
@@ -688,12 +820,14 @@ namespace ClientManagementSystem.UI
                     sameAsCorporatAddCheckBox.CheckedChanged -= sameAsCorporatAddCheckBox_CheckedChanged;
                     sameAsCorporatAddCheckBox.Checked = false;
                     sameAsCorporatAddCheckBox.CheckedChanged += sameAsCorporatAddCheckBox_CheckedChanged;
-                    groupBox3.Enabled = false;
+                    groupBox4.Enabled = false;
+                    ClearTraddingAddress();
                 }
                 else
                 {
 
-                    groupBox3.Enabled = false;
+                    groupBox4.Enabled = false;
+                    ClearTraddingAddress();
                 }
 
             }
@@ -701,12 +835,14 @@ namespace ClientManagementSystem.UI
             {
                 if (sameAsCorporatAddCheckBox.Checked)
                 {
-                    groupBox3.Enabled = false;
+                    groupBox4.Enabled = false;
+                    ClearTraddingAddress();
                 }
                 else
                 {
 
-                    groupBox3.Enabled = true;
+                    groupBox4.Enabled = true;
+                    ClearTraddingAddress();
                 }
             }
         }
@@ -721,12 +857,14 @@ namespace ClientManagementSystem.UI
                     notApplicableCheckBox.CheckedChanged -= ifApplicableCheckBox_CheckedChanged;
                     notApplicableCheckBox.Checked = false;
                     notApplicableCheckBox.CheckedChanged += ifApplicableCheckBox_CheckedChanged;
-                    groupBox3.Enabled = false;
+                    groupBox4.Enabled = false;
+                    ClearTraddingAddress();
                 }
                 else
                 {
 
-                    groupBox3.Enabled = false;
+                    groupBox4.Enabled = false;
+                    ClearTraddingAddress();
                 }
 
             }
@@ -734,12 +872,14 @@ namespace ClientManagementSystem.UI
             {
                 if (notApplicableCheckBox.Checked)
                 {
-                    groupBox3.Enabled = false;
+                    groupBox4.Enabled = false;
+                    ClearTraddingAddress();
                 }
                 else
                 {
 
-                    groupBox3.Enabled = true;
+                    groupBox4.Enabled = true;
+                    ClearTraddingAddress();
                 }
             }
         }
@@ -757,7 +897,7 @@ namespace ClientManagementSystem.UI
 
                 if (rdr.Read())
                 {
-                    clientTypeId1 = (rdr.GetInt32(0));
+                    clientTypeId1 = (rdr.GetString(0));
 
                 }
 
@@ -792,7 +932,7 @@ namespace ClientManagementSystem.UI
 
                 if (rdr.Read())
                 {
-                    natureOfClientId = (rdr.GetInt32(0));
+                    natureOfClientId = (rdr.GetString(0));
 
                 }
 
@@ -827,7 +967,7 @@ namespace ClientManagementSystem.UI
 
                 if (rdr.Read())
                 {
-                    industryCategoryId = (rdr.GetInt32(0));
+                    industryCategoryId = (rdr.GetString(0));
 
                 }
 
@@ -899,6 +1039,43 @@ namespace ClientManagementSystem.UI
         private void txtEmailAddress_Validating(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void txtCPName_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCPName.Text))
+            {
+                txtDesignation.Clear();
+                cellPhoneTextBox.Clear();
+                txtCPEmailAddress.Clear();
+            }
+        }
+
+        private void txtDesignation_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtCPName.Text))
+            {
+                MessageBox.Show("Please  enter Before Contact Person Name", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void cellPhoneTextBox_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtCPName.Text))
+            {
+                MessageBox.Show("Please  enter Before Contact Person Name", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void txtCPEmailAddress_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtCPName.Text))
+            {
+                MessageBox.Show("Please  enter Before Contact Person Name", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
     }
 }

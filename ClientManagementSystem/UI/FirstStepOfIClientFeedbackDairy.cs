@@ -46,6 +46,11 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show("Please write your probable Action", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (string.IsNullOrWhiteSpace(responsible1PersonComboBox.Text))
+            {
+                MessageBox.Show("Please select  this Job Responsible Person", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 this.Visible = false;
@@ -153,7 +158,7 @@ namespace ClientManagementSystem.UI
         }
         private void FirstStepOfIClientFeedbackDairy_Load (object sender, EventArgs e)
             {
-                FollowUpGridLoad2();
+                //FollowUpGridLoad2();
                 FillCombo2();
                 GetData();
             }

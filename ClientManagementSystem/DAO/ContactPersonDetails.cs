@@ -13,7 +13,7 @@ namespace ClientManagementSystem.DAO
         private string designation;
         private string cellNumber;
         private string cPEmailAddress;
-        private string endUser;
+        
 
        public int ICClientId
        {
@@ -43,10 +43,6 @@ namespace ClientManagementSystem.DAO
             set { cPEmailAddress = value; }
             get { return cPEmailAddress; }
         }
-        public string EndUser
-        {
-            get { return endUser; }
-            set { endUser = value; }
-        }
+       
     }
 }

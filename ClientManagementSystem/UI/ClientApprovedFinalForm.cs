@@ -331,9 +331,10 @@ namespace ClientManagementSystem.UI
 
                 if (rdr.Read())
                 {
-                    MessageBox.Show("This Sales Client Already Exists. You can not create it again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    clientNameAPTextBox.Text = "";
-                    clientNameAPTextBox.Focus();
+                    MessageBox.Show("This Sales Client Already Exists. You can not create it again.Please Select another Client", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Hide();
+                    ForSalseClientMP frm=new ForSalseClientMP();
+                    frm.Show();
 
 
                     if ((rdr != null))
