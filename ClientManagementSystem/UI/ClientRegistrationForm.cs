@@ -58,12 +58,12 @@ namespace ClientManagementSystem.UI
             con.Close();
         }
 
-        private void SaveCorporateAddress(int addressTypeId)
+        private void SaveCorporateAddress(string tblName1)
         {
-            addressTypeId1 = addressTypeId;
+           string tableName = tblName1;
             con = new SqlConnection(cs.DBConn);
             con.Open();
-            string insertQ = "insert into Addresses(Division_ID,D_ID,T_ID,PostOfficeId,FlatNo,HouseNo,RoadNo,Block,Area,ContactNo,ADTypeId,IClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+            string insertQ = "insert into " + tableName + "(Division_ID,D_ID,T_ID,PostOfficeId,FlatNo,HouseNo,RoadNo,Block,Area,ContactNo,IClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
             cmd = new SqlCommand(insertQ);
             cmd.Connection = con;
             cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdC) ? (object)DBNull.Value : divisionIdC));
@@ -76,18 +76,18 @@ namespace ClientManagementSystem.UI
             cmd.Parameters.Add(new SqlParameter("@d8", string.IsNullOrEmpty(cBlockTextBox1.Text) ? (object)DBNull.Value : cBlockTextBox1.Text));
             cmd.Parameters.Add(new SqlParameter("@d9", string.IsNullOrEmpty(cAreaTextBox.Text) ? (object)DBNull.Value : cAreaTextBox.Text));            
             cmd.Parameters.Add(new SqlParameter("@d10", string.IsNullOrEmpty(cContactNoTextBox.Text) ? (object)DBNull.Value : cContactNoTextBox.Text));
-            cmd.Parameters.AddWithValue("@d11", addressTypeId1);
-            cmd.Parameters.AddWithValue("@d12", currentClientId);
+           
+            cmd.Parameters.AddWithValue("@d11", currentClientId);
             affectedRows1 = (int)cmd.ExecuteScalar();
             con.Close();
         }
 
-        public void SaveTraddingAddress(int addressTypeId)
+        public void SaveTraddingAddress(string tblName2)
         {
-            addressTypeId2 = addressTypeId;
+            string  traddingAdd = tblName2;
             con = new SqlConnection(cs.DBConn);
             con.Open();
-            string Qry = "insert into Addresses(Division_ID,D_ID,T_ID,PostOfficeId,FlatNo,HouseNo,RoadNo,Block,Area,ContactNo,ADTypeId,IClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+            string Qry = "insert into "+traddingAdd+"(Division_ID,D_ID,T_ID,PostOfficeId,FlatNo,HouseNo,RoadNo,Block,Area,ContactNo,IClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
             cmd = new SqlCommand(Qry);
             cmd.Connection = con;
             cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdT) ? (object)DBNull.Value : divisionIdT));
@@ -99,9 +99,8 @@ namespace ClientManagementSystem.UI
             cmd.Parameters.Add(new SqlParameter("@d7", string.IsNullOrEmpty(tRoadNoTextBox.Text) ? (object)DBNull.Value : tRoadNoTextBox.Text));
             cmd.Parameters.Add(new SqlParameter("@d8", string.IsNullOrEmpty(tBlockTextBox2.Text) ? (object)DBNull.Value : tBlockTextBox2.Text));
             cmd.Parameters.Add(new SqlParameter("@d9", string.IsNullOrEmpty(tAreaTextBox.Text) ? (object)DBNull.Value : tAreaTextBox.Text));          
-            cmd.Parameters.Add(new SqlParameter("@d10", string.IsNullOrEmpty(tContactNoTextBox.Text) ? (object)DBNull.Value : tContactNoTextBox.Text));
-            cmd.Parameters.AddWithValue("@d11", addressTypeId2);
-            cmd.Parameters.AddWithValue("@d12", currentClientId);
+            cmd.Parameters.Add(new SqlParameter("@d10", string.IsNullOrEmpty(tContactNoTextBox.Text) ? (object)DBNull.Value : tContactNoTextBox.Text));           
+            cmd.Parameters.AddWithValue("@d11", currentClientId);
             affectedRows2 = (int)cmd.ExecuteScalar();
             con.Close();              
         }
@@ -233,7 +232,7 @@ namespace ClientManagementSystem.UI
                 if (notApplicableCheckBox.Checked)
                 {
                     SaveInquiryClient();
-                    SaveCorporateAddress(1);
+                    SaveCorporateAddress("CorporateAddresses");
                     if (!string.IsNullOrEmpty(txtContactPerson.Text))
                     {
                         SaveContactPersonDetails();
@@ -244,8 +243,8 @@ namespace ClientManagementSystem.UI
                 if (sameAsCorporatAddCheckBox.Checked)
                 {
                     SaveInquiryClient();
-                    SaveCorporateAddress(1);
-                    SaveCorporateAddress(2);
+                    SaveCorporateAddress("CorporateAddresses");
+                    SaveCorporateAddress("TraddingAddresses");
                     if (!string.IsNullOrEmpty(txtContactPerson.Text))
                     {
                         SaveContactPersonDetails();
@@ -255,8 +254,8 @@ namespace ClientManagementSystem.UI
                 if (sameAsCorporatAddCheckBox.Checked == false && notApplicableCheckBox.Checked == false)
                 {
                     SaveInquiryClient();
-                    SaveCorporateAddress(1);
-                    SaveTraddingAddress(2);
+                    SaveCorporateAddress("CorporateAddresses");
+                    SaveTraddingAddress("TraddingAddresses");
                     if (!string.IsNullOrEmpty(txtContactPerson.Text))
                     {
                         SaveContactPersonDetails();
@@ -1297,11 +1296,13 @@ namespace ClientManagementSystem.UI
                     sameAsCorporatAddCheckBox.Checked = false;
                     sameAsCorporatAddCheckBox.CheckedChanged += sameAsCorporatAddCheckBox_CheckedChanged;
                     groupBox3.Enabled = false;
+                    ResetTradingAddress(); 
                 }
                 else
                 {
 
                     groupBox3.Enabled = false;
+                    ResetTradingAddress(); 
                 }
 
             }
@@ -1310,11 +1311,13 @@ namespace ClientManagementSystem.UI
                 if (sameAsCorporatAddCheckBox.Checked)
                 {
                     groupBox3.Enabled = false;
+                    ResetTradingAddress(); 
                 }
                 else
                 {
 
                     groupBox3.Enabled = true;
+                    ResetTradingAddress(); 
                 }
             }
         }

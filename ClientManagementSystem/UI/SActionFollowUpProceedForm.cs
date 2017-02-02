@@ -139,48 +139,48 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void PopulateClientIdCombo()
-        {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string cty = "select RTRIM(SalesClient.SClientId) from SalesClient order by SalesClient.SClientId  desc";
-                cmd = new SqlCommand(cty);
-                cmd.Connection = con;
-                rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {
-                   txt3SClientId .Items.Add(rdr[0]);
-                }
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        public void PopulateClientName()
-        {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string cty = "select RTRIM(SalesClient.ClientName) from SalesClient order by  SalesClient.SClientId  desc";
-                cmd = new SqlCommand(cty);
-                cmd.Connection = con;
-                rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {
-                    cmb3SClientName.Items.Add(rdr[0]);
-                }
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //public void PopulateClientIdCombo()
+        //{
+        //    try
+        //    {
+        //        con = new SqlConnection(cs.DBConn);
+        //        con.Open();
+        //        string cty = "select RTRIM(SalesClient.SClientId) from SalesClient order by SalesClient.SClientId  desc";
+        //        cmd = new SqlCommand(cty);
+        //        cmd.Connection = con;
+        //        rdr = cmd.ExecuteReader();
+        //        while (rdr.Read())
+        //        {
+        //           txt3SClientId .Items.Add(rdr[0]);
+        //        }
+        //        con.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+        //public void PopulateClientName()
+        //{
+        //    try
+        //    {
+        //        con = new SqlConnection(cs.DBConn);
+        //        con.Open();
+        //        string cty = "select RTRIM(SalesClient.ClientName) from SalesClient order by  SalesClient.SClientId  desc";
+        //        cmd = new SqlCommand(cty);
+        //        cmd.Connection = con;
+        //        rdr = cmd.ExecuteReader();
+        //        while (rdr.Read())
+        //        {
+        //            cmb3SClientName.Items.Add(rdr[0]);
+        //        }
+        //        con.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
         private void ProductDetailsGrid()
         {
             con = new SqlConnection(cs.DBConn);
@@ -201,32 +201,51 @@ namespace ClientManagementSystem.UI
             //dataGridView1.Columns[2].Width = dataGridView1.Width - dataGridView1.Columns[0].Width - dataGridView1.Columns[1].Width - 72;  
             con.Close();
         }
-        //public void LoadClientgGrid()
-        //{
-        //    try
-        //    {
-        //        con = new SqlConnection(cs.DBConn);
-        //        con.Open();
-        //       // cmd = new SqlCommand("SELECT RTRIM(InquieryClient.IClientId),RTRIM(FollowUp.IClientFeedbackId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from InquieryClient,ContactPersonDetails,FollowUp  where InquieryClient.IClientId=ContactPersonDetails.IClientId  and  InquieryClient.IClientId=FollowUp.IClientId order by InquieryClient.IClientId desc", con);
-        //        cmd = new SqlCommand("SELECT RTRIM(SalesClient.SClientId),RTRIM(FollowUp.IClientFeedbackId),RTRIM(SalesClient.ClientName),RTRIM(SalesClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from SalesClient,ContactPersonDetails,FollowUp  where SalesClient.SClientId=ContactPersonDetails.SClientId  and  SalesClient.SClientId=FollowUp.SClientId order by SalesClient.SClientId desc", con);
-        //        rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-        //        dataGridView2.Rows.Clear();
-        //        while (rdr.Read() == true)
-        //        {
-        //            dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5]);
-        //        }
-        //        con.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
+        public void SalesClientFollowUpGrid()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT RTRIM(FollowUp.DeadLineDateTime),RTRIM(IClientFeedbackDairy.Feedback),RTRIM(FollowUp.Actions),RTRIM(Registration.Name),RTRIM(FollowUp.Statuss) FROM  (FollowUp INNER JOIN IClientFeedbackDairy ON FollowUp.IClientFeedbackId = IClientFeedbackDairy.IClientFeedbackId) LEFT JOIN  Registration ON IClientFeedbackDairy.UserId = Registration.UserId  where FollowUp.Statuss='Pending' and IClientFeedbackDairy.SClientId='" + txt3SClientId.Text + "' order by FollowUp.FollowUpId desc", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView2.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void LoadClientgGrid()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT  RTRIM(SalesClient.IClientId),RTRIM(FollowUp.IClientFeedbackId),RTRIM(SalesClient.ClientName),RTRIM(SalesClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) FROM   SalesClient INNER JOIN  ContactPersonDetails ON SalesClient.SClientId = ContactPersonDetails.SClientId INNER JOIN  FollowUp ON SalesClient.SClientId = FollowUp.SClientId", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView1.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void SActionFollowUpProceedForm_Load(object sender, EventArgs e)
         {
-           // LoadClientgGrid();
-           PopulateClientIdCombo();
-            PopulateClientName();
+            LoadClientgGrid();
+           //PopulateClientIdCombo();
+           // PopulateClientName();
             PopulateResponsiblePerson();
             userId = LoginForm.uId.ToString();
         }
@@ -261,6 +280,11 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txt3SClientId_TextChanged(object sender, EventArgs e)
+        {
+            SalesClientFollowUpGrid();
         }
     }
 }

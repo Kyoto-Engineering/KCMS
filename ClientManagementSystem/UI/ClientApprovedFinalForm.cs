@@ -65,15 +65,15 @@ namespace ClientManagementSystem.UI
             }
         }
 
-        private void SaveCorporateAddress(int addressTypeId)
+        private void SaveCorporateAddress(string tblName1)
         {
-            addressTypeId1 = addressTypeId;
+            string cAAddtbl = tblName1;
             try
             {
                
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string insertQ = "insert into Addresses(Division_ID,D_ID,T_ID,PostOfficeId,FlatNo,HouseNo,RoadNo,Block,Area,ContactNo,ADTypeId,IClientId,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12,@d13)" + "SELECT CONVERT(int, SCOPE_IDENTITY())"; 
+                    string insertQ = "insert into "+cAAddtbl+"(Division_ID,D_ID,T_ID,PostOfficeId,FlatNo,HouseNo,RoadNo,Block,Area,ContactNo,IClientId,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" + "SELECT CONVERT(int, SCOPE_IDENTITY())"; 
                     cmd = new SqlCommand(insertQ);
                     cmd.Connection = con;
                     cmd.Parameters.Add(new SqlParameter("@d1",string.IsNullOrEmpty(divisionIdC) ? (object)DBNull.Value : divisionIdC));
@@ -85,10 +85,9 @@ namespace ClientManagementSystem.UI
                     cmd.Parameters.Add(new SqlParameter("@d7",string.IsNullOrEmpty(cRoadNoTextBox.Text) ? (object) DBNull.Value : cRoadNoTextBox.Text));
                     cmd.Parameters.Add(new SqlParameter("@d8",string.IsNullOrEmpty(cBlockTextBox.Text) ? (object) DBNull.Value : cBlockTextBox.Text));
                     cmd.Parameters.Add(new SqlParameter("@d9",string.IsNullOrEmpty(cAreaTextBox.Text) ? (object) DBNull.Value : cAreaTextBox.Text));                   
-                    cmd.Parameters.Add(new SqlParameter("@d10",string.IsNullOrEmpty(cContactNoTextBox.Text) ? (object) DBNull.Value : cContactNoTextBox.Text));
-                    cmd.Parameters.AddWithValue("@d11", addressTypeId1);
-                    cmd.Parameters.Add(new SqlParameter("@d12", string.IsNullOrEmpty(txtIClientId.Text) ? (object)DBNull.Value : txtIClientId.Text));
-                    cmd.Parameters.AddWithValue("@d13", currentSalesClientId);
+                    cmd.Parameters.Add(new SqlParameter("@d10",string.IsNullOrEmpty(cContactNoTextBox.Text) ? (object) DBNull.Value : cContactNoTextBox.Text));                  
+                    cmd.Parameters.Add(new SqlParameter("@d11", string.IsNullOrEmpty(txtIClientId.Text) ? (object)DBNull.Value : txtIClientId.Text));
+                    cmd.Parameters.AddWithValue("@d12", currentSalesClientId);
                     affectedRows1 = (int) cmd.ExecuteScalar();
                     con.Close();
                
@@ -100,14 +99,14 @@ namespace ClientManagementSystem.UI
             }
         }
 
-        private void SaveTraddingAddress(int addressTypeId)
+        private void SaveTraddingAddress(string tblName2)
         {
-            addressTypeId2 = addressTypeId;
+            string traddingAdd = tblName2;
             try
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string Qry = "insert into Addresses(Division_ID,D_ID,T_ID,PostOfficeId,FlatNo,HouseNo,RoadNo,Block,Area,ContactNo,ADTypeId,IClientId,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12,@d13)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                string Qry = "insert into " + traddingAdd + "(Division_ID,D_ID,T_ID,PostOfficeId,FlatNo,HouseNo,RoadNo,Block,Area,ContactNo,IClientId,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                 cmd = new SqlCommand(Qry);
                 cmd.Connection = con;
 
@@ -121,10 +120,9 @@ namespace ClientManagementSystem.UI
                 cmd.Parameters.Add(new SqlParameter("@d7",string.IsNullOrEmpty(tRoadNoTextBox.Text) ? (object) DBNull.Value : tRoadNoTextBox.Text));
                 cmd.Parameters.Add(new SqlParameter("@d8",string.IsNullOrEmpty(tBlockTextBox.Text) ? (object) DBNull.Value : tBlockTextBox.Text));
                 cmd.Parameters.Add(new SqlParameter("@d9",string.IsNullOrEmpty(tAreaTextBox.Text) ? (object) DBNull.Value : tAreaTextBox.Text));
-                cmd.Parameters.Add(new SqlParameter("@d10",string.IsNullOrEmpty(tContactNoTextBox.Text) ? (object) DBNull.Value : tContactNoTextBox.Text));
-                cmd.Parameters.AddWithValue("@d11", addressTypeId2);
-                cmd.Parameters.Add(new SqlParameter("@d12", string.IsNullOrEmpty(txtIClientId.Text) ? (object)DBNull.Value : txtIClientId.Text));
-                cmd.Parameters.AddWithValue("@d13", currentSalesClientId); 
+                cmd.Parameters.Add(new SqlParameter("@d10",string.IsNullOrEmpty(tContactNoTextBox.Text) ? (object) DBNull.Value : tContactNoTextBox.Text));              
+                cmd.Parameters.Add(new SqlParameter("@d11", string.IsNullOrEmpty(txtIClientId.Text) ? (object)DBNull.Value : txtIClientId.Text));
+                cmd.Parameters.AddWithValue("@d12", currentSalesClientId); 
                 affectedRows2 = (int) cmd.ExecuteScalar();
                 con.Close();
             }
@@ -134,14 +132,14 @@ namespace ClientManagementSystem.UI
             }
         }
 
-        private void SaveBillingAddress(int addTypeId)
+        private void SaveBillingAddress(string  tbleName3)
         {
-            addressTypeId3 = addTypeId;
+            string billingAdd = tbleName3;
             try
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string Qry = "insert into Addresses(Division_ID,D_ID,T_ID,PostOfficeId,FlatNo,HouseNo,RoadNo,Block,Area,ContactNo,ADTypeId,IClientId,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12,@d13)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                string Qry = "insert into " + billingAdd + "(Division_ID,D_ID,T_ID,PostOfficeId,FlatNo,HouseNo,RoadNo,Block,Area,ContactNo,IClientId,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                 cmd = new SqlCommand(Qry);
                 cmd.Connection = con;
                 cmd.Parameters.Add(new SqlParameter("@d1",string.IsNullOrEmpty(divisionIdB) ? (object)DBNull.Value : divisionIdB));
@@ -153,10 +151,9 @@ namespace ClientManagementSystem.UI
                 cmd.Parameters.Add(new SqlParameter("@d7",string.IsNullOrEmpty(bRoadNoTextBox.Text) ? (object) DBNull.Value : bRoadNoTextBox.Text));
                 cmd.Parameters.Add(new SqlParameter("@d8",string.IsNullOrEmpty(bBlockTextBox.Text) ? (object) DBNull.Value : bBlockTextBox.Text));
                 cmd.Parameters.Add(new SqlParameter("@d9",string.IsNullOrEmpty(bAreaTextBox.Text) ? (object) DBNull.Value : bAreaTextBox.Text));               
-                cmd.Parameters.Add(new SqlParameter("@d10",string.IsNullOrEmpty(bContactNoTextBox.Text) ? (object)DBNull.Value : bContactNoTextBox.Text));
-                cmd.Parameters.AddWithValue("@d11", addressTypeId3);
-                cmd.Parameters.Add(new SqlParameter("@d12", string.IsNullOrEmpty(txtIClientId.Text) ? (object)DBNull.Value : txtIClientId.Text));
-                cmd.Parameters.AddWithValue("@d13", currentSalesClientId);
+                cmd.Parameters.Add(new SqlParameter("@d10",string.IsNullOrEmpty(bContactNoTextBox.Text) ? (object)DBNull.Value : bContactNoTextBox.Text));                
+                cmd.Parameters.Add(new SqlParameter("@d11", string.IsNullOrEmpty(txtIClientId.Text) ? (object)DBNull.Value : txtIClientId.Text));
+                cmd.Parameters.AddWithValue("@d12", currentSalesClientId);
                 affectedRows3 = (int) cmd.ExecuteScalar();
                 con.Close();
             }
@@ -321,28 +318,28 @@ namespace ClientManagementSystem.UI
            
             try
             {
-                //con = new SqlConnection(cs.DBConn);
-                //con.Open();
-                //string ctk = "select ClientName from SalesClient where ClientName='" + clientNameAPTextBox.Text + "'";
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctk = "select ClientName from SalesClient where ClientName='" + clientNameAPTextBox.Text + "'";
 
-                //cmd = new SqlCommand(ctk);
-                //cmd.Connection = con;
-                //rdr = cmd.ExecuteReader();
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
 
-                //if (rdr.Read())
-                //{
-                //    MessageBox.Show("This Sales Client Already Exists. You can not create it again.Please Select another Client", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    this.Hide();
-                //    ForSalseClientMP frm=new ForSalseClientMP();
-                //    frm.Show();
+                if (rdr.Read())
+                {
+                    MessageBox.Show("This Sales Client Already Exists. You can not create it again.Please Select another Client", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Hide();
+                    ForSalseClientMP frm = new ForSalseClientMP();
+                    frm.Show();
 
 
-                //    if ((rdr != null))
-                //    {
-                //        rdr.Close();
-                //    }
-                //    return;
-                //}
+                    if ((rdr != null))
+                    {
+                        rdr.Close();
+                    }
+                    return;
+                }
 
                 GetClientTypeId();
                 GetNatureOfClientId();
@@ -352,7 +349,7 @@ namespace ClientManagementSystem.UI
                 if (tANotApplicable.Checked && bANotAppCheckBox.Checked)
                 {
                     CreateSalesClient();
-                    SaveCorporateAddress(1);
+                    SaveCorporateAddress("CorporateAddresses");
                   
                 }
 
@@ -360,24 +357,24 @@ namespace ClientManagementSystem.UI
                 else if (tANotApplicable.Checked && bASameAsCACheckBox.Checked)
                 {
                     CreateSalesClient();
-                    SaveCorporateAddress(1);
-                    SaveCorporateAddress(3); //diff Method
+                    SaveCorporateAddress("CorporateAddresses");
+                    SaveCorporateAddress("BillingAddresses"); //diff Method
                    
                 }
                 //3.Tradding Address Not Applicable &&  Billing Address  Applicable
                 else if (tANotApplicable.Checked && bANotAppCheckBox.Checked == false && bASameAsCACheckBox.Checked == false && bASameAsTACheckBox.Checked == false)
                 {
                     CreateSalesClient();
-                    SaveCorporateAddress(1);
-                    SaveBillingAddress(3);
+                    SaveCorporateAddress("CorporateAddresses");
+                    SaveBillingAddress("BillingAddresses");
                     
                 }
                 //4.Tradding Address same as Corporat Address &&  Billing Address Not Applicable
                 else if (tASameAsCACheckBox.Checked && bANotAppCheckBox.Checked)
                 {
                     CreateSalesClient();
-                    SaveCorporateAddress(1);
-                    SaveCorporateAddress(2); //diff method  
+                    SaveCorporateAddress("CorporateAddresses");
+                    SaveCorporateAddress("TraddingAddresses"); //diff method  
                     
                 }
                 //5.Tradding Address same as Corporat Address &&  Billing Address same as Corporat Address
@@ -385,9 +382,9 @@ namespace ClientManagementSystem.UI
                 else if (tASameAsCACheckBox.Checked && bASameAsCACheckBox.Checked)
                 {
                     CreateSalesClient();
-                    SaveCorporateAddress(1);
-                    SaveCorporateAddress(2); //diff method  
-                    SaveCorporateAddress(3); //diff method  
+                    SaveCorporateAddress("CorporateAddresses");
+                    SaveCorporateAddress("TraddingAddresses"); //diff method  
+                    SaveCorporateAddress("BillingAddresses"); //diff method  
                     
                 }
                 //6.Tradding Address same as Corporat Address &&  Billing Address Applicable
@@ -395,9 +392,9 @@ namespace ClientManagementSystem.UI
                 else if (tASameAsCACheckBox.Checked && bANotAppCheckBox.Checked == false && bASameAsCACheckBox.Checked == false && bASameAsTACheckBox.Checked == false)
                 {
                     CreateSalesClient();
-                    SaveCorporateAddress(1);
-                    SaveCorporateAddress(2); //diff method  
-                    SaveBillingAddress(3);
+                    SaveCorporateAddress("CorporateAddresses");
+                    SaveCorporateAddress("TraddingAddresses"); //diff method  
+                    SaveBillingAddress("BillingAddresses");
                     
                 }
                 //7.Tradding Address Aplicable  &&  Biling Address Not Applicable
@@ -405,8 +402,8 @@ namespace ClientManagementSystem.UI
                 else if (tANotApplicable.Checked == false && tASameAsCACheckBox.Checked == false && bANotAppCheckBox.Checked)
                 {
                     CreateSalesClient();
-                    SaveCorporateAddress(1);
-                    SaveTraddingAddress(2);
+                    SaveCorporateAddress("CorporateAddresses");
+                    SaveTraddingAddress("TraddingAddresses");
                    
                 }
                 //8.Tradding Address Aplicable  &&  Biling Address Same As Corporat Address
@@ -414,9 +411,9 @@ namespace ClientManagementSystem.UI
                 else if (tANotApplicable.Checked == false && tASameAsCACheckBox.Checked == false && bASameAsCACheckBox.Checked)
                 {
                     CreateSalesClient();
-                    SaveCorporateAddress(1);
-                    SaveTraddingAddress(2);
-                    SaveCorporateAddress(3); //diff method  
+                    SaveCorporateAddress("CorporateAddresses");
+                    SaveTraddingAddress("TraddingAddresses");
+                    SaveCorporateAddress("BillingAddresses"); //diff method  
                     
                 }
                 //9.Tradding Address Aplicable  &&  Biling Address Same As Tradding Address
@@ -424,9 +421,9 @@ namespace ClientManagementSystem.UI
                 else if (tANotApplicable.Checked == false && tASameAsCACheckBox.Checked == false && bASameAsTACheckBox.Checked)
                 {
                     CreateSalesClient();
-                    SaveCorporateAddress(1);
-                    SaveTraddingAddress(2);
-                    SaveTraddingAddress(3); //diff method  
+                    SaveCorporateAddress("CorporateAddresses");
+                    SaveTraddingAddress("TraddingAddresses");
+                    SaveTraddingAddress("BillingAddresses"); //diff method  
                     
                 }
                 //10.Tradding Address Aplicable  &&  Biling Address Applicable
@@ -434,9 +431,9 @@ namespace ClientManagementSystem.UI
                 else if (tANotApplicable.Checked == false && tASameAsCACheckBox.Checked == false && bANotAppCheckBox.Checked == false && bASameAsCACheckBox.Checked == false && bASameAsTACheckBox.Checked == false)
                 {
                     CreateSalesClient();
-                    SaveCorporateAddress(1);
-                    SaveTraddingAddress(2);
-                    SaveBillingAddress(3);
+                    SaveCorporateAddress("CorporateAddresses");
+                    SaveTraddingAddress("TraddingAddresses");
+                    SaveBillingAddress("BillingAddresses");
                     
                 }
                 if (!string.IsNullOrEmpty(contactPersonNameAPTextBox.Text))
