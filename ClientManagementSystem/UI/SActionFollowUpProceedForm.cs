@@ -145,7 +145,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string cty = "select RTRIM(SalesClient.SClientId) from SalesClient order by SalesClient.SClientId";
+                string cty = "select RTRIM(SalesClient.SClientId) from SalesClient order by SalesClient.SClientId  desc";
                 cmd = new SqlCommand(cty);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -166,7 +166,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string cty = "select RTRIM(SalesClient.ClientName) from SalesClient order by SClientId";
+                string cty = "select RTRIM(SalesClient.ClientName) from SalesClient order by  SalesClient.SClientId  desc";
                 cmd = new SqlCommand(cty);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -224,9 +224,9 @@ namespace ClientManagementSystem.UI
         //}
         private void SActionFollowUpProceedForm_Load(object sender, EventArgs e)
         {
-            //LoadClientgGrid();
-           // PopulateClientIdCombo();
-           // PopulateClientName();
+           // LoadClientgGrid();
+           PopulateClientIdCombo();
+            PopulateClientName();
             PopulateResponsiblePerson();
             userId = LoginForm.uId.ToString();
         }
@@ -239,6 +239,28 @@ namespace ClientManagementSystem.UI
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dr = dataGridView1.CurrentRow;
+                txt3SClientId.Text = dr.Cells[0].Value.ToString();
+                txtClientName.Text = dr.Cells[1].Value.ToString();
+
+                h.Text = k.Text;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

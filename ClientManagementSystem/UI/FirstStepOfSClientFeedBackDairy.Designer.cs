@@ -56,6 +56,8 @@
             this.followUpSDeadlinedate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtSClientInquiry = new System.Windows.Forms.RichTextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.feedbackSTextBox = new System.Windows.Forms.RichTextBox();
             this.txtSClientName = new System.Windows.Forms.TextBox();
             this.txtSClientId = new System.Windows.Forms.TextBox();
@@ -69,8 +71,6 @@
             this.submitButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.actionSMultiTextBox = new System.Windows.Forms.RichTextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtSClientInquiry = new System.Windows.Forms.RichTextBox();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -282,10 +282,10 @@
             // 
             // textBox2
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox2.BackColor = System.Drawing.Color.Olive;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.White;
+            this.textBox2.ForeColor = System.Drawing.Color.Blue;
             this.textBox2.Location = new System.Drawing.Point(358, -5);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
@@ -367,6 +367,25 @@
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             // 
+            // txtSClientInquiry
+            // 
+            this.txtSClientInquiry.Location = new System.Drawing.Point(24, 97);
+            this.txtSClientInquiry.Name = "txtSClientInquiry";
+            this.txtSClientInquiry.Size = new System.Drawing.Size(276, 151);
+            this.txtSClientInquiry.TabIndex = 24;
+            this.txtSClientInquiry.Text = "";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(21, 67);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(131, 24);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Client Inquiry";
+            // 
             // feedbackSTextBox
             // 
             this.feedbackSTextBox.Location = new System.Drawing.Point(330, 93);
@@ -392,6 +411,7 @@
             this.txtSClientId.ReadOnly = true;
             this.txtSClientId.Size = new System.Drawing.Size(157, 29);
             this.txtSClientId.TabIndex = 20;
+            this.txtSClientId.TextChanged += new System.EventHandler(this.txtSClientId_TextChanged);
             // 
             // groupBox4
             // 
@@ -482,30 +502,11 @@
             this.actionSMultiTextBox.TabIndex = 10;
             this.actionSMultiTextBox.Text = "";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(21, 67);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(131, 24);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "Client Inquiry";
-            // 
-            // txtSClientInquiry
-            // 
-            this.txtSClientInquiry.Location = new System.Drawing.Point(24, 97);
-            this.txtSClientInquiry.Name = "txtSClientInquiry";
-            this.txtSClientInquiry.Size = new System.Drawing.Size(276, 151);
-            this.txtSClientInquiry.TabIndex = 24;
-            this.txtSClientInquiry.Text = "";
-            // 
             // FirstStepOfSClientFeedBackDairy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BackColor = System.Drawing.Color.Olive;
             this.ClientSize = new System.Drawing.Size(1271, 681);
             this.Controls.Add(this.nUserTextBox);
             this.Controls.Add(this.labelh);
