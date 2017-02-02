@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.k = new System.Windows.Forms.Label();
+            this.h = new System.Windows.Forms.Label();
             this.action3SMultiTextBox = new System.Windows.Forms.RichTextBox();
             this.m = new System.Windows.Forms.Label();
             this.n = new System.Windows.Forms.Label();
@@ -43,18 +45,17 @@
             this.followUp3SDeadlineDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtClientName = new System.Windows.Forms.TextBox();
-            this.h = new System.Windows.Forms.Label();
-            this.k = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -82,6 +83,26 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Follow Up";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // k
+            // 
+            this.k.AutoSize = true;
+            this.k.Location = new System.Drawing.Point(167, 458);
+            this.k.Name = "k";
+            this.k.Size = new System.Drawing.Size(19, 21);
+            this.k.TabIndex = 20;
+            this.k.Text = "h";
+            this.k.Visible = false;
+            // 
+            // h
+            // 
+            this.h.AutoSize = true;
+            this.h.Location = new System.Drawing.Point(107, 458);
+            this.h.Name = "h";
+            this.h.Size = new System.Drawing.Size(19, 21);
+            this.h.TabIndex = 19;
+            this.h.Text = "k";
+            this.h.Visible = false;
             // 
             // action3SMultiTextBox
             // 
@@ -217,6 +238,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dataGridView2);
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.textBox6);
@@ -228,6 +250,14 @@
             this.groupBox1.Size = new System.Drawing.Size(683, 490);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(15, 308);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(650, 172);
+            this.dataGridView2.TabIndex = 12;
             // 
             // dataGridView1
             // 
@@ -275,33 +305,17 @@
             this.txtClientName.Size = new System.Drawing.Size(309, 29);
             this.txtClientName.TabIndex = 7;
             // 
-            // h
+            // label3
             // 
-            this.h.AutoSize = true;
-            this.h.Location = new System.Drawing.Point(107, 458);
-            this.h.Name = "h";
-            this.h.Size = new System.Drawing.Size(19, 21);
-            this.h.TabIndex = 19;
-            this.h.Text = "k";
-            this.h.Visible = false;
-            // 
-            // k
-            // 
-            this.k.AutoSize = true;
-            this.k.Location = new System.Drawing.Point(167, 458);
-            this.k.Name = "k";
-            this.k.Size = new System.Drawing.Size(19, 21);
-            this.k.TabIndex = 20;
-            this.k.Text = "h";
-            this.k.Visible = false;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(15, 275);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(650, 200);
-            this.dataGridView2.TabIndex = 12;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Olive;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Yellow;
+            this.label3.Location = new System.Drawing.Point(12, 276);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(254, 26);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Pending FollowUp List ";
             // 
             // SActionFollowUpProceedForm
             // 
@@ -321,8 +335,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -352,5 +366,6 @@
         private System.Windows.Forms.Label k;
         private System.Windows.Forms.Label h;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label label3;
     }
 }

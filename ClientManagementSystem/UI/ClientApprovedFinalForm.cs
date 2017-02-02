@@ -271,7 +271,7 @@ namespace ClientManagementSystem.UI
         {
             con = new SqlConnection(cs.DBConn);
             con.Open();
-            string qury = "insert into ContactPersonDetails(ContactPersonName,Designation,CellNumber,EmailId,IClientId) Values(@d1,@d2,@d3,@d4,@d5)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+            string qury = "insert into ContactPersonDetails(ContactPersonName,Designation,CellNumber,EmailId,SClientId) Values(@d1,@d2,@d3,@d4,@d5)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
             cmd = new SqlCommand(qury);
             cmd.Connection = con;
             cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(contactPersonNameAPTextBox.Text) ? (object)DBNull.Value : contactPersonNameAPTextBox.Text));
@@ -321,28 +321,28 @@ namespace ClientManagementSystem.UI
            
             try
             {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string ctk = "select ClientName from SalesClient where ClientName='" + clientNameAPTextBox.Text + "'";
+                //con = new SqlConnection(cs.DBConn);
+                //con.Open();
+                //string ctk = "select ClientName from SalesClient where ClientName='" + clientNameAPTextBox.Text + "'";
 
-                cmd = new SqlCommand(ctk);
-                cmd.Connection = con;
-                rdr = cmd.ExecuteReader();
+                //cmd = new SqlCommand(ctk);
+                //cmd.Connection = con;
+                //rdr = cmd.ExecuteReader();
 
-                if (rdr.Read())
-                {
-                    MessageBox.Show("This Sales Client Already Exists. You can not create it again.Please Select another Client", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.Hide();
-                    ForSalseClientMP frm=new ForSalseClientMP();
-                    frm.Show();
+                //if (rdr.Read())
+                //{
+                //    MessageBox.Show("This Sales Client Already Exists. You can not create it again.Please Select another Client", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    this.Hide();
+                //    ForSalseClientMP frm=new ForSalseClientMP();
+                //    frm.Show();
 
 
-                    if ((rdr != null))
-                    {
-                        rdr.Close();
-                    }
-                    return;
-                }
+                //    if ((rdr != null))
+                //    {
+                //        rdr.Close();
+                //    }
+                //    return;
+                //}
 
                 GetClientTypeId();
                 GetNatureOfClientId();
@@ -353,14 +353,7 @@ namespace ClientManagementSystem.UI
                 {
                     CreateSalesClient();
                     SaveCorporateAddress(1);
-                    if (!string.IsNullOrEmpty(contactPersonNameAPTextBox.Text))
-                    {
-                        SaveContactPersonDetails();
-                    }
-                    if (!string.IsNullOrEmpty(bankNameTextBox.Text))
-                    {
-                        SaveBankDetails();
-                    }
+                  
                 }
 
                 //2.Tradding Address Not Applicable &&  Billing Address  same as Corporat Address
@@ -369,14 +362,7 @@ namespace ClientManagementSystem.UI
                     CreateSalesClient();
                     SaveCorporateAddress(1);
                     SaveCorporateAddress(3); //diff Method
-                    if (!string.IsNullOrEmpty(contactPersonNameAPTextBox.Text))
-                    {
-                        SaveContactPersonDetails();
-                    }
-                    if (!string.IsNullOrEmpty(bankNameTextBox.Text))
-                    {
-                        SaveBankDetails();
-                    }
+                   
                 }
                 //3.Tradding Address Not Applicable &&  Billing Address  Applicable
                 else if (tANotApplicable.Checked && bANotAppCheckBox.Checked == false && bASameAsCACheckBox.Checked == false && bASameAsTACheckBox.Checked == false)
@@ -384,14 +370,7 @@ namespace ClientManagementSystem.UI
                     CreateSalesClient();
                     SaveCorporateAddress(1);
                     SaveBillingAddress(3);
-                    if (!string.IsNullOrEmpty(contactPersonNameAPTextBox.Text))
-                    {
-                        SaveContactPersonDetails();
-                    }
-                    if (!string.IsNullOrEmpty(bankNameTextBox.Text))
-                    {
-                        SaveBankDetails();
-                    }
+                    
                 }
                 //4.Tradding Address same as Corporat Address &&  Billing Address Not Applicable
                 else if (tASameAsCACheckBox.Checked && bANotAppCheckBox.Checked)
@@ -399,14 +378,7 @@ namespace ClientManagementSystem.UI
                     CreateSalesClient();
                     SaveCorporateAddress(1);
                     SaveCorporateAddress(2); //diff method  
-                    if (!string.IsNullOrEmpty(contactPersonNameAPTextBox.Text))
-                    {
-                        SaveContactPersonDetails();
-                    }
-                    if (!string.IsNullOrEmpty(bankNameTextBox.Text))
-                    {
-                        SaveBankDetails();
-                    }
+                    
                 }
                 //5.Tradding Address same as Corporat Address &&  Billing Address same as Corporat Address
 
@@ -416,14 +388,7 @@ namespace ClientManagementSystem.UI
                     SaveCorporateAddress(1);
                     SaveCorporateAddress(2); //diff method  
                     SaveCorporateAddress(3); //diff method  
-                    if (!string.IsNullOrEmpty(contactPersonNameAPTextBox.Text))
-                    {
-                        SaveContactPersonDetails();
-                    }
-                    if (!string.IsNullOrEmpty(bankNameTextBox.Text))
-                    {
-                        SaveBankDetails();
-                    }
+                    
                 }
                 //6.Tradding Address same as Corporat Address &&  Billing Address Applicable
 
@@ -433,14 +398,7 @@ namespace ClientManagementSystem.UI
                     SaveCorporateAddress(1);
                     SaveCorporateAddress(2); //diff method  
                     SaveBillingAddress(3);
-                    if (!string.IsNullOrEmpty(contactPersonNameAPTextBox.Text))
-                    {
-                        SaveContactPersonDetails();
-                    }
-                    if (!string.IsNullOrEmpty(bankNameTextBox.Text))
-                    {
-                        SaveBankDetails();
-                    }
+                    
                 }
                 //7.Tradding Address Aplicable  &&  Biling Address Not Applicable
 
@@ -449,14 +407,7 @@ namespace ClientManagementSystem.UI
                     CreateSalesClient();
                     SaveCorporateAddress(1);
                     SaveTraddingAddress(2);
-                    if (!string.IsNullOrEmpty(contactPersonNameAPTextBox.Text))
-                    {
-                        SaveContactPersonDetails();
-                    }
-                    if (!string.IsNullOrEmpty(bankNameTextBox.Text))
-                    {
-                        SaveBankDetails();
-                    }
+                   
                 }
                 //8.Tradding Address Aplicable  &&  Biling Address Same As Corporat Address
 
@@ -466,14 +417,7 @@ namespace ClientManagementSystem.UI
                     SaveCorporateAddress(1);
                     SaveTraddingAddress(2);
                     SaveCorporateAddress(3); //diff method  
-                    if (!string.IsNullOrEmpty(contactPersonNameAPTextBox.Text))
-                    {
-                        SaveContactPersonDetails();
-                    }
-                    if (!string.IsNullOrEmpty(bankNameTextBox.Text))
-                    {
-                        SaveBankDetails();
-                    }
+                    
                 }
                 //9.Tradding Address Aplicable  &&  Biling Address Same As Tradding Address
 
@@ -483,14 +427,7 @@ namespace ClientManagementSystem.UI
                     SaveCorporateAddress(1);
                     SaveTraddingAddress(2);
                     SaveTraddingAddress(3); //diff method  
-                    if (!string.IsNullOrEmpty(contactPersonNameAPTextBox.Text))
-                    {
-                        SaveContactPersonDetails();
-                    }
-                    if (!string.IsNullOrEmpty(bankNameTextBox.Text))
-                    {
-                        SaveBankDetails();
-                    }
+                    
                 }
                 //10.Tradding Address Aplicable  &&  Biling Address Applicable
 
@@ -500,14 +437,15 @@ namespace ClientManagementSystem.UI
                     SaveCorporateAddress(1);
                     SaveTraddingAddress(2);
                     SaveBillingAddress(3);
-                    if (!string.IsNullOrEmpty(contactPersonNameAPTextBox.Text))
-                    {
-                        SaveContactPersonDetails();
-                    }
-                    if (!string.IsNullOrEmpty(bankNameTextBox.Text))
-                    {
-                        SaveBankDetails();
-                    }
+                    
+                }
+                if (!string.IsNullOrEmpty(contactPersonNameAPTextBox.Text))
+                {
+                    SaveContactPersonDetails();
+                }
+                if (!string.IsNullOrEmpty(bankNameTextBox.Text))
+                {
+                    SaveBankDetails();
                 }
                 MessageBox.Show("Registration Completed Successfully,Current Id is:" + currentSalesClientId, "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);              
                 approvedButton.Enabled = false;     
