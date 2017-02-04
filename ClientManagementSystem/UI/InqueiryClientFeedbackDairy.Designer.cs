@@ -212,7 +212,7 @@
             // textBox6
             // 
             this.textBox6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(21, 42);
+            this.textBox6.Location = new System.Drawing.Point(22, 42);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(189, 29);
             this.textBox6.TabIndex = 12;
@@ -223,7 +223,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(35, 16);
+            this.label10.Location = new System.Drawing.Point(19, 16);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(172, 22);
             this.label10.TabIndex = 11;
@@ -234,7 +234,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(386, 13);
+            this.label9.Location = new System.Drawing.Point(365, 13);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(201, 22);
             this.label9.TabIndex = 10;
@@ -243,9 +243,9 @@
             // txtClientName
             // 
             this.txtClientName.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClientName.Location = new System.Drawing.Point(386, 38);
+            this.txtClientName.Location = new System.Drawing.Point(372, 38);
             this.txtClientName.Name = "txtClientName";
-            this.txtClientName.Size = new System.Drawing.Size(198, 29);
+            this.txtClientName.Size = new System.Drawing.Size(191, 29);
             this.txtClientName.TabIndex = 9;
             this.txtClientName.TextChanged += new System.EventHandler(this.txtClientName_TextChanged);
             // 
@@ -277,7 +277,7 @@
             this.dataGridView2.GridColor = System.Drawing.Color.Aqua;
             this.dataGridView2.Location = new System.Drawing.Point(23, 79);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(543, 239);
+            this.dataGridView2.Size = new System.Drawing.Size(551, 239);
             this.dataGridView2.TabIndex = 7;
             this.dataGridView2.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseClick);
             this.dataGridView2.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseClick);
@@ -323,7 +323,7 @@
             this.Column5});
             this.dataGridView1.Location = new System.Drawing.Point(25, 350);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(541, 248);
+            this.dataGridView1.Size = new System.Drawing.Size(549, 248);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
