@@ -73,7 +73,7 @@ namespace ClientManagementSystem.UI
                
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string insertQ = "insert into "+cAAddtbl+"(Division_ID,D_ID,T_ID,PostOfficeId,FlatNo,HouseNo,RoadNo,Block,Area,ContactNo,IClientId,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" + "SELECT CONVERT(int, SCOPE_IDENTITY())"; 
+                    string insertQ = "insert into "+cAAddtbl+"(Division_ID,D_ID,T_ID,PostOfficeId,CFlatNo,CHouseNo,CRoadNo,CBlock,CArea,CContactNo,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())"; 
                     cmd = new SqlCommand(insertQ);
                     cmd.Connection = con;
                     cmd.Parameters.Add(new SqlParameter("@d1",string.IsNullOrEmpty(divisionIdC) ? (object)DBNull.Value : divisionIdC));
@@ -86,8 +86,8 @@ namespace ClientManagementSystem.UI
                     cmd.Parameters.Add(new SqlParameter("@d8",string.IsNullOrEmpty(cBlockTextBox.Text) ? (object) DBNull.Value : cBlockTextBox.Text));
                     cmd.Parameters.Add(new SqlParameter("@d9",string.IsNullOrEmpty(cAreaTextBox.Text) ? (object) DBNull.Value : cAreaTextBox.Text));                   
                     cmd.Parameters.Add(new SqlParameter("@d10",string.IsNullOrEmpty(cContactNoTextBox.Text) ? (object) DBNull.Value : cContactNoTextBox.Text));                  
-                    cmd.Parameters.Add(new SqlParameter("@d11", string.IsNullOrEmpty(txtIClientId.Text) ? (object)DBNull.Value : txtIClientId.Text));
-                    cmd.Parameters.AddWithValue("@d12", currentSalesClientId);
+                    //cmd.Parameters.Add(new SqlParameter("@d11", string.IsNullOrEmpty(txtIClientId.Text) ? (object)DBNull.Value : txtIClientId.Text));
+                    cmd.Parameters.AddWithValue("@d11", currentSalesClientId);
                     affectedRows1 = (int) cmd.ExecuteScalar();
                     con.Close();
                
@@ -106,7 +106,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string Qry = "insert into " + traddingAdd + "(Division_ID,D_ID,T_ID,PostOfficeId,FlatNo,HouseNo,RoadNo,Block,Area,ContactNo,IClientId,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                string Qry = "insert into " + traddingAdd + "(Division_ID,D_ID,T_ID,PostOfficeId,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TContactNo,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                 cmd = new SqlCommand(Qry);
                 cmd.Connection = con;
 
@@ -121,8 +121,8 @@ namespace ClientManagementSystem.UI
                 cmd.Parameters.Add(new SqlParameter("@d8",string.IsNullOrEmpty(tBlockTextBox.Text) ? (object) DBNull.Value : tBlockTextBox.Text));
                 cmd.Parameters.Add(new SqlParameter("@d9",string.IsNullOrEmpty(tAreaTextBox.Text) ? (object) DBNull.Value : tAreaTextBox.Text));
                 cmd.Parameters.Add(new SqlParameter("@d10",string.IsNullOrEmpty(tContactNoTextBox.Text) ? (object) DBNull.Value : tContactNoTextBox.Text));              
-                cmd.Parameters.Add(new SqlParameter("@d11", string.IsNullOrEmpty(txtIClientId.Text) ? (object)DBNull.Value : txtIClientId.Text));
-                cmd.Parameters.AddWithValue("@d12", currentSalesClientId); 
+               // cmd.Parameters.Add(new SqlParameter("@d11", string.IsNullOrEmpty(txtIClientId.Text) ? (object)DBNull.Value : txtIClientId.Text));
+                cmd.Parameters.AddWithValue("@d11", currentSalesClientId); 
                 affectedRows2 = (int) cmd.ExecuteScalar();
                 con.Close();
             }
@@ -139,7 +139,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string Qry = "insert into " + billingAdd + "(Division_ID,D_ID,T_ID,PostOfficeId,FlatNo,HouseNo,RoadNo,Block,Area,ContactNo,IClientId,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                string Qry = "insert into " + billingAdd + "(Division_ID,D_ID,T_ID,PostOfficeId,FlatNo,HouseNo,RoadNo,Block,Area,ContactNo,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                 cmd = new SqlCommand(Qry);
                 cmd.Connection = con;
                 cmd.Parameters.Add(new SqlParameter("@d1",string.IsNullOrEmpty(divisionIdB) ? (object)DBNull.Value : divisionIdB));
@@ -152,8 +152,8 @@ namespace ClientManagementSystem.UI
                 cmd.Parameters.Add(new SqlParameter("@d8",string.IsNullOrEmpty(bBlockTextBox.Text) ? (object) DBNull.Value : bBlockTextBox.Text));
                 cmd.Parameters.Add(new SqlParameter("@d9",string.IsNullOrEmpty(bAreaTextBox.Text) ? (object) DBNull.Value : bAreaTextBox.Text));               
                 cmd.Parameters.Add(new SqlParameter("@d10",string.IsNullOrEmpty(bContactNoTextBox.Text) ? (object)DBNull.Value : bContactNoTextBox.Text));                
-                cmd.Parameters.Add(new SqlParameter("@d11", string.IsNullOrEmpty(txtIClientId.Text) ? (object)DBNull.Value : txtIClientId.Text));
-                cmd.Parameters.AddWithValue("@d12", currentSalesClientId);
+               // cmd.Parameters.Add(new SqlParameter("@d11", string.IsNullOrEmpty(txtIClientId.Text) ? (object)DBNull.Value : txtIClientId.Text));
+                cmd.Parameters.AddWithValue("@d11", currentSalesClientId);
                 affectedRows3 = (int) cmd.ExecuteScalar();
                 con.Close();
             }

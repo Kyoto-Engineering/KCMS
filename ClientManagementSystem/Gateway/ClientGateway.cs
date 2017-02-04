@@ -58,7 +58,7 @@ namespace ClientManagementSystem.Gateway
        {
            InqueryClient aClient = new InqueryClient();
            connection.Open();
-           string UpdateQuery = "Update Addresses set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,FlatNo=@d5,HouseNo=@d6,RoadNo=@d7,Block=@d8,Area=@d9,ContactNo=@d10  Where ADTypeId='" + cAdd.AddTypeId1 + "' and IClientId='" + aClient.IClientId + "'";
+           string UpdateQuery = "Update CorporateAddresses set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,CFlatNo=@d5,CHouseNo=@d6,CRoadNo=@d7,CBlock=@d8,CArea=@d9,CContactNo=@d10  Where ADTypeId='" + cAdd.AddTypeId1 + "' and IClientId='" + aClient.IClientId + "'";
            SqlCommand cmd = new SqlCommand(UpdateQuery, connection);           
            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(cAdd.DivisionId.ToString()) ? (object)DBNull.Value : cAdd.DivisionId));
            cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(cAdd.DistrictId.ToString()) ? (object)DBNull.Value : cAdd.DistrictId));
@@ -77,7 +77,7 @@ namespace ClientManagementSystem.Gateway
        {
            InqueryClient atClient=new InqueryClient();
            connection.Open();
-           string UpdateQuery = "Update Addresses set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,FlatNo=@d5,HouseNo=@d6,RoadNo=@d7,Block=@d8,Area=@d9,ContactNo=@d10  Where  ADTypeId='" + tAdd.AddTypeIdT + "' and IClientId='" + atClient.IClientId + "'";
+           string UpdateQuery = "Update TraddingAddresses set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,TFlatNo=@d5,THouseNo=@d6,TRoadNo=@d7,TBlock=@d8,TArea=@d9,TContactNo=@d10  Where  ADTypeId='" + tAdd.AddTypeIdT + "' and IClientId='" + atClient.IClientId + "'";
            SqlCommand cmd = new SqlCommand(UpdateQuery, connection);           
            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(tAdd.DivisionId.ToString()) ? (object)DBNull.Value : tAdd.DivisionId));
            cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(tAdd.DistrictId.ToString()) ? (object)DBNull.Value : tAdd.DistrictId));
