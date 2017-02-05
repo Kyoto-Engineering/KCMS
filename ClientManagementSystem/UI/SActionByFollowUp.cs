@@ -158,25 +158,48 @@ namespace ClientManagementSystem.UI
         //    }
         //}
 
+        //public void PopulateFollowUpId()
+        //{
+        //    try
+        //    {
+        //        con = new SqlConnection(cs.DBConn);
+        //        con.Open();
+        //        string sqt = "Select Name from Registration Where UserId='" + nUserId + "'";
+        //        cmd = new SqlCommand(sqt);
+        //        cmd.Connection = con;
+        //        rdr = cmd.ExecuteReader();
+        //        if (rdr.Read())
+        //        {
+        //            sbName5 = (rdr.GetString(0));
+        //        }
+        //        con.Close();
+
+        //        con = new SqlConnection(cs.DBConn);
+        //        con.Open();
+        //        string cty = "select RTRIM(FollowUp.FollowUpId) from FollowUp Where FollowUp.Statuss='Pending' and FollowUp.RPUserId='" + nUserId + "' order by FollowUpId";
+        //        cmd = new SqlCommand(cty);
+        //        cmd.Connection = con;
+        //        rdr = cmd.ExecuteReader();
+        //        while (rdr.Read())
+        //        {
+        //            cmbSFollowUpId.Items.Add(rdr[0]);
+        //        }
+        //        con.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
         public void PopulateFollowUpId()
         {
             try
             {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string sqt = "Select Name from Registration Where UserId='" + nUserId + "'";
-                cmd = new SqlCommand(sqt);
-                cmd.Connection = con;
-                rdr = cmd.ExecuteReader();
-                if (rdr.Read())
-                {
-                    sbName5 = (rdr.GetString(0));
-                }
-                con.Close();
+
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string cty = "select RTRIM(FollowUp.FollowUpId) from FollowUp Where FollowUp.Statuss='Pending' and FollowUp.RPUserId='" + nUserId + "' order by FollowUpId";
+                string cty = "Select RTRIM(FollowUpId) from FollowUp Where FollowUp.Statuss='Pending' order by FollowUp.FollowUpId desc ";
                 cmd = new SqlCommand(cty);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -190,8 +213,7 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
+        }       
         private void SActionByFollowUp_Load(object sender, EventArgs e)
         {
             PopulateFollowUpId();

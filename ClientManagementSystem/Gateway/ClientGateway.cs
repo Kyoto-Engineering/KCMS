@@ -13,31 +13,8 @@ namespace ClientManagementSystem.Gateway
 {
    public  class ClientGateway:ConnectionGateway
    {
-        int currentClientId,currentClientId2;       
-        int affectedRowId;
-        int instantRowsId;
-       public int SaveClient2(InqueryClient aClient)
-       {
-           connection.Open();
-           string insertQuery2 = "insert into InquieryClient(ClientName,ClientType,NatureOfClient,EmailAddress,IndustryCatagory,CFlatNo,CHouseNo,CRoadNo,CBlock,CArea,CPS,CPSCode,CDistrict,CContactNo,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TPS,TPSCode,TDistrict,TContactNo,ContactPersonName,Designation,CellNumber,EndUser,CurrentDate) Values(@clientName,@clientType,@natureOfClient,@emailAddress,@industryCategory,@cFlateNo,@cHouseNo,@cRoadNo,@cBlock,@cArea,@cPS,@cPostCode,@tDistrict,@cContactNo,@tFlatNo,@tHouseNo,@tRoadNo,@tBlock,@tArea,@tPost,@tPostCode,@tDistrict,@tContactNo,@contactPersonName,@designation,@cellNumber,@endUser,@d1)" + "SELECT CONVERT(int, SCOPE_IDENTITY())"; 
-           SqlCommand  cmd=new SqlCommand(insertQuery2,connection);
-           cmd.Parameters.AddWithValue("@clientName", aClient.ClientName);
-           cmd.Parameters.AddWithValue("@clientType", aClient.ClientType);
-           cmd.Parameters.AddWithValue("@natureOfClient", aClient.NatureOfClient);
-           cmd.Parameters.AddWithValue("@emailAddress", aClient.EmailAddress);
-           cmd.Parameters.AddWithValue("@industryCategory", aClient.IndustryCatagory);           
-           //cmd.Parameters.AddWithValue("@contactPersonName", aClient.ContactPersonName);
-           //cmd.Parameters.AddWithValue("@designation", aClient.Designation);
-           //cmd.Parameters.AddWithValue("@cellNumber", aClient.CellNumber);
-           //cmd.Parameters.AddWithValue("@endUser", aClient.EndUser);
-           cmd.Parameters.AddWithValue("@d1", System.DateTime.Now);
-           currentClientId2 = (int)cmd.ExecuteScalar();
-           connection.Close();
-           return currentClientId2;
-         
-          
-
-       }
+       
+      
        public void UpdateContactPersonDetails(ContactPersonDetails contact)
        {
           InqueryClient iClientId=new InqueryClient();
@@ -58,7 +35,7 @@ namespace ClientManagementSystem.Gateway
        {
            InqueryClient aClient = new InqueryClient();
            connection.Open();
-           string UpdateQuery = "Update Addresses set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,FlatNo=@d5,HouseNo=@d6,RoadNo=@d7,Block=@d8,Area=@d9,ContactNo=@d10  Where ADTypeId='" + cAdd.AddTypeId1 + "' and IClientId='" + aClient.IClientId + "'";
+           string UpdateQuery = "Update CorporateAddresses set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,CFlatNo=@d5,CHouseNo=@d6,CRoadNo=@d7,CBlock=@d8,CArea=@d9,CContactNo=@d10  Where  CorporateAddresses.IClientId='" + aClient.IClientId + "'";
            SqlCommand cmd = new SqlCommand(UpdateQuery, connection);           
            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(cAdd.DivisionId.ToString()) ? (object)DBNull.Value : cAdd.DivisionId));
            cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(cAdd.DistrictId.ToString()) ? (object)DBNull.Value : cAdd.DistrictId));
@@ -77,7 +54,7 @@ namespace ClientManagementSystem.Gateway
        {
            InqueryClient atClient=new InqueryClient();
            connection.Open();
-           string UpdateQuery = "Update Addresses set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,FlatNo=@d5,HouseNo=@d6,RoadNo=@d7,Block=@d8,Area=@d9,ContactNo=@d10  Where  ADTypeId='" + tAdd.AddTypeIdT + "' and IClientId='" + atClient.IClientId + "'";
+           string UpdateQuery = "Update TraddingAddresses set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,TFlatNo=@d5,THouseNo=@d6,TRoadNo=@d7,TBlock=@d8,TArea=@d9,TContactNo=@d10  Where  TraddingAddresses.IClientId='" + atClient.IClientId + "'";
            SqlCommand cmd = new SqlCommand(UpdateQuery, connection);           
            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(tAdd.DivisionId.ToString()) ? (object)DBNull.Value : tAdd.DivisionId));
            cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(tAdd.DistrictId.ToString()) ? (object)DBNull.Value : tAdd.DistrictId));
@@ -109,24 +86,7 @@ namespace ClientManagementSystem.Gateway
            cmd.ExecuteReader();
            connection.Close();          
        }
-       public int SaveClient(InqueryClient aClient)
-       {
-           connection.Open();
-           string insertQuery = "insert into InquieryClient(ClientName,ClientType,NatureOfClient,EmailAddress,IndustryCatagory,CFlatNo,CHouseNo,CRoadNo,CBlock,CArea,CPS,CPSCode,CDistrict,CContactNo,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TPS,TPSCode,TDistrict,TContactNo,ContactPersonName,Designation,CellNumber,EndUser,CurrentDate) Values(@clientName,@clientType,@natureOfClient,@emailAddress,@industryCategory,@cFlateNo,@cHouseNo,@cRoadNo,@cBlock,@cArea,@cPS,@cPostCode,@tDistrict,@cContactNo,@tFlatNo,@tHouseNo,@tRoadNo,@tBlock,@tArea,@tPost,@tPostCode,@tDistrict,@tContactNo,@contactPersonName,@designation,@cellNumber,@endUser,@d1)"+ "SELECT CONVERT(int, SCOPE_IDENTITY())";
-           SqlCommand cmd = new SqlCommand(insertQuery, connection);
-           cmd.Parameters.AddWithValue("@clientName", aClient.ClientName);
-           cmd.Parameters.AddWithValue("@clientType", aClient.ClientType);
-           cmd.Parameters.AddWithValue("@natureOfClient", aClient.NatureOfClient);
-           cmd.Parameters.AddWithValue("@emailAddress", aClient.EmailAddress);
-           cmd.Parameters.AddWithValue("@industryCategory", aClient.IndustryCatagory);
-           
-         
-           cmd.Parameters.AddWithValue("@d1", System.DateTime.Now);
-           currentClientId = (int)cmd.ExecuteScalar();
-           connection.Close();
-           return currentClientId;
-
-       }
+       
 
       public InqueryClient SearchClient(decimal clientId)
        {
@@ -152,54 +112,8 @@ namespace ClientManagementSystem.Gateway
           
 
        }
-      public Addresss SearchTraddingAddress(int iClientId2)
-      {
-          connection.Open();
-          string selectQuery = string.Format("SELECT RTRIM(Addresses.FlatNo),RTRIM(Addresses.HouseNo),RTRIM(Addresses.RoadNo),RTRIM(Addresses.Block),RTRIM(Addresses.Area),RTRIM(Addresses.PS),RTRIM(Addresses.PSCode),RTRIM(Addresses.District),RTRIM(Addresses.ContactNo) from Addresses,InquieryClient,AddressTypes where InquieryClient.IClientId=Addresses.IClientId and AddressTypes.ADTypeId=2 and InquieryClient.IClientId='{0}'", iClientId2);
-          SqlCommand cmd = new SqlCommand(selectQuery, connection);
-          SqlDataReader drReader = cmd.ExecuteReader();
-          Addresss add2 = new Addresss();
-          while (drReader.Read())
-          {
-              //add2.TFlatNo = drReader[0].ToString();
-              //add2.THouseNo = drReader[1].ToString();
-              //add2.TRoadNo = drReader[2].ToString();
-              //add2.TBlock = drReader[3].ToString();
-              //add2.TARea = drReader[4].ToString();
-              //add2.TPost = drReader[5].ToString();
-              //add2.TPostCode = drReader[6].ToString();
-              //add2.TDistrict = drReader[7].ToString();
-              //add2.TContactNo = drReader[8].ToString();
-          }
-          drReader.Close();
-          connection.Close();
-          return add2;
-
-      }
-       public Addresss SearchCorporateAddress(int iClientId1)
-       {
-           connection.Open();
-           string selectQuery = string.Format("SELECT RTRIM(Addresses.FlatNo),RTRIM(Addresses.HouseNo),RTRIM(Addresses.RoadNo),RTRIM(Addresses.Block),RTRIM(Addresses.Area),RTRIM(Addresses.PS),RTRIM(Addresses.PSCode),RTRIM(Addresses.District),RTRIM(Addresses.ContactNo) from Addresses,InquieryClient,AddressTypes where InquieryClient.IClientId=Addresses.IClientId and AddressTypes.ADTypeId=1 and InquieryClient.IClientId='{0}'",iClientId1);
-           SqlCommand cmd = new SqlCommand(selectQuery, connection);
-           SqlDataReader drReader = cmd.ExecuteReader();
-           Addresss add1=new Addresss();
-           while (drReader.Read())
-           {
-               //add1.CFlatNo = drReader[0].ToString();
-               //add1.CHouseNo = drReader[1].ToString();
-               //add1.CRoadNo = drReader[2].ToString();
-               //add1.CBlock = drReader[3].ToString();
-               //add1.CARea = drReader[4].ToString();
-               //add1.CPost = drReader[5].ToString();
-               //add1.CPostCode = drReader[6].ToString();
-               //add1.CDistrict = drReader[7].ToString();
-               //add1.CContactNo = drReader[8].ToString();
-           }
-           drReader.Close();
-           connection.Close();
-           return add1;
-
-       }
+     
+       
       public InqueryClient SearchInquiryClientDetails(decimal clientId)
       {
           connection.Open();
@@ -217,30 +131,7 @@ namespace ClientManagementSystem.Gateway
               aClient.EmailAddress = daraReader[3].ToString();
               aClient.IndustryCatagory = daraReader[4].ToString();
 
-              //aClient.CFlatNo = daraReader[6].ToString();
-              //aClient.CHouseNo = daraReader[7].ToString();
-              //aClient.CRoadNo = daraReader[8].ToString();
-              //aClient.CBlock = daraReader[9].ToString();
-              //aClient.CARea = daraReader[10].ToString();
-              //aClient.CPost = daraReader[11].ToString();
-              //aClient.CPostCode = daraReader[12].ToString();
-              //aClient.CDistrict = daraReader[13].ToString();
-              //aClient.CContactNo = daraReader[14].ToString();
-
-              //aClient.TFlatNo = daraReader[15].ToString();
-              //aClient.THouseNo = daraReader[16].ToString();
-              //aClient.TRoadNo = daraReader[17].ToString();
-              //aClient.TBlock = daraReader[18].ToString();
-              //aClient.TARea = daraReader[19].ToString();
-              //aClient.TPost = daraReader[20].ToString();
-              //aClient.TPostCode = daraReader[21].ToString();
-              //aClient.TDistrict = daraReader[22].ToString();
-              //aClient.TContactNo = daraReader[23].ToString();
-
-              //aClient.ContactPersonName = daraReader[5].ToString();
-              //aClient.Designation = daraReader[6].ToString();
-              //aClient.CellNumber = daraReader[7].ToString();
-              //aClient.EndUser = daraReader[8].ToString();
+             
           }
           daraReader.Close();
           connection.Close();
@@ -251,56 +142,7 @@ namespace ClientManagementSystem.Gateway
 
      
 
-      public  int SaveInstantClient(InstantClient aClient)
-      {
-         connection.Open();
-         string apquery = "insert into InstantsClient(ClientName,ClientType,NatureOfClient,EmailAddress,IndustryCatagory,CFlatNo,CHouseNo,CRoadNo,CBlock,CArea,CPS,CPSCode,CDistrict,CContactNo,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TPS,TPSCode,TDistrict,TContactNo,ContactPersonName,Designation,CellNumber,EndUser,BFlatNo,BHouseNo,BRoadNo,BBlock,BArea,BPS,BPSCode,BDistrict,BContactNo,BankName,BranchName,AccountNo,CurrentDate) values(@clientName,@clientType,@natureOfClient,@emailAddress,@industryCategory,@cFlateNo,@cHouseNo,@cRoadNo,@cBlock,@cArea,@cPS,@cPostCode,@cDistrict,@cContactNo,@tFlatNo,@tHouseNo,@tRoadNo,@tBlock,@cArea,@tPost,@tPostCode,@tDistrict,@tContactNo,@contactPersonName,@designation,@cellNumber,@endUser,@bFlatNo,@bHouseNo,@bRoadNo,@bBlock,@bArea,@bPost,@bPostCode,@bDistrict,@bContactNo,@bankName,@branchName,@accountNo,@d1)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
-          SqlCommand cmd = new SqlCommand(apquery, connection);
-          cmd.Parameters.AddWithValue("@clientName", aClient.ClientName);
-          cmd.Parameters.AddWithValue("@clientType", aClient.ClientType);
-          cmd.Parameters.AddWithValue("@natureOfClient", aClient.NatureOfClient);
-          cmd.Parameters.AddWithValue("@emailAddress", aClient.EmailAddress);
-          cmd.Parameters.AddWithValue("@industryCategory", aClient.IndustryCatagory);
-          cmd.Parameters.AddWithValue("@cFlateNo", aClient.CFlatNo);
-          cmd.Parameters.AddWithValue("@cHouseNo", aClient.CHouseNo);
-          cmd.Parameters.AddWithValue("@cRoadNo", aClient.CRoadNo);
-          cmd.Parameters.AddWithValue("@cBlock", aClient.CBlock);
-          cmd.Parameters.AddWithValue("@cArea", aClient.CARea);
-          cmd.Parameters.AddWithValue("@cPS", aClient.CPost);
-          cmd.Parameters.AddWithValue("@cPostCode", aClient.CPostCode);
-          cmd.Parameters.AddWithValue("@cDistrict", aClient.CDistrict);
-          cmd.Parameters.AddWithValue("@cContactNo", aClient.CContactNo);
-          cmd.Parameters.AddWithValue("@tFlatNo", aClient.TFlatNo);
-          cmd.Parameters.AddWithValue("@tHouseNo", aClient.THouseNo);
-          cmd.Parameters.AddWithValue("@tRoadNo", aClient.TRoadNo);
-          cmd.Parameters.AddWithValue("@tBlock", aClient.TBlock);
-          cmd.Parameters.AddWithValue("@tArea", aClient.TARea);
-          cmd.Parameters.AddWithValue("@tPost", aClient.TPost);
-          cmd.Parameters.AddWithValue("@tPostCode", aClient.TPostCode);
-          cmd.Parameters.AddWithValue("@tDistrict", aClient.TDistrict);
-          cmd.Parameters.AddWithValue("@tContactNo", aClient.TContactNo);
-          cmd.Parameters.AddWithValue("@contactPersonName", aClient.ContactPersonName);
-          cmd.Parameters.AddWithValue("@designation", aClient.Designation);
-          cmd.Parameters.AddWithValue("@cellNumber", aClient.CellNumber);
-          cmd.Parameters.AddWithValue("@endUser", aClient.EndUser);
-          cmd.Parameters.AddWithValue("@bFlatNo", aClient.BFlatNo);
-          cmd.Parameters.AddWithValue("@bHouseNo", aClient.BHouseNo);
-          cmd.Parameters.AddWithValue("@bRoadNo", aClient.BRoadNo);
-          cmd.Parameters.AddWithValue("@bBlock", aClient.BBlock);
-          cmd.Parameters.AddWithValue("@bArea", aClient.BARea);
-          cmd.Parameters.AddWithValue("@bPost", aClient.BPost);
-          cmd.Parameters.AddWithValue("@bPostCode", aClient.BPostCode);
-          cmd.Parameters.AddWithValue("@bDistrict", aClient.BDistrict);
-          cmd.Parameters.AddWithValue("@bContactNo", aClient.BContactNo);
-          cmd.Parameters.AddWithValue("@bankName", aClient.BankName);
-          cmd.Parameters.AddWithValue("@branchName", aClient.BranchName);
-          cmd.Parameters.AddWithValue("@accountNo", aClient.AccountNumber);
-          cmd.Parameters.AddWithValue("@d1", System.DateTime.Now);
-          instantRowsId = (int)cmd.ExecuteScalar();
-          connection.Close();
-          return instantRowsId;
-      }
-
+    
       public InquiryFollowUp SearchFollowUp(decimal followUpId)
       {
           connection.Open();

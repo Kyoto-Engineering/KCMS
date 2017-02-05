@@ -316,7 +316,7 @@ namespace ClientManagementSystem.UI
                    CBlock = cBlockTextBox.Text,
                    CARea = cAreaTextBox.Text,
                    CContactNo = cContactNoTextBox.Text,                  
-                   AddTypeId1  = addTypeId,
+                   //AddTypeId1  = addTypeId,
                 };
                 aClientGateway2.UpdateCorporatAddress(add1);
             }
@@ -359,6 +359,105 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show(exception.Message);
             }
         }
+
+        private void UpdateInquiryClient()
+        {
+            try
+            {
+                con=new SqlConnection(cs.DBConn);
+                con.Open();
+                string query = "Update InquieryClient set ClientName=@d1,ClientTypeId=@d2,NatureOfClientId=@d3,EmailAddress=@d4,IndustryCategoryId=@d5,EndUser=@d6,UserId=@d7,Dates=@d8,SuperviserId=@d9  Where InquieryClient.IClientId='" + txtClientId.Text + "'";
+                cmd=new SqlCommand(query,con);
+                cmd.Parameters.AddWithValue("@d1", txtClientName.Text);
+                cmd.Parameters.AddWithValue("@d2", clientTypeId1);
+                cmd.Parameters.AddWithValue("@d3", natureOfClientId);
+                cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(txtEmailAddress.Text) ? (object)DBNull.Value : txtEmailAddress.Text));
+                cmd.Parameters.AddWithValue("@d5", industryCategoryId);
+                cmd.Parameters.AddWithValue("@d6", txtEndUser.Text);
+                cmd.Parameters.AddWithValue("@d7", nUserId);
+                cmd.Parameters.AddWithValue("@d8", DateTime.UtcNow.ToLocalTime());
+                cmd.Parameters.AddWithValue("@d9", rMId);
+                rdr = cmd.ExecuteReader();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void UpdateClientAddress(string tablName1)
+        {
+            string corporatTable = tablName1;
+            try
+            {
+                if (corporatTable == "CorporateAddresses")
+                {
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    string query = "Update " + corporatTable + " set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,CFlatNo=@d5,CHouseNo=@d6,CRoadNo=@d7,CBlock=@d8,CArea=@d9,CContactNo=@d10  Where  CorporateAddresses.IClientId='" + txtClientId.Text + "'";
+                    cmd = new SqlCommand(query, con);
+                    cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdC) ? (object)DBNull.Value : divisionIdC));
+                    cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdC) ? (object)DBNull.Value : districtIdC));
+                    cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdC) ? (object)DBNull.Value : thanaIdC));
+                    cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdC) ? (object)DBNull.Value : postOfficeIdC));
+                    cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(cFlatNoTextBox.Text) ? (object)DBNull.Value : cFlatNoTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(cHouseNoTextBox.Text) ? (object)DBNull.Value : cHouseNoTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@d7", string.IsNullOrEmpty(cRoadNoTextBox.Text) ? (object)DBNull.Value : cRoadNoTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@d8", string.IsNullOrEmpty(cBlockTextBox.Text) ? (object)DBNull.Value : cBlockTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@d9", string.IsNullOrEmpty(cAreaTextBox.Text) ? (object)DBNull.Value : cAreaTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@d10", string.IsNullOrEmpty(cContactNoTextBox.Text) ? (object)DBNull.Value : cContactNoTextBox.Text));
+                    rdr = cmd.ExecuteReader();
+                    con.Close();
+                }
+
+                else if (corporatTable == "TraddingAddresses")
+                {
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    string query = "Update " + corporatTable + " set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,TFlatNo=@d5,THouseNo=@d6,TRoadNo=@d7,TBlock=@d8,TArea=@d9,TContactNo=@d10  Where  TraddingAddresses.IClientId='" + txtClientId.Text+ "'";
+                    cmd = new SqlCommand(query, con);
+                    cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdT) ? (object)DBNull.Value : divisionIdT));
+                    cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdT) ? (object)DBNull.Value : districtIdT));
+                    cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdT) ? (object)DBNull.Value : thanaIdT));
+                    cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdT) ? (object)DBNull.Value : postOfficeIdT));
+                    cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(tFlatNoTextBox.Text) ? (object)DBNull.Value : tFlatNoTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(tHouseNoTextBox.Text) ? (object)DBNull.Value : tHouseNoTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@d7", string.IsNullOrEmpty(tRoadNoTextBox.Text) ? (object)DBNull.Value : tRoadNoTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@d8", string.IsNullOrEmpty(tBlockTextBox.Text) ? (object)DBNull.Value : tBlockTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@d9", string.IsNullOrEmpty(tAreaTextBox.Text) ? (object)DBNull.Value : tAreaTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@d10", string.IsNullOrEmpty(cContactNoTextBox.Text) ? (object)DBNull.Value : tContactNoTextBox.Text));
+                    rdr = cmd.ExecuteReader();
+                    con.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void UpdateContactPersondetails()
+        {
+            try
+            {
+                con=new SqlConnection(cs.DBConn);
+                con.Open();
+                string qry = "Update ContactPersonDetails set ContactPersonName=@d1,Designation=@d2,EmailId=@d3,CellNumber=@d4 Where IClientId='" + txtClientId.Text + "'";
+                cmd=new SqlCommand(qry,con);
+                cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(txtCPName.Text) ? (object)DBNull.Value : txtCPName.Text));
+                cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(txtDesignation.Text) ? (object)DBNull.Value : txtDesignation.Text));
+                cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(txtCPEmailAddress.Text) ? (object)DBNull.Value : txtCPEmailAddress.Text));
+                cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(cellPhoneTextBox.Text) ? (object)DBNull.Value : cellPhoneTextBox.Text));                  
+                cmd.ExecuteReader();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            }
+        }
         private void saveButton_Click(object sender, EventArgs e)
         {
          
@@ -367,36 +466,27 @@ namespace ClientManagementSystem.UI
                 //1.Corporate Address Applicable  & Tradding Address not Applicable
                 if (notApplicableCheckBox.Checked)
                 {
-                    UpdateClient();
-                    UpdateCorporatAddress(1);
-                    if (!string.IsNullOrEmpty(txtCPName.Text))
-                    {
-                        UpdateContactPersonDetails();
-                    }
-                    
+                    UpdateInquiryClient();
+                    UpdateClientAddress("CorporateAddresses");                                     
                 }
                 //2.Corporate Address Applicable  & Tradding Address Same as  Corporate Address                                        
                 if (sameAsCorporatAddCheckBox.Checked)
                 {
-                    UpdateClient();
-                    UpdateCorporatAddress(1);
-                    UpdateCorporatAddress(2);
-                    if (!string.IsNullOrEmpty(txtCPName.Text))
-                    {
-                        UpdateContactPersonDetails();
-                    }
-                    
+                    UpdateInquiryClient();
+                    UpdateClientAddress("CorporateAddresses");                   
+                    UpdateClientAddress("TraddingAddresses");                                      
                 }
                 //3.Corporate Address Applicable  & Tradding Address  Applicable
                 if (sameAsCorporatAddCheckBox.Checked == false && notApplicableCheckBox.Checked == false)
                 {
-                    UpdateClient();
-                    UpdateCorporatAddress(1);
-                    UpdateTraddingAddress(2);
-                    if (!string.IsNullOrEmpty(txtCPName.Text))
-                    {
-                        UpdateContactPersonDetails();
-                    }
+                    UpdateInquiryClient();
+                    UpdateClientAddress("CorporateAddresses");                   
+                    UpdateClientAddress("TraddingAddresses");
+                   
+                }
+                if (!string.IsNullOrEmpty(txtCPName.Text))
+                {
+                    UpdateContactPersondetails();
                 }
                 MessageBox.Show("Successfully Updated", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Reset();
@@ -435,8 +525,12 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT  RTRIM(Divisions.Division_ID)  from Divisions WHERE Divisions.Division = '" + cDivisionCombo.Text + "'";
+                string ctk = "SELECT  RTRIM(Divisions.Division_ID)  from Divisions WHERE Divisions.Division=@find";
+
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "Division"));
+                cmd.Parameters["@find"].Value = cDivisionCombo.Text;
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
@@ -487,8 +581,11 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT  RTRIM(Districts.D_ID)  from Districts WHERE Districts.District = '" + cDistCombo.Text + "'";
+                string ctk = "SELECT  RTRIM(Districts.D_ID)  from Districts WHERE Districts.District=@find";
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "District"));
+                cmd.Parameters["@find"].Value = cDistCombo.Text;
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
@@ -539,8 +636,11 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT  RTRIM(Thanas.T_ID)  from Thanas WHERE Thanas.Thana= '" + cThanaCombo.Text + "'";
+                string ctk = "SELECT  RTRIM(Thanas.T_ID)  from Thanas WHERE Thanas.Thana=@find";
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "Thana"));
+                cmd.Parameters["@find"].Value = cThanaCombo.Text;
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
@@ -591,9 +691,12 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT  RTRIM(PostOffice.PostOfficeId),RTRIM(PostOffice.PostCode)  from PostOffice WHERE PostOffice.PostOfficeName= '" + cPostOfficeCombo.Text + "'";
-                rdr = cmd.ExecuteReader();
+                string ctk = "SELECT  RTRIM(PostOffice.PostOfficeId),RTRIM(PostOffice.PostCode) from PostOffice WHERE PostOffice.PostOfficeName=@find";
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "PostOfficeName"));
+                cmd.Parameters["@find"].Value = cPostOfficeCombo.Text;
+                rdr = cmd.ExecuteReader();                
                 if (rdr.Read())
                 {
                     postOfficeIdC = (rdr.GetString(0));
@@ -626,8 +729,11 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT  RTRIM(Districts.D_ID)  from Districts WHERE Districts.District = '" + tDistCombo.Text + "'";
+                string ctk = "SELECT  RTRIM(Districts.D_ID)  from Districts WHERE Districts.District=@find";
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "District"));
+                cmd.Parameters["@find"].Value = tDistCombo.Text;
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
@@ -678,8 +784,11 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT  RTRIM(Thanas.T_ID)  from Thanas WHERE Thanas.Thana= '" + tThanaCombo.Text + "'";
+                string ctk = "SELECT  RTRIM(Thanas.T_ID)  from Thanas WHERE Thanas.Thana=@find";
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "Thana"));
+                cmd.Parameters["@find"].Value = tThanaCombo.Text;
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
@@ -730,9 +839,12 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT  RTRIM(PostOffice.PostOfficeId),RTRIM(PostOffice.PostCode)  from PostOffice WHERE PostOffice.PostOfficeName= '" + tPostOfficeCombo.Text + "'";
-                rdr = cmd.ExecuteReader();
+                string ctk = "SELECT  RTRIM(PostOffice.PostOfficeId),RTRIM(PostOffice.PostCode) from PostOffice WHERE PostOffice.PostOfficeName=@find";
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "PostOfficeName"));
+                cmd.Parameters["@find"].Value = tPostOfficeCombo.Text;
+                rdr = cmd.ExecuteReader();                
                 if (rdr.Read())
                 {
                     postOfficeIdT = (rdr.GetString(0));
@@ -764,8 +876,12 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT  RTRIM(Divisions.Division_ID)  from Divisions WHERE Divisions.Division = '" + tDivisionCombo.Text + "'";
+                string ctk = "SELECT  RTRIM(Divisions.Division_ID)  from Divisions WHERE Divisions.Division=@find";
+
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "Division"));
+                cmd.Parameters["@find"].Value = tDivisionCombo.Text;
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
@@ -1076,6 +1192,11 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show("Please  enter Before Contact Person Name", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+
+        private void cPostOfficeCombo_SelectedValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

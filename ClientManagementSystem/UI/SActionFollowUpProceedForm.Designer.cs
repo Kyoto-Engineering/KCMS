@@ -36,8 +36,6 @@
             this.n = new System.Windows.Forms.Label();
             this.submitButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmb3SClientName = new System.Windows.Forms.ComboBox();
-            this.txt3SClientId = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.responsible3SPerson2ComboBox = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -52,6 +50,19 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtClientName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt3SClientId = new System.Windows.Forms.TextBox();
+            this.cmb3SClientName = new System.Windows.Forms.TextBox();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -60,6 +71,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmb3SClientName);
+            this.groupBox2.Controls.Add(this.txt3SClientId);
             this.groupBox2.Controls.Add(this.k);
             this.groupBox2.Controls.Add(this.h);
             this.groupBox2.Controls.Add(this.action3SMultiTextBox);
@@ -67,8 +80,6 @@
             this.groupBox2.Controls.Add(this.n);
             this.groupBox2.Controls.Add(this.submitButton);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.cmb3SClientName);
-            this.groupBox2.Controls.Add(this.txt3SClientId);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.responsible3SPerson2ComboBox);
             this.groupBox2.Controls.Add(this.label8);
@@ -106,9 +117,9 @@
             // 
             // action3SMultiTextBox
             // 
-            this.action3SMultiTextBox.Location = new System.Drawing.Point(18, 138);
+            this.action3SMultiTextBox.Location = new System.Drawing.Point(18, 116);
             this.action3SMultiTextBox.Name = "action3SMultiTextBox";
-            this.action3SMultiTextBox.Size = new System.Drawing.Size(500, 163);
+            this.action3SMultiTextBox.Size = new System.Drawing.Size(520, 163);
             this.action3SMultiTextBox.TabIndex = 18;
             this.action3SMultiTextBox.Text = "";
             // 
@@ -148,36 +159,18 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(244, 55);
+            this.label2.Location = new System.Drawing.Point(244, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 21);
             this.label2.TabIndex = 13;
             this.label2.Text = "Client Name";
-            // 
-            // cmb3SClientName
-            // 
-            this.cmb3SClientName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb3SClientName.FormattingEnabled = true;
-            this.cmb3SClientName.Location = new System.Drawing.Point(352, 52);
-            this.cmb3SClientName.Name = "cmb3SClientName";
-            this.cmb3SClientName.Size = new System.Drawing.Size(190, 29);
-            this.cmb3SClientName.TabIndex = 12;
-            // 
-            // txt3SClientId
-            // 
-            this.txt3SClientId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.txt3SClientId.FormattingEnabled = true;
-            this.txt3SClientId.Location = new System.Drawing.Point(85, 54);
-            this.txt3SClientId.Name = "txt3SClientId";
-            this.txt3SClientId.Size = new System.Drawing.Size(153, 29);
-            this.txt3SClientId.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(10, 60);
+            this.label1.Location = new System.Drawing.Point(10, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 19);
             this.label1.TabIndex = 11;
@@ -187,9 +180,9 @@
             // 
             this.responsible3SPerson2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.responsible3SPerson2ComboBox.FormattingEnabled = true;
-            this.responsible3SPerson2ComboBox.Location = new System.Drawing.Point(225, 316);
+            this.responsible3SPerson2ComboBox.Location = new System.Drawing.Point(248, 312);
             this.responsible3SPerson2ComboBox.Name = "responsible3SPerson2ComboBox";
-            this.responsible3SPerson2ComboBox.Size = new System.Drawing.Size(293, 29);
+            this.responsible3SPerson2ComboBox.Size = new System.Drawing.Size(290, 29);
             this.responsible3SPerson2ComboBox.TabIndex = 2;
             this.responsible3SPerson2ComboBox.SelectedIndexChanged += new System.EventHandler(this.responsible3SPerson2ComboBox_SelectedIndexChanged);
             // 
@@ -198,7 +191,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(34, 318);
+            this.label8.Location = new System.Drawing.Point(34, 314);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(170, 22);
             this.label8.TabIndex = 9;
@@ -209,7 +202,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(14, 108);
+            this.label7.Location = new System.Drawing.Point(14, 86);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(125, 22);
             this.label7.TabIndex = 6;
@@ -220,7 +213,7 @@
             this.followUp3SDeadlineDateTimePicker.CustomFormat = "dd/MM/yyyy HH:mm:ss";
             this.followUp3SDeadlineDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.followUp3SDeadlineDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.followUp3SDeadlineDateTimePicker.Location = new System.Drawing.Point(228, 364);
+            this.followUp3SDeadlineDateTimePicker.Location = new System.Drawing.Point(248, 364);
             this.followUp3SDeadlineDateTimePicker.Name = "followUp3SDeadlineDateTimePicker";
             this.followUp3SDeadlineDateTimePicker.Size = new System.Drawing.Size(290, 29);
             this.followUp3SDeadlineDateTimePicker.TabIndex = 3;
@@ -254,14 +247,27 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column7,
+            this.Column11,
+            this.Column8,
+            this.Column9,
+            this.Column10});
             this.dataGridView2.Location = new System.Drawing.Point(15, 308);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(650, 172);
+            this.dataGridView2.Size = new System.Drawing.Size(662, 172);
             this.dataGridView2.TabIndex = 12;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6});
             this.dataGridView1.Location = new System.Drawing.Point(15, 81);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(650, 172);
@@ -317,6 +323,81 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "Pending FollowUp List ";
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "SClientId";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "ClientFeedBackId";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "ClientName";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "EmailAddress";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "ContactPersonName";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "CellNumber";
+            this.Column6.Name = "Column6";
+            // 
+            // txt3SClientId
+            // 
+            this.txt3SClientId.Location = new System.Drawing.Point(80, 41);
+            this.txt3SClientId.Name = "txt3SClientId";
+            this.txt3SClientId.Size = new System.Drawing.Size(158, 29);
+            this.txt3SClientId.TabIndex = 21;
+            this.txt3SClientId.TextChanged += new System.EventHandler(this.txt3SClientId_TextChanged);
+            // 
+            // cmb3SClientName
+            // 
+            this.cmb3SClientName.Location = new System.Drawing.Point(352, 41);
+            this.cmb3SClientName.Name = "cmb3SClientName";
+            this.cmb3SClientName.Size = new System.Drawing.Size(186, 29);
+            this.cmb3SClientName.TabIndex = 22;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Date";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 130;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Feedback";
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 120;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Action";
+            this.Column8.Name = "Column8";
+            this.Column8.Width = 120;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "SubmittedBy";
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 120;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Status";
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 120;
+            // 
             // SActionFollowUpProceedForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,8 +434,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button submitButton;
-        private System.Windows.Forms.ComboBox cmb3SClientName;
-        private System.Windows.Forms.ComboBox txt3SClientId;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -367,5 +446,18 @@
         private System.Windows.Forms.Label h;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.TextBox cmb3SClientName;
+        private System.Windows.Forms.TextBox txt3SClientId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
     }
 }
