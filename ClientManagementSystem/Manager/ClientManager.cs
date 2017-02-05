@@ -12,27 +12,7 @@ namespace ClientManagementSystem.Manager
 {
    public  class ClientManager:ConnectionGateway
    {
-       private ClientGateway aClientGateway;
-
-       public int SaveClient(InqueryClient aClient)
-       {
-           
-           aClientGateway=new ClientGateway();
-          return aClientGateway.SaveClient(aClient);
-       }
-       public int SaveClient2(InqueryClient aClient)
-       {
-           
-           aClientGateway = new ClientGateway();
-           return aClientGateway.SaveClient2(aClient);
-       }
-
       
-
-     public  int  SaveInstantClient(InstantClient anInstantClient)
-      {
-          aClientGateway=new ClientGateway();
-          return aClientGateway.SaveInstantClient(anInstantClient);
-      }
+       
    }
 }
