@@ -299,7 +299,7 @@ namespace ClientManagementSystem.UI
 
                 frm.cDivisionCombo.Text = dr.Cells[18].Value.ToString();
                 frm.cDistCombo.Text = dr.Cells[19].Value.ToString();
-                frm.cThanaCombo.Text = dr.Cells[20].Value.ToString();
+                frm.cThanaCombo.Text = dr.Cells[20].Value.ToString().Trim();
                 frm.cPostOfficeCombo.Text = dr.Cells[21].Value.ToString();
                 frm.cPostCodeTextBox.Text = dr.Cells[22].Value.ToString();
                 
@@ -313,7 +313,7 @@ namespace ClientManagementSystem.UI
 
                 frm.tDivisionCombo.Text = dr.Cells[29].Value.ToString();
                 frm.tDistCombo.Text = dr.Cells[30].Value.ToString();
-                frm.tThanaCombo.Text = dr.Cells[31].Value.ToString();
+                frm.tThanaCombo.Text = dr.Cells[31].Value.ToString().Trim();
                 frm.tPostOfficeCombo.Text = dr.Cells[32].Value.ToString();
                 frm.tPostCodeTextBox.Text = dr.Cells[33].Value.ToString();                
                 frm.labeld.Text = labelh.Text;

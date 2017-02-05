@@ -1203,7 +1203,7 @@ namespace ClientManagementSystem.UI
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
-                    districtIdT = (rdr.GetString(0));
+                    districtIdT = (rdr.GetString(0).Trim());
 
                 }
 
@@ -1462,7 +1462,7 @@ namespace ClientManagementSystem.UI
                 rdr = cmd.ExecuteReader();               
                 if (rdr.Read())
                 {
-                    divisionIdT = (rdr.GetString(0));
+                    divisionIdT = (rdr.GetString(0).Trim());
 
                 }
 
