@@ -25,6 +25,7 @@ namespace ClientManagementSystem.UI
         public string rMId;
         public string nUserId;
         public string clientTypeId1, natureOfClientId, industryCategoryId;
+        public int affectedRows2, affectedRows3;
         public EditFromGrid()
         {
             InitializeComponent();
@@ -458,6 +459,79 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
             }
         }
+
+        private void SaveContactPersonDetails()
+        {
+            con = new SqlConnection(cs.DBConn);
+            con.Open();
+            string qury = "insert into ContactPersonDetails(ContactPersonName,Designation,CellNumber,EmailId,IClientId) Values(@d1,@d2,@d3,@d4,@d5)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+            cmd = new SqlCommand(qury);
+            cmd.Connection = con;
+            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(txtCPName.Text) ? (object)DBNull.Value : txtCPName.Text));
+            cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(txtDesignation.Text) ? (object)DBNull.Value : txtDesignation.Text));
+            cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(cellPhoneTextBox.Text) ? (object)DBNull.Value : cellPhoneTextBox.Text));
+            cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(txtCPEmailAddress.Text) ? (object)DBNull.Value : txtCPEmailAddress.Text));
+            cmd.Parameters.AddWithValue("@d5", txtClientId.Text);
+            affectedRows3 = (int)cmd.ExecuteScalar();
+            con.Close();
+        }
+        private void AddClientAddress(string tblName2)
+        {
+            string traddingAdd = tblName2;
+            con = new SqlConnection(cs.DBConn);
+            con.Open();
+            string Qry = "insert into " + traddingAdd + "(Division_ID,D_ID,T_ID,PostOfficeId,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TContactNo,IClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+            cmd = new SqlCommand(Qry);
+            cmd.Connection = con;
+            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdT) ? (object)DBNull.Value : divisionIdT));
+            cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdT) ? (object)DBNull.Value : districtIdT));
+            cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdT) ? (object)DBNull.Value : thanaIdT));
+            cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdT) ? (object)DBNull.Value : postOfficeIdT));
+            cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(tFlatNoTextBox.Text) ? (object)DBNull.Value : tFlatNoTextBox.Text));
+            cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(tHouseNoTextBox.Text) ? (object)DBNull.Value : tHouseNoTextBox.Text));
+            cmd.Parameters.Add(new SqlParameter("@d7", string.IsNullOrEmpty(tRoadNoTextBox.Text) ? (object)DBNull.Value : tRoadNoTextBox.Text));
+            cmd.Parameters.Add(new SqlParameter("@d8", string.IsNullOrEmpty(tBlockTextBox.Text) ? (object)DBNull.Value : tBlockTextBox.Text));
+            cmd.Parameters.Add(new SqlParameter("@d9", string.IsNullOrEmpty(tAreaTextBox.Text) ? (object)DBNull.Value : tAreaTextBox.Text));
+            cmd.Parameters.Add(new SqlParameter("@d10", string.IsNullOrEmpty(tContactNoTextBox.Text) ? (object)DBNull.Value : tContactNoTextBox.Text));
+            cmd.Parameters.AddWithValue("@d11", txtClientId.Text);
+            affectedRows2 = (int)cmd.ExecuteScalar();
+            con.Close();              
+        }
+        private void GetClientIdAndSaveOrUpdateContactPersonDetails()
+        {
+            con = new SqlConnection(cs.DBConn);
+            con.Open();
+            string ct2 = "select RTRIM(ContactPersonDetails.IClientId) from ContactPersonDetails where ContactPersonDetails.IClientId='" + txtClientId.Text + "'";
+            cmd = new SqlCommand(ct2, con);
+            rdr = cmd.ExecuteReader();
+            if (rdr.Read() && !rdr.IsDBNull(0))
+            {
+                UpdateContactPersondetails();
+            }
+            else
+            {
+                SaveContactPersonDetails();
+            }
+
+        }
+        private void GetClientIdAndSaveOrUpdateTraddingAddress()
+        {
+            con = new SqlConnection(cs.DBConn);
+            con.Open();
+            string ct2 = "select RTRIM(TraddingAddresses.IClientId) from TraddingAddresses where TraddingAddresses.IClientId='" + txtClientId.Text + "'";
+            cmd = new SqlCommand(ct2, con);
+            rdr = cmd.ExecuteReader();
+            if (rdr.Read() && !rdr.IsDBNull(0))
+            {
+                UpdateClientAddress("TraddingAddresses");
+            }
+            else
+            {
+                AddClientAddress("TraddingAddresses");
+            }
+
+        }
+
         private void saveButton_Click(object sender, EventArgs e)
         {
          
@@ -480,13 +554,15 @@ namespace ClientManagementSystem.UI
                 if (sameAsCorporatAddCheckBox.Checked == false && notApplicableCheckBox.Checked == false)
                 {
                     UpdateInquiryClient();
-                    UpdateClientAddress("CorporateAddresses");                   
-                    UpdateClientAddress("TraddingAddresses");
-                   
+                    UpdateClientAddress("CorporateAddresses");
+                    GetClientIdAndSaveOrUpdateTraddingAddress();
+
+
                 }
                 if (!string.IsNullOrEmpty(txtCPName.Text))
                 {
-                    UpdateContactPersondetails();
+                    GetClientIdAndSaveOrUpdateContactPersonDetails();
+                    
                 }
                 MessageBox.Show("Successfully Updated", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Reset();
@@ -1197,6 +1273,12 @@ namespace ClientManagementSystem.UI
         private void cPostOfficeCombo_SelectedValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void tContactNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
         }
     }
 }

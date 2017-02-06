@@ -266,6 +266,12 @@
     <Compile Include="UI\ClientRegistrationForm.Designer.cs">
       <DependentUpon>ClientRegistrationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ConvertToSalesClientGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ConvertToSalesClientGrid.Designer.cs">
+      <DependentUpon>ConvertToSalesClientGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\EditFromGrid.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -392,6 +398,12 @@
     <Compile Include="UI\SalesClientFeedbackDairy.Designer.cs">
       <DependentUpon>SalesClientFeedbackDairy.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SalesClientUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SalesClientUpdateForm.Designer.cs">
+      <DependentUpon>SalesClientUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WaterMarkTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -489,6 +501,9 @@
     <EmbeddedResource Include="UI\ClientRegistrationForm.resx">
       <DependentUpon>ClientRegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\ConvertToSalesClientGrid.resx">
+      <DependentUpon>ConvertToSalesClientGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\EditFromGrid.resx">
       <DependentUpon>EditFromGrid.cs</DependentUpon>
     </EmbeddedResource>
@@ -551,6 +566,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SalesClientFeedbackDairy.resx">
       <DependentUpon>SalesClientFeedbackDairy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SalesClientUpdateForm.resx">
+      <DependentUpon>SalesClientUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClientManagementSystem_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">

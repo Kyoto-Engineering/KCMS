@@ -240,7 +240,7 @@
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox2.Location = new System.Drawing.Point(30, 308);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(435, 158);
+            this.groupBox2.Size = new System.Drawing.Size(435, 176);
             this.groupBox2.TabIndex = 102;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Contact Person Details";
@@ -248,7 +248,7 @@
             // txtCPEmailAddress
             // 
             this.txtCPEmailAddress.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCPEmailAddress.Location = new System.Drawing.Point(200, 115);
+            this.txtCPEmailAddress.Location = new System.Drawing.Point(200, 128);
             this.txtCPEmailAddress.Name = "txtCPEmailAddress";
             this.txtCPEmailAddress.Size = new System.Drawing.Size(214, 26);
             this.txtCPEmailAddress.TabIndex = 108;
@@ -258,7 +258,7 @@
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(59, 117);
+            this.label34.Location = new System.Drawing.Point(59, 130);
             this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(109, 19);
@@ -268,7 +268,8 @@
             // cellPhoneTextBox
             // 
             this.cellPhoneTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cellPhoneTextBox.Location = new System.Drawing.Point(198, 83);
+            this.cellPhoneTextBox.Location = new System.Drawing.Point(198, 91);
+            this.cellPhoneTextBox.MaxLength = 11;
             this.cellPhoneTextBox.Name = "cellPhoneTextBox";
             this.cellPhoneTextBox.Size = new System.Drawing.Size(214, 26);
             this.cellPhoneTextBox.TabIndex = 106;
@@ -278,7 +279,7 @@
             // txtDesignation
             // 
             this.txtDesignation.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesignation.Location = new System.Drawing.Point(198, 50);
+            this.txtDesignation.Location = new System.Drawing.Point(198, 55);
             this.txtDesignation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDesignation.Name = "txtDesignation";
             this.txtDesignation.Size = new System.Drawing.Size(214, 26);
@@ -299,7 +300,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(78, 81);
+            this.label9.Location = new System.Drawing.Point(78, 89);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(98, 19);
@@ -310,7 +311,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(84, 51);
+            this.label8.Location = new System.Drawing.Point(84, 56);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 19);
@@ -428,7 +429,8 @@
             // cContactNoTextBox
             // 
             this.cContactNoTextBox.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cContactNoTextBox.Location = new System.Drawing.Point(128, 128);
+            this.cContactNoTextBox.Location = new System.Drawing.Point(128, 131);
+            this.cContactNoTextBox.MaxLength = 11;
             this.cContactNoTextBox.Name = "cContactNoTextBox";
             this.cContactNoTextBox.Size = new System.Drawing.Size(140, 22);
             this.cContactNoTextBox.TabIndex = 39;
@@ -438,7 +440,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(34, 129);
+            this.label27.Location = new System.Drawing.Point(34, 132);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(90, 19);
             this.label27.TabIndex = 38;
@@ -465,7 +467,7 @@
             // cAreaTextBox
             // 
             this.cAreaTextBox.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cAreaTextBox.Location = new System.Drawing.Point(128, 154);
+            this.cAreaTextBox.Location = new System.Drawing.Point(128, 160);
             this.cAreaTextBox.Name = "cAreaTextBox";
             this.cAreaTextBox.Size = new System.Drawing.Size(140, 22);
             this.cAreaTextBox.TabIndex = 15;
@@ -474,7 +476,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(81, 155);
+            this.label20.Location = new System.Drawing.Point(81, 161);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(42, 19);
             this.label20.TabIndex = 14;
@@ -708,17 +710,19 @@
             // tContactNoTextBox
             // 
             this.tContactNoTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tContactNoTextBox.Location = new System.Drawing.Point(130, 140);
+            this.tContactNoTextBox.Location = new System.Drawing.Point(130, 142);
+            this.tContactNoTextBox.MaxLength = 11;
             this.tContactNoTextBox.Name = "tContactNoTextBox";
             this.tContactNoTextBox.Size = new System.Drawing.Size(147, 26);
             this.tContactNoTextBox.TabIndex = 37;
+            this.tContactNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tContactNoTextBox_KeyPress);
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.Yellow;
-            this.label26.Location = new System.Drawing.Point(33, 144);
+            this.label26.Location = new System.Drawing.Point(33, 145);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(90, 19);
             this.label26.TabIndex = 36;
@@ -746,7 +750,7 @@
             // tAreaTextBox
             // 
             this.tAreaTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tAreaTextBox.Location = new System.Drawing.Point(130, 169);
+            this.tAreaTextBox.Location = new System.Drawing.Point(130, 173);
             this.tAreaTextBox.Name = "tAreaTextBox";
             this.tAreaTextBox.Size = new System.Drawing.Size(147, 26);
             this.tAreaTextBox.TabIndex = 31;
@@ -756,7 +760,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Yellow;
-            this.label5.Location = new System.Drawing.Point(80, 172);
+            this.label5.Location = new System.Drawing.Point(80, 175);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 19);
             this.label5.TabIndex = 30;
@@ -865,7 +869,7 @@
             this.saveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.saveButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.ForeColor = System.Drawing.Color.Fuchsia;
-            this.saveButton.Location = new System.Drawing.Point(428, 481);
+            this.saveButton.Location = new System.Drawing.Point(498, 478);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(119, 53);
             this.saveButton.TabIndex = 99;

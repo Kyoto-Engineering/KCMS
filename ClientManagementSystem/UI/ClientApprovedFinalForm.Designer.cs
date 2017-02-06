@@ -216,7 +216,7 @@
             this.groupBox5.Size = new System.Drawing.Size(635, 227);
             this.groupBox5.TabIndex = 64;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Factory Address";
+            this.groupBox5.Text = "c";
             // 
             // tANotApplicable
             // 
@@ -1104,6 +1104,7 @@
             this.cmbNatureOfClient.Name = "cmbNatureOfClient";
             this.cmbNatureOfClient.Size = new System.Drawing.Size(267, 27);
             this.cmbNatureOfClient.TabIndex = 73;
+            this.cmbNatureOfClient.SelectedIndexChanged += new System.EventHandler(this.cmbNatureOfClient_SelectedIndexChanged);
             // 
             // cmbClientType
             // 
@@ -1113,6 +1114,7 @@
             this.cmbClientType.Name = "cmbClientType";
             this.cmbClientType.Size = new System.Drawing.Size(266, 27);
             this.cmbClientType.TabIndex = 72;
+            this.cmbClientType.SelectedIndexChanged += new System.EventHandler(this.cmbClientType_SelectedIndexChanged);
             // 
             // groupBox9
             // 
