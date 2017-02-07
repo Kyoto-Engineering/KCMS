@@ -1267,7 +1267,7 @@ namespace ClientManagementSystem.UI
 
                     MessageBox.Show("Please type valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtCPEmailAddress.Clear();
-                    txtCPEmailAddress.Focus();
+                    txtContactPerson.Focus();
 
                 }
             }
@@ -1286,7 +1286,7 @@ namespace ClientManagementSystem.UI
             if (string.IsNullOrWhiteSpace(txtContactPerson.Text))
             {
                 MessageBox.Show("Please  enter Contact Person Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                txtContactPerson.Focus();
             }
             
         }
@@ -1296,7 +1296,7 @@ namespace ClientManagementSystem.UI
             if (string.IsNullOrWhiteSpace(txtContactPerson.Text))
             {
                 MessageBox.Show("Please  enter Contact Person Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                txtContactPerson.Focus();
             }
         }
 
@@ -1355,7 +1355,7 @@ namespace ClientManagementSystem.UI
             if (string.IsNullOrWhiteSpace(txtContactPerson.Text))
             {
                 MessageBox.Show("Please  enter Contact Person Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                txtContactPerson.Focus();
             }
         }
     }

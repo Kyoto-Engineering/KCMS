@@ -96,8 +96,8 @@ namespace ClientManagementSystem.UI
                 affectedRows2 = (int)cmd.ExecuteScalar();
                 con.Close();
                 MessageBox.Show("FeedBack Submitted Successfully.", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);                
-                Report2();
-                Report();
+                //Report2();
+                //Report();
                 Reset1();
                 Reset2();
 

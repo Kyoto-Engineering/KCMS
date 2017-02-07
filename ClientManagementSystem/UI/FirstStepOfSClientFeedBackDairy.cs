@@ -96,7 +96,7 @@ namespace ClientManagementSystem.UI
                 con.Open();
                 cmd = new SqlCommand("SELECT RTRIM(FollowUp.DeadLineDateTime),RTRIM(IClientFeedbackDairy.Feedback),RTRIM(FollowUp.Actions),RTRIM(Registration.Name),RTRIM(FollowUp.Statuss) FROM  (FollowUp INNER JOIN IClientFeedbackDairy ON FollowUp.IClientFeedbackId = IClientFeedbackDairy.IClientFeedbackId) LEFT JOIN  Registration ON IClientFeedbackDairy.UserId = Registration.UserId  where FollowUp.Statuss='Pending'  and FollowUp.SClientId='"+txtSClientId.Text+"' order by FollowUp.FollowUpId desc", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                dataGridView1.Rows.Clear();
+                dataGridView2.Rows.Clear();
                 while (rdr.Read() == true)
                 {
                     dataGridView2.Rows.Add(rdr[0],rdr[1],rdr[2],rdr[3],rdr[4]);
@@ -125,6 +125,32 @@ namespace ClientManagementSystem.UI
         }
         private void submitButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtSClientId.Text))
+            {
+                MessageBox.Show("Please select Client", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtSClientInquiry.Text))
+            {
+                MessageBox.Show("Please write Client Inquiry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(feedbackSTextBox.Text))
+            {
+                MessageBox.Show("Please select type your Feedback", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(actionSMultiTextBox.Text))
+            {
+                MessageBox.Show("Please write your probable Action", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(responsibleSPersonComboBox.Text))
+            {
+                MessageBox.Show("Please select  this Job Responsible Person", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             try
             {
                 this.Visible = false;
@@ -150,19 +176,7 @@ namespace ClientManagementSystem.UI
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
-            try
-            {
-                DataGridViewRow dr = dataGridView1.SelectedRows[0];
-                txtSClientId.Text = dr.Cells[0].Value.ToString();
-                txtSClientName.Text = dr.Cells[1].Value.ToString();
-
-                label7.Text = labelh.Text;
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           
         }
 
         private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -181,6 +195,23 @@ namespace ClientManagementSystem.UI
         private void txtSClientId_TextChanged(object sender, EventArgs e)
         {
             FollowUpGridLoad();
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dr = dataGridView1.SelectedRows[0];
+                txtSClientId.Text = dr.Cells[0].Value.ToString();
+                txtSClientName.Text = dr.Cells[1].Value.ToString();
+
+                label7.Text = labelh.Text;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

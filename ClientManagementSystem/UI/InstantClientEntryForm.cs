@@ -1966,8 +1966,8 @@ namespace ClientManagementSystem.UI
         {
             if (string.IsNullOrWhiteSpace(contactPersonNameInsTextBox.Text))
             {
-                MessageBox.Show("Please  enter  Contact Person Name before designation", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Please  enter  Contact Person Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                contactPersonNameInsTextBox.Focus();
             }
             
         }
@@ -1976,8 +1976,8 @@ namespace ClientManagementSystem.UI
         {
             if (string.IsNullOrWhiteSpace(contactPersonNameInsTextBox.Text))
             {
-                MessageBox.Show("Please  enter  Contact Person Name before cell Number", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Please  enter  Contact Person Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                contactPersonNameInsTextBox.Focus();
             }
             
         }
@@ -1987,7 +1987,7 @@ namespace ClientManagementSystem.UI
             if (string.IsNullOrWhiteSpace(contactPersonNameInsTextBox.Text))
             {
                 MessageBox.Show("Please  enter  Contact Person Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                contactPersonNameInsTextBox.Focus();
             }
         }
 
@@ -1996,7 +1996,7 @@ namespace ClientManagementSystem.UI
             if (string.IsNullOrWhiteSpace(bankNameInsTextBox.Text))
             {
                 MessageBox.Show("Please  enter  Bank Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                bankNameInsTextBox.Focus();
             }
         }
 
@@ -2005,7 +2005,7 @@ namespace ClientManagementSystem.UI
             if (string.IsNullOrWhiteSpace(bankNameInsTextBox.Text))
             {
                 MessageBox.Show("Please  enter  Bank Name  first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                bankNameInsTextBox.Focus();
             }
         }
 

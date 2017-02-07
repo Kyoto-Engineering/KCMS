@@ -1248,7 +1248,7 @@ namespace ClientManagementSystem.UI
             if (string.IsNullOrWhiteSpace(txtCPName.Text))
             {
                 MessageBox.Show("Please  enter Before Contact Person Name", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                txtCPName.Focus();
             }
         }
 
@@ -1257,7 +1257,7 @@ namespace ClientManagementSystem.UI
             if (string.IsNullOrWhiteSpace(txtCPName.Text))
             {
                 MessageBox.Show("Please  enter Before Contact Person Name", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                txtCPName.Focus();
             }
         }
 
@@ -1266,7 +1266,7 @@ namespace ClientManagementSystem.UI
             if (string.IsNullOrWhiteSpace(txtCPName.Text))
             {
                 MessageBox.Show("Please  enter Before Contact Person Name", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                txtCPName.Focus();
             }
         }
 

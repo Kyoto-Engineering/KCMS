@@ -38,11 +38,9 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string cb2 = "Update SFollowUp Set Status='Done', NextFeedBackId='" + affectedRows6 + "' Where SFollowUpId='" + cmbSFollowUpId.Text + "'";
-                cmd = new SqlCommand(cb2);
-                cmd.Connection = con;
+                string cb2 = "Update FollowUp Set Statuss='Done', NextFeedBackId='" + affectedRows6 + "' Where FollowUp='" + cmbSFollowUpId.Text + "'";
+                cmd = new SqlCommand(cb2,con);               
                 cmd.ExecuteReader();
-
                 con.Close();
 
             }
@@ -50,10 +48,6 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-
-
         }
         private void submitButton_Click(object sender, EventArgs e)
         {
@@ -76,14 +70,14 @@ namespace ClientManagementSystem.UI
             {                                
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string insertQuery = "insert into IClientFeedbackDairy(SClientId,DateTimes,Feedback,UserId,ClientInquiry) Values(@cd1,@cd2,@cd3,@cd4,@cd5)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
-                    cmd = new SqlCommand(insertQuery);
-                    cmd.Connection = con;
+                    string insertQuery = "insert into IClientFeedbackDairy(SClientId,ClientInquiry,Feedback,DateTimes,UserId) Values(@cd1,@cd2,@cd3,@cd4,@cd5)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                    cmd = new SqlCommand(insertQuery,con);
+                    DateTime myTime = Convert.ToDateTime(txtDeadlineTime.Text, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat);
                     cmd.Parameters.AddWithValue("@cd1", txtSClientId.Text);
-                    cmd.Parameters.AddWithValue("@cd2", Convert.ToDateTime(txtFollowUpDeadline.Text, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat));
+                    cmd.Parameters.AddWithValue("@cd2", txtSInquiryClient);
                     cmd.Parameters.AddWithValue("@cd3", txtHaveToDo.Text);
-                    cmd.Parameters.AddWithValue("@cd4", nUserId);
-                    cmd.Parameters.AddWithValue("@cd5", txtSInquiryClient);                                     
+                    cmd.Parameters.AddWithValue("@cd4", myTime);                 
+                    cmd.Parameters.AddWithValue("@cd5", nUserId);                                                       
                     affectedRows6 = (int)cmd.ExecuteScalar();
                     con.Close();
                     SaveStatus();
@@ -199,7 +193,7 @@ namespace ClientManagementSystem.UI
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string cty = "Select RTRIM(FollowUpId) from FollowUp Where FollowUp.Statuss='Pending' order by FollowUp.FollowUpId desc ";
+                string cty = "Select RTRIM(FollowUpId) from FollowUp Where FollowUp.SClientId is not NULL and  FollowUp.Statuss='Pending' order by FollowUp.FollowUpId desc";
                 cmd = new SqlCommand(cty);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -220,48 +214,115 @@ namespace ClientManagementSystem.UI
             //GetData();
             nUserId = LoginForm.uId.ToString();
         }
-
-        private void cmbSFollowUpId_SelectedIndexChanged(object sender, EventArgs e)
+        private void GetClientDetails()
         {
             try
             {
-                clientGateway = new ClientGateway();
-                decimal followUpId = Convert.ToInt64(cmbSFollowUpId.Text);
-                sAction = clientGateway.SearchSFollowUp(followUpId);
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string qry = "SELECT SalesClient.ClientName,ContactPersonDetails.ContactPersonName,ContactPersonDetails.CellNumber FROM  SalesClient INNER JOIN  ContactPersonDetails ON SalesClient.SClientId = ContactPersonDetails.SClientId  where SalesClient.SClientId='" + txtSClientId.Text + "'";
+                cmd = new SqlCommand(qry, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    
 
-                txtSClientId.Text = Convert.ToString(sAction.SClientId);
-                txtHaveToDo.Text = sAction.SAction;
-                txtSReferredBy.Text = sAction.SSubmittedBy;
-
+                }
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
             }
-
-
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void txtSClientId_TextChanged(object sender, EventArgs e)
+        private void GetFollowUpDetails()
         {
             try
             {
-                clientGateway = new ClientGateway();
-                decimal sdClientId = Convert.ToInt64(txtSClientId.Text);
-                sClient = clientGateway.SearchSalesClients(sdClientId);
+                con=new SqlConnection(cs.DBConn);
+                con.Open();
+                string qry ="SELECT SalesClient.SClientId,SalesClient.ClientName,ContactPersonDetails.ContactPersonName,ContactPersonDetails.CellNumber,FollowUp.Actions,FollowUp.DeadLineDateTime, Registration.Name FROM SalesClient  INNER JOIN  ContactPersonDetails ON SalesClient.SClientId = ContactPersonDetails.SClientId  INNER JOIN  FollowUp ON SalesClient.SClientId = FollowUp.SClientId  INNER JOIN  Registration ON SalesClient.UserId = Registration.UserId Where FollowUp.SBUserId=Registration.UserId and  FollowUp.FollowUpId='"+cmbSFollowUpId.Text+"' ";                
+                cmd=new SqlCommand(qry,con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    txtSClientId.Text = Convert.ToString((rdr.GetInt32(0)));
+                    txtSClientName.Text = (rdr.GetString(1).Trim());
+                    txtSCPName.Text = (rdr.GetString(2).Trim());
+                    txtSCContactNo.Text = (rdr.GetString(3).Trim());
+                    txtHaveToDo.Text = (rdr.GetString(4));
+                    txtDeadlineTime.Text = Convert.ToString((rdr.GetDateTime(5)));
+                    txtSReferredBy.Text = (rdr.GetString(6));
 
-                txtSClientId.Text = Convert.ToString(sClient.IClientId);
-                txtSClientName.Text = sClient.SClientName;
-                txtSCPName.Text = sClient.SContactPersonName;
-                txtSCContactNo.Text = sClient.SCellNumber;
-
+                }
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
             }
-
-
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
             }
+        }
+        private void cmbSFollowUpId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            GetFollowUpDetails();
+
+            //try
+            //{
+            //    clientGateway = new ClientGateway();
+            //    decimal followUpId = Convert.ToInt64(cmbSFollowUpId.Text);
+            //    sAction = clientGateway.SearchSFollowUp(followUpId);
+
+            //    txtSClientId.Text = Convert.ToString(sAction.SClientId);
+            //    txtHaveToDo.Text = sAction.SAction;
+            //    txtSReferredBy.Text = sAction.SSubmittedBy;
+
+            //}
+
+
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+        }
+
+        private void txtSClientId_TextChanged(object sender, EventArgs e)
+        {
+
+           // GetClientDetails();
+
+            //try
+            //{
+            //    clientGateway = new ClientGateway();
+            //    decimal sdClientId = Convert.ToInt64(txtSClientId.Text);
+            //    sClient = clientGateway.SearchSalesClients(sdClientId);
+
+            //    txtSClientId.Text = Convert.ToString(sClient.IClientId);
+            //    txtSClientName.Text = sClient.SClientName;
+            //    txtSCPName.Text = sClient.SContactPersonName;
+            //    txtSCContactNo.Text = sClient.SCellNumber;
+
+            //}
+
+
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void txtSCContactNo_TextChanged(object sender, EventArgs e)

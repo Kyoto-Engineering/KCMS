@@ -222,7 +222,7 @@ namespace ClientManagementSystem.Gateway
       {
           connection.Open();
           //
-          string selectQuery = string.Format("Select SalesClient.SClientId,SalesClient.ClientName,SalesClient.ContactPersonName,SalesClient.CellNumber from SalesClient Where SClientId='{0}'", sdClientId);
+          string selectQuery = string.Format("SELECT SalesClient.SClientId,SalesClient.ClientName,ContactPersonDetails.ContactPersonName,ContactPersonDetails.CellNumber FROM  SalesClient INNER JOIN  ContactPersonDetails ON SalesClient.SClientId = ContactPersonDetails.SClientId  where SalesClient.SClientId='{0}'", sdClientId);
           SqlCommand cmd = new SqlCommand(selectQuery, connection);
           SqlDataReader daraReader = cmd.ExecuteReader();
           SalesClient sClientId = new SalesClient();
@@ -245,7 +245,7 @@ namespace ClientManagementSystem.Gateway
       {
           connection.Open();
 
-          string selectQuery = string.Format("Select SFollowUpId,Actions,DeadLineDateTime,SubmittedBy from SFollowUp Where SFollowUpId='{0}'", sFollowUpId);
+          string selectQuery = string.Format("Select RTRIM(FollowUp.SClientId),RTRIM(FollowUp.Actions),RTRIM(FollowUp.DeadLineDateTime),RTRIM(Registration.Name)  from FollowUp,Registration Where FollowUp.SBUserId=Registration.UserId and  FollowUp.FollowUpId='{0}'", sFollowUpId);
           SqlCommand cmd = new SqlCommand(selectQuery, connection);
           SqlDataReader daraReader = cmd.ExecuteReader();
           SalesFollowUp sflopId = new SalesFollowUp();

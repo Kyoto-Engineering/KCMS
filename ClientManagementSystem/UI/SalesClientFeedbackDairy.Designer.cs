@@ -162,9 +162,9 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5});
-            this.dataGridView2.Location = new System.Drawing.Point(14, 74);
+            this.dataGridView2.Location = new System.Drawing.Point(9, 74);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(512, 239);
+            this.dataGridView2.Size = new System.Drawing.Size(541, 239);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseClick);
             // 
@@ -327,6 +327,7 @@
             this.txtResposible2SPerson.ReadOnly = true;
             this.txtResposible2SPerson.Size = new System.Drawing.Size(246, 29);
             this.txtResposible2SPerson.TabIndex = 10;
+            this.txtResposible2SPerson.TextChanged += new System.EventHandler(this.txtResposible2SPerson_TextChanged);
             // 
             // label8
             // 
@@ -401,6 +402,7 @@
             this.txt2SClientId.Name = "txt2SClientId";
             this.txt2SClientId.Size = new System.Drawing.Size(144, 26);
             this.txt2SClientId.TabIndex = 32;
+            this.txt2SClientId.TextChanged += new System.EventHandler(this.txt2SClientId_TextChanged);
             // 
             // txt2SClientName
             // 
@@ -474,7 +476,7 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtClientName;
+        public  System.Windows.Forms.TextBox txtClientName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -483,8 +485,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.Label labelh;
-        private System.Windows.Forms.RichTextBox action2SMultiTextBox;
-        private System.Windows.Forms.RichTextBox feedback2STextBox;
+        public  System.Windows.Forms.RichTextBox action2SMultiTextBox;
+        public  System.Windows.Forms.RichTextBox feedback2STextBox;
         private System.Windows.Forms.Label label11;
         public  System.Windows.Forms.RichTextBox txtClientInquiry;
         public  System.Windows.Forms.TextBox txt2SClientId;

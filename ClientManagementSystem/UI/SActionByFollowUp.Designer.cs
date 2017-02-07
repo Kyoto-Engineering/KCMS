@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtSInquiryClient = new System.Windows.Forms.RichTextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.txtDeadlineTime = new System.Windows.Forms.TextBox();
             this.txtHaveDone = new System.Windows.Forms.RichTextBox();
             this.txtHaveToDo = new System.Windows.Forms.RichTextBox();
@@ -50,8 +52,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cmbSFollowUpId = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtSInquiryClient = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,6 +85,24 @@
             this.groupBox1.Size = new System.Drawing.Size(909, 473);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // txtSInquiryClient
+            // 
+            this.txtSInquiryClient.Location = new System.Drawing.Point(296, 142);
+            this.txtSInquiryClient.Name = "txtSInquiryClient";
+            this.txtSInquiryClient.Size = new System.Drawing.Size(264, 176);
+            this.txtSInquiryClient.TabIndex = 50;
+            this.txtSInquiryClient.Text = "";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(297, 116);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(118, 22);
+            this.label11.TabIndex = 49;
+            this.label11.Text = "ClientInquiry";
             // 
             // txtDeadlineTime
             // 
@@ -294,24 +312,6 @@
             this.label2.TabIndex = 26;
             this.label2.Text = "FollowUp  Id";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(297, 116);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(118, 22);
-            this.label11.TabIndex = 49;
-            this.label11.Text = "ClientInquiry";
-            // 
-            // txtSInquiryClient
-            // 
-            this.txtSInquiryClient.Location = new System.Drawing.Point(296, 142);
-            this.txtSInquiryClient.Name = "txtSInquiryClient";
-            this.txtSInquiryClient.Size = new System.Drawing.Size(264, 176);
-            this.txtSInquiryClient.TabIndex = 50;
-            this.txtSInquiryClient.Text = "";
-            // 
             // SActionByFollowUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,6 +322,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SActionByFollowUp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SActionByFollowUp";
             this.Load += new System.EventHandler(this.SActionByFollowUp_Load);
             this.groupBox1.ResumeLayout(false);

@@ -38,7 +38,8 @@ namespace ClientManagementSystem.UI
 
         private void Reset()
         {
-            
+            cmbFollowUpId.SelectedIndex = -1;
+            clientIdTextBox.Clear();
             youHaveToDoTextBox.Clear();
             whDoneTextBox.Clear();
             cPNameTextBox.Clear();
@@ -52,11 +53,9 @@ namespace ClientManagementSystem.UI
         {
             try
             {
-                
-                
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string cty = "Select RTRIM(FollowUpId) from FollowUp Where FollowUp.Statuss='Pending' order by FollowUp.FollowUpId desc ";
+                string cty = "Select RTRIM(FollowUpId) from FollowUp Where FollowUp.IClientId is not NULL and  FollowUp.Statuss='Pending' order by FollowUp.FollowUpId desc";
                 cmd = new SqlCommand(cty);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -70,27 +69,65 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }       
-        private void followUpIdCombo_SelectedIndexChanged(object sender, EventArgs e)
+        }
+        private void GetFollowUpDetails()
         {
-            try { 
-            clientGateway = new ClientGateway();
-            decimal followUpId = Convert.ToInt64(cmbFollowUpId.Text);
-            iaction = clientGateway.SearchFollowUp(followUpId);
-            
-                clientIdTextBox.Text = Convert.ToString(iaction.IClientId);
-                youHaveToDoTextBox.Text = iaction.IAction;
-                txtDeadlineTime.Text = Convert.ToString(iaction.IDeadFLine);
-                txtReferredBy.Text = iaction.ISubmittedBy;
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string qry = "SELECT InquieryClient.IClientId,InquieryClient.ClientName,ContactPersonDetails.ContactPersonName,ContactPersonDetails.CellNumber,FollowUp.Actions,FollowUp.DeadLineDateTime, Registration.Name FROM InquieryClient  INNER JOIN  ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId  INNER JOIN  FollowUp ON InquieryClient.IClientId = FollowUp.IClientId  INNER JOIN  Registration ON InquieryClient.UserId = Registration.UserId Where FollowUp.SBUserId=Registration.UserId and  FollowUp.FollowUpId='" + cmbFollowUpId.Text + "' ";
+                cmd = new SqlCommand(qry, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    clientIdTextBox.Text = Convert.ToString((rdr.GetInt32(0)));
+                    clientNameTextBox.Text = (rdr.GetString(1).Trim());
+                    cPNameTextBox.Text = (rdr.GetString(2).Trim());
+                    cellNoTextBox.Text = (rdr.GetString(3).Trim());
+                    youHaveToDoTextBox.Text = (rdr.GetString(4));
+                    txtDeadlineTime.Text = Convert.ToString((rdr.GetDateTime(5)));
+                    txtReferredBy.Text = (rdr.GetString(6));
 
-               }
-            
-            
+                }
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+        }
+        private void followUpIdCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            GetFollowUpDetails();
+
+
+            //try { 
+            //clientGateway = new ClientGateway();
+            //decimal followUpId = Convert.ToInt64(cmbFollowUpId.Text);
+            //iaction = clientGateway.SearchFollowUp(followUpId);
+
+            //    clientIdTextBox.Text = Convert.ToString(iaction.IClientId);
+            //    youHaveToDoTextBox.Text = iaction.IAction;
+            //    txtDeadlineTime.Text = Convert.ToString(iaction.IDeadFLine);
+            //    txtReferredBy.Text = iaction.ISubmittedBy;
+
+            //   }
+
+
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+
         }
         public void SaveStatus()
         {
@@ -260,24 +297,24 @@ namespace ClientManagementSystem.UI
 
         private void clientIdTextBox_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                clientGateway = new ClientGateway();
-                decimal clientId = Convert.ToInt64(clientIdTextBox.Text);
-                clients = clientGateway.SearchClients(clientId);
+            //try
+            //{
+            //    clientGateway = new ClientGateway();
+            //    decimal clientId = Convert.ToInt64(clientIdTextBox.Text);
+            //    clients = clientGateway.SearchClients(clientId);
 
-                clientIdTextBox.Text = Convert.ToString(clients.IClientId);
-                clientNameTextBox.Text = clients.ClientName;
-                //cPNameTextBox.Text = clients.ContactPersonName;
-                //cellNoTextBox.Text = clients.CellNumber;
+            //    clientIdTextBox.Text = Convert.ToString(clients.IClientId);
+            //    clientNameTextBox.Text = clients.ClientName;
+            //    //cPNameTextBox.Text = clients.ContactPersonName;
+            //    //cellNoTextBox.Text = clients.CellNumber;
 
-            }
+            //}
 
 
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
            
         }
 

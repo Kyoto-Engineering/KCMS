@@ -153,7 +153,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(555, 216);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             // 
             // Column1
@@ -369,6 +369,7 @@
             // 
             // txtSClientInquiry
             // 
+            this.txtSClientInquiry.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSClientInquiry.Location = new System.Drawing.Point(24, 97);
             this.txtSClientInquiry.Name = "txtSClientInquiry";
             this.txtSClientInquiry.Size = new System.Drawing.Size(276, 151);
@@ -388,6 +389,7 @@
             // 
             // feedbackSTextBox
             // 
+            this.feedbackSTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.feedbackSTextBox.Location = new System.Drawing.Point(330, 93);
             this.feedbackSTextBox.Name = "feedbackSTextBox";
             this.feedbackSTextBox.Size = new System.Drawing.Size(254, 155);
@@ -496,6 +498,7 @@
             // 
             // actionSMultiTextBox
             // 
+            this.actionSMultiTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.actionSMultiTextBox.Location = new System.Drawing.Point(14, 51);
             this.actionSMultiTextBox.Name = "actionSMultiTextBox";
             this.actionSMultiTextBox.Size = new System.Drawing.Size(544, 119);

@@ -1226,7 +1226,7 @@ namespace ClientManagementSystem.UI
                 cmd = new SqlCommand(ctk);
                 cmd.Connection = con;
                 cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "District"));
-                cmd.Parameters["@find"].Value = tDistComboBox.Text;
+                cmd.Parameters["@find"].Value = bDistrictCombo.Text;
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
@@ -1978,7 +1978,7 @@ namespace ClientManagementSystem.UI
             if (string.IsNullOrWhiteSpace(contactPersonNameAPTextBox.Text))
             {
                 MessageBox.Show("Please  enter Contact Person Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                contactPersonNameAPTextBox.Focus();
             }
         }
 
@@ -1987,7 +1987,7 @@ namespace ClientManagementSystem.UI
             if (string.IsNullOrWhiteSpace(bankNameTextBox.Text))
             {
                 MessageBox.Show("Please  enter  Bank Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                bankNameTextBox.Focus();
             }
         }
 
@@ -1996,7 +1996,7 @@ namespace ClientManagementSystem.UI
             if (string.IsNullOrWhiteSpace(bankNameTextBox.Text))
             {
                 MessageBox.Show("Please  enter  Bank Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                bankNameTextBox.Focus();
             }
         }
 
@@ -2005,7 +2005,7 @@ namespace ClientManagementSystem.UI
             if (string.IsNullOrWhiteSpace(contactPersonNameAPTextBox.Text))
             {
                 MessageBox.Show("Please  enter  Contact Person Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                contactPersonNameAPTextBox.Focus();
             }
         }
         private void ClearContactPersonDetails()
@@ -2033,29 +2033,7 @@ namespace ClientManagementSystem.UI
 
         private void cmbClientType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-
-                con.Open();
-                cmd = con.CreateCommand();
-
-                cmd.CommandText = "SELECT ClientTypeId from ClientTypes WHERE ClientType = '" + cmbClientType.Text + "'";
-                rdr = cmd.ExecuteReader();
-
-                if (rdr.Read())
-                {
-                    clientTypeId = (rdr.GetString(0));
-                }
-                con.Close();
-
-
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           
         }
 
         private void cmbNatureOfClient_SelectedIndexChanged(object sender, EventArgs e)
