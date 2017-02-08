@@ -27,7 +27,7 @@ namespace ClientManagementSystem.UI
         ConnectionString cs=new ConnectionString();
         public int affectedRowsI,affectedRows1,affectedRows2,affectedRows3, currentClientId, clientTypeId, natureOfClientId, industryCategoryId,addTypeId1,addTypeId2,addTypeId3;
         public string fullName3, submittedBy3, districtIdC, districtIdT, districtIdB, divisionIdC, divisionIdT, divisionIdB, thanaIdC, thanaIdT, thanaIdB, iClientId, postOfficeIdC, postOfficeIdB, postOfficeIdT;
-        public int superviserId;
+        public int superviserId, bankEmailId, bankCPEmailId;
         public InstantClientEntryForm()
         {
             InitializeComponent();
@@ -60,7 +60,7 @@ namespace ClientManagementSystem.UI
         {
             con = new SqlConnection(cs.DBConn);
             con.Open();
-            string apquery = "insert into SalesClient(IClientId,ClientName,ClientTypeId,NatureOfClientId,EmailAddress,IndustryCategoryId,EndUser,UserId,Dates,SuperviserId) values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+            string apquery = "insert into SalesClient(IClientId,ClientName,ClientTypeId,NatureOfClientId,EmailBankId,IndustryCategoryId,EndUser,UserId,Dates,SuperviserId) values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
             cmd = new SqlCommand(apquery, con);
             con = new SqlConnection(cs.DBConn);
             cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(iClientId) ? (object)DBNull.Value : iClientId));
@@ -68,7 +68,8 @@ namespace ClientManagementSystem.UI
             cmd.Parameters.AddWithValue("@d2", clientNameInsTextBox.Text);
             cmd.Parameters.AddWithValue("@d3", clientTypeId);
             cmd.Parameters.AddWithValue("@d4", natureOfClientId);
-            cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(emailAddressInsTextBox.Text) ? (object)DBNull.Value : emailAddressInsTextBox.Text));
+            cmd.Parameters.AddWithValue("@d4", bankEmailId);
+           // cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(emailAddressInsTextBox.Text) ? (object)DBNull.Value : emailAddressInsTextBox.Text));
             cmd.Parameters.AddWithValue("@d6", industryCategoryId);
             cmd.Parameters.AddWithValue("@d7", endUserInsTextBox.Text);
             cmd.Parameters.AddWithValue("@d8", submittedBy3);
@@ -245,13 +246,14 @@ namespace ClientManagementSystem.UI
         {
             con = new SqlConnection(cs.DBConn);
             con.Open();
-            string qury = "insert into ContactPersonDetails(ContactPersonName,Designation,CellNumber,EmailId,IClientId) Values(@d1,@d2,@d3,@d4,@d5)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+            string qury = "insert into ContactPersonDetails(ContactPersonName,Designation,CellNumber,EmailBankId,IClientId) Values(@d1,@d2,@d3,@d4,@d5)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
             cmd = new SqlCommand(qury);
             cmd.Connection = con;
             cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(contactPersonNameInsTextBox.Text) ? (object)DBNull.Value : contactPersonNameInsTextBox.Text));
             cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(designationInsTextBox.Text) ? (object)DBNull.Value : designationInsTextBox.Text));
             cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(cellNumberInsTextBox.Text) ? (object)DBNull.Value : cellNumberInsTextBox.Text));
-            cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(emailAddressInsTextBox.Text) ? (object)DBNull.Value : emailAddressInsTextBox.Text));
+            //cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(emailAddressInsTextBox.Text) ? (object)DBNull.Value : emailAddressInsTextBox.Text));
+            cmd.Parameters.AddWithValue("@d4", bankCPEmailId);
             cmd.Parameters.AddWithValue("@d5", currentClientId);
             affectedRows3 = (int)cmd.ExecuteScalar();
             con.Close();
@@ -509,7 +511,7 @@ namespace ClientManagementSystem.UI
             clientNameInsTextBox.Clear();
             cmbClientType.SelectedIndex = -1;
             cmbNatureOfClient.SelectedIndex = -1;
-            emailAddressInsTextBox.Clear();
+            cmbEmailAddress.SelectedIndex = -1;
             cmbIndustryCategory.SelectedIndex = -1;
             endUserInsTextBox.Clear();
 
@@ -552,7 +554,7 @@ namespace ClientManagementSystem.UI
             contactPersonNameInsTextBox.Clear();
             designationInsTextBox.Clear();
             cellNumberInsTextBox.Clear();
-            txtCPEmailAddress.Clear();
+            cmbCPEmailAddress.SelectedIndex = -1;
  
             ResetBillingAddress();
                        
@@ -867,6 +869,9 @@ namespace ClientManagementSystem.UI
         {
              submittedBy3=LoginForm.uId.ToString();
             FillCMBSuperviserName();
+            EmailAddress();       
+            EmailCPAddress();
+
             FillClientType();
             FillNatureOfClient();
             FillIndustryCategory();
@@ -914,22 +919,22 @@ namespace ClientManagementSystem.UI
 
         private void emailAddressInsTextBox_Validating(object sender, CancelEventArgs e)
         {
-            if (!string.IsNullOrEmpty(emailAddressInsTextBox.Text))
-            {
-                string emailId = emailAddressInsTextBox.Text.Trim();
-                Regex mRegxExpression;
+            //if (!string.IsNullOrEmpty(emailAddressInsTextBox.Text))
+            //{
+            //    string emailId = emailAddressInsTextBox.Text.Trim();
+            //    Regex mRegxExpression;
 
-                mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+            //    mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
 
-                if (!mRegxExpression.IsMatch(emailId))
-                {
+            //    if (!mRegxExpression.IsMatch(emailId))
+            //    {
 
-                    MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    emailAddressInsTextBox.Clear();
-                    emailAddressInsTextBox.Focus();
+            //        MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        emailAddressInsTextBox.Clear();
+            //        emailAddressInsTextBox.Focus();
 
-                }
-            }
+            //    }
+            //}
         }
 
         private void cDistrictCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1943,22 +1948,22 @@ namespace ClientManagementSystem.UI
 
         private void txtCPEmailAddress_Validating(object sender, CancelEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtCPEmailAddress.Text))
-            {
-                string emailId2 = txtCPEmailAddress.Text.Trim();
-                Regex mRegxExpression;
+            //if (!string.IsNullOrEmpty(txtCPEmailAddress.Text))
+            //{
+            //    string emailId2 = txtCPEmailAddress.Text.Trim();
+            //    Regex mRegxExpression;
 
-                mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+            //    mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
 
-                if (!mRegxExpression.IsMatch(emailId2))
-                {
+            //    if (!mRegxExpression.IsMatch(emailId2))
+            //    {
 
-                    MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtCPEmailAddress.Clear();
+            //        MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        txtCPEmailAddress.Clear();
                     
 
-                }
-            }
+            //    }
+            //}
            
         }
 
@@ -2013,9 +2018,205 @@ namespace ClientManagementSystem.UI
         {
             if (string.IsNullOrEmpty(contactPersonNameInsTextBox.Text))
             {
-                 txtCPEmailAddress.Clear();
+                cmbCPEmailAddress.SelectedIndex = -1;
                  designationInsTextBox.Clear();
                  cellNumberInsTextBox.Clear();
+            }
+        }
+        private void EmailAddress()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctt = "select Email from EmailBank";
+                cmd = new SqlCommand(ctt);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    cmbEmailAddress.Items.Add(rdr.GetValue(0).ToString());
+                }
+                cmbEmailAddress.Items.Add("Not In The List");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void cmbEmailAddress_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEmailAddress.Text == "Not In The List")
+            {
+                string input = Microsoft.VisualBasic.Interaction.InputBox("Please Input Mode Of Conduct  Here", "Input Here", "", -1, -1);
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    cmbEmailAddress.SelectedIndex = -1;
+                }
+                else
+                {
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    string ct2 = "select Email from EmailBank where Email='" + input + "'";
+                    cmd = new SqlCommand(ct2, con);
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read() && !rdr.IsDBNull(0))
+                    {
+                        MessageBox.Show("This Email  Already Exists,Please Select From List", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        con.Close();
+                        cmbEmailAddress.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            con = new SqlConnection(cs.DBConn);
+                            con.Open();
+                            string query1 = "insert into EmailBank (Email, UserId,DateAndTime) values (@d1,@d2,@d3)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                            cmd = new SqlCommand(query1, con);
+                            cmd.Parameters.AddWithValue("@d1", input);
+                            cmd.Parameters.AddWithValue("@d2", submittedBy3);
+                            cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
+                            cmd.ExecuteNonQuery();
+
+                            con.Close();
+                            cmbEmailAddress.Items.Clear();
+                            EmailAddress();
+                            cmbEmailAddress.SelectedText = input;
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    cmd = con.CreateCommand();
+                    cmd.CommandText = "SELECT EmailBankId from EmailBank WHERE Email= '" + cmbEmailAddress.Text + "'";
+
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read())
+                    {
+                        bankEmailId = rdr.GetInt32(0);
+                    }
+                    if ((rdr != null))
+                    {
+                        rdr.Close();
+                    }
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void EmailCPAddress()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctt = "select Email from EmailBank";
+                cmd = new SqlCommand(ctt);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    cmbCPEmailAddress.Items.Add(rdr.GetValue(0).ToString());
+                }
+                cmbCPEmailAddress.Items.Add("Not In The List");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void cmbCPEmailAddress_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCPEmailAddress.Text == "Not In The List")
+            {
+                string input = Microsoft.VisualBasic.Interaction.InputBox("Please Input Mode Of Conduct  Here", "Input Here", "", -1, -1);
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    cmbCPEmailAddress.SelectedIndex = -1;
+                }
+                else
+                {
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    string ct2 = "select Email from EmailBank where Email='" + input + "'";
+                    cmd = new SqlCommand(ct2, con);
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read() && !rdr.IsDBNull(0))
+                    {
+                        MessageBox.Show("This Email  Already Exists,Please Select From List", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        con.Close();
+                        cmbCPEmailAddress.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            con = new SqlConnection(cs.DBConn);
+                            con.Open();
+                            string query1 = "insert into EmailBank (Email, UserId,DateAndTime) values (@d1,@d2,@d3)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                            cmd = new SqlCommand(query1, con);
+                            cmd.Parameters.AddWithValue("@d1", input);
+                            cmd.Parameters.AddWithValue("@d2", submittedBy3);
+                            cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
+                            cmd.ExecuteNonQuery();
+
+                            con.Close();
+                            cmbCPEmailAddress.Items.Clear();
+                            EmailAddress();
+                            cmbCPEmailAddress.SelectedText = input;
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    cmd = con.CreateCommand();
+                    cmd.CommandText = "SELECT EmailBankId from EmailBank WHERE Email= '" + cmbCPEmailAddress.Text + "'";
+
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read())
+                    {
+                        bankCPEmailId = rdr.GetInt32(0);
+                    }
+                    if ((rdr != null))
+                    {
+                        rdr.Close();
+                    }
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         }

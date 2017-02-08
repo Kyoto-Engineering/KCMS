@@ -27,16 +27,13 @@ namespace ClientManagementSystem.UI
         private  SqlDataReader rdr;
      
         public string userId,rpUserId;
+        public int modeOfConductId;
         
         public InqueiryClientFeedbackDairy()
         {
             InitializeComponent();
         }
-        private void Reset1()
-        {
-          
-            feedback2TextBox.Text = "";
-        }
+       
         private void Reset2()
         {
             txt2ClientId.Clear();
@@ -45,6 +42,7 @@ namespace ClientManagementSystem.UI
             action2MultiTextBox.Clear();
             txtResposible2Person.Clear();
             txtClentInquiry.Clear();
+            txtModeOfConduct.Clear();
 
         }
         private void submitButton_Click(object sender, EventArgs e)
@@ -68,13 +66,14 @@ namespace ClientManagementSystem.UI
                
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string insertQuery = "insert into IClientFeedbackDairy(IClientId,DateTimes,Feedback,UserId) Values(@d1,@d2,@d3,@d4)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                string insertQuery = "insert into IClientFeedbackDairy(IClientId,DateTimes,Feedback,ModeOfConductId,UserId) Values(@d1,@d2,@d3,@d4,@d5)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                 cmd = new SqlCommand(insertQuery);
                 cmd.Connection = con;
                 cmd.Parameters.AddWithValue("@d1",txt2ClientId.Text);
                 cmd.Parameters.AddWithValue("@d2", Convert.ToDateTime(feedback2DateTime.Text, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat));
                 cmd.Parameters.AddWithValue("@d3", feedback2TextBox.Text);
-                cmd.Parameters.AddWithValue("@d4", userId);
+                cmd.Parameters.AddWithValue("@d4", modeOfConductId);
+                cmd.Parameters.AddWithValue("@d5", userId);
                 currentClientId = (int)cmd.ExecuteScalar();
                 con.Close();
 
@@ -95,10 +94,7 @@ namespace ClientManagementSystem.UI
                 cmd.Parameters.AddWithValue("@d8", "Pending");
                 affectedRows2 = (int)cmd.ExecuteScalar();
                 con.Close();
-                MessageBox.Show("FeedBack Submitted Successfully.", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);                
-                //Report2();
-                //Report();
-                Reset1();
+                MessageBox.Show("FeedBack Submitted Successfully.", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);                               
                 Reset2();
 
             }
@@ -178,6 +174,7 @@ namespace ClientManagementSystem.UI
             feedback2TextBox.Enabled = false;
             action2MultiTextBox.Enabled = false;
             txtResposible2Person.Enabled = false;
+            txtModeOfConduct.Enabled = false;
         }
       
         private void Report2()
@@ -360,7 +357,7 @@ namespace ClientManagementSystem.UI
             feedback2TextBox.Enabled = true;
             action2MultiTextBox.Enabled = true;
             txtResposible2Person.Enabled = true;
-
+            txtModeOfConduct.Enabled = false;
 
         }
 
@@ -380,6 +377,34 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void txtModeOfConduct_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = con.CreateCommand();
+                cmd.CommandText = "SELECT ModeOfConductId from ModeOfConducts WHERE ModesOfConduct= '" + txtModeOfConduct.Text + "'";
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    modeOfConductId = rdr.GetInt32(0);
+                }
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
       

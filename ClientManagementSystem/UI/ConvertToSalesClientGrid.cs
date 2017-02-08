@@ -37,14 +37,14 @@ namespace ClientManagementSystem.UI
                 frm.clientNameAPTextBox.Text = dr.Cells[2].Value.ToString();
                 frm.cmbClientType.Text = dr.Cells[3].Value.ToString();
                 frm.cmbNatureOfClient.Text = dr.Cells[4].Value.ToString();
-                frm.emailAddressAPTextBox.Text = dr.Cells[5].Value.ToString();
+                frm.cmbEmailAddress.Text = dr.Cells[5].Value.ToString();
                 frm.cmbIndustryCategory.Text = dr.Cells[6].Value.ToString();
                 frm.endUserAPTextBox.Text = dr.Cells[7].Value.ToString();
 
                 frm.contactPersonNameAPTextBox.Text = dr.Cells[8].Value.ToString();
                 frm.designationAPTextBox.Text = dr.Cells[9].Value.ToString();
                 frm.cellNumberAPTextBox.Text = dr.Cells[10].Value.ToString();
-                frm.txtCPEmailAddress.Text = dr.Cells[11].Value.ToString();
+                frm.cmbCPEmailAddress.Text = dr.Cells[11].Value.ToString();
 
 
                 frm.cFlatNoTextBox.Text = dr.Cells[12].Value.ToString();

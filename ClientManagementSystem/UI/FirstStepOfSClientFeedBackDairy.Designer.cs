@@ -71,6 +71,8 @@
             this.submitButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.actionSMultiTextBox = new System.Windows.Forms.RichTextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cmbModeOfConduct = new System.Windows.Forms.ComboBox();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -198,7 +200,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(261, 23);
+            this.label6.Location = new System.Drawing.Point(261, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(112, 22);
             this.label6.TabIndex = 15;
@@ -210,9 +212,9 @@
             this.feedbackSDeadlineDateTime.CustomFormat = "dd/MM/yyyy HH:mm:ss";
             this.feedbackSDeadlineDateTime.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.feedbackSDeadlineDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.feedbackSDeadlineDateTime.Location = new System.Drawing.Point(318, 254);
+            this.feedbackSDeadlineDateTime.Location = new System.Drawing.Point(249, 266);
             this.feedbackSDeadlineDateTime.Name = "feedbackSDeadlineDateTime";
-            this.feedbackSDeadlineDateTime.Size = new System.Drawing.Size(264, 29);
+            this.feedbackSDeadlineDateTime.Size = new System.Drawing.Size(335, 29);
             this.feedbackSDeadlineDateTime.TabIndex = 3;
             // 
             // label3
@@ -220,7 +222,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(330, 68);
+            this.label3.Location = new System.Drawing.Point(328, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 22);
             this.label3.TabIndex = 4;
@@ -231,7 +233,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(5, 22);
+            this.label2.Location = new System.Drawing.Point(5, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 22);
             this.label2.TabIndex = 2;
@@ -242,7 +244,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(20, 259);
+            this.label1.Location = new System.Drawing.Point(19, 269);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(216, 22);
             this.label1.TabIndex = 0;
@@ -347,6 +349,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.cmbModeOfConduct);
             this.groupBox1.Controls.Add(this.txtSClientInquiry);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.feedbackSTextBox);
@@ -370,9 +374,9 @@
             // txtSClientInquiry
             // 
             this.txtSClientInquiry.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSClientInquiry.Location = new System.Drawing.Point(24, 97);
+            this.txtSClientInquiry.Location = new System.Drawing.Point(15, 77);
             this.txtSClientInquiry.Name = "txtSClientInquiry";
-            this.txtSClientInquiry.Size = new System.Drawing.Size(276, 151);
+            this.txtSClientInquiry.Size = new System.Drawing.Size(290, 139);
             this.txtSClientInquiry.TabIndex = 24;
             this.txtSClientInquiry.Text = "";
             // 
@@ -381,7 +385,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(21, 67);
+            this.label11.Location = new System.Drawing.Point(15, 47);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(131, 24);
             this.label11.TabIndex = 23;
@@ -390,16 +394,16 @@
             // feedbackSTextBox
             // 
             this.feedbackSTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.feedbackSTextBox.Location = new System.Drawing.Point(330, 93);
+            this.feedbackSTextBox.Location = new System.Drawing.Point(332, 72);
             this.feedbackSTextBox.Name = "feedbackSTextBox";
-            this.feedbackSTextBox.Size = new System.Drawing.Size(254, 155);
+            this.feedbackSTextBox.Size = new System.Drawing.Size(252, 144);
             this.feedbackSTextBox.TabIndex = 22;
             this.feedbackSTextBox.Text = "";
             // 
             // txtSClientName
             // 
             this.txtSClientName.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSClientName.Location = new System.Drawing.Point(378, 20);
+            this.txtSClientName.Location = new System.Drawing.Point(378, 13);
             this.txtSClientName.Name = "txtSClientName";
             this.txtSClientName.ReadOnly = true;
             this.txtSClientName.Size = new System.Drawing.Size(206, 29);
@@ -408,7 +412,7 @@
             // txtSClientId
             // 
             this.txtSClientId.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSClientId.Location = new System.Drawing.Point(96, 19);
+            this.txtSClientId.Location = new System.Drawing.Point(96, 12);
             this.txtSClientId.Name = "txtSClientId";
             this.txtSClientId.ReadOnly = true;
             this.txtSClientId.Size = new System.Drawing.Size(157, 29);
@@ -505,6 +509,28 @@
             this.actionSMultiTextBox.TabIndex = 10;
             this.actionSMultiTextBox.Text = "";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(73, 225);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(162, 22);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "Mode Of  Conduct";
+            // 
+            // cmbModeOfConduct
+            // 
+            this.cmbModeOfConduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbModeOfConduct.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbModeOfConduct.FormattingEnabled = true;
+            this.cmbModeOfConduct.Location = new System.Drawing.Point(249, 222);
+            this.cmbModeOfConduct.Name = "cmbModeOfConduct";
+            this.cmbModeOfConduct.Size = new System.Drawing.Size(334, 30);
+            this.cmbModeOfConduct.TabIndex = 27;
+            this.cmbModeOfConduct.SelectedIndexChanged += new System.EventHandler(this.cmbModeOfConduct_SelectedIndexChanged);
+            // 
             // FirstStepOfSClientFeedBackDairy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -582,5 +608,7 @@
         private System.Windows.Forms.RichTextBox actionSMultiTextBox;
         private System.Windows.Forms.RichTextBox txtSClientInquiry;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cmbModeOfConduct;
     }
 }

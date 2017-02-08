@@ -137,5 +137,13 @@ namespace ClientManagementSystem.UI
             fg4.ShowDialog();
             this.Visible = true;
         }
+
+        private void emailBankButton_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            dynamic fg4 = new EmailBank();
+            fg4.ShowDialog();
+            this.Visible = true;
+        }
     }
 }

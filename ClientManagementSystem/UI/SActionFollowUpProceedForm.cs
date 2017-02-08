@@ -20,7 +20,7 @@ namespace ClientManagementSystem.UI
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
         public string sbName, sbDesignation, sbDepartment, userId, sClientFeedBackId;
-        public int affectedRows4,rpUserId;
+        public int affectedRows4, rpUserId, modeOfConductId;
         private SqlDataAdapter sda;
         //public static int userId;
 
@@ -29,6 +29,16 @@ namespace ClientManagementSystem.UI
             InitializeComponent();
         }
 
+
+        private void Reset()
+        {
+            txt3SClientId.Clear();
+            txt3SClientName.Clear();
+            sClientFeedBackId ="";
+            cmb3SRP.SelectedIndex = -1;
+            action3SMultiTextBox.Clear();
+
+        }
         private void submitButton_Click(object sender, EventArgs e)
         {
             if (txt3SClientId.Text == "")
@@ -45,10 +55,10 @@ namespace ClientManagementSystem.UI
                 return;
 
             }
-            if (responsible3SPerson2ComboBox.Text == "")
+            if (cmb3SRP.Text == "")
             {
                 MessageBox.Show("You must write your Action Before Submit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                responsible3SPerson2ComboBox.Focus();
+                cmb3SRP.Focus();
                 return;
 
             }
@@ -59,7 +69,7 @@ namespace ClientManagementSystem.UI
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct = "insert into FollowUp(IClientId,IClientFeedbackId,Actions,DeadLineDateTime,RPUserId,SBUserId,CurrentDate,Status) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8) " + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                string ct = "insert into FollowUp(IClientId,IClientFeedbackId,Actions,DeadLineDateTime,RPUserId,SBUserId,CurrentDate,Statuss) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8) " + "SELECT CONVERT(int, SCOPE_IDENTITY())";
 
                 cmd = new SqlCommand(ct);
                 cmd.Connection = con;
@@ -74,9 +84,9 @@ namespace ClientManagementSystem.UI
                 affectedRows4 = (int)cmd.ExecuteScalar();
                 con.Close();
                 MessageBox.Show("Saccesfully Submitted", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //Reset();
+                Reset();
                 //Report();
-                submitButton.Enabled = false;
+               
             }
             catch (FormatException formatException)
             {
@@ -95,7 +105,7 @@ namespace ClientManagementSystem.UI
                
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string cst = "Select Registration.UserId from Registration Where  Registration.Name='" + responsible3SPerson2ComboBox.Text + "'";
+                    string cst = "Select Registration.UserId from Registration Where  Registration.Name='" + cmb3SRP.Text + "'";
                     cmd = new SqlCommand(cst);
                     cmd.Connection = con;
                     rdr = cmd.ExecuteReader();
@@ -129,7 +139,7 @@ namespace ClientManagementSystem.UI
 
                 while (rdr.Read())
                 {
-                    responsible3SPerson2ComboBox.Items.Add(rdr[0]);
+                    cmb3SRP.Items.Add(rdr[0]);
                 }
                 con.Close();
 
@@ -139,48 +149,7 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        //public void PopulateClientIdCombo()
-        //{
-        //    try
-        //    {
-        //        con = new SqlConnection(cs.DBConn);
-        //        con.Open();
-        //        string cty = "select RTRIM(SalesClient.SClientId) from SalesClient order by SalesClient.SClientId  desc";
-        //        cmd = new SqlCommand(cty);
-        //        cmd.Connection = con;
-        //        rdr = cmd.ExecuteReader();
-        //        while (rdr.Read())
-        //        {
-        //           txt3SClientId .Items.Add(rdr[0]);
-        //        }
-        //        con.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-        //public void PopulateClientName()
-        //{
-        //    try
-        //    {
-        //        con = new SqlConnection(cs.DBConn);
-        //        con.Open();
-        //        string cty = "select RTRIM(SalesClient.ClientName) from SalesClient order by  SalesClient.SClientId  desc";
-        //        cmd = new SqlCommand(cty);
-        //        cmd.Connection = con;
-        //        rdr = cmd.ExecuteReader();
-        //        while (rdr.Read())
-        //        {
-        //            cmb3SClientName.Items.Add(rdr[0]);
-        //        }
-        //        con.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
+        
         private void ProductDetailsGrid()
         {
             con = new SqlConnection(cs.DBConn);
@@ -271,7 +240,8 @@ namespace ClientManagementSystem.UI
             {
                 DataGridViewRow dr = dataGridView1.CurrentRow;
                 txt3SClientId.Text = dr.Cells[0].Value.ToString();
-                txtClientName.Text = dr.Cells[1].Value.ToString();
+                sClientFeedBackId = dr.Cells[1].Value.ToString();
+                txt3SClientName.Text = dr.Cells[2].Value.ToString();
 
                 h.Text = k.Text;
             }
@@ -285,6 +255,11 @@ namespace ClientManagementSystem.UI
         private void txt3SClientId_TextChanged(object sender, EventArgs e)
         {
             SalesClientFollowUpGrid();
+        }
+
+        private void cmbModeOfConduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

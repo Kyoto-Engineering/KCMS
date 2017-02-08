@@ -272,7 +272,7 @@ namespace ClientManagementSystem.UI
                 frm.clientNameAPTextBox.Text = dr.Cells[1].Value.ToString();
                 frm.cmbClientType.Text = dr.Cells[2].Value.ToString();
                 frm.cmbNatureOfClient.Text = dr.Cells[3].Value.ToString();
-                frm.emailAddressAPTextBox.Text = dr.Cells[4].Value.ToString();
+                frm.cmbEmailAddress.Text = dr.Cells[4].Value.ToString();
                 frm.cmbIndustryCategory.Text = dr.Cells[5].Value.ToString();
                 frm.contactPersonNameAPTextBox.Text = dr.Cells[6].Value.ToString();
                 frm.designationAPTextBox.Text = dr.Cells[7].Value.ToString();

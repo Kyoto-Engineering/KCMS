@@ -47,11 +47,13 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.forUserTextBox = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.emailBankButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.emailBankButton);
             this.groupBox1.Controls.Add(this.buttonNatureOfClient);
             this.groupBox1.Controls.Add(this.buttonClientType);
             this.groupBox1.Controls.Add(this.btnIndustryCategory);
@@ -253,6 +255,17 @@
             this.textBox3.TabIndex = 19;
             this.textBox3.Visible = false;
             // 
+            // emailBankButton
+            // 
+            this.emailBankButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailBankButton.Location = new System.Drawing.Point(6, 482);
+            this.emailBankButton.Name = "emailBankButton";
+            this.emailBankButton.Size = new System.Drawing.Size(127, 58);
+            this.emailBankButton.TabIndex = 9;
+            this.emailBankButton.Text = "E-mail Bank";
+            this.emailBankButton.UseVisualStyleBackColor = true;
+            this.emailBankButton.Click += new System.EventHandler(this.emailBankButton_Click);
+            // 
             // MainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -303,5 +316,6 @@
        private System.Windows.Forms.Button btnIndustryCategory;
        private System.Windows.Forms.Button buttonNatureOfClient;
        private System.Windows.Forms.Button buttonClientType;
+       private System.Windows.Forms.Button emailBankButton;
     }
 }

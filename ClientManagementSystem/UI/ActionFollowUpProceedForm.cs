@@ -29,7 +29,8 @@ namespace ClientManagementSystem.UI
         private ClientGateway aClientGateway;
         private InqueryClient aIClient;
         public string sbUserId,iClientFeedBackId;
-        public int rpUserId;
+        public int rpUserId,  modeOfConductId;
+        public string  nUserId;
         public ActionFollowUpProceedForm()
         {
             InitializeComponent();
@@ -147,6 +148,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
+               // cmd = new SqlCommand("SELECT  InquieryClient.IClientId, InquieryClient.ClientName, FollowUp.IClientFeedbackId, FollowUp.Actions, FollowUp.DeadLineDateTime FROM  InquieryClient INNER JOIN FollowUp ON InquieryClient.IClientId = FollowUp.IClientId",con);
                 cmd = new SqlCommand("SELECT RTRIM(InquieryClient.IClientId),RTRIM(FollowUp.IClientFeedbackId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber)  from InquieryClient INNER JOIN  ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId  INNER JOIN  FollowUp ON InquieryClient.IClientId = FollowUp.IClientId order by InquieryClient.IClientId desc", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
@@ -163,6 +165,7 @@ namespace ClientManagementSystem.UI
         }
         private void ActionFollowUpProceedForm_Load(object sender, EventArgs e)
         {
+            nUserId = LoginForm.uId.ToString();
             LoadClientgGrid();
             PopulateResponsiblePerson();
             sbUserId = LoginForm.uId.ToString();
@@ -367,6 +370,11 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+       
+        private void cmbModeOfConduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

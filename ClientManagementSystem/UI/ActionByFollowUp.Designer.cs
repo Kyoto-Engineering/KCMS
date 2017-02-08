@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActionByFollowUp));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtClientInquiryOrFeedback = new System.Windows.Forms.RichTextBox();
             this.txtDeadlineTime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.whDoneTextBox = new System.Windows.Forms.RichTextBox();
@@ -51,13 +53,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.followUpDeadlineDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtClientInquiryOrFeedback = new System.Windows.Forms.RichTextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cmbModeOfConduct = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.cmbModeOfConduct);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtClientInquiryOrFeedback);
             this.groupBox2.Controls.Add(this.txtDeadlineTime);
@@ -90,18 +94,37 @@
             this.groupBox2.Text = "Follow Up";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Yellow;
+            this.label3.Location = new System.Drawing.Point(282, 113);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(258, 24);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "Client Inquiry Or  Feedback";
+            // 
+            // txtClientInquiryOrFeedback
+            // 
+            this.txtClientInquiryOrFeedback.Location = new System.Drawing.Point(282, 142);
+            this.txtClientInquiryOrFeedback.Name = "txtClientInquiryOrFeedback";
+            this.txtClientInquiryOrFeedback.Size = new System.Drawing.Size(291, 184);
+            this.txtClientInquiryOrFeedback.TabIndex = 32;
+            this.txtClientInquiryOrFeedback.Text = "";
+            // 
             // txtDeadlineTime
             // 
-            this.txtDeadlineTime.Location = new System.Drawing.Point(459, 346);
+            this.txtDeadlineTime.Location = new System.Drawing.Point(221, 376);
             this.txtDeadlineTime.Name = "txtDeadlineTime";
             this.txtDeadlineTime.ReadOnly = true;
-            this.txtDeadlineTime.Size = new System.Drawing.Size(218, 29);
+            this.txtDeadlineTime.Size = new System.Drawing.Size(251, 29);
             this.txtDeadlineTime.TabIndex = 31;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(330, 349);
+            this.label1.Location = new System.Drawing.Point(77, 384);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 21);
             this.label1.TabIndex = 30;
@@ -126,7 +149,7 @@
             // 
             // txtReferredBy
             // 
-            this.txtReferredBy.Location = new System.Drawing.Point(113, 346);
+            this.txtReferredBy.Location = new System.Drawing.Point(729, 336);
             this.txtReferredBy.Name = "txtReferredBy";
             this.txtReferredBy.ReadOnly = true;
             this.txtReferredBy.Size = new System.Drawing.Size(196, 29);
@@ -248,7 +271,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(2, 349);
+            this.label8.Location = new System.Drawing.Point(595, 343);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(110, 22);
             this.label8.TabIndex = 9;
@@ -270,11 +293,11 @@
             this.followUpDeadlineDateTimePicker.CustomFormat = "dd/MM/yyyy HH:mm:ss";
             this.followUpDeadlineDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.followUpDeadlineDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.followUpDeadlineDateTimePicker.Location = new System.Drawing.Point(221, 404);
+            this.followUpDeadlineDateTimePicker.Location = new System.Drawing.Point(221, 423);
             this.followUpDeadlineDateTimePicker.MaxDate = new System.DateTime(2060, 12, 31, 0, 0, 0, 0);
             this.followUpDeadlineDateTimePicker.MinDate = new System.DateTime(2016, 8, 25, 23, 59, 59, 0);
             this.followUpDeadlineDateTimePicker.Name = "followUpDeadlineDateTimePicker";
-            this.followUpDeadlineDateTimePicker.Size = new System.Drawing.Size(230, 29);
+            this.followUpDeadlineDateTimePicker.Size = new System.Drawing.Size(251, 29);
             this.followUpDeadlineDateTimePicker.TabIndex = 4;
             this.followUpDeadlineDateTimePicker.Value = new System.DateTime(2016, 8, 25, 23, 59, 59, 0);
             // 
@@ -282,30 +305,32 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(7, 409);
+            this.label5.Location = new System.Drawing.Point(2, 428);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(208, 22);
             this.label5.TabIndex = 2;
             this.label5.Text = "Deadline Date and Time";
             // 
-            // txtClientInquiryOrFeedback
+            // label12
             // 
-            this.txtClientInquiryOrFeedback.Location = new System.Drawing.Point(282, 142);
-            this.txtClientInquiryOrFeedback.Name = "txtClientInquiryOrFeedback";
-            this.txtClientInquiryOrFeedback.Size = new System.Drawing.Size(291, 184);
-            this.txtClientInquiryOrFeedback.TabIndex = 32;
-            this.txtClientInquiryOrFeedback.Text = "";
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(26, 343);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(162, 22);
+            this.label12.TabIndex = 35;
+            this.label12.Text = "Mode Of  Conduct";
             // 
-            // label3
+            // cmbModeOfConduct
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Yellow;
-            this.label3.Location = new System.Drawing.Point(282, 113);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(258, 24);
-            this.label3.TabIndex = 33;
-            this.label3.Text = "Client Inquiry Or  Feedback";
+            this.cmbModeOfConduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbModeOfConduct.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbModeOfConduct.FormattingEnabled = true;
+            this.cmbModeOfConduct.Location = new System.Drawing.Point(221, 340);
+            this.cmbModeOfConduct.Name = "cmbModeOfConduct";
+            this.cmbModeOfConduct.Size = new System.Drawing.Size(251, 30);
+            this.cmbModeOfConduct.TabIndex = 34;
+            this.cmbModeOfConduct.SelectedIndexChanged += new System.EventHandler(this.cmbModeOfConduct_SelectedIndexChanged);
             // 
             // ActionByFollowUp
             // 
@@ -351,5 +376,7 @@
         private System.Windows.Forms.DateTimePicker followUpDeadlineDateTimePicker;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox txtClientInquiryOrFeedback;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cmbModeOfConduct;
     }
 }

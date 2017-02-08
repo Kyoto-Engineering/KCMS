@@ -30,6 +30,7 @@ namespace ClientManagementSystem.UI
         private InquiryFollowUp iaction;
         private InqueryClient clients;
         public string submittedBy;
+        public int modeOfConductId;
 
         public ActionByFollowUp()
         {
@@ -46,7 +47,9 @@ namespace ClientManagementSystem.UI
             cellNoTextBox.Clear();                        
             txtReferredBy.Clear();
             clientNameTextBox.Clear();
-            
+            txtClientInquiryOrFeedback.Clear();
+            cmbModeOfConduct.SelectedIndex = -1;
+
         }
 
         public void PopulateFollowUpId()
@@ -172,7 +175,8 @@ namespace ClientManagementSystem.UI
    
        
         private void ActionByFollowUp_Load(object sender, EventArgs e)
-        {           
+        {
+            ModeOfConduct();
             nUserId = LoginForm.uId.ToString();           
             PopulateFollowUpId();                       
         }
@@ -202,14 +206,15 @@ namespace ClientManagementSystem.UI
             {                             
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string insertQuery = "insert into IClientFeedbackDairy(IClientId,DateTimes,Feedback,UserId,ClientInquiry) Values(@d1,@d2,@d3,@d4,@d5)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                    string insertQuery = "insert into IClientFeedbackDairy(IClientId,DateTimes,Feedback,UserId,ClientInquiry,ModeOfConductId) Values(@d1,@d2,@d3,@d4,@d5,@d6)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                     cmd = new SqlCommand(insertQuery);
                     cmd.Connection = con;
                     cmd.Parameters.AddWithValue("@d1", clientIdTextBox.Text);
                     cmd.Parameters.AddWithValue("@d2", Convert.ToDateTime(followUpDeadlineDateTimePicker.Text, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat));
                     cmd.Parameters.AddWithValue("@d3", youHaveToDoTextBox.Text);
                     cmd.Parameters.AddWithValue("@d4", nUserId);
-                    cmd.Parameters.AddWithValue("@d5", txtClientInquiryOrFeedback.Text); 
+                    cmd.Parameters.AddWithValue("@d5", txtClientInquiryOrFeedback.Text);
+                    cmd.Parameters.AddWithValue("@d6", modeOfConductId); 
                     affectedRows6 = (int) cmd.ExecuteScalar();
                     con.Close();
                     SaveStatus();
@@ -326,6 +331,104 @@ namespace ClientManagementSystem.UI
         private void statusCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+        private void ModeOfConduct()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctt = "select ModesOfConduct from ModeOfConducts";
+                cmd = new SqlCommand(ctt);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    cmbModeOfConduct.Items.Add(rdr.GetValue(0).ToString());
+                }
+                cmbModeOfConduct.Items.Add("Not In The List");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void cmbModeOfConduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbModeOfConduct.Text == "Not In The List")
+            {
+                string input = Microsoft.VisualBasic.Interaction.InputBox("Please Input Mode Of Conduct  Here", "Input Here", "", -1, -1);
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    cmbModeOfConduct.SelectedIndex = -1;
+                }
+                else
+                {
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    string ct2 = "select ModesOfConduct from ModeOfConducts where ModesOfConduct='" + input + "'";
+                    cmd = new SqlCommand(ct2, con);
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read() && !rdr.IsDBNull(0))
+                    {
+                        MessageBox.Show("This ModesOfConduct  Already Exists,Please Select From List", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        con.Close();
+                        cmbModeOfConduct.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            con = new SqlConnection(cs.DBConn);
+                            con.Open();
+                            string query1 = "insert into ModeOfConducts (ModesOfConduct, UserId,DateAndTime) values (@d1,@d2,@d3)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                            cmd = new SqlCommand(query1, con);
+                            cmd.Parameters.AddWithValue("@d1", input);
+                            cmd.Parameters.AddWithValue("@d2", nUserId);
+                            cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
+                            cmd.ExecuteNonQuery();
+
+                            con.Close();
+                            cmbModeOfConduct.Items.Clear();
+                            ModeOfConduct();
+                            cmbModeOfConduct.SelectedText = input;
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    cmd = con.CreateCommand();
+                    cmd.CommandText = "SELECT ModeOfConductId from ModeOfConducts WHERE ModesOfConduct= '" + cmbModeOfConduct.Text + "'";
+
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read())
+                    {
+                        modeOfConductId = rdr.GetInt32(0);
+                    }
+                    if ((rdr != null))
+                    {
+                        rdr.Close();
+                    }
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

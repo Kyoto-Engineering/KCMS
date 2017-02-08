@@ -107,7 +107,6 @@
             this.cmbNatureOfClient = new System.Windows.Forms.ComboBox();
             this.cmbClientType = new System.Windows.Forms.ComboBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.txtCPEmailAddress = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
             this.cellNumberAPTextBox = new System.Windows.Forms.TextBox();
             this.designationAPTextBox = new System.Windows.Forms.TextBox();
@@ -149,7 +148,6 @@
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
-            this.emailAddressAPTextBox = new System.Windows.Forms.TextBox();
             this.clientNameAPTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -157,6 +155,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
+            this.cmbEmailAddress = new System.Windows.Forms.ComboBox();
+            this.cmbCPEmailAddress = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -200,7 +200,7 @@
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1247, 627);
+            this.groupBox1.Size = new System.Drawing.Size(1247, 650);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             // 
@@ -1059,6 +1059,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbEmailAddress);
             this.groupBox2.Controls.Add(this.cmbIndustryCategory);
             this.groupBox2.Controls.Add(this.cmbNatureOfClient);
             this.groupBox2.Controls.Add(this.cmbClientType);
@@ -1071,7 +1072,6 @@
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label40);
             this.groupBox2.Controls.Add(this.groupBox6);
-            this.groupBox2.Controls.Add(this.emailAddressAPTextBox);
             this.groupBox2.Controls.Add(this.clientNameAPTextBox);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
@@ -1082,7 +1082,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.groupBox2.Location = new System.Drawing.Point(6, 11);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(590, 617);
+            this.groupBox2.Size = new System.Drawing.Size(590, 631);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Inquiery Client Parameter";
@@ -1119,7 +1119,7 @@
             // groupBox9
             // 
             this.groupBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.groupBox9.Controls.Add(this.txtCPEmailAddress);
+            this.groupBox9.Controls.Add(this.cmbCPEmailAddress);
             this.groupBox9.Controls.Add(this.label60);
             this.groupBox9.Controls.Add(this.cellNumberAPTextBox);
             this.groupBox9.Controls.Add(this.designationAPTextBox);
@@ -1127,28 +1127,18 @@
             this.groupBox9.Controls.Add(this.label11);
             this.groupBox9.Controls.Add(this.label10);
             this.groupBox9.Controls.Add(this.label9);
-            this.groupBox9.Location = new System.Drawing.Point(6, 489);
+            this.groupBox9.Location = new System.Drawing.Point(6, 485);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(578, 134);
+            this.groupBox9.Size = new System.Drawing.Size(578, 146);
             this.groupBox9.TabIndex = 71;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Contact Person Details";
-            // 
-            // txtCPEmailAddress
-            // 
-            this.txtCPEmailAddress.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCPEmailAddress.Location = new System.Drawing.Point(259, 97);
-            this.txtCPEmailAddress.Name = "txtCPEmailAddress";
-            this.txtCPEmailAddress.Size = new System.Drawing.Size(264, 25);
-            this.txtCPEmailAddress.TabIndex = 33;
-            this.txtCPEmailAddress.Enter += new System.EventHandler(this.txtCPEmailAddress_Enter);
-            this.txtCPEmailAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtCPEmailAddress_Validating);
             // 
             // label60
             // 
             this.label60.AutoSize = true;
             this.label60.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label60.Location = new System.Drawing.Point(145, 100);
+            this.label60.Location = new System.Drawing.Point(145, 105);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(100, 17);
             this.label60.TabIndex = 32;
@@ -1632,15 +1622,6 @@
             this.label39.TabIndex = 4;
             this.label39.Text = "Flat No:";
             // 
-            // emailAddressAPTextBox
-            // 
-            this.emailAddressAPTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailAddressAPTextBox.Location = new System.Drawing.Point(295, 182);
-            this.emailAddressAPTextBox.Name = "emailAddressAPTextBox";
-            this.emailAddressAPTextBox.Size = new System.Drawing.Size(267, 26);
-            this.emailAddressAPTextBox.TabIndex = 16;
-            this.emailAddressAPTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.emailAddressAPTextBox_Validating);
-            // 
             // clientNameAPTextBox
             // 
             this.clientNameAPTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1653,7 +1634,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(154, 179);
+            this.label5.Location = new System.Drawing.Point(154, 183);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(109, 19);
             this.label5.TabIndex = 4;
@@ -1712,11 +1693,33 @@
             this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
+            // cmbEmailAddress
+            // 
+            this.cmbEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEmailAddress.FormattingEnabled = true;
+            this.cmbEmailAddress.Location = new System.Drawing.Point(295, 179);
+            this.cmbEmailAddress.Name = "cmbEmailAddress";
+            this.cmbEmailAddress.Size = new System.Drawing.Size(267, 30);
+            this.cmbEmailAddress.TabIndex = 86;
+            this.cmbEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbEmailAddress_SelectedIndexChanged);
+            // 
+            // cmbCPEmailAddress
+            // 
+            this.cmbCPEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCPEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCPEmailAddress.FormattingEnabled = true;
+            this.cmbCPEmailAddress.Location = new System.Drawing.Point(259, 100);
+            this.cmbCPEmailAddress.Name = "cmbCPEmailAddress";
+            this.cmbCPEmailAddress.Size = new System.Drawing.Size(264, 30);
+            this.cmbCPEmailAddress.TabIndex = 86;
+            this.cmbCPEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbCPEmailAddress_SelectedIndexChanged);
+            // 
             // ClientApprovedFinalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1267, 679);
+            this.ClientSize = new System.Drawing.Size(1267, 694);
             this.ControlBox = false;
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.groupBox1);
@@ -1755,7 +1758,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        public System.Windows.Forms.TextBox emailAddressAPTextBox;
         public System.Windows.Forms.TextBox clientNameAPTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -1873,11 +1875,12 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        public  System.Windows.Forms.TextBox txtCPEmailAddress;
         private System.Windows.Forms.Label label60;
         public  System.Windows.Forms.ComboBox cmbIndustryCategory;
         public  System.Windows.Forms.ComboBox cmbNatureOfClient;
         public  System.Windows.Forms.ComboBox cmbClientType;
         private System.Windows.Forms.Label label61;
+        public  System.Windows.Forms.ComboBox cmbEmailAddress;
+        public  System.Windows.Forms.ComboBox cmbCPEmailAddress;
     }
 }

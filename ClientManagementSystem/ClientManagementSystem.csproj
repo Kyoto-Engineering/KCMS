@@ -82,6 +82,7 @@
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Messaging" />
@@ -277,6 +278,12 @@
     </Compile>
     <Compile Include="UI\EditFromGrid.Designer.cs">
       <DependentUpon>EditFromGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EmailBank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EmailBank.Designer.cs">
+      <DependentUpon>EmailBank.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FeedBack.cs">
       <SubType>Form</SubType>
@@ -506,6 +513,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\EditFromGrid.resx">
       <DependentUpon>EditFromGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EmailBank.resx">
+      <DependentUpon>EmailBank.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FeedBack.resx">
       <DependentUpon>FeedBack.cs</DependentUpon>
