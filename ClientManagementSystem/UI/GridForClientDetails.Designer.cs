@@ -33,8 +33,8 @@
             this.backToHomeButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.addNewButton = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView14)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,6 +79,18 @@
             this.addNewButton.UseVisualStyleBackColor = true;
             this.addNewButton.Click += new System.EventHandler(this.addNewButton_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(438, 40);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(202, 25);
+            this.textBox1.TabIndex = 25;
+            this.textBox1.Text = "List of Inquiry Client";
+            // 
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
@@ -91,18 +103,6 @@
             this.textBox4.Size = new System.Drawing.Size(368, 33);
             this.textBox4.TabIndex = 19;
             this.textBox4.Text = "Client Management System";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(438, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(202, 25);
-            this.textBox1.TabIndex = 25;
-            this.textBox1.Text = "List of Inquiry Client";
             // 
             // GridForClientDetails
             // 
@@ -136,7 +136,7 @@
        private System.Windows.Forms.Button backToHomeButton;
        private System.Windows.Forms.Label label1;
        private System.Windows.Forms.Button addNewButton;
-       private System.Windows.Forms.TextBox textBox4;
        private System.Windows.Forms.TextBox textBox1;
+       private System.Windows.Forms.TextBox textBox4;
     }
 }

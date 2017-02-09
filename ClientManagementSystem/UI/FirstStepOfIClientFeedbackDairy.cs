@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClientManagementSystem.DBGateway;
+using ClientManagementSystem.LoginUI;
 
 namespace ClientManagementSystem.UI
 {
@@ -19,6 +20,8 @@ namespace ClientManagementSystem.UI
         private SqlDataReader rdr;
 
         ConnectionString cs =new ConnectionString();
+        public string userId;
+        public int modeOfConductId;
         public FirstStepOfIClientFeedbackDairy()
         {
             InitializeComponent();
@@ -60,6 +63,7 @@ namespace ClientManagementSystem.UI
                 frm2.feedback2TextBox.Text = feedback1TextBox.Text;
                 frm2.txtClentInquiry.Text = txtClientInquiry.Text;
                 frm2.feedback2DateTime.Value = feedback1DeadlineDateTime.Value;
+                frm2.txtModeOfConduct.Text = cmbModeOfConduct.Text;
                 frm2.action2MultiTextBox.Text = action1MultiTextBox.Text;
                 frm2.txtResposible2Person.Text = responsible1PersonComboBox.Text;
                 frm2.followUp2Deadlinedatetime.Value = followUp1DeadlineDateTimePicker.Value;
@@ -157,10 +161,11 @@ namespace ClientManagementSystem.UI
 
         }
         private void FirstStepOfIClientFeedbackDairy_Load (object sender, EventArgs e)
-            {
-                //FollowUpGridLoad2();
+        {
+            ModeOfConduct();
                 FillCombo2();
                 GetData();
+                userId = LoginForm.uId.ToString();
             }
 
             private void dataGridView1_RowPostPaint (object sender, DataGridViewRowPostPaintEventArgs e)
@@ -270,6 +275,104 @@ namespace ClientManagementSystem.UI
           private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
           {
 
+          }
+          private void ModeOfConduct()
+          {
+              try
+              {
+                  con = new SqlConnection(cs.DBConn);
+                  con.Open();
+                  string ctt = "select ModesOfConduct from ModeOfConducts";
+                  cmd = new SqlCommand(ctt);
+                  cmd.Connection = con;
+                  rdr = cmd.ExecuteReader();
+                  while (rdr.Read())
+                  {
+                      cmbModeOfConduct.Items.Add(rdr.GetValue(0).ToString());
+                  }
+                  cmbModeOfConduct.Items.Add("Not In The List");
+              }
+              catch (Exception ex)
+              {
+                  MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+              }
+          }
+          private void cmbModeOfConduct_SelectedIndexChanged(object sender, EventArgs e)
+          {
+              if (cmbModeOfConduct.Text == "Not In The List")
+              {
+                  string input = Microsoft.VisualBasic.Interaction.InputBox("Please Input Mode Of Conduct  Here", "Input Here", "", -1, -1);
+                  if (string.IsNullOrWhiteSpace(input))
+                  {
+                      cmbModeOfConduct.SelectedIndex = -1;
+                  }
+                  else
+                  {
+                      con = new SqlConnection(cs.DBConn);
+                      con.Open();
+                      string ct2 = "select ModesOfConduct from ModeOfConducts where ModesOfConduct='" + input + "'";
+                      cmd = new SqlCommand(ct2, con);
+                      rdr = cmd.ExecuteReader();
+                      if (rdr.Read() && !rdr.IsDBNull(0))
+                      {
+                          MessageBox.Show("This ModesOfConduct  Already Exists,Please Select From List", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                          con.Close();
+                          cmbModeOfConduct.SelectedIndex = -1;
+                      }
+                      else
+                      {
+                          try
+                          {
+                              con = new SqlConnection(cs.DBConn);
+                              con.Open();
+                              string query1 = "insert into ModeOfConducts (ModesOfConduct, UserId,DateAndTime) values (@d1,@d2,@d3)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                              cmd = new SqlCommand(query1, con);
+                              cmd.Parameters.AddWithValue("@d1", input);
+                              cmd.Parameters.AddWithValue("@d2",userId );
+                              cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());    
+                              cmd.ExecuteNonQuery();
+
+                              con.Close();
+                              cmbModeOfConduct.Items.Clear();
+                              ModeOfConduct();
+                              cmbModeOfConduct.SelectedText = input;
+                             
+                          }
+                          catch (Exception ex)
+                          {
+                              MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                          }
+                      }
+                  }
+              }
+              else
+              {
+                  try
+                  {
+                      con = new SqlConnection(cs.DBConn);
+                      con.Open();
+                      cmd = con.CreateCommand();
+                      cmd.CommandText = "SELECT ModeOfConductId from ModeOfConducts WHERE ModesOfConduct= '" + cmbModeOfConduct.Text + "'";
+
+                      rdr = cmd.ExecuteReader();
+                      if (rdr.Read())
+                      {
+                          modeOfConductId = rdr.GetInt32(0);
+                      }
+                      if ((rdr != null))
+                      {
+                          rdr.Close();
+                      }
+                      if (con.State == ConnectionState.Open)
+                      {
+                          con.Close();
+                      }
+                  }
+                  catch (Exception ex)
+                  {
+                      MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                  }
+              }
           }
     }
 }

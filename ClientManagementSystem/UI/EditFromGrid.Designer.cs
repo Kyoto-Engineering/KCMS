@@ -37,7 +37,6 @@
             this.cmbNatureOfClient = new System.Windows.Forms.ComboBox();
             this.cmbClientType = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtCPEmailAddress = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
             this.cellPhoneTextBox = new System.Windows.Forms.TextBox();
             this.txtDesignation = new System.Windows.Forms.TextBox();
@@ -99,7 +98,6 @@
             this.labelh = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtEmailAddress = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtClientName = new System.Windows.Forms.TextBox();
@@ -108,6 +106,8 @@
             this.labeld = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
+            this.cmbEmailAddress = new System.Windows.Forms.ComboBox();
+            this.cmbCPEmailAddress = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -118,6 +118,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Teal;
+            this.groupBox1.Controls.Add(this.cmbEmailAddress);
             this.groupBox1.Controls.Add(this.label35);
             this.groupBox1.Controls.Add(this.cmbIndustryCategory);
             this.groupBox1.Controls.Add(this.cmbRM);
@@ -133,7 +134,6 @@
             this.groupBox1.Controls.Add(this.labelh);
             this.groupBox1.Controls.Add(this.label28);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtEmailAddress);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.txtClientName);
@@ -228,7 +228,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.groupBox2.Controls.Add(this.txtCPEmailAddress);
+            this.groupBox2.Controls.Add(this.cmbCPEmailAddress);
             this.groupBox2.Controls.Add(this.label34);
             this.groupBox2.Controls.Add(this.cellPhoneTextBox);
             this.groupBox2.Controls.Add(this.txtDesignation);
@@ -240,25 +240,16 @@
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox2.Location = new System.Drawing.Point(30, 308);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(435, 158);
+            this.groupBox2.Size = new System.Drawing.Size(435, 176);
             this.groupBox2.TabIndex = 102;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Contact Person Details";
-            // 
-            // txtCPEmailAddress
-            // 
-            this.txtCPEmailAddress.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCPEmailAddress.Location = new System.Drawing.Point(200, 115);
-            this.txtCPEmailAddress.Name = "txtCPEmailAddress";
-            this.txtCPEmailAddress.Size = new System.Drawing.Size(214, 26);
-            this.txtCPEmailAddress.TabIndex = 108;
-            this.txtCPEmailAddress.Enter += new System.EventHandler(this.txtCPEmailAddress_Enter);
             // 
             // label34
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(59, 117);
+            this.label34.Location = new System.Drawing.Point(59, 130);
             this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(109, 19);
@@ -268,7 +259,8 @@
             // cellPhoneTextBox
             // 
             this.cellPhoneTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cellPhoneTextBox.Location = new System.Drawing.Point(198, 83);
+            this.cellPhoneTextBox.Location = new System.Drawing.Point(198, 91);
+            this.cellPhoneTextBox.MaxLength = 11;
             this.cellPhoneTextBox.Name = "cellPhoneTextBox";
             this.cellPhoneTextBox.Size = new System.Drawing.Size(214, 26);
             this.cellPhoneTextBox.TabIndex = 106;
@@ -278,7 +270,7 @@
             // txtDesignation
             // 
             this.txtDesignation.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesignation.Location = new System.Drawing.Point(198, 50);
+            this.txtDesignation.Location = new System.Drawing.Point(198, 55);
             this.txtDesignation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDesignation.Name = "txtDesignation";
             this.txtDesignation.Size = new System.Drawing.Size(214, 26);
@@ -299,7 +291,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(78, 81);
+            this.label9.Location = new System.Drawing.Point(78, 89);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(98, 19);
@@ -310,7 +302,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(84, 51);
+            this.label8.Location = new System.Drawing.Point(84, 56);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 19);
@@ -428,7 +420,8 @@
             // cContactNoTextBox
             // 
             this.cContactNoTextBox.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cContactNoTextBox.Location = new System.Drawing.Point(128, 128);
+            this.cContactNoTextBox.Location = new System.Drawing.Point(128, 131);
+            this.cContactNoTextBox.MaxLength = 11;
             this.cContactNoTextBox.Name = "cContactNoTextBox";
             this.cContactNoTextBox.Size = new System.Drawing.Size(140, 22);
             this.cContactNoTextBox.TabIndex = 39;
@@ -438,7 +431,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(34, 129);
+            this.label27.Location = new System.Drawing.Point(34, 132);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(90, 19);
             this.label27.TabIndex = 38;
@@ -465,7 +458,7 @@
             // cAreaTextBox
             // 
             this.cAreaTextBox.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cAreaTextBox.Location = new System.Drawing.Point(128, 154);
+            this.cAreaTextBox.Location = new System.Drawing.Point(128, 160);
             this.cAreaTextBox.Name = "cAreaTextBox";
             this.cAreaTextBox.Size = new System.Drawing.Size(140, 22);
             this.cAreaTextBox.TabIndex = 15;
@@ -474,7 +467,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(81, 155);
+            this.label20.Location = new System.Drawing.Point(81, 161);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(42, 19);
             this.label20.TabIndex = 14;
@@ -708,17 +701,19 @@
             // tContactNoTextBox
             // 
             this.tContactNoTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tContactNoTextBox.Location = new System.Drawing.Point(130, 140);
+            this.tContactNoTextBox.Location = new System.Drawing.Point(130, 142);
+            this.tContactNoTextBox.MaxLength = 11;
             this.tContactNoTextBox.Name = "tContactNoTextBox";
             this.tContactNoTextBox.Size = new System.Drawing.Size(147, 26);
             this.tContactNoTextBox.TabIndex = 37;
+            this.tContactNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tContactNoTextBox_KeyPress);
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.Yellow;
-            this.label26.Location = new System.Drawing.Point(33, 144);
+            this.label26.Location = new System.Drawing.Point(33, 145);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(90, 19);
             this.label26.TabIndex = 36;
@@ -746,7 +741,7 @@
             // tAreaTextBox
             // 
             this.tAreaTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tAreaTextBox.Location = new System.Drawing.Point(130, 169);
+            this.tAreaTextBox.Location = new System.Drawing.Point(130, 173);
             this.tAreaTextBox.Name = "tAreaTextBox";
             this.tAreaTextBox.Size = new System.Drawing.Size(147, 26);
             this.tAreaTextBox.TabIndex = 31;
@@ -756,7 +751,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Yellow;
-            this.label5.Location = new System.Drawing.Point(80, 172);
+            this.label5.Location = new System.Drawing.Point(80, 175);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 19);
             this.label5.TabIndex = 30;
@@ -865,7 +860,7 @@
             this.saveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.saveButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.ForeColor = System.Drawing.Color.Fuchsia;
-            this.saveButton.Location = new System.Drawing.Point(428, 481);
+            this.saveButton.Location = new System.Drawing.Point(498, 478);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(119, 53);
             this.saveButton.TabIndex = 99;
@@ -915,15 +910,6 @@
             this.label1.Size = new System.Drawing.Size(171, 24);
             this.label1.TabIndex = 77;
             this.label1.Text = "Industry Category";
-            // 
-            // txtEmailAddress
-            // 
-            this.txtEmailAddress.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmailAddress.Location = new System.Drawing.Point(229, 198);
-            this.txtEmailAddress.Name = "txtEmailAddress";
-            this.txtEmailAddress.Size = new System.Drawing.Size(214, 26);
-            this.txtEmailAddress.TabIndex = 76;
-            this.txtEmailAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmailAddress_Validating);
             // 
             // label12
             // 
@@ -1019,6 +1005,28 @@
             this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
+            // cmbEmailAddress
+            // 
+            this.cmbEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEmailAddress.FormattingEnabled = true;
+            this.cmbEmailAddress.Location = new System.Drawing.Point(229, 196);
+            this.cmbEmailAddress.Name = "cmbEmailAddress";
+            this.cmbEmailAddress.Size = new System.Drawing.Size(215, 30);
+            this.cmbEmailAddress.TabIndex = 108;
+            this.cmbEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbEmailAddress_SelectedIndexChanged);
+            // 
+            // cmbCPEmailAddress
+            // 
+            this.cmbCPEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCPEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCPEmailAddress.FormattingEnabled = true;
+            this.cmbCPEmailAddress.Location = new System.Drawing.Point(198, 123);
+            this.cmbCPEmailAddress.Name = "cmbCPEmailAddress";
+            this.cmbCPEmailAddress.Size = new System.Drawing.Size(214, 30);
+            this.cmbCPEmailAddress.TabIndex = 108;
+            this.cmbCPEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbCPEmailAddress_SelectedIndexChanged);
+            // 
             // EditFromGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1055,7 +1063,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label1;
-        public  System.Windows.Forms.TextBox txtEmailAddress;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         public  System.Windows.Forms.TextBox txtClientName;
@@ -1127,10 +1134,11 @@
         public System.Windows.Forms.TextBox tPostCodeTextBox;
         public  System.Windows.Forms.ComboBox cmbIndustryCategory;
         public  System.Windows.Forms.ComboBox cmbNatureOfClient;
-        public  System.Windows.Forms.ComboBox cmbClientType;
-        public System.Windows.Forms.TextBox txtCPEmailAddress;
+        public System.Windows.Forms.ComboBox cmbClientType;
         private System.Windows.Forms.Label label34;
         public  System.Windows.Forms.ComboBox cmbRM;
         private System.Windows.Forms.Label label35;
+        public  System.Windows.Forms.ComboBox cmbEmailAddress;
+        public  System.Windows.Forms.ComboBox cmbCPEmailAddress;
     }
 }

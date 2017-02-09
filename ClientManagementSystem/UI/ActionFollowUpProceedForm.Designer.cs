@@ -31,11 +31,22 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActionFollowUpProceedForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.k = new System.Windows.Forms.Label();
-            this.feedBackButton = new System.Windows.Forms.Button();
             this.h = new System.Windows.Forms.Label();
             this.submitButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -52,30 +63,17 @@
             this.label17 = new System.Windows.Forms.Label();
             this.followUpDeadlineDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.k);
-            this.groupBox1.Controls.Add(this.feedBackButton);
             this.groupBox1.Controls.Add(this.h);
             this.groupBox1.Controls.Add(this.submitButton);
             this.groupBox1.Controls.Add(this.groupBox3);
@@ -97,17 +95,6 @@
             this.k.Text = "k";
             this.k.Visible = false;
             // 
-            // feedBackButton
-            // 
-            this.feedBackButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.feedBackButton.Location = new System.Drawing.Point(347, 475);
-            this.feedBackButton.Name = "feedBackButton";
-            this.feedBackButton.Size = new System.Drawing.Size(135, 58);
-            this.feedBackButton.TabIndex = 17;
-            this.feedBackButton.Text = "Feed  Back";
-            this.feedBackButton.UseVisualStyleBackColor = true;
-            this.feedBackButton.Click += new System.EventHandler(this.feedBackButton_Click);
-            // 
             // h
             // 
             this.h.AutoSize = true;
@@ -121,9 +108,9 @@
             // submitButton
             // 
             this.submitButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submitButton.Location = new System.Drawing.Point(191, 475);
+            this.submitButton.Location = new System.Drawing.Point(372, 453);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(121, 58);
+            this.submitButton.Size = new System.Drawing.Size(176, 99);
             this.submitButton.TabIndex = 4;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -138,6 +125,39 @@
             this.groupBox3.Size = new System.Drawing.Size(668, 542);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10});
+            this.dataGridView2.Location = new System.Drawing.Point(12, 310);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(650, 226);
+            this.dataGridView2.TabIndex = 19;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Date";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Action";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "SubmittedBy";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Status";
+            this.Column10.Name = "Column10";
             // 
             // groupBox4
             // 
@@ -154,6 +174,52 @@
             this.groupBox4.TabIndex = 18;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "List Of Inquiry Client";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6});
+            this.dataGridView1.Location = new System.Drawing.Point(14, 83);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(630, 194);
+            this.dataGridView1.TabIndex = 7;
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ClientId";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "ClientFeedbackId";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "ClientName";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "EmailAddress";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "ContactPersonName";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "CellNumber";
+            this.Column6.Name = "Column6";
             // 
             // textBox6
             // 
@@ -223,9 +289,9 @@
             // 
             // action2MultiTextBox
             // 
-            this.action2MultiTextBox.Location = new System.Drawing.Point(18, 98);
+            this.action2MultiTextBox.Location = new System.Drawing.Point(6, 85);
             this.action2MultiTextBox.Name = "action2MultiTextBox";
-            this.action2MultiTextBox.Size = new System.Drawing.Size(556, 161);
+            this.action2MultiTextBox.Size = new System.Drawing.Size(576, 181);
             this.action2MultiTextBox.TabIndex = 16;
             this.action2MultiTextBox.Text = "";
             // 
@@ -266,9 +332,9 @@
             // 
             this.responsiblePerson2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.responsiblePerson2ComboBox.FormattingEnabled = true;
-            this.responsiblePerson2ComboBox.Location = new System.Drawing.Point(221, 268);
+            this.responsiblePerson2ComboBox.Location = new System.Drawing.Point(242, 302);
             this.responsiblePerson2ComboBox.Name = "responsiblePerson2ComboBox";
-            this.responsiblePerson2ComboBox.Size = new System.Drawing.Size(353, 29);
+            this.responsiblePerson2ComboBox.Size = new System.Drawing.Size(332, 29);
             this.responsiblePerson2ComboBox.TabIndex = 2;
             this.responsiblePerson2ComboBox.SelectedIndexChanged += new System.EventHandler(this.responsiblePerson2ComboBox_SelectedIndexChanged);
             // 
@@ -276,7 +342,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(14, 270);
+            this.label8.Location = new System.Drawing.Point(48, 304);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(170, 22);
             this.label8.TabIndex = 9;
@@ -286,7 +352,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(14, 71);
+            this.label17.Location = new System.Drawing.Point(14, 64);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(125, 22);
             this.label17.TabIndex = 6;
@@ -297,99 +363,20 @@
             this.followUpDeadlineDateTimePicker.CustomFormat = "dd/MM/yyyy HH:mm:ss";
             this.followUpDeadlineDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.followUpDeadlineDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.followUpDeadlineDateTimePicker.Location = new System.Drawing.Point(242, 312);
+            this.followUpDeadlineDateTimePicker.Location = new System.Drawing.Point(242, 363);
             this.followUpDeadlineDateTimePicker.Name = "followUpDeadlineDateTimePicker";
-            this.followUpDeadlineDateTimePicker.Size = new System.Drawing.Size(312, 29);
+            this.followUpDeadlineDateTimePicker.Size = new System.Drawing.Size(332, 29);
             this.followUpDeadlineDateTimePicker.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 319);
+            this.label5.Location = new System.Drawing.Point(9, 369);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(208, 22);
             this.label5.TabIndex = 2;
             this.label5.Text = "Deadline Date and Time";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
-            this.dataGridView1.Location = new System.Drawing.Point(14, 83);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(630, 194);
-            this.dataGridView1.TabIndex = 7;
-            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column7,
-            this.Column8,
-            this.Column9,
-            this.Column10});
-            this.dataGridView2.Location = new System.Drawing.Point(12, 310);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(650, 226);
-            this.dataGridView2.TabIndex = 19;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ClientId";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "ClientFeedbackId";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "ClientName";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "EmailAddress";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "ContactPersonName";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "CellNumber";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Date";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Action";
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "SubmittedBy";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Status";
-            this.Column10.Name = "Column10";
             // 
             // ActionFollowUpProceedForm
             // 
@@ -406,12 +393,12 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -426,7 +413,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DateTimePicker followUpDeadlineDateTimePicker;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button feedBackButton;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

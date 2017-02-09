@@ -281,14 +281,14 @@ namespace ClientManagementSystem.UI
                 frm.txtClientName.Text = dr.Cells[2].Value.ToString();
                 frm.cmbClientType.Text = dr.Cells[3].Value.ToString();
                 frm.cmbNatureOfClient.Text = dr.Cells[4].Value.ToString();
-                frm.txtEmailAddress.Text = dr.Cells[5].Value.ToString();
+                frm.cmbEmailAddress.Text = dr.Cells[5].Value.ToString();
                 frm.cmbIndustryCategory.Text = dr.Cells[6].Value.ToString();
                 frm.txtEndUser.Text = dr.Cells[7].Value.ToString();
 
                 frm.txtCPName.Text = dr.Cells[8].Value.ToString();
                 frm.txtDesignation.Text = dr.Cells[9].Value.ToString();
                 frm.cellPhoneTextBox.Text = dr.Cells[10].Value.ToString();
-                frm.txtCPEmailAddress.Text = dr.Cells[11].Value.ToString();
+                frm.cmbCPEmailAddress.Text = dr.Cells[11].Value.ToString();
 
                 frm.cFlatNoTextBox.Text = dr.Cells[12].Value.ToString();
                 frm.cHouseNoTextBox.Text = dr.Cells[13].Value.ToString();
@@ -299,7 +299,7 @@ namespace ClientManagementSystem.UI
 
                 frm.cDivisionCombo.Text = dr.Cells[18].Value.ToString();
                 frm.cDistCombo.Text = dr.Cells[19].Value.ToString();
-                frm.cThanaCombo.Text = dr.Cells[20].Value.ToString();
+                frm.cThanaCombo.Text = dr.Cells[20].Value.ToString().Trim();
                 frm.cPostOfficeCombo.Text = dr.Cells[21].Value.ToString();
                 frm.cPostCodeTextBox.Text = dr.Cells[22].Value.ToString();
                 
@@ -313,7 +313,7 @@ namespace ClientManagementSystem.UI
 
                 frm.tDivisionCombo.Text = dr.Cells[29].Value.ToString();
                 frm.tDistCombo.Text = dr.Cells[30].Value.ToString();
-                frm.tThanaCombo.Text = dr.Cells[31].Value.ToString();
+                frm.tThanaCombo.Text = dr.Cells[31].Value.ToString().Trim();
                 frm.tPostOfficeCombo.Text = dr.Cells[32].Value.ToString();
                 frm.tPostCodeTextBox.Text = dr.Cells[33].Value.ToString();                
                 frm.labeld.Text = labelh.Text;

@@ -39,7 +39,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.labelh = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.convertToSalesClientButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +61,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Blue;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -75,7 +74,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1164, 466);
             this.dataGridView1.TabIndex = 19;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
-            this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             // 
             // newButton
@@ -108,7 +106,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Blue;
-            this.button1.Location = new System.Drawing.Point(435, 121);
+            this.button1.Location = new System.Drawing.Point(182, 118);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(217, 59);
             this.button1.TabIndex = 24;
@@ -121,7 +119,7 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Blue;
-            this.button2.Location = new System.Drawing.Point(668, 121);
+            this.button2.Location = new System.Drawing.Point(414, 119);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(239, 56);
             this.button2.TabIndex = 25;
@@ -134,7 +132,7 @@
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.Blue;
-            this.button3.Location = new System.Drawing.Point(930, 121);
+            this.button3.Location = new System.Drawing.Point(679, 121);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(172, 56);
             this.button3.TabIndex = 26;
@@ -164,19 +162,6 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // convertToSalesClientButton
-            // 
-            this.convertToSalesClientButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.convertToSalesClientButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.convertToSalesClientButton.ForeColor = System.Drawing.Color.Blue;
-            this.convertToSalesClientButton.Location = new System.Drawing.Point(200, 110);
-            this.convertToSalesClientButton.Name = "convertToSalesClientButton";
-            this.convertToSalesClientButton.Size = new System.Drawing.Size(210, 67);
-            this.convertToSalesClientButton.TabIndex = 29;
-            this.convertToSalesClientButton.Text = "Convert To Sales Client";
-            this.convertToSalesClientButton.UseVisualStyleBackColor = false;
-            this.convertToSalesClientButton.Click += new System.EventHandler(this.convertToSalesClientButton_Click);
-            // 
             // MainUIInquieryClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -184,7 +169,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(1178, 661);
             this.ControlBox = false;
-            this.Controls.Add(this.convertToSalesClientButton);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.labelh);
             this.Controls.Add(this.button3);
@@ -219,6 +203,5 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label labelh;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button convertToSalesClientButton;
     }
 }

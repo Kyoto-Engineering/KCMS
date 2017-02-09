@@ -72,6 +72,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.cmbModeOfConduct = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -142,7 +144,7 @@
             this.submitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.submitButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitButton.ForeColor = System.Drawing.Color.Lime;
-            this.submitButton.Location = new System.Drawing.Point(445, 579);
+            this.submitButton.Location = new System.Drawing.Point(445, 592);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(128, 57);
             this.submitButton.TabIndex = 7;
@@ -159,7 +161,7 @@
             this.groupBox2.Controls.Add(this.followUp1DeadlineDateTimePicker);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(6, 286);
+            this.groupBox2.Location = new System.Drawing.Point(6, 295);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(567, 287);
             this.groupBox2.TabIndex = 12;
@@ -168,6 +170,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.cmbModeOfConduct);
             this.groupBox1.Controls.Add(this.txtClientInquiry);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.txt1ClientName);
@@ -197,7 +201,7 @@
             this.txtClientInquiry.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClientInquiry.Location = new System.Drawing.Point(16, 100);
             this.txtClientInquiry.Name = "txtClientInquiry";
-            this.txtClientInquiry.Size = new System.Drawing.Size(278, 131);
+            this.txtClientInquiry.Size = new System.Drawing.Size(278, 99);
             this.txtClientInquiry.TabIndex = 24;
             this.txtClientInquiry.Text = "";
             // 
@@ -435,9 +439,9 @@
             this.feedback1DeadlineDateTime.CustomFormat = "dd/MM/yyyy HH:mm:ss";
             this.feedback1DeadlineDateTime.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.feedback1DeadlineDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.feedback1DeadlineDateTime.Location = new System.Drawing.Point(388, 241);
+            this.feedback1DeadlineDateTime.Location = new System.Drawing.Point(238, 216);
             this.feedback1DeadlineDateTime.Name = "feedback1DeadlineDateTime";
-            this.feedback1DeadlineDateTime.Size = new System.Drawing.Size(211, 29);
+            this.feedback1DeadlineDateTime.Size = new System.Drawing.Size(251, 29);
             this.feedback1DeadlineDateTime.TabIndex = 3;
             // 
             // feedback1TextBox
@@ -446,7 +450,7 @@
             this.feedback1TextBox.Location = new System.Drawing.Point(329, 98);
             this.feedback1TextBox.Multiline = true;
             this.feedback1TextBox.Name = "feedback1TextBox";
-            this.feedback1TextBox.Size = new System.Drawing.Size(267, 137);
+            this.feedback1TextBox.Size = new System.Drawing.Size(267, 101);
             this.feedback1TextBox.TabIndex = 2;
             // 
             // label3
@@ -473,7 +477,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(145, 246);
+            this.label1.Location = new System.Drawing.Point(6, 220);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(216, 22);
             this.label1.TabIndex = 0;
@@ -503,6 +507,27 @@
             this.textBox2.Size = new System.Drawing.Size(413, 34);
             this.textBox2.TabIndex = 23;
             this.textBox2.Text = "Inqueiry Client Feedback Dairy";
+            // 
+            // cmbModeOfConduct
+            // 
+            this.cmbModeOfConduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbModeOfConduct.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbModeOfConduct.FormattingEnabled = true;
+            this.cmbModeOfConduct.Location = new System.Drawing.Point(238, 258);
+            this.cmbModeOfConduct.Name = "cmbModeOfConduct";
+            this.cmbModeOfConduct.Size = new System.Drawing.Size(251, 30);
+            this.cmbModeOfConduct.TabIndex = 25;
+            this.cmbModeOfConduct.SelectedIndexChanged += new System.EventHandler(this.cmbModeOfConduct_SelectedIndexChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(55, 264);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(162, 22);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "Mode Of  Conduct";
             // 
             // FirstStepOfIClientFeedbackDairy
             // 
@@ -579,6 +604,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.RichTextBox txtClientInquiry;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cmbModeOfConduct;
+        private System.Windows.Forms.Label label12;
 
     }
 }
