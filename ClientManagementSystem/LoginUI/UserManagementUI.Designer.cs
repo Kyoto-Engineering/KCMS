@@ -31,9 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserManagementUI));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.buttonCreateNewUser = new System.Windows.Forms.Button();
-            this.buttonResetPassword = new System.Windows.Forms.Button();
             this.buttonChangePassword = new System.Windows.Forms.Button();
+            this.buttonResetPassword = new System.Windows.Forms.Button();
+            this.buttonCreateNewUser = new System.Windows.Forms.Button();
+            this.changeStatusButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +50,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.changeStatusButton);
             this.groupBox1.Controls.Add(this.buttonChangePassword);
             this.groupBox1.Controls.Add(this.buttonResetPassword);
             this.groupBox1.Controls.Add(this.buttonCreateNewUser);
@@ -58,15 +60,15 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
-            // buttonCreateNewUser
+            // buttonChangePassword
             // 
-            this.buttonCreateNewUser.Location = new System.Drawing.Point(25, 19);
-            this.buttonCreateNewUser.Name = "buttonCreateNewUser";
-            this.buttonCreateNewUser.Size = new System.Drawing.Size(112, 58);
-            this.buttonCreateNewUser.TabIndex = 0;
-            this.buttonCreateNewUser.Text = "Create New  User";
-            this.buttonCreateNewUser.UseVisualStyleBackColor = true;
-            this.buttonCreateNewUser.Click += new System.EventHandler(this.buttonCreateNewUser_Click);
+            this.buttonChangePassword.Location = new System.Drawing.Point(25, 192);
+            this.buttonChangePassword.Name = "buttonChangePassword";
+            this.buttonChangePassword.Size = new System.Drawing.Size(112, 72);
+            this.buttonChangePassword.TabIndex = 2;
+            this.buttonChangePassword.Text = "Change Password";
+            this.buttonChangePassword.UseVisualStyleBackColor = true;
+            this.buttonChangePassword.Click += new System.EventHandler(this.buttonChangePassword_Click);
             // 
             // buttonResetPassword
             // 
@@ -78,15 +80,25 @@
             this.buttonResetPassword.UseVisualStyleBackColor = true;
             this.buttonResetPassword.Click += new System.EventHandler(this.buttonResetPassword_Click);
             // 
-            // buttonChangePassword
+            // buttonCreateNewUser
             // 
-            this.buttonChangePassword.Location = new System.Drawing.Point(25, 192);
-            this.buttonChangePassword.Name = "buttonChangePassword";
-            this.buttonChangePassword.Size = new System.Drawing.Size(112, 72);
-            this.buttonChangePassword.TabIndex = 2;
-            this.buttonChangePassword.Text = "Change Password";
-            this.buttonChangePassword.UseVisualStyleBackColor = true;
-            this.buttonChangePassword.Click += new System.EventHandler(this.buttonChangePassword_Click);
+            this.buttonCreateNewUser.Location = new System.Drawing.Point(25, 19);
+            this.buttonCreateNewUser.Name = "buttonCreateNewUser";
+            this.buttonCreateNewUser.Size = new System.Drawing.Size(112, 58);
+            this.buttonCreateNewUser.TabIndex = 0;
+            this.buttonCreateNewUser.Text = "Create New  User";
+            this.buttonCreateNewUser.UseVisualStyleBackColor = true;
+            this.buttonCreateNewUser.Click += new System.EventHandler(this.buttonCreateNewUser_Click);
+            // 
+            // changeStatusButton
+            // 
+            this.changeStatusButton.Location = new System.Drawing.Point(25, 284);
+            this.changeStatusButton.Name = "changeStatusButton";
+            this.changeStatusButton.Size = new System.Drawing.Size(112, 48);
+            this.changeStatusButton.TabIndex = 3;
+            this.changeStatusButton.Text = "Change Status";
+            this.changeStatusButton.UseVisualStyleBackColor = true;
+            this.changeStatusButton.Click += new System.EventHandler(this.changeStatusButton_Click);
             // 
             // UserManagementUI
             // 
@@ -115,5 +127,6 @@
         private System.Windows.Forms.Button buttonResetPassword;
         private System.Windows.Forms.Button buttonCreateNewUser;
         private System.Windows.Forms.Button buttonChangePassword;
+        private System.Windows.Forms.Button changeStatusButton;
     }
 }

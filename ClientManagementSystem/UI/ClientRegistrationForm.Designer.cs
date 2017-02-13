@@ -30,7 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientRegistrationForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbEmailAddress = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cmbCPEmailAddress = new System.Windows.Forms.ComboBox();
             this.label37 = new System.Windows.Forms.Label();
             this.txtCellNumber = new System.Windows.Forms.TextBox();
             this.txtDesignation = new System.Windows.Forms.TextBox();
@@ -118,11 +120,8 @@
             this.editButton = new System.Windows.Forms.Button();
             this.getDataButton = new System.Windows.Forms.Button();
             this.newButton = new System.Windows.Forms.Button();
-            this.closeButton = new System.Windows.Forms.Button();
-            this.cmbEmailAddress = new System.Windows.Forms.ComboBox();
             this.tBlockTextBox2 = new wmgCMS.WaterMarkTextBox();
             this.cBlockTextBox1 = new wmgCMS.WaterMarkTextBox();
-            this.cmbCPEmailAddress = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -164,6 +163,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // cmbEmailAddress
+            // 
+            this.cmbEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEmailAddress.FormattingEnabled = true;
+            this.cmbEmailAddress.Location = new System.Drawing.Point(226, 151);
+            this.cmbEmailAddress.Name = "cmbEmailAddress";
+            this.cmbEmailAddress.Size = new System.Drawing.Size(196, 30);
+            this.cmbEmailAddress.TabIndex = 85;
+            this.cmbEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbEmailAddress_SelectedIndexChanged);
+            // 
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
@@ -182,6 +192,17 @@
             this.groupBox5.TabIndex = 81;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "ContactPersonDetails";
+            // 
+            // cmbCPEmailAddress
+            // 
+            this.cmbCPEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCPEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCPEmailAddress.FormattingEnabled = true;
+            this.cmbCPEmailAddress.Location = new System.Drawing.Point(182, 140);
+            this.cmbCPEmailAddress.Name = "cmbCPEmailAddress";
+            this.cmbCPEmailAddress.Size = new System.Drawing.Size(196, 30);
+            this.cmbCPEmailAddress.TabIndex = 86;
+            this.cmbCPEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbCPEmailAddress_SelectedIndexChanged);
             // 
             // label37
             // 
@@ -1149,29 +1170,6 @@
             this.newButton.UseVisualStyleBackColor = false;
             this.newButton.Click += new System.EventHandler(this.newButton_Click);
             // 
-            // closeButton
-            // 
-            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.closeButton.ForeColor = System.Drawing.Color.Blue;
-            this.closeButton.Location = new System.Drawing.Point(1072, 1);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(65, 43);
-            this.closeButton.TabIndex = 8;
-            this.closeButton.Text = "Close";
-            this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click_1);
-            // 
-            // cmbEmailAddress
-            // 
-            this.cmbEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbEmailAddress.FormattingEnabled = true;
-            this.cmbEmailAddress.Location = new System.Drawing.Point(226, 151);
-            this.cmbEmailAddress.Name = "cmbEmailAddress";
-            this.cmbEmailAddress.Size = new System.Drawing.Size(196, 30);
-            this.cmbEmailAddress.TabIndex = 85;
-            this.cmbEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbEmailAddress_SelectedIndexChanged);
-            // 
             // tBlockTextBox2
             // 
             this.tBlockTextBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1192,25 +1190,12 @@
             this.cBlockTextBox1.WaterMarkColor = System.Drawing.Color.Gray;
             this.cBlockTextBox1.WaterMarkText = "if Any";
             // 
-            // cmbCPEmailAddress
-            // 
-            this.cmbCPEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCPEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCPEmailAddress.FormattingEnabled = true;
-            this.cmbCPEmailAddress.Location = new System.Drawing.Point(182, 140);
-            this.cmbCPEmailAddress.Name = "cmbCPEmailAddress";
-            this.cmbCPEmailAddress.Size = new System.Drawing.Size(196, 30);
-            this.cmbCPEmailAddress.TabIndex = 86;
-            this.cmbCPEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbCPEmailAddress_SelectedIndexChanged);
-            // 
             // ClientRegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Olive;
             this.ClientSize = new System.Drawing.Size(1143, 580);
-            this.ControlBox = false;
-            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.getDataButton);
             this.Controls.Add(this.newButton);
             this.Controls.Add(this.textBox9);
@@ -1221,10 +1206,10 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "ClientRegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientRegistrationForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ClientRegistrationForm_FormClosed);
             this.Load += new System.EventHandler(this.ClientRegistrationForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -1307,7 +1292,6 @@
         private wmgCMS.WaterMarkTextBox cBlockTextBox;
         private System.Windows.Forms.ComboBox cmbSuperviser;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.CheckBox sameAsCorporatAddCheckBox;
         private System.Windows.Forms.CheckBox notApplicableCheckBox;

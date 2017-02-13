@@ -48,5 +48,13 @@ namespace ClientManagementSystem.LoginUI
             frm.ShowDialog();
             this.Visible = true;
         }
+
+        private void changeStatusButton_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            dynamic frm = new ChangeStatus();
+            frm.ShowDialog();
+            this.Visible = true;
+        }
     }
 }

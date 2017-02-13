@@ -157,19 +157,36 @@ namespace ClientManagementSystem.UI
 
                 return;
             }
+            if (cDivisionCombo.Text == "")
+            {
+                MessageBox.Show("Please Select Corporate Division", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cDivisionCombo.Focus();
+                return;
+            }
+            if (cDistCombo.Text == "")
+            {
+                MessageBox.Show("Please Select Corporate District", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cDistCombo.Focus();
+                return;
+            }
             if (cThanaCombo.Text == "")
             {
                 MessageBox.Show("Please Enter Corporate Thana", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cThanaCombo.Focus();
                 return;
             }
-            if (cDistCombo.Text == "")
+            if (cPostOfficeCombo.Text == "")
             {
-                MessageBox.Show("Please Select Corporate District", "Input Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
-                cDistCombo.Focus();
+                MessageBox.Show("Please Enter Corporate PostOffice", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cPostOfficeCombo.Focus();
                 return;
             }
-
+            if (cPostCodeTextBox.Text == "")
+            {
+                MessageBox.Show("Please Enter Corporate PostCode", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cPostCodeTextBox.Focus();
+                return;
+            }
             if ((notApplicableCheckBox.Checked==false) && (sameAsCorporatAddCheckBox.Checked == false))
             {
                 if (string.IsNullOrWhiteSpace(tDivisionCombo.Text))
@@ -288,6 +305,23 @@ namespace ClientManagementSystem.UI
             tThenaCombo.SelectedIndex = -1;
             tPostCombo.SelectedIndex = -1;
             tPostCodeTextBox.Clear();
+        }
+        private void FilStar()
+        {
+            label47.Visible = true;
+            label36.Visible = true;
+            label40.Visible = true;
+            label35.Visible = true;
+            label45.Visible = true;
+        }
+
+        private void ResetStar()
+        {
+            label47.Visible = false;
+            label36.Visible = false;
+            label40.Visible = false;
+            label35.Visible = false;
+            label45.Visible = false;
         }
 
         private void Reset()
@@ -599,7 +633,7 @@ namespace ClientManagementSystem.UI
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct = "select RTRIM(Name) from Registration order by UserId desc";
+                string ct = "select RTRIM(Name) from Registration where Statuss!='InActive'  order by UserId desc";
                 cmd = new SqlCommand(ct);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -760,6 +794,8 @@ namespace ClientManagementSystem.UI
                 cDistCombo.Text = cDistCombo.Text.Trim();
                 cThanaCombo.Items.Clear();
                 cThanaCombo.Text = "";
+                cPostOfficeCombo.SelectedIndex= -1;
+                cPostCodeTextBox.Clear();
                 cThanaCombo.Enabled = true;
                 cThanaCombo.Focus();
 
@@ -816,6 +852,8 @@ namespace ClientManagementSystem.UI
                 tDistrictCombo.Text = tDistrictCombo.Text.Trim();
                 tThenaCombo.Items.Clear();
                 tThenaCombo.Text = "";
+                tPostCombo.SelectedIndex = -1;
+                tPostCodeTextBox.Clear();
                 tThenaCombo.Enabled = true;
                 tThenaCombo.Focus();
 
@@ -923,12 +961,14 @@ namespace ClientManagementSystem.UI
                     notApplicableCheckBox.CheckedChanged += NotApplicableCheckBox_CheckedChanged;
                     groupBox3.Enabled = false;
                     ResetTradingAddress();
+                    ResetStar();
                 }
                 else
                 {
 
                     groupBox3.Enabled = false;
                     ResetTradingAddress();
+                    ResetStar();
                 }
 
             }
@@ -938,12 +978,14 @@ namespace ClientManagementSystem.UI
                 {
                     groupBox3.Enabled = false;
                     ResetTradingAddress();
+                    ResetStar();
                 }
                 else
                 {
 
                     groupBox3.Enabled = true;
                     ResetTradingAddress();
+                    FilStar();
                 }
             }
             
@@ -987,6 +1029,9 @@ namespace ClientManagementSystem.UI
                 cDivisionCombo.Text = cDivisionCombo.Text.Trim();
                 cDistCombo.Items.Clear();
                 cDistCombo.Text = "";
+                cThanaCombo.SelectedIndex = -1;
+                cPostOfficeCombo.SelectedIndex = -1;
+                cPostCodeTextBox.Clear();
                 cDistCombo.Enabled = true;
                 cDistCombo.Focus();
 
@@ -1042,6 +1087,7 @@ namespace ClientManagementSystem.UI
                 cThanaCombo.Text = cThanaCombo.Text.Trim();
                 cPostOfficeCombo.Items.Clear();
                 cPostOfficeCombo.Text = "";
+                cPostCodeTextBox.Clear();
                 cPostOfficeCombo.Enabled = true;
                 cPostOfficeCombo.Focus();
 
@@ -1135,6 +1181,9 @@ namespace ClientManagementSystem.UI
                 tDivisionCombo.Text = tDivisionCombo.Text.Trim();
                 tDistrictCombo.Items.Clear();
                 tDistrictCombo.Text = "";
+                tThenaCombo.SelectedIndex = -1;
+                tPostCombo.SelectedIndex = -1;
+                tPostCodeTextBox.Clear();
                 tDistrictCombo.Enabled = true;
                 tDistrictCombo.Focus();
 
@@ -1190,6 +1239,7 @@ namespace ClientManagementSystem.UI
                 tThenaCombo.Text = tThenaCombo.Text.Trim();
                 tPostCombo.Items.Clear();
                 tPostCombo.Text = "";
+                tPostCodeTextBox.Clear();
                 tPostCombo.Enabled = true;
                 tPostCombo.Focus();
 
@@ -1315,13 +1365,15 @@ namespace ClientManagementSystem.UI
                     sameAsCorporatAddCheckBox.Checked = false;
                     sameAsCorporatAddCheckBox.CheckedChanged += sameAsCorporatAddCheckBox_CheckedChanged;
                     groupBox3.Enabled = false;
-                    ResetTradingAddress(); 
+                    ResetTradingAddress();
+                    ResetStar();
                 }
                 else
                 {
 
                     groupBox3.Enabled = false;
-                    ResetTradingAddress(); 
+                    ResetTradingAddress();
+                    ResetStar();
                 }
 
             }
@@ -1330,13 +1382,15 @@ namespace ClientManagementSystem.UI
                 if (sameAsCorporatAddCheckBox.Checked)
                 {
                     groupBox3.Enabled = false;
-                    ResetTradingAddress(); 
+                    ResetTradingAddress();
+                    ResetStar();
                 }
                 else
                 {
 
                     groupBox3.Enabled = true;
-                    ResetTradingAddress(); 
+                    ResetTradingAddress();
+                    FilStar();
                 }
             }
         }
@@ -1557,6 +1611,18 @@ namespace ClientManagementSystem.UI
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void ClientRegistrationForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            MainUIInquieryClient frm = new MainUIInquieryClient();
+            frm.Show();
         }
     }
 }

@@ -84,5 +84,29 @@ namespace ClientManagementSystem.UI
         {
 
         }
+        public void LoadClientTypeGrid()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT RTRIM(ClientTypes.ClientType) from ClientTypes order by ClientTypes.ClientTypeId desc", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView1.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView1.Rows.Add(rdr[0]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void frmClientType_Load(object sender, EventArgs e)
+        {
+            LoadClientTypeGrid();
+        }
     }
 }

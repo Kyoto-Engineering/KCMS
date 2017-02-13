@@ -84,9 +84,6 @@ namespace ClientManagementSystem.UI
                     }
                     return;
                 }
-
-
-
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
 
@@ -105,6 +102,30 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        public void LoadIndustryCategoryGrid()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();               
+                cmd = new SqlCommand("SELECT RTRIM(IndustryCategorys.IndustryCategory) from IndustryCategorys order by IndustryCategorys.IndustryCategoryId desc", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView1.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView1.Rows.Add(rdr[0]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void frmIndustryCategory_Load(object sender, EventArgs e)
+        {
+            LoadIndustryCategoryGrid();
         }
     }
 }
