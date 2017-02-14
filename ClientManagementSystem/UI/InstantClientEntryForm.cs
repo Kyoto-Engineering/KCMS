@@ -25,6 +25,7 @@ namespace ClientManagementSystem.UI
         SqlCommand cmd;
         SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
+        private delegate void ChangeFocusDelegate(Control ctl);
         public int affectedRowsI,affectedRows1,affectedRows2,affectedRows3, currentClientId, clientTypeId, natureOfClientId, industryCategoryId,addTypeId1,addTypeId2,addTypeId3;
         public string fullName3, submittedBy3, districtIdC, districtIdT, districtIdB, divisionIdC, divisionIdT, divisionIdB, thanaIdC, thanaIdT, thanaIdB, iClientId, postOfficeIdC, postOfficeIdB, postOfficeIdT;
         public int superviserId, bankEmailId, bankCPEmailId;
@@ -63,8 +64,7 @@ namespace ClientManagementSystem.UI
             string apquery = "insert into SalesClient(IClientId,ClientName,ClientTypeId,NatureOfClientId,EmailBankId,IndustryCategoryId,EndUser,UserId,Dates,SuperviserId) values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
             cmd = new SqlCommand(apquery, con);
             con = new SqlConnection(cs.DBConn);
-            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(iClientId) ? (object)DBNull.Value : iClientId));
-            //cmd.Parameters.AddWithValue("@d2", cmbSuperviserName.Text);
+            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(iClientId) ? (object)DBNull.Value : iClientId));            
             cmd.Parameters.AddWithValue("@d2", clientNameInsTextBox.Text);
             cmd.Parameters.AddWithValue("@d3", clientTypeId);
             cmd.Parameters.AddWithValue("@d4", natureOfClientId);
@@ -85,11 +85,11 @@ namespace ClientManagementSystem.UI
             string tableName1 = tableName;
             con = new SqlConnection(cs.DBConn);
             con.Open();
-            string insertQ = "insert into " + tableName1 + "(Division_ID,D_ID,T_ID,PostOfficeId,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TContactNo,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+            string insertQ = "insert into " + tableName1 + "(PostOfficeId,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TContactNo,SClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
             cmd = new SqlCommand(insertQ, con);
-            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdC) ? (object)DBNull.Value : divisionIdC));
-            cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdC) ? (object)DBNull.Value : districtIdC));
-            cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdC) ? (object)DBNull.Value : thanaIdC));
+            //cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdC) ? (object)DBNull.Value : divisionIdC));
+            //cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdC) ? (object)DBNull.Value : districtIdC));
+            //cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdC) ? (object)DBNull.Value : thanaIdC));
             cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdC) ? (object)DBNull.Value : postOfficeIdC));
             cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(cFlatNoTextBox.Text) ? (object)DBNull.Value : cFlatNoTextBox.Text));
             cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(cHouseNoTextBox.Text) ? (object)DBNull.Value : cHouseNoTextBox.Text));
@@ -109,11 +109,11 @@ namespace ClientManagementSystem.UI
             string tableName3 = tableName;
             con = new SqlConnection(cs.DBConn);
             con.Open();
-            string insertQ = "insert into " + tableName3 + "(Division_ID,D_ID,T_ID,PostOfficeId,BFlatNo,BHouseNo,BRoadNo,BBlock,BArea,BContactNo,ADTypeId,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+            string insertQ = "insert into " + tableName3 + "(PostOfficeId,BFlatNo,BHouseNo,BRoadNo,BBlock,BArea,BContactNo,ADTypeId,SClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
             cmd = new SqlCommand(insertQ, con);
-            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdC) ? (object)DBNull.Value : divisionIdC));
-            cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdC) ? (object)DBNull.Value : districtIdC));
-            cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdC) ? (object)DBNull.Value : thanaIdC));
+            //cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdC) ? (object)DBNull.Value : divisionIdC));
+            //cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdC) ? (object)DBNull.Value : districtIdC));
+            //cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdC) ? (object)DBNull.Value : thanaIdC));
             cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdC) ? (object)DBNull.Value : postOfficeIdC));
             cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(cFlatNoTextBox.Text) ? (object)DBNull.Value : cFlatNoTextBox.Text));
             cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(cHouseNoTextBox.Text) ? (object)DBNull.Value : cHouseNoTextBox.Text));
@@ -131,13 +131,13 @@ namespace ClientManagementSystem.UI
             string tablename32 = tableName;
             con = new SqlConnection(cs.DBConn);
             con.Open();
-            string Qry = "insert into " + tablename32 + "(Division_ID,D_ID,T_ID,PostOfficeId,BFlatNo,BHouseNo,BRoadNo,BBlock,BArea,BContactNo,ADTypeId,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+            string Qry = "insert into " + tablename32 + "(PostOfficeId,BFlatNo,BHouseNo,BRoadNo,BBlock,BArea,BContactNo,ADTypeId,SClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
             cmd = new SqlCommand(Qry);
             cmd.Connection = con;
 
-            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdT) ? (object)DBNull.Value : divisionIdT));
-            cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdT) ? (object)DBNull.Value : districtIdT));
-            cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdT) ? (object)DBNull.Value : thanaIdT));
+            //cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdT) ? (object)DBNull.Value : divisionIdT));
+            //cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdT) ? (object)DBNull.Value : districtIdT));
+            //cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdT) ? (object)DBNull.Value : thanaIdT));
             cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdT) ? (object)DBNull.Value : postOfficeIdT));
 
             cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(tFlatNoTextBox.Text) ? (object)DBNull.Value : tFlatNoTextBox.Text));
@@ -160,11 +160,11 @@ namespace ClientManagementSystem.UI
                 {
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string insertQ = "insert into " + sTableName + "(Division_ID,D_ID,T_ID,PostOfficeId,CFlatNo,CHouseNo,CRoadNo,CBlock,CArea,CContactNo,ADTypeId,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" +"SELECT CONVERT(int, SCOPE_IDENTITY())";
+                    string insertQ = "insert into " + sTableName + "(PostOfficeId,CFlatNo,CHouseNo,CRoadNo,CBlock,CArea,CContactNo,ADTypeId,SClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" +"SELECT CONVERT(int, SCOPE_IDENTITY())";
                     cmd = new SqlCommand(insertQ, con);
-                    cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdC) ? (object) DBNull.Value : divisionIdC));
-                    cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdC) ? (object) DBNull.Value : districtIdC));
-                    cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdC) ? (object) DBNull.Value : thanaIdC));
+                    //cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdC) ? (object) DBNull.Value : divisionIdC));
+                    //cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdC) ? (object) DBNull.Value : districtIdC));
+                    //cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdC) ? (object) DBNull.Value : thanaIdC));
                     cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdC) ? (object) DBNull.Value : postOfficeIdC));
                     cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(cFlatNoTextBox.Text) ? (object) DBNull.Value : cFlatNoTextBox.Text));
                     cmd.Parameters.Add(new SqlParameter("@d6",string.IsNullOrEmpty(cHouseNoTextBox.Text) ? (object) DBNull.Value : cHouseNoTextBox.Text));
@@ -181,13 +181,13 @@ namespace ClientManagementSystem.UI
                 {
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string Qry = "insert into " + sTableName + "(Division_ID,D_ID,T_ID,PostOfficeId,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TContactNo,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                    string Qry = "insert into " + sTableName + "(PostOfficeId,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TContactNo,SClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                     cmd = new SqlCommand(Qry);
                     cmd.Connection = con;
 
-                    cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdT) ? (object)DBNull.Value : divisionIdT));
-                    cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdT) ? (object)DBNull.Value : districtIdT));
-                    cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdT) ? (object)DBNull.Value : thanaIdT));
+                    //cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdT) ? (object)DBNull.Value : divisionIdT));
+                    //cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdT) ? (object)DBNull.Value : districtIdT));
+                    //cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdT) ? (object)DBNull.Value : thanaIdT));
                     cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdT) ? (object)DBNull.Value : postOfficeIdT));
 
                     cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(tFlatNoTextBox.Text) ? (object)DBNull.Value : tFlatNoTextBox.Text));
@@ -204,12 +204,12 @@ namespace ClientManagementSystem.UI
                 {
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string Qry3 = "insert into " + sTableName + "(Division_ID,D_ID,T_ID,PostOfficeId,BFlatNo,BHouseNo,BRoadNo,BBlock,BArea,BContactNo,ADTypeId,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                    string Qry3 = "insert into " + sTableName + "(PostOfficeId,BFlatNo,BHouseNo,BRoadNo,BBlock,BArea,BContactNo,ADTypeId,SClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                     cmd = new SqlCommand(Qry3);
                     cmd.Connection = con;
-                    cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdB) ? (object)DBNull.Value : divisionIdB));
-                    cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdB) ? (object)DBNull.Value : districtIdB));
-                    cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdB) ? (object)DBNull.Value : thanaIdB));
+                    //cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdB) ? (object)DBNull.Value : divisionIdB));
+                    //cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdB) ? (object)DBNull.Value : districtIdB));
+                    //cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdB) ? (object)DBNull.Value : thanaIdB));
                     cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdB) ? (object)DBNull.Value : postOfficeIdB));
 
                     cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(bFlatNoTextBox.Text) ? (object)DBNull.Value : bFlatNoTextBox.Text));
@@ -230,17 +230,7 @@ namespace ClientManagementSystem.UI
             }
         }
 
-        private void SaveTraddingAddress(string tblname2)
-        {
-            string tdaddress = tblname2;
-            
-        }
-
-        private void SaveBillingAddress(string  tblName3)
-        {
-            string billAddress = tblName3;
-           
-        }
+       
 
         private void SaveContactPersonDetails()
         {
@@ -377,7 +367,7 @@ namespace ClientManagementSystem.UI
                 {
                     SaveInstantSalesClient();
                     SaveCorporateORTraddingORBillingAddress("CorporateAddresses");
-                    SaveBillingAddress("BillingAddresses");
+                    SaveCorporateORTraddingORBillingAddress("BillingAddresses");
                     
                 }
                 //4.Tradding Address same as Corporat Address &&  Billing Address Not Applicable
@@ -405,7 +395,7 @@ namespace ClientManagementSystem.UI
                     SaveInstantSalesClient();
                     SaveCorporateORTraddingORBillingAddress("CorporateAddresses");
                     TraddingAddressSameAsCorporateAddress("TraddingAddresses"); //diff method  
-                    SaveBillingAddress("BillingAddresses");
+                    SaveCorporateORTraddingORBillingAddress("BillingAddresses");
                    
                 }
                 //7.Tradding Address Aplicable  &&  Biling Address Not Applicable
@@ -415,7 +405,7 @@ namespace ClientManagementSystem.UI
                    
                     SaveInstantSalesClient();
                     SaveCorporateORTraddingORBillingAddress("CorporateAddresses");
-                    SaveTraddingAddress("TraddingAddresses");
+                    SaveCorporateORTraddingORBillingAddress("TraddingAddresses");
                    
                 }
                 //8.Tradding Address Aplicable  &&  Biling Address Same As Corporat Address
@@ -864,6 +854,10 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void changeFocus(Control ctl)
+        {
+            ctl.Focus();
+        }
         
         private void InstantClientEntryForm_Load(object sender, EventArgs e)
         {
@@ -968,6 +962,8 @@ namespace ClientManagementSystem.UI
                 cDistrictCombo.Text = cDistrictCombo.Text.Trim();
                 cThanaCombo.Items.Clear();
                 cThanaCombo.Text = "";
+                cPostOfficeCombo.SelectedIndex = -1;
+                cPostCodeTextBox.Clear();
                 cThanaCombo.Enabled = true;
                 cThanaCombo.Focus();
 
@@ -1257,6 +1253,9 @@ namespace ClientManagementSystem.UI
                 cDivisionCombo.Text = cDivisionCombo.Text.Trim();
                 cDistrictCombo.Items.Clear();
                 cDistrictCombo.Text = "";
+                cThanaCombo.SelectedIndex = -1;
+                cPostOfficeCombo.SelectedIndex = -1;
+                cPostCodeTextBox.Clear();
                 cDistrictCombo.Enabled = true;
                 cDistrictCombo.Focus();
 
@@ -2217,6 +2216,16 @@ namespace ClientManagementSystem.UI
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void cmbEmailAddress_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(cmbEmailAddress.Text) && !cmbEmailAddress.Items.Contains(cmbEmailAddress.Text))
+            {
+                MessageBox.Show("Please Select A Valid Email Address", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbEmailAddress.ResetText();
+                this.BeginInvoke(new ChangeFocusDelegate(changeFocus), cmbEmailAddress);
             }
         }
         }

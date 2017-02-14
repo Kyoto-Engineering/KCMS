@@ -37,10 +37,7 @@ namespace ClientManagementSystem.UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //this.Visible = false;
-            //dynamic ww = new MainUIInquieryClient();
-            //ww.ShowDialog();
-            //this.Visible = true;
+           
 
             this.Hide();
             MainUIInquieryClient frm = new MainUIInquieryClient();
@@ -140,10 +137,9 @@ namespace ClientManagementSystem.UI
 
         private void emailBankButton_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            dynamic fg4 = new EmailBank();
-            fg4.ShowDialog();
-            this.Visible = true;
+           this.Hide();
+            EmailBank frm=new EmailBank();
+             frm.Show();
         }
     }
 }

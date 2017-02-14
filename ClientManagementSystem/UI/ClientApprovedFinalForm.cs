@@ -23,6 +23,7 @@ namespace ClientManagementSystem.UI
     public partial class ClientApprovedFinalForm : Form
     {
         ConnectionString cs=new ConnectionString();
+        private delegate void ChangeFocusDelegate(Control ctl);
         private SqlConnection con = null;
         private SqlCommand cmd = null;
         private SqlDataReader rdr = null;
@@ -74,12 +75,12 @@ namespace ClientManagementSystem.UI
                 {
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string insertQ = "insert into " + sTableName + "(Division_ID,D_ID,T_ID,PostOfficeId,CFlatNo,CHouseNo,CRoadNo,CBlock,CArea,CContactNo,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                    string insertQ = "insert into " + sTableName + "(PostOfficeId,CFlatNo,CHouseNo,CRoadNo,CBlock,CArea,CContactNo,SClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                     cmd = new SqlCommand(insertQ);
                     cmd.Connection = con;
-                    cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdC) ? (object)DBNull.Value : divisionIdC));
-                    cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdC) ? (object)DBNull.Value : districtIdC));
-                    cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdC) ? (object)DBNull.Value : thanaIdC));
+                    //cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdC) ? (object)DBNull.Value : divisionIdC));
+                    //cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdC) ? (object)DBNull.Value : districtIdC));
+                    //cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdC) ? (object)DBNull.Value : thanaIdC));
                     cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postofficeIdC) ? (object)DBNull.Value : postofficeIdC));
                     cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(cFlatNoTextBox.Text) ? (object)DBNull.Value : cFlatNoTextBox.Text));
                     cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(cHouseNoTextBox.Text) ? (object)DBNull.Value : cHouseNoTextBox.Text));
@@ -95,13 +96,13 @@ namespace ClientManagementSystem.UI
                 {
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string Qry = "insert into " + sTableName + "(Division_ID,D_ID,T_ID,PostOfficeId,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TContactNo,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                    string Qry = "insert into " + sTableName + "(PostOfficeId,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TContactNo,SClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                     cmd = new SqlCommand(Qry);
                     cmd.Connection = con;
 
-                    cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdT) ? (object)DBNull.Value : divisionIdT));
-                    cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdT) ? (object)DBNull.Value : districtIdT));
-                    cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdT) ? (object)DBNull.Value : thanaIdT));
+                    //cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdT) ? (object)DBNull.Value : divisionIdT));
+                    //cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdT) ? (object)DBNull.Value : districtIdT));
+                    //cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdT) ? (object)DBNull.Value : thanaIdT));
                     cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdT) ? (object)DBNull.Value : postOfficeIdT));
 
                     cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(tFlatNoTextBox.Text) ? (object)DBNull.Value : tFlatNoTextBox.Text));
@@ -118,12 +119,12 @@ namespace ClientManagementSystem.UI
                 {
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string Qry = "insert into " + sTableName + "(Division_ID,D_ID,T_ID,PostOfficeId,BFlatNo,BHouseNo,BRoadNo,BBlock,BArea,BContactNo,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                    string Qry = "insert into " + sTableName + "(PostOfficeId,BFlatNo,BHouseNo,BRoadNo,BBlock,BArea,BContactNo,SClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                     cmd = new SqlCommand(Qry);
                     cmd.Connection = con;
-                    cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdB) ? (object)DBNull.Value : divisionIdB));
-                    cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdB) ? (object)DBNull.Value : districtIdB));
-                    cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdB) ? (object)DBNull.Value : thanaIdB));
+                    //cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdB) ? (object)DBNull.Value : divisionIdB));
+                    //cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdB) ? (object)DBNull.Value : districtIdB));
+                    //cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdB) ? (object)DBNull.Value : thanaIdB));
                     cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdB) ? (object)DBNull.Value : postOfficeIdB));
                     cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(bFlatNoTextBox.Text) ? (object)DBNull.Value : bFlatNoTextBox.Text));
                     cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(bHouseNoTextBox.Text) ? (object)DBNull.Value : bHouseNoTextBox.Text));
@@ -908,6 +909,10 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void changeFocus(Control ctl)
+        {
+            ctl.Focus();
+        }
        
         private void ClientApprovedFinalForm_Load(object sender, EventArgs e)
         {
@@ -1104,6 +1109,8 @@ namespace ClientManagementSystem.UI
                 cDistrictCombo.Text = cDistrictCombo.Text.Trim();
                 cThanaCombo.Items.Clear();
                 cThanaCombo.Text = "";
+                cPostOfficeCombo.SelectedIndex = -1;
+                cPostCodeTextBox.Clear();
                 cThanaCombo.Enabled = true;
                 cThanaCombo.Focus();
 
@@ -1195,6 +1202,8 @@ namespace ClientManagementSystem.UI
                 tDistComboBox.Text = tDistComboBox.Text.Trim();
                 tThanaCombo.Items.Clear();
                 tThanaCombo.Text = "";
+                tPostOfficeCombo.SelectedIndex = -1;
+                tPostCodeTextBox.Clear();
                 tThanaCombo.Enabled = true;
                 tThanaCombo.Focus();
 
@@ -1250,6 +1259,8 @@ namespace ClientManagementSystem.UI
                 bDistrictCombo.Text = bDistrictCombo.Text.Trim();
                 bThanaCombo.Items.Clear();
                 bThanaCombo.Text = "";
+                bPostOfficeCombo.SelectedIndex = -1;
+                bPostCodeTextBox.Clear();
                 bThanaCombo.Enabled = true;
                 bThanaCombo.Focus();
 
@@ -1307,6 +1318,9 @@ namespace ClientManagementSystem.UI
                 cDivisionCombo.Text = cDivisionCombo.Text.Trim();
                 cDistrictCombo.Items.Clear();
                 cDistrictCombo.Text = "";
+                cThanaCombo.SelectedIndex = -1;
+                cPostOfficeCombo.SelectedIndex = -1;
+                cPostCodeTextBox.Clear();
                 cDistrictCombo.Enabled = true;
                 cDistrictCombo.Focus();
 
@@ -1362,6 +1376,7 @@ namespace ClientManagementSystem.UI
                 cThanaCombo.Text = cThanaCombo.Text.Trim();
                 cPostOfficeCombo.Items.Clear();
                 cPostOfficeCombo.Text = "";
+                cPostCodeTextBox.Clear();
                 cPostOfficeCombo.Enabled = true;
                 cPostOfficeCombo.Focus();
 
@@ -1454,6 +1469,9 @@ namespace ClientManagementSystem.UI
                 tDivitionCombo.Text = tDivitionCombo.Text.Trim();
                 tDistComboBox.Items.Clear();
                 tDistComboBox.Text = "";
+                tThanaCombo.SelectedIndex = -1;
+                tPostOfficeCombo.SelectedIndex = -1;
+                tPostCodeTextBox.Clear();
                 tDistComboBox.Enabled = true;
                 tDistComboBox.Focus();
 
@@ -1509,6 +1527,7 @@ namespace ClientManagementSystem.UI
                 tThanaCombo.Text = tThanaCombo.Text.Trim();
                 tPostOfficeCombo.Items.Clear();
                 tPostOfficeCombo.Text = "";
+                tPostCodeTextBox.Clear();
                 tPostOfficeCombo.Enabled = true;
                 tPostOfficeCombo.Focus();
 
@@ -1602,6 +1621,9 @@ namespace ClientManagementSystem.UI
                 bDivisionCombo.Text = bDivisionCombo.Text.Trim();
                 bDistrictCombo.Items.Clear();
                 bDistrictCombo.Text = "";
+                bThanaCombo.SelectedIndex = -1;
+                bPostOfficeCombo.SelectedIndex = -1;
+                bPostCodeTextBox.Clear();
                 bDistrictCombo.Enabled = true;
                 bDistrictCombo.Focus();
 
@@ -1657,6 +1679,7 @@ namespace ClientManagementSystem.UI
                 bThanaCombo.Text = bThanaCombo.Text.Trim();
                 bPostOfficeCombo.Items.Clear();
                 bPostOfficeCombo.Text = "";
+                bPostCodeTextBox.Clear();
                 bPostOfficeCombo.Enabled = true;
                 bPostOfficeCombo.Focus();
 
@@ -2237,6 +2260,16 @@ namespace ClientManagementSystem.UI
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void cmbEmailAddress_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(cmbEmailAddress.Text) && !cmbEmailAddress.Items.Contains(cmbEmailAddress.Text))
+            {
+                MessageBox.Show("Please Select A Valid Email Address", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbEmailAddress.ResetText();
+                this.BeginInvoke(new ChangeFocusDelegate(changeFocus), cmbEmailAddress);
             }
         }
     }

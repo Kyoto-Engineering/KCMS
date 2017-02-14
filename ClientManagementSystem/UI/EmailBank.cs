@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClientManagementSystem.DBGateway;
@@ -62,6 +63,33 @@ namespace ClientManagementSystem.UI
         private void EmailBank_Load(object sender, EventArgs e)
         {
             userId = LoginForm.uId.ToString();
+        }
+
+        private void EmailBank_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            MainUI frm=new MainUI();
+                 frm.Show();
+        }
+
+        private void txtBankEmailId_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBankEmailId.Text))
+            {
+                string emailId = txtBankEmailId.Text.Trim();
+                Regex mRegxExpression;
+
+                mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+                if (!mRegxExpression.IsMatch(emailId))
+                {
+
+                    MessageBox.Show("Please type your  valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtBankEmailId.Clear();
+                    txtBankEmailId.Focus();
+
+                }
+            }
         }
     }
 }

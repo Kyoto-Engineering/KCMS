@@ -32,7 +32,9 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.instantApprovalButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbEmailAddress = new System.Windows.Forms.ComboBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.cmbCPEmailAddress = new System.Windows.Forms.ComboBox();
             this.label59 = new System.Windows.Forms.Label();
             this.cellNumberInsTextBox = new System.Windows.Forms.TextBox();
             this.designationInsTextBox = new System.Windows.Forms.TextBox();
@@ -149,8 +151,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.cmbEmailAddress = new System.Windows.Forms.ComboBox();
-            this.cmbCPEmailAddress = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -216,6 +216,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Instant Client Registration";
             // 
+            // cmbEmailAddress
+            // 
+            this.cmbEmailAddress.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbEmailAddress.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEmailAddress.FormattingEnabled = true;
+            this.cmbEmailAddress.Location = new System.Drawing.Point(218, 141);
+            this.cmbEmailAddress.Name = "cmbEmailAddress";
+            this.cmbEmailAddress.Size = new System.Drawing.Size(240, 30);
+            this.cmbEmailAddress.TabIndex = 92;
+            this.cmbEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbEmailAddress_SelectedIndexChanged);
+            this.cmbEmailAddress.Leave += new System.EventHandler(this.cmbEmailAddress_Leave);
+            // 
             // groupBox7
             // 
             this.groupBox7.BackColor = System.Drawing.Color.Yellow;
@@ -233,6 +246,17 @@
             this.groupBox7.TabIndex = 87;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Contact Person Details";
+            // 
+            // cmbCPEmailAddress
+            // 
+            this.cmbCPEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCPEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCPEmailAddress.FormattingEnabled = true;
+            this.cmbCPEmailAddress.Location = new System.Drawing.Point(233, 119);
+            this.cmbCPEmailAddress.Name = "cmbCPEmailAddress";
+            this.cmbCPEmailAddress.Size = new System.Drawing.Size(208, 30);
+            this.cmbCPEmailAddress.TabIndex = 93;
+            this.cmbCPEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbCPEmailAddress_SelectedIndexChanged);
             // 
             // label59
             // 
@@ -505,6 +529,7 @@
             this.cPostCodeTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cPostCodeTextBox.Location = new System.Drawing.Point(326, 147);
             this.cPostCodeTextBox.Name = "cPostCodeTextBox";
+            this.cPostCodeTextBox.ReadOnly = true;
             this.cPostCodeTextBox.Size = new System.Drawing.Size(156, 26);
             this.cPostCodeTextBox.TabIndex = 17;
             this.cPostCodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cPostCodeTextBox_KeyPress);
@@ -654,7 +679,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(116, 213);
+            this.label12.Location = new System.Drawing.Point(116, 218);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(79, 19);
             this.label12.TabIndex = 87;
@@ -958,6 +983,7 @@
             this.bPostCodeTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bPostCodeTextBox.Location = new System.Drawing.Point(352, 148);
             this.bPostCodeTextBox.Name = "bPostCodeTextBox";
+            this.bPostCodeTextBox.ReadOnly = true;
             this.bPostCodeTextBox.Size = new System.Drawing.Size(192, 26);
             this.bPostCodeTextBox.TabIndex = 33;
             // 
@@ -1295,6 +1321,7 @@
             this.tPostCodeTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tPostCodeTextBox.Location = new System.Drawing.Point(369, 155);
             this.tPostCodeTextBox.Name = "tPostCodeTextBox";
+            this.tPostCodeTextBox.ReadOnly = true;
             this.tPostCodeTextBox.Size = new System.Drawing.Size(203, 26);
             this.tPostCodeTextBox.TabIndex = 17;
             this.tPostCodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tPostCodeTextBox_KeyPress_1);
@@ -1490,28 +1517,6 @@
             this.label14.Size = new System.Drawing.Size(93, 19);
             this.label14.TabIndex = 67;
             this.label14.Text = "Bank  Name";
-            // 
-            // cmbEmailAddress
-            // 
-            this.cmbEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbEmailAddress.FormattingEnabled = true;
-            this.cmbEmailAddress.Location = new System.Drawing.Point(218, 141);
-            this.cmbEmailAddress.Name = "cmbEmailAddress";
-            this.cmbEmailAddress.Size = new System.Drawing.Size(240, 30);
-            this.cmbEmailAddress.TabIndex = 92;
-            this.cmbEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbEmailAddress_SelectedIndexChanged);
-            // 
-            // cmbCPEmailAddress
-            // 
-            this.cmbCPEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCPEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCPEmailAddress.FormattingEnabled = true;
-            this.cmbCPEmailAddress.Location = new System.Drawing.Point(233, 119);
-            this.cmbCPEmailAddress.Name = "cmbCPEmailAddress";
-            this.cmbCPEmailAddress.Size = new System.Drawing.Size(208, 30);
-            this.cmbCPEmailAddress.TabIndex = 93;
-            this.cmbCPEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbCPEmailAddress_SelectedIndexChanged);
             // 
             // InstantClientEntryForm
             // 

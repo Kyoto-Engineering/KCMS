@@ -165,7 +165,8 @@
             // 
             // cmbEmailAddress
             // 
-            this.cmbEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEmailAddress.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbEmailAddress.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEmailAddress.FormattingEnabled = true;
             this.cmbEmailAddress.Location = new System.Drawing.Point(226, 151);
@@ -173,6 +174,7 @@
             this.cmbEmailAddress.Size = new System.Drawing.Size(196, 30);
             this.cmbEmailAddress.TabIndex = 85;
             this.cmbEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbEmailAddress_SelectedIndexChanged);
+            this.cmbEmailAddress.Leave += new System.EventHandler(this.cmbEmailAddress_Leave);
             // 
             // groupBox5
             // 
@@ -195,7 +197,6 @@
             // 
             // cmbCPEmailAddress
             // 
-            this.cmbCPEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCPEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCPEmailAddress.FormattingEnabled = true;
             this.cmbCPEmailAddress.Location = new System.Drawing.Point(182, 140);
@@ -203,6 +204,8 @@
             this.cmbCPEmailAddress.Size = new System.Drawing.Size(196, 30);
             this.cmbCPEmailAddress.TabIndex = 86;
             this.cmbCPEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbCPEmailAddress_SelectedIndexChanged);
+            this.cmbCPEmailAddress.Enter += new System.EventHandler(this.cmbCPEmailAddress_Enter);
+            this.cmbCPEmailAddress.Leave += new System.EventHandler(this.cmbCPEmailAddress_Leave);
             // 
             // label37
             // 
@@ -577,6 +580,7 @@
             this.tPostCodeTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tPostCodeTextBox.Location = new System.Drawing.Point(437, 146);
             this.tPostCodeTextBox.Name = "tPostCodeTextBox";
+            this.tPostCodeTextBox.ReadOnly = true;
             this.tPostCodeTextBox.Size = new System.Drawing.Size(185, 26);
             this.tPostCodeTextBox.TabIndex = 33;
             this.tPostCodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tPostCodeTextBox_KeyPress);
