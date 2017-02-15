@@ -747,7 +747,7 @@ namespace ClientManagementSystem.UI
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct = "select RTRIM(Name) from Registration order by UserId desc";
+                string ct = "select RTRIM(Name) from Registration where  Registration.Statuss!='InActive' order by UserId desc";
                 cmd = new SqlCommand(ct);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -1053,9 +1053,7 @@ namespace ClientManagementSystem.UI
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            ForSalseClientMP frm=new ForSalseClientMP();
-             frm.Show();
+            
         }
 
         private void emailAddressAPTextBox_Validating(object sender, CancelEventArgs e)
@@ -2271,6 +2269,18 @@ namespace ClientManagementSystem.UI
                 cmbEmailAddress.ResetText();
                 this.BeginInvoke(new ChangeFocusDelegate(changeFocus), cmbEmailAddress);
             }
+        }
+
+        private void tPostOfficeCombo_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClientApprovedFinalForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            ConvertToSalesClientGrid frm = new ConvertToSalesClientGrid();
+            frm.Show();
         }
     }
 }

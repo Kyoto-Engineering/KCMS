@@ -70,7 +70,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.notApplicableCheckBox = new System.Windows.Forms.CheckBox();
+            this.ifApplicableCheckBox = new System.Windows.Forms.CheckBox();
             this.sameAsCorporatAddCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tPostOfficeCombo = new System.Windows.Forms.ComboBox();
@@ -107,7 +107,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labeld = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.closeButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -167,7 +166,7 @@
             this.label35.BackColor = System.Drawing.Color.Teal;
             this.label35.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.ForeColor = System.Drawing.Color.Yellow;
-            this.label35.Location = new System.Drawing.Point(175, 19);
+            this.label35.Location = new System.Drawing.Point(182, 19);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(37, 19);
             this.label35.TabIndex = 106;
@@ -175,7 +174,8 @@
             // 
             // cmbIndustryCategory
             // 
-            this.cmbIndustryCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIndustryCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbIndustryCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbIndustryCategory.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbIndustryCategory.FormattingEnabled = true;
             this.cmbIndustryCategory.Location = new System.Drawing.Point(229, 232);
@@ -593,7 +593,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Olive;
-            this.groupBox3.Controls.Add(this.notApplicableCheckBox);
+            this.groupBox3.Controls.Add(this.ifApplicableCheckBox);
             this.groupBox3.Controls.Add(this.sameAsCorporatAddCheckBox);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -604,17 +604,17 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Factory Address";
             // 
-            // notApplicableCheckBox
+            // ifApplicableCheckBox
             // 
-            this.notApplicableCheckBox.AutoSize = true;
-            this.notApplicableCheckBox.ForeColor = System.Drawing.Color.Yellow;
-            this.notApplicableCheckBox.Location = new System.Drawing.Point(59, 20);
-            this.notApplicableCheckBox.Name = "notApplicableCheckBox";
-            this.notApplicableCheckBox.Size = new System.Drawing.Size(126, 23);
-            this.notApplicableCheckBox.TabIndex = 82;
-            this.notApplicableCheckBox.Text = "Not Applicable";
-            this.notApplicableCheckBox.UseVisualStyleBackColor = true;
-            this.notApplicableCheckBox.CheckedChanged += new System.EventHandler(this.ifApplicableCheckBox_CheckedChanged);
+            this.ifApplicableCheckBox.AutoSize = true;
+            this.ifApplicableCheckBox.ForeColor = System.Drawing.Color.Yellow;
+            this.ifApplicableCheckBox.Location = new System.Drawing.Point(59, 20);
+            this.ifApplicableCheckBox.Name = "ifApplicableCheckBox";
+            this.ifApplicableCheckBox.Size = new System.Drawing.Size(126, 23);
+            this.ifApplicableCheckBox.TabIndex = 82;
+            this.ifApplicableCheckBox.Text = "Not Applicable";
+            this.ifApplicableCheckBox.UseVisualStyleBackColor = true;
+            this.ifApplicableCheckBox.CheckedChanged += new System.EventHandler(this.ifApplicableCheckBox_CheckedChanged);
             // 
             // sameAsCorporatAddCheckBox
             // 
@@ -1018,34 +1018,19 @@
             this.label29.TabIndex = 2;
             this.label29.Text = "Edit Document If you need to changes";
             // 
-            // closeButton
-            // 
-            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.closeButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeButton.ForeColor = System.Drawing.Color.Blue;
-            this.closeButton.Location = new System.Drawing.Point(1060, -1);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(61, 46);
-            this.closeButton.TabIndex = 3;
-            this.closeButton.Text = "Close";
-            this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
             // EditFromGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1126, 596);
-            this.ControlBox = false;
-            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labeld);
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "EditFromGrid";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditFromGrid";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EditFromGrid_FormClosed);
             this.Load += new System.EventHandler(this.EditFromGrid_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -1077,7 +1062,6 @@
         public System.Windows.Forms.TextBox txtClientId;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label31;
         public  System.Windows.Forms.ComboBox cDivisionCombo;
@@ -1118,8 +1102,8 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.CheckBox notApplicableCheckBox;
-        private System.Windows.Forms.CheckBox sameAsCorporatAddCheckBox;
+        public  System.Windows.Forms.CheckBox ifApplicableCheckBox;
+        public  System.Windows.Forms.CheckBox sameAsCorporatAddCheckBox;
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.TextBox cellPhoneTextBox;
         public System.Windows.Forms.TextBox txtEndUser;

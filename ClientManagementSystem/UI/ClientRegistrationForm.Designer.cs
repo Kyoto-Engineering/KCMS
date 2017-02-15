@@ -174,6 +174,7 @@
             this.cmbEmailAddress.Size = new System.Drawing.Size(196, 30);
             this.cmbEmailAddress.TabIndex = 85;
             this.cmbEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbEmailAddress_SelectedIndexChanged);
+            this.cmbEmailAddress.Enter += new System.EventHandler(this.cmbEmailAddress_Enter);
             this.cmbEmailAddress.Leave += new System.EventHandler(this.cmbEmailAddress_Leave);
             // 
             // groupBox5
@@ -197,6 +198,8 @@
             // 
             // cmbCPEmailAddress
             // 
+            this.cmbCPEmailAddress.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbCPEmailAddress.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCPEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCPEmailAddress.FormattingEnabled = true;
             this.cmbCPEmailAddress.Location = new System.Drawing.Point(182, 140);
@@ -305,6 +308,7 @@
             this.endUserTextBox.Name = "endUserTextBox";
             this.endUserTextBox.Size = new System.Drawing.Size(195, 26);
             this.endUserTextBox.TabIndex = 82;
+            this.endUserTextBox.Enter += new System.EventHandler(this.endUserTextBox_Enter);
             // 
             // label10
             // 
@@ -724,6 +728,7 @@
             this.cPostOfficeCombo.Size = new System.Drawing.Size(198, 30);
             this.cPostOfficeCombo.TabIndex = 82;
             this.cPostOfficeCombo.SelectedIndexChanged += new System.EventHandler(this.cPostOfficeCombo_SelectedIndexChanged);
+            this.cPostOfficeCombo.Enter += new System.EventHandler(this.cPostOfficeCombo_Enter);
             // 
             // label44
             // 
@@ -812,6 +817,7 @@
             this.cThanaCombo.Size = new System.Drawing.Size(198, 30);
             this.cThanaCombo.TabIndex = 42;
             this.cThanaCombo.SelectedIndexChanged += new System.EventHandler(this.cThanaCombo_SelectedIndexChanged);
+            this.cThanaCombo.Enter += new System.EventHandler(this.cThanaCombo_Enter);
             // 
             // cContactNoTextBox
             // 
@@ -843,6 +849,7 @@
             this.cDistCombo.Size = new System.Drawing.Size(199, 27);
             this.cDistCombo.TabIndex = 19;
             this.cDistCombo.SelectedIndexChanged += new System.EventHandler(this.cDistCombo_SelectedIndexChanged);
+            this.cDistCombo.Enter += new System.EventHandler(this.cDistCombo_Enter);
             // 
             // label21
             // 
@@ -970,7 +977,8 @@
             // 
             // cmbIndustryCategory
             // 
-            this.cmbIndustryCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIndustryCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbIndustryCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbIndustryCategory.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbIndustryCategory.FormattingEnabled = true;
             this.cmbIndustryCategory.Items.AddRange(new object[] {
@@ -992,6 +1000,7 @@
             this.cmbIndustryCategory.Size = new System.Drawing.Size(195, 27);
             this.cmbIndustryCategory.TabIndex = 58;
             this.cmbIndustryCategory.SelectedIndexChanged += new System.EventHandler(this.cmbIndustryCategory_SelectedIndexChanged);
+            this.cmbIndustryCategory.Enter += new System.EventHandler(this.cmbIndustryCategory_Enter);
             // 
             // label1
             // 
@@ -1026,6 +1035,7 @@
             this.cmbNatureOfClient.Size = new System.Drawing.Size(195, 27);
             this.cmbNatureOfClient.TabIndex = 47;
             this.cmbNatureOfClient.SelectedIndexChanged += new System.EventHandler(this.cmbNatureOfClient_SelectedIndexChanged);
+            this.cmbNatureOfClient.Enter += new System.EventHandler(this.cmbNatureOfClient_Enter);
             // 
             // label11
             // 
@@ -1050,6 +1060,7 @@
             this.cmbClientType.Size = new System.Drawing.Size(196, 27);
             this.cmbClientType.TabIndex = 26;
             this.cmbClientType.SelectedIndexChanged += new System.EventHandler(this.txtClientComboBox_SelectedIndexChanged);
+            this.cmbClientType.Enter += new System.EventHandler(this.cmbClientType_Enter);
             // 
             // clientNameTextBox
             // 
