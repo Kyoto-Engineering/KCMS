@@ -17,6 +17,7 @@ namespace ClientManagementSystem.UI
         private SqlConnection con;
         private SqlCommand cmd;
         private SqlDataAdapter sda;
+        private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
         public ConvertToSalesClientGrid()
         {
@@ -78,6 +79,25 @@ namespace ClientManagementSystem.UI
                 {
                    
                     frm.tASameAsCACheckBox.Checked = true;
+                }
+                else if (string.IsNullOrEmpty(b))
+                {
+
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    string ct2 = "select RTRIM(TraddingAddresses.IClientId) from TraddingAddresses where TraddingAddresses.IClientId='" + frm.txtIClientId.Text + "'";
+                    cmd = new SqlCommand(ct2, con);
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read() && !rdr.IsDBNull(0))
+                    {
+
+                        frm.tANotApplicable.Checked = false;
+                    }
+                    else
+                    {
+
+                        frm.tANotApplicable.Checked = true;
+                    }
                 }
 
                 frm.lk.Text = lg.Text;

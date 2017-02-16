@@ -21,6 +21,7 @@ namespace ClientManagementSystem.UI
         ConnectionString cs=new ConnectionString();
         public string userId;
         public int currentId;
+        public string userTypemU;
         public EmailBank()
         {
             InitializeComponent();
@@ -63,13 +64,23 @@ namespace ClientManagementSystem.UI
         private void EmailBank_Load(object sender, EventArgs e)
         {
             userId = LoginForm.uId.ToString();
+            userTypemU = LoginForm.userType;
         }
 
         private void EmailBank_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Hide();
-            MainUI frm=new MainUI();
-                 frm.Show();
+            if (userTypemU == "Admin")
+            {
+                this.Hide();
+                MainUI frm = new MainUI();
+                frm.Show();
+            }
+            else if (userTypemU == "User")
+            {
+                this.Hide();
+                MainUIForUser frm = new MainUIForUser();
+                frm.Show();
+            }
         }
 
         private void txtBankEmailId_Validating(object sender, CancelEventArgs e)

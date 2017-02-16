@@ -136,7 +136,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT RTRIM(InquieryClient.IClientId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from InquieryClient,ContactPersonDetails  where InquieryClient.IClientId=ContactPersonDetails.IClientId  order by InquieryClient.IClientId desc",con);
+                cmd = new SqlCommand("SELECT InquieryClient.IClientId,InquieryClient.ClientName,EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM  InquieryClient INNER JOIN ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId  INNER JOIN  EmailBank ON InquieryClient.EmailBankId = EmailBank.EmailBankId order by InquieryClient.IClientId desc", con);
                // cmd = new SqlCommand("SELECT RTRIM(InquieryClient.IClientId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(InquieryClient.ContactPersonName),RTRIM(InquieryClient.CellNumber) from InquieryClient  order by InquieryClient.IClientId desc", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView2.Rows.Clear();

@@ -23,6 +23,7 @@ namespace ClientManagementSystem.UI
         private SqlCommand cmd;
         private SqlDataReader rdr;
         private SqlDataAdapter sda;
+        public string usertTypem;
         public MainUIInquieryClient()
         {
             InitializeComponent();
@@ -47,6 +48,7 @@ namespace ClientManagementSystem.UI
         }
         private void MainUIInquieryClient_Load(object sender, EventArgs e)
         {
+            usertTypem = LoginForm.userType;
             InquiryClientDetailsGrid();
 
 
@@ -385,9 +387,18 @@ namespace ClientManagementSystem.UI
 
         private void MainUIInquieryClient_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Hide();
-            MainUI frm = new MainUI();
-            frm.Show();
+            if (usertTypem == "Admin")
+            {
+                this.Hide();
+                MainUI frm = new MainUI();
+                frm.Show();
+            }
+            else if (usertTypem == "User")
+            {
+                this.Hide();
+                MainUIForUser frm = new MainUIForUser();
+                frm.Show();
+            }
         }
 
     }

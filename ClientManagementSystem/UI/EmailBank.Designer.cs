@@ -57,7 +57,7 @@
             this.submitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.submitButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitButton.ForeColor = System.Drawing.Color.Yellow;
-            this.submitButton.Location = new System.Drawing.Point(266, 121);
+            this.submitButton.Location = new System.Drawing.Point(356, 108);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(123, 68);
             this.submitButton.TabIndex = 4;

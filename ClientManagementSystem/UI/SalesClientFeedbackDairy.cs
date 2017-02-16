@@ -100,12 +100,12 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT RTRIM(SalesClient.SClientId),RTRIM(SalesClient.ClientName),RTRIM(SalesClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from SalesClient,ContactPersonDetails  where SalesClient.SClientId=ContactPersonDetails.SClientId  order by SalesClient.SClientId desc", con);                
+                cmd = new SqlCommand("SELECT SalesClient.SClientId, SalesClient.ClientName, EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM  SalesClient INNER JOIN ContactPersonDetails ON SalesClient.SClientId = ContactPersonDetails.SClientId INNER JOIN EmailBank ON SalesClient.EmailBankId = EmailBank.EmailBankId  order by SalesClient.SClientId desc", con);                
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView2.Rows.Clear();
                 while (rdr.Read() == true)
                 {
-                    dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3]);
+                    dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3],rdr[4]);
                 }
                 con.Close();
             }

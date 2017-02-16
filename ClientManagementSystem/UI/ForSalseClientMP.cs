@@ -23,6 +23,7 @@ namespace ClientManagementSystem.UI
         private SqlDataReader rdr;
         private SqlDataAdapter sda;
         ConnectionString cs = new ConnectionString();
+        public string userTypeK;
         public ForSalseClientMP()
         {
             InitializeComponent();
@@ -246,6 +247,7 @@ namespace ClientManagementSystem.UI
         private void ForSalseClientMP_Load(object sender, EventArgs e)
         {
             SalesClientDetailsGrid();
+            userTypeK = LoginForm.userType;
         }
 
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -393,9 +395,18 @@ namespace ClientManagementSystem.UI
 
         private void ForSalseClientMP_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Hide();
-            MainUIInquieryClient frm = new MainUIInquieryClient();
-            frm.Show();
+            if (userTypeK == "Admin")
+            {
+                this.Hide();
+                MainUI frm=new MainUI();
+                frm.Show();
+            }
+            else if (userTypeK == "User")
+            {
+                this.Hide();
+                MainUIForUser frm=new MainUIForUser();
+                frm.Show();
+            }
         } 
         
     }

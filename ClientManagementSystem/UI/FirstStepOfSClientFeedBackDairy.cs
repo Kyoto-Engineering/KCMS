@@ -32,7 +32,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT RTRIM(SalesClient.SClientId),RTRIM(SalesClient.ClientName),RTRIM(SalesClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from SalesClient,ContactPersonDetails  where SalesClient.SClientId=ContactPersonDetails.SClientId  order by SalesClient.SClientId desc", con); 
+                cmd = new SqlCommand("SELECT SalesClient.SClientId, SalesClient.ClientName, EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM  SalesClient INNER JOIN ContactPersonDetails ON SalesClient.SClientId = ContactPersonDetails.SClientId INNER JOIN EmailBank ON SalesClient.EmailBankId = EmailBank.EmailBankId  order by SalesClient.SClientId desc", con); 
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)
@@ -110,10 +110,11 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void FirstStepOfSClientFeedBackDairy_Load(object sender, EventArgs e)
         {
             RPFillCombo();
-            
+            ModeOfConduct();
             GetData();
         }
 
@@ -142,6 +143,11 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show("Please select type your Feedback", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (string.IsNullOrWhiteSpace(cmbModeOfConduct.Text))
+            {
+                MessageBox.Show("Please select Mode Of Conduct", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (string.IsNullOrWhiteSpace(actionSMultiTextBox.Text))
             {
                 MessageBox.Show("Please write your probable Action", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -161,6 +167,7 @@ namespace ClientManagementSystem.UI
                 frm3.txt2SClientName.Text = txtSClientName.Text;
                 frm3.txtClientInquiry.Text = txtSClientInquiry.Text;
                 frm3.feedback2STextBox.Text = feedbackSTextBox.Text;
+                frm3.txtModeOfConduct.Text = cmbModeOfConduct.Text;
                 frm3.feedback2SDateTime.Text = feedbackSDeadlineDateTime.Text;
                 frm3.action2SMultiTextBox.Text = actionSMultiTextBox.Text;
                 frm3.txtResposible2SPerson.Text = responsibleSPersonComboBox.Text;
@@ -203,7 +210,7 @@ namespace ClientManagementSystem.UI
         {
             try
             {
-                DataGridViewRow dr = dataGridView1.SelectedRows[0];
+                DataGridViewRow dr = dataGridView1.CurrentRow;
                 txtSClientId.Text = dr.Cells[0].Value.ToString();
                 txtSClientName.Text = dr.Cells[1].Value.ToString();
 

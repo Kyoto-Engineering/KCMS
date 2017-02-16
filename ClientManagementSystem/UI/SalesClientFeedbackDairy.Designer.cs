@@ -67,6 +67,8 @@
             this.txtClientInquiry = new System.Windows.Forms.RichTextBox();
             this.txt2SClientId = new System.Windows.Forms.TextBox();
             this.txt2SClientName = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtModeOfConduct = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -253,7 +255,7 @@
             this.feedback2SDateTime.CustomFormat = "dd/MM/yyyy HH:mm:ss";
             this.feedback2SDateTime.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.feedback2SDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.feedback2SDateTime.Location = new System.Drawing.Point(320, 247);
+            this.feedback2SDateTime.Location = new System.Drawing.Point(320, 295);
             this.feedback2SDateTime.Name = "feedback2SDateTime";
             this.feedback2SDateTime.Size = new System.Drawing.Size(269, 29);
             this.feedback2SDateTime.TabIndex = 21;
@@ -282,7 +284,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(72, 250);
+            this.label1.Location = new System.Drawing.Point(72, 298);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(216, 22);
             this.label1.TabIndex = 18;
@@ -297,16 +299,16 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(21, 278);
+            this.groupBox2.Location = new System.Drawing.Point(21, 328);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(581, 277);
+            this.groupBox2.Size = new System.Drawing.Size(581, 248);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Follow Up";
             // 
             // action2SMultiTextBox
             // 
-            this.action2SMultiTextBox.Location = new System.Drawing.Point(24, 55);
+            this.action2SMultiTextBox.Location = new System.Drawing.Point(24, 48);
             this.action2SMultiTextBox.Name = "action2SMultiTextBox";
             this.action2SMultiTextBox.Size = new System.Drawing.Size(522, 119);
             this.action2SMultiTextBox.TabIndex = 12;
@@ -314,7 +316,7 @@
             // 
             // followUpDeadline2STextBox
             // 
-            this.followUpDeadline2STextBox.Location = new System.Drawing.Point(301, 227);
+            this.followUpDeadline2STextBox.Location = new System.Drawing.Point(301, 210);
             this.followUpDeadline2STextBox.Name = "followUpDeadline2STextBox";
             this.followUpDeadline2STextBox.ReadOnly = true;
             this.followUpDeadline2STextBox.Size = new System.Drawing.Size(246, 29);
@@ -322,7 +324,7 @@
             // 
             // txtResposible2SPerson
             // 
-            this.txtResposible2SPerson.Location = new System.Drawing.Point(301, 186);
+            this.txtResposible2SPerson.Location = new System.Drawing.Point(301, 177);
             this.txtResposible2SPerson.Name = "txtResposible2SPerson";
             this.txtResposible2SPerson.ReadOnly = true;
             this.txtResposible2SPerson.Size = new System.Drawing.Size(246, 29);
@@ -333,7 +335,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(118, 188);
+            this.label8.Location = new System.Drawing.Point(118, 179);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(170, 22);
             this.label8.TabIndex = 9;
@@ -343,7 +345,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(20, 25);
+            this.label7.Location = new System.Drawing.Point(20, 22);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(125, 22);
             this.label7.TabIndex = 6;
@@ -353,7 +355,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(79, 229);
+            this.label5.Location = new System.Drawing.Point(79, 212);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(208, 22);
             this.label5.TabIndex = 2;
@@ -412,12 +414,34 @@
             this.txt2SClientName.Size = new System.Drawing.Size(217, 26);
             this.txt2SClientName.TabIndex = 33;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(100, 259);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(162, 22);
+            this.label12.TabIndex = 35;
+            this.label12.Text = "Mode Of  Conduct";
+            // 
+            // txtModeOfConduct
+            // 
+            this.txtModeOfConduct.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtModeOfConduct.Location = new System.Drawing.Point(320, 252);
+            this.txtModeOfConduct.Name = "txtModeOfConduct";
+            this.txtModeOfConduct.ReadOnly = true;
+            this.txtModeOfConduct.Size = new System.Drawing.Size(277, 29);
+            this.txtModeOfConduct.TabIndex = 36;
+            // 
             // SalesClientFeedbackDairy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1230, 661);
+            this.Controls.Add(this.txtModeOfConduct);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.txt2SClientName);
             this.Controls.Add(this.txt2SClientId);
             this.Controls.Add(this.txtClientInquiry);
@@ -491,5 +515,7 @@
         public  System.Windows.Forms.RichTextBox txtClientInquiry;
         public  System.Windows.Forms.TextBox txt2SClientId;
         public  System.Windows.Forms.TextBox txt2SClientName;
+        private System.Windows.Forms.Label label12;
+        public System.Windows.Forms.TextBox txtModeOfConduct;
     }
 }

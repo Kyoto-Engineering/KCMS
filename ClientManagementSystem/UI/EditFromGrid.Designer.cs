@@ -388,6 +388,7 @@
             this.cPostOfficeCombo.TabIndex = 47;
             this.cPostOfficeCombo.SelectedIndexChanged += new System.EventHandler(this.cPostOfficeCombo_SelectedIndexChanged);
             this.cPostOfficeCombo.SelectedValueChanged += new System.EventHandler(this.cPostOfficeCombo_SelectedValueChanged);
+            this.cPostOfficeCombo.Enter += new System.EventHandler(this.cPostOfficeCombo_Enter);
             // 
             // cThanaCombo
             // 
@@ -399,6 +400,7 @@
             this.cThanaCombo.Size = new System.Drawing.Size(209, 30);
             this.cThanaCombo.TabIndex = 46;
             this.cThanaCombo.SelectedIndexChanged += new System.EventHandler(this.cThanaCombo_SelectedIndexChanged);
+            this.cThanaCombo.Enter += new System.EventHandler(this.cThanaCombo_Enter);
             // 
             // cDistCombo
             // 
@@ -410,6 +412,7 @@
             this.cDistCombo.Size = new System.Drawing.Size(209, 30);
             this.cDistCombo.TabIndex = 45;
             this.cDistCombo.SelectedIndexChanged += new System.EventHandler(this.cDistCombo_SelectedIndexChanged);
+            this.cDistCombo.Enter += new System.EventHandler(this.cDistCombo_Enter);
             // 
             // label31
             // 
@@ -669,6 +672,7 @@
             this.tPostOfficeCombo.Size = new System.Drawing.Size(193, 30);
             this.tPostOfficeCombo.TabIndex = 48;
             this.tPostOfficeCombo.SelectedIndexChanged += new System.EventHandler(this.tPostOfficeCombo_SelectedIndexChanged);
+            this.tPostOfficeCombo.Enter += new System.EventHandler(this.tPostOfficeCombo_Enter);
             // 
             // tThanaCombo
             // 
@@ -680,6 +684,7 @@
             this.tThanaCombo.Size = new System.Drawing.Size(194, 30);
             this.tThanaCombo.TabIndex = 47;
             this.tThanaCombo.SelectedIndexChanged += new System.EventHandler(this.tThanaCombo_SelectedIndexChanged);
+            this.tThanaCombo.Enter += new System.EventHandler(this.tThanaCombo_Enter);
             // 
             // tDistCombo
             // 
@@ -691,6 +696,7 @@
             this.tDistCombo.Size = new System.Drawing.Size(193, 30);
             this.tDistCombo.TabIndex = 46;
             this.tDistCombo.SelectedIndexChanged += new System.EventHandler(this.tDistCombo_SelectedIndexChanged);
+            this.tDistCombo.Enter += new System.EventHandler(this.tDistCombo_Enter);
             // 
             // label33
             // 
@@ -968,6 +974,7 @@
             this.txtClientName.Location = new System.Drawing.Point(229, 89);
             this.txtClientName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtClientName.Name = "txtClientName";
+            this.txtClientName.ReadOnly = true;
             this.txtClientName.Size = new System.Drawing.Size(214, 26);
             this.txtClientName.TabIndex = 71;
             // 

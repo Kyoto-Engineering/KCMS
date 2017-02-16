@@ -372,6 +372,7 @@
             this.tThanaCombo.Size = new System.Drawing.Size(201, 27);
             this.tThanaCombo.TabIndex = 42;
             this.tThanaCombo.SelectedIndexChanged += new System.EventHandler(this.tThanaCombo_SelectedIndexChanged);
+            this.tThanaCombo.Enter += new System.EventHandler(this.tThanaCombo_Enter);
             // 
             // tContactNoTextBox
             // 
@@ -404,6 +405,7 @@
             this.tDistComboBox.Size = new System.Drawing.Size(201, 27);
             this.tDistComboBox.TabIndex = 35;
             this.tDistComboBox.SelectedIndexChanged += new System.EventHandler(this.tDistComboBox_SelectedIndexChanged_1);
+            this.tDistComboBox.Enter += new System.EventHandler(this.tDistComboBox_Enter);
             // 
             // label22
             // 
@@ -705,6 +707,7 @@
             this.bPostOfficeCombo.Size = new System.Drawing.Size(216, 27);
             this.bPostOfficeCombo.TabIndex = 88;
             this.bPostOfficeCombo.SelectedIndexChanged += new System.EventHandler(this.bPostOfficeCombo_SelectedIndexChanged);
+            this.bPostOfficeCombo.Enter += new System.EventHandler(this.bPostOfficeCombo_Enter);
             // 
             // label46
             // 
@@ -737,6 +740,7 @@
             this.bThanaCombo.Size = new System.Drawing.Size(214, 27);
             this.bThanaCombo.TabIndex = 42;
             this.bThanaCombo.SelectedIndexChanged += new System.EventHandler(this.bThanaCombo_SelectedIndexChanged);
+            this.bThanaCombo.Enter += new System.EventHandler(this.bThanaCombo_Enter);
             // 
             // bContactNoTextBox
             // 
@@ -834,6 +838,7 @@
             this.bDistrictCombo.Size = new System.Drawing.Size(214, 27);
             this.bDistrictCombo.TabIndex = 35;
             this.bDistrictCombo.SelectedIndexChanged += new System.EventHandler(this.bDistrictCombo_SelectedIndexChanged_1);
+            this.bDistrictCombo.Enter += new System.EventHandler(this.bDistrictCombo_Enter);
             // 
             // label7
             // 
@@ -1343,6 +1348,7 @@
             this.cPostOfficeCombo.Size = new System.Drawing.Size(186, 27);
             this.cPostOfficeCombo.TabIndex = 102;
             this.cPostOfficeCombo.SelectedIndexChanged += new System.EventHandler(this.cPostOfficeCombo_SelectedIndexChanged);
+            this.cPostOfficeCombo.Enter += new System.EventHandler(this.cPostOfficeCombo_Enter);
             // 
             // label58
             // 
@@ -1423,6 +1429,7 @@
             this.cThanaCombo.Size = new System.Drawing.Size(185, 27);
             this.cThanaCombo.TabIndex = 42;
             this.cThanaCombo.SelectedIndexChanged += new System.EventHandler(this.cThanaCombo_SelectedIndexChanged);
+            this.cThanaCombo.Enter += new System.EventHandler(this.cThanaCombo_Enter);
             // 
             // cContactNoTextBox
             // 
@@ -1519,6 +1526,7 @@
             this.cDistrictCombo.Size = new System.Drawing.Size(185, 27);
             this.cDistrictCombo.TabIndex = 19;
             this.cDistrictCombo.SelectedIndexChanged += new System.EventHandler(this.cDistrictCombo_SelectedIndexChanged);
+            this.cDistrictCombo.Enter += new System.EventHandler(this.cDistrictCombo_Enter);
             // 
             // label32
             // 
@@ -1818,7 +1826,7 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.CheckBox tANotApplicable;
+        public  System.Windows.Forms.CheckBox tANotApplicable;
         public  System.Windows.Forms.CheckBox tASameAsCACheckBox;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label53;

@@ -464,6 +464,7 @@
             this.tPostCombo.Size = new System.Drawing.Size(185, 27);
             this.tPostCombo.TabIndex = 85;
             this.tPostCombo.SelectedIndexChanged += new System.EventHandler(this.tPostCombo_SelectedIndexChanged);
+            this.tPostCombo.Enter += new System.EventHandler(this.tPostCombo_Enter);
             // 
             // label45
             // 
@@ -527,6 +528,7 @@
             this.tThenaCombo.Size = new System.Drawing.Size(185, 27);
             this.tThenaCombo.TabIndex = 44;
             this.tThenaCombo.SelectedIndexChanged += new System.EventHandler(this.tThenaCombo_SelectedIndexChanged);
+            this.tThenaCombo.Enter += new System.EventHandler(this.tThenaCombo_Enter);
             // 
             // label28
             // 
@@ -568,6 +570,7 @@
             this.tDistrictCombo.Size = new System.Drawing.Size(185, 27);
             this.tDistrictCombo.TabIndex = 35;
             this.tDistrictCombo.SelectedIndexChanged += new System.EventHandler(this.tDistrictCombo_SelectedIndexChanged);
+            this.tDistrictCombo.Enter += new System.EventHandler(this.tDistrictCombo_Enter);
             // 
             // label4
             // 

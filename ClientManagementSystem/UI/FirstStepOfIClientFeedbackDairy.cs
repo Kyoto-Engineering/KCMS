@@ -41,7 +41,12 @@ namespace ClientManagementSystem.UI
             }
             if (string.IsNullOrWhiteSpace(feedback1TextBox.Text))
             {
-                MessageBox.Show("Please select type your Feedback", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select  your Feedback", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(cmbModeOfConduct.Text))
+            {
+                MessageBox.Show("Please select  Mode of Contact", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (string.IsNullOrWhiteSpace(action1MultiTextBox.Text))
@@ -88,7 +93,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT RTRIM(InquieryClient.IClientId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from InquieryClient,ContactPersonDetails  where InquieryClient.IClientId=ContactPersonDetails.IClientId  order by InquieryClient.IClientId desc", con);
+                cmd = new SqlCommand("SELECT InquieryClient.IClientId,InquieryClient.ClientName,EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM  InquieryClient INNER JOIN ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId  INNER JOIN  EmailBank ON InquieryClient.EmailBankId = EmailBank.EmailBankId order by InquieryClient.IClientId desc", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)
