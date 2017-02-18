@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesClientFeedbackDairy));
             this.submitButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -44,11 +46,6 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.feedback2SDateTime = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,7 +53,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.action2SMultiTextBox = new System.Windows.Forms.RichTextBox();
-            this.followUpDeadline2STextBox = new System.Windows.Forms.TextBox();
             this.txtResposible2SPerson = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -69,6 +65,13 @@
             this.txt2SClientName = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtModeOfConduct = new System.Windows.Forms.TextBox();
+            this.followUpDeadline2STextBox = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -79,7 +82,7 @@
             // submitButton
             // 
             this.submitButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submitButton.Location = new System.Drawing.Point(469, 584);
+            this.submitButton.Location = new System.Drawing.Point(469, 588);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(128, 57);
             this.submitButton.TabIndex = 14;
@@ -93,7 +96,7 @@
             this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Location = new System.Drawing.Point(623, 18);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(585, 628);
+            this.groupBox3.Size = new System.Drawing.Size(603, 628);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             // 
@@ -209,35 +212,19 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dataGridView1.Location = new System.Drawing.Point(20, 371);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 371);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(544, 234);
+            this.dataGridView1.Size = new System.Drawing.Size(589, 234);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "DateTimes";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Feedback";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Actions";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "ResponsiblePerson";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Status";
-            this.Column5.Name = "Column5";
             // 
             // label6
             // 
@@ -292,8 +279,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.action2SMultiTextBox);
             this.groupBox2.Controls.Add(this.followUpDeadline2STextBox);
+            this.groupBox2.Controls.Add(this.action2SMultiTextBox);
             this.groupBox2.Controls.Add(this.txtResposible2SPerson);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
@@ -301,7 +288,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(21, 328);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(581, 248);
+            this.groupBox2.Size = new System.Drawing.Size(581, 254);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Follow Up";
@@ -313,14 +300,6 @@
             this.action2SMultiTextBox.Size = new System.Drawing.Size(522, 119);
             this.action2SMultiTextBox.TabIndex = 12;
             this.action2SMultiTextBox.Text = "";
-            // 
-            // followUpDeadline2STextBox
-            // 
-            this.followUpDeadline2STextBox.Location = new System.Drawing.Point(301, 210);
-            this.followUpDeadline2STextBox.Name = "followUpDeadline2STextBox";
-            this.followUpDeadline2STextBox.ReadOnly = true;
-            this.followUpDeadline2STextBox.Size = new System.Drawing.Size(246, 29);
-            this.followUpDeadline2STextBox.TabIndex = 11;
             // 
             // txtResposible2SPerson
             // 
@@ -434,12 +413,67 @@
             this.txtModeOfConduct.Size = new System.Drawing.Size(277, 29);
             this.txtModeOfConduct.TabIndex = 36;
             // 
+            // followUpDeadline2STextBox
+            // 
+            this.followUpDeadline2STextBox.CustomFormat = "dd/MM/yyyy HH:mm:ss";
+            this.followUpDeadline2STextBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.followUpDeadline2STextBox.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.followUpDeadline2STextBox.Location = new System.Drawing.Point(299, 213);
+            this.followUpDeadline2STextBox.Name = "followUpDeadline2STextBox";
+            this.followUpDeadline2STextBox.Size = new System.Drawing.Size(247, 29);
+            this.followUpDeadline2STextBox.TabIndex = 13;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(331, 591);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(116, 58);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "Edit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Column1
+            // 
+            dataGridViewCellStyle1.Format = "G";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Column1.FillWeight = 90F;
+            this.Column1.HeaderText = "DateTimes";
+            this.Column1.Name = "Column1";
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Client Inquiry";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 140;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "FeedBack";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 140;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "ResponsiblePerson";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Status";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 90;
+            // 
             // SalesClientFeedbackDairy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1230, 661);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtModeOfConduct);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txt2SClientName);
@@ -458,10 +492,10 @@
             this.Controls.Add(this.submitButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "SalesClientFeedbackDairy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SalesClientFeedbackDairy";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SalesClientFeedbackDairy_FormClosed);
             this.Load += new System.EventHandler(this.SalesClientFeedbackDairy_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -480,11 +514,6 @@
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.DateTimePicker feedback2SDateTime;
         private System.Windows.Forms.Label label3;
@@ -495,7 +524,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.TextBox followUpDeadline2STextBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label10;
@@ -517,5 +545,12 @@
         public  System.Windows.Forms.TextBox txt2SClientName;
         private System.Windows.Forms.Label label12;
         public System.Windows.Forms.TextBox txtModeOfConduct;
+        public System.Windows.Forms.DateTimePicker followUpDeadline2STextBox;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

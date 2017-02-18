@@ -313,11 +313,15 @@ namespace ClientManagementSystem.UI
             tBlockTextBox2.Clear();
             tContactNoTextBox.Text = "";
 
-            tDivisionCombo.SelectedIndex = -1;
-            tDistrictCombo.SelectedIndex = -1;
-            tThenaCombo.SelectedIndex = -1;
-            tPostCombo.SelectedIndex = -1;
             tPostCodeTextBox.Clear();
+            tPostCombo.SelectedIndex = -1;
+            tThenaCombo.SelectedIndex = -1;
+            tDistrictCombo.SelectedIndex = -1;
+            tDivisionCombo.SelectedIndex = -1;
+           
+           
+            
+            
         }
         private void FilStar()
         {
@@ -339,13 +343,15 @@ namespace ClientManagementSystem.UI
 
         private void Reset()
         {
-            clientNameTextBox.Clear();
+            
             cmbClientType.SelectedIndex=-1;
             cmbNatureOfClient.SelectedIndex = -1;
             cmbEmailAddress.SelectedIndex = -1;
             cmbIndustryCategory.SelectedIndex=-1;
-            cmbSuperviser.SelectedIndex = -1;
             cmbCPEmailAddress.SelectedIndex = -1;
+            endUserTextBox.Clear();  
+            clientNameTextBox.Clear();
+            cmbSuperviser.SelectedIndex = -1;
 
             
             cFlatNoTextBox.Clear();
@@ -354,11 +360,15 @@ namespace ClientManagementSystem.UI
             cBlockTextBox1.Clear();
             cAreaTextBox.Clear();
             cContactNoTextBox.Clear();
-            cDivisionCombo.SelectedIndex = -1;
-            cDistCombo.SelectedIndex = -1;
-            cThanaCombo.SelectedIndex = -1;
-            cPostOfficeCombo.SelectedIndex = -1;
+           
+            
+           
             cPostCodeTextBox.Clear();
+            cPostOfficeCombo.SelectedIndex = -1;
+            cThanaCombo.SelectedIndex = -1;
+            cDistCombo.SelectedIndex = -1;
+            cDivisionCombo.SelectedIndex = -1;
+            
 
             notApplicableCheckBox.CheckedChanged -= NotApplicableCheckBox_CheckedChanged;
             notApplicableCheckBox.Checked = false;
@@ -372,10 +382,11 @@ namespace ClientManagementSystem.UI
                 ResetTradingAddress(); 
             }   
       
-            txtContactPerson.Clear();
-            txtDesignation.Clear();
+            
+            
             txtCellNumber.Clear();
-            endUserTextBox.Clear();            
+            txtDesignation.Clear();
+            txtContactPerson.Clear();
             saveButton.Enabled = true;
 
         }
@@ -1460,8 +1471,27 @@ namespace ClientManagementSystem.UI
                 {
                     cmbEmailAddress.SelectedIndex = -1;
                 }
+                
                 else
                 {
+                   
+                         if (!string.IsNullOrWhiteSpace(input))
+                            {
+                                string emailId = input.Trim();
+                                Regex mRegxExpression;
+
+                                mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+                                if (!mRegxExpression.IsMatch(emailId))
+                                {
+
+                                    MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);                                 
+                                   return;
+
+                                }
+                            }
+                          
+                   
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
                     string ct2 = "select Email from EmailBank where Email='" + input + "'";
@@ -1477,19 +1507,24 @@ namespace ClientManagementSystem.UI
                     {
                         try
                         {
-                            con = new SqlConnection(cs.DBConn);
-                            con.Open();
-                            string query1 = "insert into EmailBank (Email, UserId,DateAndTime) values (@d1,@d2,@d3)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
-                            cmd = new SqlCommand(query1, con);
-                            cmd.Parameters.AddWithValue("@d1", input);
-                            cmd.Parameters.AddWithValue("@d2", submittedBy);
-                            cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
-                            cmd.ExecuteNonQuery();
+                           
+                                con = new SqlConnection(cs.DBConn);
+                                con.Open();
+                                string query1 = "insert into EmailBank (Email, UserId,DateAndTime) values (@d1,@d2,@d3)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                                cmd = new SqlCommand(query1, con);
+                                cmd.Parameters.AddWithValue("@d1", input);
+                                cmd.Parameters.AddWithValue("@d2", submittedBy);
+                                cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
+                                cmd.ExecuteNonQuery();
 
-                            con.Close();
-                            cmbEmailAddress.Items.Clear();
-                            EmailAddress();
-                            cmbEmailAddress.SelectedText = input;
+                                con.Close();
+                                cmbEmailAddress.Items.Clear();
+                                EmailAddress();
+                                cmbEmailAddress.SelectedText = input;
+                            
+
+
+                            
 
                         }
                         catch (Exception ex)
@@ -1560,6 +1595,22 @@ namespace ClientManagementSystem.UI
                 }
                 else
                 {
+                    if (!string.IsNullOrWhiteSpace(input))
+                    {
+                        string emailId = input.Trim();
+                        Regex mRegxExpression;
+
+                        mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+                        if (!mRegxExpression.IsMatch(emailId))
+                        {
+
+                            MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+
+                        }
+                    }
+
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
                     string ct2 = "select Email from EmailBank where Email='" + input + "'";
@@ -1674,53 +1725,58 @@ namespace ClientManagementSystem.UI
 
         private void cPostOfficeCombo_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cDivisionCombo.Text))
-            {
-                MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cDivisionCombo.Focus();
-            }
+            //if (string.IsNullOrWhiteSpace(cDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    cDivisionCombo.Focus();
+            //}
 
 
 
-            else if (string.IsNullOrWhiteSpace(cDistCombo.Text))
-            {
-                MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cDistCombo.Focus();
-            }
-            else if (string.IsNullOrWhiteSpace(cThanaCombo.Text))
-            {
-                MessageBox.Show("Please  select thana name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cThanaCombo.Focus();
-            }
+            //else if (string.IsNullOrWhiteSpace(cDistCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    cDistCombo.Focus();
+            //}
+            //else if (string.IsNullOrWhiteSpace(cThanaCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select thana name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    cThanaCombo.Focus();
+            //}
         }
 
         private void cThanaCombo_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cDivisionCombo.Text))
-            {
-                MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (string.IsNullOrWhiteSpace(cDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
-            else if (string.IsNullOrWhiteSpace(cDistCombo.Text))
-            {
-                MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               return;
-            }
+            //else if (string.IsNullOrWhiteSpace(cDistCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //   return;
+            //}
         }
 
         private void cDistCombo_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cDivisionCombo.Text))
-            {
-                MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (string.IsNullOrWhiteSpace(cDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
         }
 
         private void cmbClientType_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
+            if (string.IsNullOrWhiteSpace(cmbSuperviser.Text))
+            {
+                MessageBox.Show("Please  Select Supervisor  Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbSuperviser.Focus();
+            }
+            else if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
             {
                 MessageBox.Show("Please  enter Client Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 clientNameTextBox.Focus();
@@ -1729,7 +1785,12 @@ namespace ClientManagementSystem.UI
 
         private void cmbNatureOfClient_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
+            if (string.IsNullOrWhiteSpace(cmbSuperviser.Text))
+            {
+                MessageBox.Show("Please  Select Supervisor  Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbSuperviser.Focus();
+            }
+            else  if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
             {
                 MessageBox.Show("Please  enter Client Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 clientNameTextBox.Focus();
@@ -1738,7 +1799,12 @@ namespace ClientManagementSystem.UI
 
         private void cmbEmailAddress_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
+            if (string.IsNullOrWhiteSpace(cmbSuperviser.Text))
+            {
+                MessageBox.Show("Please  Select Supervisor  Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbSuperviser.Focus();
+            }
+            else  if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
             {
                 MessageBox.Show("Please  enter Client Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 clientNameTextBox.Focus();
@@ -1747,7 +1813,12 @@ namespace ClientManagementSystem.UI
 
         private void cmbIndustryCategory_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
+            if (string.IsNullOrWhiteSpace(cmbSuperviser.Text))
+            {
+                MessageBox.Show("Please  Select Supervisor  Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbSuperviser.Focus();
+            }
+            else if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
             {
                 MessageBox.Show("Please  enter Client Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 clientNameTextBox.Focus();
@@ -1756,7 +1827,12 @@ namespace ClientManagementSystem.UI
 
         private void endUserTextBox_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
+            if (string.IsNullOrWhiteSpace(cmbSuperviser.Text))
+            {
+                MessageBox.Show("Please  Select Supervisor  Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbSuperviser.Focus();
+            }
+            else if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
             {
                 MessageBox.Show("Please  enter Client Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 clientNameTextBox.Focus();
@@ -1809,6 +1885,15 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tDivisionCombo.Focus();
             }
+        }
+
+        private void clientNameTextBox_Enter(object sender, EventArgs e)
+        {
+            //if (string.IsNullOrWhiteSpace(cmbSuperviser.Text))
+            //{
+            //    MessageBox.Show("Please  Select Supervisor  Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    cmbSuperviser.Focus();
+            //}
         }
     }
 }

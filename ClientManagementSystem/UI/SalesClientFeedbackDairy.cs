@@ -38,9 +38,10 @@ namespace ClientManagementSystem.UI
             feedback2SDateTime.Text = DateTime.Today.ToString();
             action2SMultiTextBox.Clear();
             txtResposible2SPerson.Clear();
-            followUpDeadline2STextBox.Clear();
-            followUpDeadline2STextBox.Clear();
+            followUpDeadline2STextBox.Text=DateTime.Today.ToString();
+            followUpDeadline2STextBox.Text=DateTime.Today.ToString();
             txtClientInquiry.Clear();
+            txtModeOfConduct.Clear();
 
         }
         
@@ -114,12 +115,28 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void DisableMethod()
+        {
+            txt2SClientId.Enabled = false;
+            txt2SClientName.Enabled = false;
+            txtClientInquiry.Enabled = false;
+            feedback2STextBox.Enabled = false;
+            action2SMultiTextBox.Enabled = false;
+            txtResposible2SPerson.Enabled = false;
+            txtModeOfConduct.Enabled = false;
+            feedback2SDateTime.Enabled = false;
+            followUpDeadline2STextBox.Enabled = false;
+            dataGridView2.Enabled = false;
+        }
         private void SalesClientFeedbackDairy_Load(object sender, EventArgs e)
         {
             GetData();
-           
+            DisableMethod();
             userId = LoginForm.uId.ToString();
+            feedback2SDateTime.MaxDate = DateTime.Now;
+
+            //followUpDeadline2STextBox.MinDate = DateTime.Today;
+            //followUpDeadline2STextBox.MaxDate = DateTime.Today.AddMonths(1); 
         }
 
         private void dataGridView2_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -187,6 +204,27 @@ namespace ClientManagementSystem.UI
         private void txt2SClientId_TextChanged(object sender, EventArgs e)
         {
             FollowUpGridLoad();
+        }
+
+        private void SalesClientFeedbackDairy_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            FeedBack frm=new FeedBack();
+            frm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txt2SClientId.Enabled = true;
+            txt2SClientName.Enabled = true;
+            txtClientInquiry.Enabled = true;
+            feedback2STextBox.Enabled = true;
+            action2SMultiTextBox.Enabled = true;
+            txtResposible2SPerson.Enabled = true;
+            txtModeOfConduct.Enabled = true;
+            feedback2SDateTime.Enabled = true;
+            followUpDeadline2STextBox.Enabled = true;
+            dataGridView2.Enabled = true;
         }
     }
 }

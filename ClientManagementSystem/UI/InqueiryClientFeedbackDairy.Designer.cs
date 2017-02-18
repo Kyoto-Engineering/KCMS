@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InqueiryClientFeedbackDairy));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtModeOfConduct = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.feedback2TextBox = new System.Windows.Forms.RichTextBox();
             this.txtClentInquiry = new System.Windows.Forms.RichTextBox();
@@ -71,8 +73,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelg = new System.Windows.Forms.Label();
             this.l12 = new System.Windows.Forms.Label();
-            this.txtModeOfConduct = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -117,6 +117,26 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(94, 274);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(157, 22);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Mode  of Conduct";
+            // 
+            // txtModeOfConduct
+            // 
+            this.txtModeOfConduct.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtModeOfConduct.Location = new System.Drawing.Point(259, 271);
+            this.txtModeOfConduct.Name = "txtModeOfConduct";
+            this.txtModeOfConduct.Size = new System.Drawing.Size(332, 29);
+            this.txtModeOfConduct.TabIndex = 22;
+            this.txtModeOfConduct.TextChanged += new System.EventHandler(this.txtModeOfConduct_TextChanged);
             // 
             // button1
             // 
@@ -496,26 +516,6 @@
             this.l12.Text = "label12";
             this.l12.Visible = false;
             // 
-            // txtModeOfConduct
-            // 
-            this.txtModeOfConduct.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtModeOfConduct.Location = new System.Drawing.Point(259, 271);
-            this.txtModeOfConduct.Name = "txtModeOfConduct";
-            this.txtModeOfConduct.Size = new System.Drawing.Size(332, 29);
-            this.txtModeOfConduct.TabIndex = 22;
-            this.txtModeOfConduct.TextChanged += new System.EventHandler(this.txtModeOfConduct_TextChanged);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(94, 274);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(157, 22);
-            this.label12.TabIndex = 23;
-            this.label12.Text = "Mode  of Conduct";
-            // 
             // InqueiryClientFeedbackDairy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -528,7 +528,6 @@
             this.Controls.Add(this.textBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "InqueiryClientFeedbackDairy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InqueiryClientFeedbackDairy";

@@ -29,6 +29,8 @@ namespace ClientManagementSystem.UI
         public string userId,rpUserId;
         public int modeOfConductId;
         
+
+
         public InqueiryClientFeedbackDairy()
         {
             InitializeComponent();
@@ -175,6 +177,9 @@ namespace ClientManagementSystem.UI
             action2MultiTextBox.Enabled = false;
             txtResposible2Person.Enabled = false;
             txtModeOfConduct.Enabled = false;
+            feedback2DateTime.Enabled = false;
+            followUp2Deadlinedatetime.Enabled = false;
+            dataGridView2.Enabled = false;
         }
       
         private void Report2()
@@ -357,7 +362,9 @@ namespace ClientManagementSystem.UI
             feedback2TextBox.Enabled = true;
             action2MultiTextBox.Enabled = true;
             txtResposible2Person.Enabled = true;
-            txtModeOfConduct.Enabled = false;
+            txtModeOfConduct.Enabled = true;
+            dataGridView2.Enabled = true;
+
 
         }
 

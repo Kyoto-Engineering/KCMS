@@ -60,14 +60,27 @@ namespace ClientManagementSystem.UI
                 return;
 
             }
-            if (txtHaveToDo.Text == "")
+            if (txtSInquiryClient.Text == "")
             {
-                MessageBox.Show("You must write your Action Before Submit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtHaveToDo.Focus();
+                MessageBox.Show("Please Write Client Inquiry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSInquiryClient.Focus();
                 return;
 
             }
-            
+            if (txtHaveDone.Text == "")
+            {
+                MessageBox.Show("Please Write Feedback", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtHaveDone.Focus();
+                return;
+
+            }
+            if (cmbModeOfConduct.Text == "")
+            {
+                MessageBox.Show("Please Select Mode of Conduct", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbModeOfConduct.Focus();
+                return;
+
+            }
             try
             {                                
                     con = new SqlConnection(cs.DBConn);

@@ -1157,7 +1157,6 @@
             // 
             // cmbCPEmailAddress
             // 
-            this.cmbCPEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCPEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCPEmailAddress.FormattingEnabled = true;
             this.cmbCPEmailAddress.Location = new System.Drawing.Point(259, 100);

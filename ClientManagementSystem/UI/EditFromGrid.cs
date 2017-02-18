@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClientManagementSystem.DAO;
@@ -593,6 +594,28 @@ namespace ClientManagementSystem.UI
             }           
         }
 
+        private void SaveCauseOfUpDate()
+        {
+            try
+            {
+                con=new SqlConnection(cs.DBConn);
+                con.Open();
+                string qry = "insert into UpdateLog(CauseOfUpdate,UpdateByUId,UpdateDateTime,IClientId) Values(@d1,@d2,@d3,@d4)";
+                cmd=new SqlCommand(qry,con);
+                cmd.Parameters.AddWithValue("@d1", txtCauseOfUpdate.Text);
+                cmd.Parameters.AddWithValue("@d2", nUserId);
+                cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
+                cmd.Parameters.AddWithValue("@d4", txtClientId.Text);
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void saveButton_Click(object sender, EventArgs e)
         {
             if ((ifApplicableCheckBox.Checked == false) && (sameAsCorporatAddCheckBox.Checked == false))
@@ -651,6 +674,7 @@ namespace ClientManagementSystem.UI
                     
                 }
                 MessageBox.Show("Successfully Updated", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SaveCauseOfUpDate();
                 Reset();
             }
             catch (Exception ex)
@@ -1398,6 +1422,23 @@ namespace ClientManagementSystem.UI
                 }
                 else
                 {
+                    if (!string.IsNullOrWhiteSpace(input))
+                    {
+                        string emailId = input.Trim();
+                        Regex mRegxExpression;
+
+                        mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+                        if (!mRegxExpression.IsMatch(emailId))
+                        {
+
+                            MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+
+                        }
+                    }
+
+
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
                     string ct2 = "select Email from EmailBank where Email='" + input + "'";
@@ -1496,6 +1537,22 @@ namespace ClientManagementSystem.UI
                 }
                 else
                 {
+
+                    if (!string.IsNullOrWhiteSpace(input))
+                    {
+                        string emailId = input.Trim();
+                        Regex mRegxExpression;
+
+                        mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+                        if (!mRegxExpression.IsMatch(emailId))
+                        {
+
+                            MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+
+                        }
+                    }
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
                     string ct2 = "select Email from EmailBank where Email='" + input + "'";

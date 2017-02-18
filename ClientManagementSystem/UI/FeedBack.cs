@@ -21,6 +21,7 @@ namespace ClientManagementSystem.UI
             InitializeComponent();
         }
 
+        public string uType;
         private void button1_Click(object sender, EventArgs e)
         {
            
@@ -105,10 +106,10 @@ namespace ClientManagementSystem.UI
 
         private void salesClientButton_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            dynamic frm=new FirstStepOfSClientFeedBackDairy();
-            frm.ShowDialog();
-            this.Visible = true;
+            this.Hide();
+            FirstStepOfSClientFeedBackDairy frm = new FirstStepOfSClientFeedBackDairy();
+            frm.Show();
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -125,6 +126,27 @@ namespace ClientManagementSystem.UI
             dynamic frm = new SActionFollowUpProceedForm();
             frm.ShowDialog();
             this.Visible = true;
+        }
+
+        private void FeedBack_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (uType == "Admin")
+            {
+                this.Hide();
+                MainUI frm = new MainUI();
+                frm.Show();
+            }
+            else if (uType == "User")
+            {
+                this.Hide();
+                MainUIForUser frm = new MainUIForUser();
+                frm.Show();
+            }
+        }
+
+        private void FeedBack_Load(object sender, EventArgs e)
+        {
+            uType = LoginForm.userType;
         }
     }
 }

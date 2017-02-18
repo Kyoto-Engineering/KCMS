@@ -30,7 +30,6 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.userButton = new System.Windows.Forms.Button();
-            this.buttonClientType = new System.Windows.Forms.Button();
             this.buttonSalesClient = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.feedbackButton = new System.Windows.Forms.Button();
@@ -42,7 +41,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.userButton);
-            this.groupBox1.Controls.Add(this.buttonClientType);
             this.groupBox1.Controls.Add(this.buttonSalesClient);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.feedbackButton);
@@ -56,24 +54,13 @@
             // userButton
             // 
             this.userButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userButton.Location = new System.Drawing.Point(24, 387);
+            this.userButton.Location = new System.Drawing.Point(21, 338);
             this.userButton.Name = "userButton";
             this.userButton.Size = new System.Drawing.Size(127, 61);
             this.userButton.TabIndex = 15;
             this.userButton.Text = "User Management";
             this.userButton.UseVisualStyleBackColor = true;
             this.userButton.Click += new System.EventHandler(this.userButton_Click);
-            // 
-            // buttonClientType
-            // 
-            this.buttonClientType.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClientType.Location = new System.Drawing.Point(25, 172);
-            this.buttonClientType.Name = "buttonClientType";
-            this.buttonClientType.Size = new System.Drawing.Size(122, 51);
-            this.buttonClientType.TabIndex = 14;
-            this.buttonClientType.Text = "ClientType";
-            this.buttonClientType.UseVisualStyleBackColor = true;
-            this.buttonClientType.Click += new System.EventHandler(this.buttonClientType_Click);
             // 
             // buttonSalesClient
             // 
@@ -101,7 +88,7 @@
             // 
             this.feedbackButton.BackColor = System.Drawing.Color.White;
             this.feedbackButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.feedbackButton.Location = new System.Drawing.Point(24, 243);
+            this.feedbackButton.Location = new System.Drawing.Point(21, 173);
             this.feedbackButton.Name = "feedbackButton";
             this.feedbackButton.Size = new System.Drawing.Size(127, 53);
             this.feedbackButton.TabIndex = 11;
@@ -112,7 +99,7 @@
             // emailBankButton
             // 
             this.emailBankButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailBankButton.Location = new System.Drawing.Point(27, 314);
+            this.emailBankButton.Location = new System.Drawing.Point(21, 249);
             this.emailBankButton.Name = "emailBankButton";
             this.emailBankButton.Size = new System.Drawing.Size(127, 58);
             this.emailBankButton.TabIndex = 10;
@@ -157,7 +144,6 @@
         private System.Windows.Forms.Button feedbackButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonSalesClient;
-        private System.Windows.Forms.Button buttonClientType;
         private System.Windows.Forms.Button logOutButton;
         private System.Windows.Forms.Button userButton;
     }

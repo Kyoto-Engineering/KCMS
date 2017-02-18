@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClientManagementSystem.DAO;
@@ -907,7 +908,27 @@ namespace ClientManagementSystem.UI
             con.Close();
 
         }
+        private void SaveCauseOfUpDate()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string qry = "insert into UpdateLog(CauseOfUpdate,UpdateByUId,UpdateDateTime,SClientId) Values(@d1,@d2,@d3,@d4)";
+                cmd = new SqlCommand(qry, con);
+                cmd.Parameters.AddWithValue("@d1", txtCauseOfUpdate.Text);
+                cmd.Parameters.AddWithValue("@d2", userId);
+                cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
+                cmd.Parameters.AddWithValue("@d4", txtSalesClientId.Text);
+                cmd.ExecuteNonQuery();
+                con.Close();
 
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void updateButton_Click(object sender, EventArgs e)
         {
             if (cmbSuperviserName.Text == "")
@@ -1052,8 +1073,7 @@ namespace ClientManagementSystem.UI
                     GetClientIdAndSaveOrUpdateBankDetails();
                 }
                 MessageBox.Show("Successfully Updated .", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                updateButton.Enabled = false;
-                //txtIClientId.Clear();
+                SaveCauseOfUpDate();               
                 Reset();
             }
             catch (Exception ex)
@@ -1922,6 +1942,22 @@ namespace ClientManagementSystem.UI
                 }
                 else
                 {
+                    if (!string.IsNullOrWhiteSpace(input))
+                    {
+                        string emailId = input.Trim();
+                        Regex mRegxExpression;
+
+                        mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+                        if (!mRegxExpression.IsMatch(emailId))
+                        {
+
+                            MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+
+                        }
+                    }
+
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
                     string ct2 = "select Email from EmailBank where Email='" + input + "'";
@@ -2142,6 +2178,108 @@ namespace ClientManagementSystem.UI
                 bDivisionCombo.Focus();
             }
 
+        }
+
+        private void SalesClientUpdateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            ForSalseClientMP frm = new ForSalseClientMP();
+            frm.Show();
+        }
+
+        private void cmbEmailAddress_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEmailAddress.Text == "Not In The List")
+            {
+                string input = Microsoft.VisualBasic.Interaction.InputBox("Please Input Mode Of Conduct  Here", "Input Here", "", -1, -1);
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    cmbEmailAddress.SelectedIndex = -1;
+                }
+                else
+                {
+
+                    if (!string.IsNullOrWhiteSpace(input))
+                    {
+                        string emailId = input.Trim();
+                        Regex mRegxExpression;
+
+                        mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+                        if (!mRegxExpression.IsMatch(emailId))
+                        {
+
+                            MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+
+                        }
+                    }
+
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    string ct2 = "select Email from EmailBank where Email='" + input + "'";
+                    cmd = new SqlCommand(ct2, con);
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read() && !rdr.IsDBNull(0))
+                    {
+                        MessageBox.Show("This Email  Already Exists,Please Select From List", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        con.Close();
+                        cmbEmailAddress.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            con = new SqlConnection(cs.DBConn);
+                            con.Open();
+                            string query1 = "insert into EmailBank (Email, UserId,DateAndTime) values (@d1,@d2,@d3)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                            cmd = new SqlCommand(query1, con);
+                            cmd.Parameters.AddWithValue("@d1", input);
+                            cmd.Parameters.AddWithValue("@d2", userId);
+                            cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
+                            cmd.ExecuteNonQuery();
+
+                            con.Close();
+                            cmbEmailAddress.Items.Clear();
+                            EmailAddress();
+                            cmbEmailAddress.SelectedText = input;
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    cmd = con.CreateCommand();
+                    cmd.CommandText = "SELECT EmailBankId from EmailBank WHERE Email= '" + cmbEmailAddress.Text + "'";
+
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read())
+                    {
+                        bankEmailId = rdr.GetInt32(0);
+                    }
+                    if ((rdr != null))
+                    {
+                        rdr.Close();
+                    }
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

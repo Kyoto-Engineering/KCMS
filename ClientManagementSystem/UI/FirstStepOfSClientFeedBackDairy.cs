@@ -73,7 +73,7 @@ namespace ClientManagementSystem.UI
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct = "select RTRIM(Name) from Registration order by Name";
+                string ct = "select RTRIM(Name) from Registration where Statuss!='InActive' order by Name";
                 cmd = new SqlCommand(ct);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -116,6 +116,9 @@ namespace ClientManagementSystem.UI
             RPFillCombo();
             ModeOfConduct();
             GetData();
+            feedbackSDeadlineDateTime.MaxDate = DateTime.Now;
+            followUpSDeadlinedate.MinDate = DateTime.Today;
+            followUpSDeadlinedate.MaxDate = DateTime.Today.AddMonths(1); 
         }
 
         private void Reset()
@@ -125,6 +128,10 @@ namespace ClientManagementSystem.UI
             feedbackSTextBox.Clear();
             actionSMultiTextBox.Clear();
             responsibleSPersonComboBox.SelectedIndex = -1;
+            cmbModeOfConduct.SelectedIndex = -1;
+            feedbackSDeadlineDateTime.Value=DateTime.Today;
+            followUpSDeadlinedate.Value=DateTime.Today;
+            
         }
         private void submitButton_Click(object sender, EventArgs e)
         {
@@ -161,19 +168,18 @@ namespace ClientManagementSystem.UI
 
             try
             {
-                this.Visible = false;
-                dynamic frm3 = new SalesClientFeedbackDairy();
+                this.Hide();
+                SalesClientFeedbackDairy frm3 = new SalesClientFeedbackDairy();
                 frm3.txt2SClientId.Text = txtSClientId.Text;
                 frm3.txt2SClientName.Text = txtSClientName.Text;
                 frm3.txtClientInquiry.Text = txtSClientInquiry.Text;
                 frm3.feedback2STextBox.Text = feedbackSTextBox.Text;
                 frm3.txtModeOfConduct.Text = cmbModeOfConduct.Text;
-                frm3.feedback2SDateTime.Text = feedbackSDeadlineDateTime.Text;
+                frm3.feedback2SDateTime.Value = feedbackSDeadlineDateTime.Value;
                 frm3.action2SMultiTextBox.Text = actionSMultiTextBox.Text;
                 frm3.txtResposible2SPerson.Text = responsibleSPersonComboBox.Text;
-                frm3.followUpDeadline2STextBox.Text = followUpSDeadlinedate.Text;
-                frm3.ShowDialog();
-                this.Visible = true;
+                frm3.followUpDeadline2STextBox.Value = followUpSDeadlinedate.Value;
+                frm3.Show();                
                 Reset();
             }
             catch (Exception ex)

@@ -56,10 +56,10 @@ namespace ClientManagementSystem.UI
         private void instantClientButton_Click(object sender, EventArgs e)
         {
             
-            this.Visible = false;            
-            dynamic f2 = new FeedBack();
-            f2.ShowDialog();
-            this.Visible = true;            
+            this.Hide();
+            FeedBack f2 = new FeedBack();
+            f2.Show();
+                   
         }
 
         private void logOutButton_Click(object sender, EventArgs e)

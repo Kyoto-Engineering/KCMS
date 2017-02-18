@@ -124,7 +124,9 @@ namespace ClientManagementSystem.UI
 
         private void ConvertToSalesClientGrid_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            this.Hide();
+            ForSalseClientMP frm = new ForSalseClientMP();
+            frm.Show();
         }
     }
 }

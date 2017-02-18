@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClientManagementSystem.DBGateway;
+using ClientManagementSystem.LoginUI;
 
 namespace ClientManagementSystem.UI
 {
@@ -18,6 +19,7 @@ namespace ClientManagementSystem.UI
         private SqlCommand cmd;
         private SqlDataReader rdr;
         ConnectionString cs = new ConnectionString();
+        public string userId;
         public NatureOfClient()
         {
             InitializeComponent();
@@ -58,9 +60,11 @@ namespace ClientManagementSystem.UI
                 }
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string cb = "insert into NatureOfClients(ClientNature) VALUES (@d1)";
+                string cb = "insert into NatureOfClients(ClientNature,CreatedByUId,CreatedDTime) VALUES (@d1)";
                 cmd = new SqlCommand(cb, con);
                 cmd.Parameters.AddWithValue("@d1", txtNatureOfClient.Text);
+                cmd.Parameters.AddWithValue("@d1", userId);
+                cmd.Parameters.AddWithValue("@d1", DateTime.UtcNow.ToLocalTime());
                 cmd.ExecuteReader();
                 con.Close();
                 MessageBox.Show("Successfully saved", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -96,6 +100,7 @@ namespace ClientManagementSystem.UI
         private void NatureOfClient_Load(object sender, EventArgs e)
         {
             LoadNatureOfClientGrid();
+            userId = LoginForm.uId.ToString();
         }
     }
 }

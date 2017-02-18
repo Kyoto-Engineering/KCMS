@@ -25,7 +25,11 @@ namespace ClientManagementSystem.UI
         public FirstStepOfIClientFeedbackDairy()
         {
             InitializeComponent();
+            
         }
+
+      
+
 
         private void submitButton_Click(object sender, EventArgs e)
         {
@@ -100,6 +104,7 @@ namespace ClientManagementSystem.UI
                 {
                     dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3],rdr[4]);
                 }
+                
                 con.Close();
             }
             catch (Exception ex)
@@ -121,6 +126,7 @@ namespace ClientManagementSystem.UI
                 {
                     dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4]);
                 }
+                dataGridView2.Columns[0].DefaultCellStyle.Format = "MM/dd/yyyy hh:mm:ss tt";
                 con.Close();
             }
             catch (Exception ex)
@@ -129,14 +135,14 @@ namespace ClientManagementSystem.UI
             }
         }
 
-        public void FillCombo2()
+        public void ResponsiblepersonFillCombo()
         {
             try
             {
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct = "select RTRIM(Name) from Registration order by Name";
+                string ct = "select RTRIM(Name) from Registration where Statuss!='InActive' order by Name asc";
                 cmd = new SqlCommand(ct);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -162,15 +168,21 @@ namespace ClientManagementSystem.UI
             action1MultiTextBox.Clear();
             txtClientInquiry.Clear();
             responsible1PersonComboBox.SelectedIndex = -1;
+            cmbModeOfConduct.SelectedIndex = -1;
+            feedback1DeadlineDateTime.Value=DateTime.Today;
+            followUp1DeadlineDateTimePicker.Value=DateTime.Today;
 
 
         }
         private void FirstStepOfIClientFeedbackDairy_Load (object sender, EventArgs e)
         {
             ModeOfConduct();
-                FillCombo2();
+            ResponsiblepersonFillCombo();
                 GetData();
                 userId = LoginForm.uId.ToString();
+                feedback1DeadlineDateTime.MaxDate = DateTime.Now;
+                followUp1DeadlineDateTimePicker.MinDate = DateTime.Today;
+                followUp1DeadlineDateTimePicker.MaxDate = DateTime.Today.AddMonths(1); 
             }
 
             private void dataGridView1_RowPostPaint (object sender, DataGridViewRowPostPaintEventArgs e)

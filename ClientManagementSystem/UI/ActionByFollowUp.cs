@@ -58,7 +58,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string cty = "Select RTRIM(FollowUpId) from FollowUp Where FollowUp.IClientId is not NULL and  FollowUp.Statuss='Pending' order by FollowUp.FollowUpId desc";
+                string cty = "Select RTRIM(FollowUpId) from FollowUp Where FollowUp.IClientId is not NULL and  FollowUp.Statuss!='Done' order by FollowUp.FollowUpId desc";
                 cmd = new SqlCommand(cty);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -194,10 +194,24 @@ namespace ClientManagementSystem.UI
                 return;
 
             }
-            if (youHaveToDoTextBox.Text == "")
+            if (txtClientInquiryOrFeedback.Text == "")
             {
-                MessageBox.Show("You must write your Action Before Submit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                youHaveToDoTextBox.Focus();
+                MessageBox.Show("Please Write Client Inquiry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClientInquiryOrFeedback.Focus();
+                return;
+
+            }
+            if (whDoneTextBox.Text == "")
+            {
+                MessageBox.Show("Please Write Feedback", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                whDoneTextBox.Focus();
+                return;
+
+            }
+            if (cmbModeOfConduct.Text == "")
+            {
+                MessageBox.Show("Please Select Mode of Conduct", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbModeOfConduct.Focus();
                 return;
 
             }

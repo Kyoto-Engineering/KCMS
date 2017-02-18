@@ -627,8 +627,7 @@ namespace ClientManagementSystem.UI
                 {
                     SaveBankDetails();
                 }
-                MessageBox.Show("Registration Completed Successfully,Current Id is:" + currentSalesClientId, "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);              
-                approvedButton.Enabled = false;     
+                MessageBox.Show("Registration Completed Successfully,Current Id is:" + currentSalesClientId, "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);                                
                 txtIClientId.Clear();
                 Reset();
             }
@@ -2201,8 +2200,8 @@ namespace ClientManagementSystem.UI
         {
             if (string.IsNullOrWhiteSpace(contactPersonNameAPTextBox.Text))
             {
-                MessageBox.Show("Please  enter Before Contact Person Name", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Please  enter  Contact Person Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                contactPersonNameAPTextBox.Focus();
             }
         }
 
@@ -2305,6 +2304,23 @@ namespace ClientManagementSystem.UI
                 }
                 else
                 {
+                    if (!string.IsNullOrWhiteSpace(input))
+                    {
+                        string emailId = input.Trim();
+                        Regex mRegxExpression;
+
+                        mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+                        if (!mRegxExpression.IsMatch(emailId))
+                        {
+
+                            MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+
+                        }
+                    }
+
+
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
                     string ct2 = "select Email from EmailBank where Email='" + input + "'";
@@ -2403,6 +2419,23 @@ namespace ClientManagementSystem.UI
                 }
                 else
                 {
+                    if (!string.IsNullOrWhiteSpace(input))
+                    {
+                        string emailId = input.Trim();
+                        Regex mRegxExpression;
+
+                        mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+                        if (!mRegxExpression.IsMatch(emailId))
+                        {
+
+                            MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+
+                        }
+                    }
+
+
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
                     string ct2 = "select Email from EmailBank where Email='" + input + "'";
