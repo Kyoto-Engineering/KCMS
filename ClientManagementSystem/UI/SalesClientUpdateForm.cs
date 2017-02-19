@@ -944,6 +944,7 @@ namespace ClientManagementSystem.UI
                 cmd.Parameters.AddWithValue("@d4", txtSalesClientId.Text);
                 cmd.ExecuteNonQuery();
                 con.Close();
+                txtCauseOfUpdate.Clear();
 
             }
             catch (Exception e)

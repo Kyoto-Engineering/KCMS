@@ -608,7 +608,7 @@ namespace ClientManagementSystem.UI
                 cmd.Parameters.AddWithValue("@d4", txtClientId.Text);
                 cmd.ExecuteNonQuery();
                 con.Close();
-
+                txtCauseOfUpdate.Clear();
             }
             catch (Exception e)
             {
