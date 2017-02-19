@@ -618,6 +618,12 @@ namespace ClientManagementSystem.UI
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtCauseOfUpdate.Text))
+            {
+                MessageBox.Show("Please write Cause of Update", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if ((ifApplicableCheckBox.Checked == false) && (sameAsCorporatAddCheckBox.Checked == false))
             {
                 if (string.IsNullOrWhiteSpace(tDivisionCombo.Text))

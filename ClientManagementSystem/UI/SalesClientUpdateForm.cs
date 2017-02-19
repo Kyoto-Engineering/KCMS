@@ -958,6 +958,11 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show("Please select supervisor Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (string.IsNullOrWhiteSpace(txtCauseOfUpdate.Text))
+            {
+                MessageBox.Show("Please write Cause of Update", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if ((bANotAppCheckBox.Checked == false) && (bASameAsCACheckBox.Checked == false) &&
                 (bASameAsTACheckBox.Checked == false))
             {

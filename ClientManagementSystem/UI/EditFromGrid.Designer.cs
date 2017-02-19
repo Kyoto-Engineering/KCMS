@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txtCauseOfUpdate = new System.Windows.Forms.RichTextBox();
             this.cmbEmailAddress = new System.Windows.Forms.ComboBox();
             this.label35 = new System.Windows.Forms.Label();
             this.cmbIndustryCategory = new System.Windows.Forms.ComboBox();
@@ -107,8 +109,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labeld = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.txtCauseOfUpdate = new System.Windows.Forms.RichTextBox();
-            this.label36 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -150,6 +150,26 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.Color.Yellow;
+            this.label36.Location = new System.Drawing.Point(8, 468);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(145, 22);
+            this.label36.TabIndex = 110;
+            this.label36.Text = "Cause of Update";
+            // 
+            // txtCauseOfUpdate
+            // 
+            this.txtCauseOfUpdate.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCauseOfUpdate.Location = new System.Drawing.Point(165, 457);
+            this.txtCauseOfUpdate.Name = "txtCauseOfUpdate";
+            this.txtCauseOfUpdate.Size = new System.Drawing.Size(300, 59);
+            this.txtCauseOfUpdate.TabIndex = 109;
+            this.txtCauseOfUpdate.Text = "";
             // 
             // cmbEmailAddress
             // 
@@ -1027,25 +1047,6 @@
             this.label29.Size = new System.Drawing.Size(455, 31);
             this.label29.TabIndex = 2;
             this.label29.Text = "Edit Document If you need to changes";
-            // 
-            // txtCauseOfUpdate
-            // 
-            this.txtCauseOfUpdate.Location = new System.Drawing.Point(165, 457);
-            this.txtCauseOfUpdate.Name = "txtCauseOfUpdate";
-            this.txtCauseOfUpdate.Size = new System.Drawing.Size(300, 59);
-            this.txtCauseOfUpdate.TabIndex = 109;
-            this.txtCauseOfUpdate.Text = "";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.ForeColor = System.Drawing.Color.Yellow;
-            this.label36.Location = new System.Drawing.Point(8, 468);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(145, 22);
-            this.label36.TabIndex = 110;
-            this.label36.Text = "Cause of Update";
             // 
             // EditFromGrid
             // 

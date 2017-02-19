@@ -185,6 +185,7 @@
             // 
             // txtCauseOfUpdate
             // 
+            this.txtCauseOfUpdate.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCauseOfUpdate.Location = new System.Drawing.Point(1002, 520);
             this.txtCauseOfUpdate.Name = "txtCauseOfUpdate";
             this.txtCauseOfUpdate.Size = new System.Drawing.Size(211, 52);
