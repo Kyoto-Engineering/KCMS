@@ -121,7 +121,7 @@ namespace ClientManagementSystem.UI
             followUpSDeadlinedate.MaxDate = DateTime.Today.AddMonths(1); 
         }
 
-        private void Reset()
+        public  void ResetOfSClientFeedbackDairy()
         {
             txtSClientId.Clear();
             txtClientName.Clear();
@@ -180,7 +180,7 @@ namespace ClientManagementSystem.UI
                 frm3.txtResposible2SPerson.Text = responsibleSPersonComboBox.Text;
                 frm3.followUpDeadline2STextBox.Value = followUpSDeadlinedate.Value;
                 frm3.Show();                
-                Reset();
+               
             }
             catch (Exception ex)
             {

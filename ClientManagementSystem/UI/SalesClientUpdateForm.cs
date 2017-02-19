@@ -211,11 +211,33 @@ namespace ClientManagementSystem.UI
         {
             ctl.Focus();
         }
+        private void EmailCPAddress()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctt = "select Email from EmailBank";
+                cmd = new SqlCommand(ctt);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    cmbCPEmailAddress.Items.Add(rdr.GetValue(0).ToString());
+                }
+                cmbCPEmailAddress.Items.Add("Not In The List");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void SalesClientUpdateForm_Load(object sender, EventArgs e)
         {
             userId = LoginForm.uId.ToString();
             FillCMBSuperviserName();
-
+            EmailAddress();
+            EmailCPAddress();
             FillClientType();
             FillNatureOfClient();
             FillIndustryCategory();
@@ -664,7 +686,7 @@ namespace ClientManagementSystem.UI
                 {
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string insertQ = "insert into " + sTableName + "(PostOfficeId,CFlatNo,CHouseNo,CRoadNo,CBlock,CArea,CContactNo,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                    string insertQ = "insert into " + sTableName + "(PostOfficeId,CFlatNo,CHouseNo,CRoadNo,CBlock,CArea,CContactNo,SClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                     cmd = new SqlCommand(insertQ);
                     cmd.Connection = con;
                     //cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdC) ? (object)DBNull.Value : divisionIdC));
@@ -685,7 +707,7 @@ namespace ClientManagementSystem.UI
                 {
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string Qry = "insert into " + sTableName + "(PostOfficeId,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TContactNo,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                    string Qry = "insert into " + sTableName + "(PostOfficeId,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TContactNo,SClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                     cmd = new SqlCommand(Qry);
                     cmd.Connection = con;
 
@@ -708,7 +730,7 @@ namespace ClientManagementSystem.UI
                 {
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string Qry = "insert into " + sTableName + "(PostOfficeId,BFlatNo,BHouseNo,BRoadNo,BBlock,BArea,BContactNo,SClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                    string Qry = "insert into " + sTableName + "(PostOfficeId,BFlatNo,BHouseNo,BRoadNo,BBlock,BArea,BContactNo,SClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                     cmd = new SqlCommand(Qry);
                     cmd.Connection = con;
                     //cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdB) ? (object)DBNull.Value : divisionIdB));
@@ -914,7 +936,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string qry = "insert into UpdateLog(CauseOfUpdate,UpdateByUId,UpdateDateTime,SClientId) Values(@d1,@d2,@d3,@d4)";
+                string qry = "insert into UpdateLogs(CauseOfUpdate,UpdateByUId,UpdateDateTime,SClientId) Values(@d1,@d2,@d3,@d4)";
                 cmd = new SqlCommand(qry, con);
                 cmd.Parameters.AddWithValue("@d1", txtCauseOfUpdate.Text);
                 cmd.Parameters.AddWithValue("@d2", userId);
@@ -1909,27 +1931,7 @@ namespace ClientManagementSystem.UI
                 }
             }
         }
-        private void EmailCPAddress()
-        {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string ctt = "select Email from EmailBank";
-                cmd = new SqlCommand(ctt);
-                cmd.Connection = con;
-                rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {
-                    cmbCPEmailAddress.Items.Add(rdr.GetValue(0).ToString());
-                }
-                cmbCPEmailAddress.Items.Add("Not In The List");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        
 
         private void cmbCPEmailAddress_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2037,146 +2039,146 @@ namespace ClientManagementSystem.UI
 
         private void cPostOfficeCombo_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cDivisionCombo.Text))
-            {
-                MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cDivisionCombo.Focus();
-            }
+        //    if (string.IsNullOrWhiteSpace(cDivisionCombo.Text))
+        //    {
+        //        MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        cDivisionCombo.Focus();
+        //    }
 
 
 
-            else if (string.IsNullOrWhiteSpace(cDistrictCombo.Text))
-            {
-                MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cDistrictCombo.Focus();
-            }
-            else if (string.IsNullOrWhiteSpace(cThanaCombo.Text))
-            {
-                MessageBox.Show("Please  select thana name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cThanaCombo.Focus();
-            }
+        //    else if (string.IsNullOrWhiteSpace(cDistrictCombo.Text))
+        //    {
+        //        MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        cDistrictCombo.Focus();
+        //    }
+        //    else if (string.IsNullOrWhiteSpace(cThanaCombo.Text))
+        //    {
+        //        MessageBox.Show("Please  select thana name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        cThanaCombo.Focus();
+        //    }
         }
 
         private void cThanaCombo_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cDivisionCombo.Text))
-            {
-                MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cDivisionCombo.Focus();
-            }
+            //if (string.IsNullOrWhiteSpace(cDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    cDivisionCombo.Focus();
+            //}
 
 
 
-            else if (string.IsNullOrWhiteSpace(cDistrictCombo.Text))
-            {
-                MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cDistrictCombo.Focus();
-            }
+            //else if (string.IsNullOrWhiteSpace(cDistrictCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    cDistrictCombo.Focus();
+            //}
         }
 
         private void cDistrictCombo_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cDivisionCombo.Text))
-            {
-                MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cDivisionCombo.Focus();
-            }
+            //if (string.IsNullOrWhiteSpace(cDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    cDivisionCombo.Focus();
+            //}
 
         }
 
         private void tPostOfficeCombo_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tDivitionCombo.Text))
-            {
-                MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tDivitionCombo.Focus();
-            }
+            //if (string.IsNullOrWhiteSpace(tDivitionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tDivitionCombo.Focus();
+            //}
 
 
 
-            else if (string.IsNullOrWhiteSpace(tDistComboBox.Text))
-            {
-                MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tDistComboBox.Focus();
-            }
-            else if (string.IsNullOrWhiteSpace(tThanaCombo.Text))
-            {
-                MessageBox.Show("Please  select thana name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tThanaCombo.Focus();
-            }
+            //else if (string.IsNullOrWhiteSpace(tDistComboBox.Text))
+            //{
+            //    MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tDistComboBox.Focus();
+            //}
+            //else if (string.IsNullOrWhiteSpace(tThanaCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select thana name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tThanaCombo.Focus();
+           // }
         }
 
         private void tThanaCombo_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tDivitionCombo.Text))
-            {
-                MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tDivitionCombo.Focus();
-            }
+            //if (string.IsNullOrWhiteSpace(tDivitionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tDivitionCombo.Focus();
+            //}
 
 
 
-            else if (string.IsNullOrWhiteSpace(tDistComboBox.Text))
-            {
-                MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tDistComboBox.Focus();
-            }
+            //else if (string.IsNullOrWhiteSpace(tDistComboBox.Text))
+            //{
+            //    MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tDistComboBox.Focus();
+            //}
         }
 
         private void tDistComboBox_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tDivitionCombo.Text))
-            {
-                MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tDivitionCombo.Focus();
-            }
+            //if (string.IsNullOrWhiteSpace(tDivitionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tDivitionCombo.Focus();
+            //}
 
         }
 
         private void bPostOfficeCombo_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(bDivisionCombo.Text))
-            {
-                MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                bDivisionCombo.Focus();
-            }
+            //if (string.IsNullOrWhiteSpace(bDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    bDivisionCombo.Focus();
+            //}
 
 
 
-            else if (string.IsNullOrWhiteSpace(bDistrictCombo.Text))
-            {
-                MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                bDistrictCombo.Focus();
-            }
-            else if (string.IsNullOrWhiteSpace(bThanaCombo.Text))
-            {
-                MessageBox.Show("Please  select thana name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                bThanaCombo.Focus();
-            }
+            //else if (string.IsNullOrWhiteSpace(bDistrictCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    bDistrictCombo.Focus();
+            //}
+            //else if (string.IsNullOrWhiteSpace(bThanaCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select thana name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    bThanaCombo.Focus();
+            //}
         }
 
         private void bThanaCombo_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(bDivisionCombo.Text))
-            {
-                MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                bDivisionCombo.Focus();
-            }
+            //if (string.IsNullOrWhiteSpace(bDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    bDivisionCombo.Focus();
+            //}
 
-            else if (string.IsNullOrWhiteSpace(bDistrictCombo.Text))
-            {
-                MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                bDistrictCombo.Focus();
-            }
+            //else if (string.IsNullOrWhiteSpace(bDistrictCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    bDistrictCombo.Focus();
+            //}
         }
 
         private void bDistrictCombo_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(bDivisionCombo.Text))
-            {
-                MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                bDivisionCombo.Focus();
-            }
+            //if (string.IsNullOrWhiteSpace(bDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    bDivisionCombo.Focus();
+            //}
 
         }
 
@@ -2279,6 +2281,33 @@ namespace ClientManagementSystem.UI
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void cmbCPEmailAddress_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(contactPersonNameAPTextBox.Text))
+            {
+                MessageBox.Show("Please  enter  Contact Person Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                contactPersonNameAPTextBox.Focus();
+            }
+        }
+
+        private void cellNumberAPTextBox_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(contactPersonNameAPTextBox.Text))
+            {
+                MessageBox.Show("Please  enter  Contact Person Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                contactPersonNameAPTextBox.Focus();
+            }
+        }
+
+        private void designationAPTextBox_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(contactPersonNameAPTextBox.Text))
+            {
+                MessageBox.Show("Please  enter  Contact Person Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                contactPersonNameAPTextBox.Focus();
             }
         }
     }

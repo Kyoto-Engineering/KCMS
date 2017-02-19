@@ -79,7 +79,7 @@ namespace ClientManagementSystem.UI
                 frm2.ShowDialog();
                 this.Visible = true;
                
-                Reset();
+               
             }
             catch (Exception ex)
             {
@@ -160,7 +160,7 @@ namespace ClientManagementSystem.UI
             }
         }
 
-        private void Reset()
+        public  void ResetFirstStepOfIClientfeedbackDairy()
         {
             txt1ClientId.Clear();
             txt1ClientName.Clear();

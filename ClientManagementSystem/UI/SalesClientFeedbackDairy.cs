@@ -47,6 +47,8 @@ namespace ClientManagementSystem.UI
         
         private void submitButton_Click(object sender, EventArgs e)
         {
+            FirstStepOfSClientFeedBackDairy frm=new FirstStepOfSClientFeedBackDairy();
+                     frm.ResetOfSClientFeedbackDairy();
             try
             {
                 con = new SqlConnection(cs.DBConn);
@@ -225,6 +227,13 @@ namespace ClientManagementSystem.UI
             feedback2SDateTime.Enabled = true;
             followUpDeadline2STextBox.Enabled = true;
             dataGridView2.Enabled = true;
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FirstStepOfSClientFeedBackDairy frm=new FirstStepOfSClientFeedBackDairy();
+            frm.Show();
         }
     }
 }

@@ -48,9 +48,11 @@ namespace ClientManagementSystem.UI
 
         }
         private void submitButton_Click(object sender, EventArgs e)
-           
+
         {
-           
+            FirstStepOfIClientFeedbackDairy fg = new  FirstStepOfIClientFeedbackDairy();
+            fg.ResetFirstStepOfIClientfeedbackDairy();
+            
             if (feedback2TextBox.Text == "")
             {
                 MessageBox.Show("Please must Write Some FeedBack", "Input error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -412,6 +414,13 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FirstStepOfIClientFeedbackDairy frm=new FirstStepOfIClientFeedbackDairy();
+            frm.Show();
         }
 
       

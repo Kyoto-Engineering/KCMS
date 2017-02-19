@@ -312,6 +312,7 @@ namespace ClientManagementSystem.UI
         {
             try
             {
+                string x, y,z;
                 this.Hide();
                 DataGridViewRow dr = dataGridView1.CurrentRow;
                 SalesClientUpdateForm frm = new SalesClientUpdateForm();
@@ -343,7 +344,7 @@ namespace ClientManagementSystem.UI
                 frm.cDistrictCombo.Text = dr.Cells[19].Value.ToString();
                 frm.cThanaCombo.Text = dr.Cells[20].Value.ToString().Trim();
                 frm.cPostOfficeCombo.Text = dr.Cells[21].Value.ToString();
-                frm.cPostCodeTextBox.Text = dr.Cells[22].Value.ToString();
+              x=frm.cPostCodeTextBox.Text = dr.Cells[22].Value.ToString();
 
 
                 frm.tFlatNoTextBox.Text = dr.Cells[23].Value.ToString();
@@ -357,7 +358,7 @@ namespace ClientManagementSystem.UI
                 frm.tDistComboBox.Text = dr.Cells[30].Value.ToString();
                 frm.tThanaCombo.Text = dr.Cells[31].Value.ToString().Trim();
                 frm.tPostOfficeCombo.Text = dr.Cells[32].Value.ToString();
-                frm.tPostCodeTextBox.Text = dr.Cells[33].Value.ToString();
+               y=frm.tPostCodeTextBox.Text = dr.Cells[33].Value.ToString();
 
                 frm.bFlatNoTextBox.Text = dr.Cells[34].Value.ToString();
                 frm.bHouseNoTextBox.Text = dr.Cells[35].Value.ToString();
@@ -370,12 +371,66 @@ namespace ClientManagementSystem.UI
                 frm.bDistrictCombo.Text = dr.Cells[41].Value.ToString();
                 frm.bThanaCombo.Text = dr.Cells[42].Value.ToString();
                 frm.bPostOfficeCombo.Text = dr.Cells[43].Value.ToString();
-                frm.bPostCodeTextBox.Text = dr.Cells[44].Value.ToString();
+               z= frm.bPostCodeTextBox.Text = dr.Cells[44].Value.ToString();
 
                 frm.bankNameTextBox.Text = dr.Cells[45].Value.ToString();
                 frm.branchNameTextBox.Text = dr.Cells[46].Value.ToString();
                 frm.accountNoTextBox.Text = dr.Cells[47].Value.ToString();
 
+                if (x == y)
+                {
+                    frm.tASameAsCACheckBox.Checked = true;
+                }
+                else if (string.IsNullOrEmpty(y))
+                {
+
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    string ct2 = "select RTRIM(TraddingAddresses.SClientId) from TraddingAddresses where TraddingAddresses.SClientId='" + frm.txtSalesClientId.Text + "'";
+                    cmd = new SqlCommand(ct2, con);
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read() && !rdr.IsDBNull(0))
+                    {
+
+                        frm.tANotApplicable.Checked = false;
+                    }
+                    else
+                    {
+
+                        frm.tANotApplicable.Checked = true;
+                    }
+                }
+
+                if (y == z)
+                {
+                    frm.bASameAsTACheckBox.Checked = true;
+                }
+
+
+            if (x == z)
+             {
+                frm.bASameAsCACheckBox.Checked = true;
+            }
+            else if (string.IsNullOrEmpty(z))
+            {
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    string ct2 = "select RTRIM(BillingAddresses.SClientId) from BillingAddresses where BillingAddresses.SClientId='" + frm.txtSalesClientId.Text + "'";
+                    cmd = new SqlCommand(ct2, con);
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read() && !rdr.IsDBNull(0))
+                    {
+
+                        frm.bANotAppCheckBox.Checked = false;
+                    }
+                    else
+                    {
+
+                        frm.bANotAppCheckBox.Checked = true;
+                    }
+                }
+               
+               
 
                 frm.lk.Text = lg.Text;
             }

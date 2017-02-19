@@ -73,6 +73,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelg = new System.Windows.Forms.Label();
             this.l12 = new System.Windows.Forms.Label();
+            this.backButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -95,6 +96,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.backButton);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtModeOfConduct);
             this.groupBox1.Controls.Add(this.button1);
@@ -516,6 +518,17 @@
             this.l12.Text = "label12";
             this.l12.Visible = false;
             // 
+            // backButton
+            // 
+            this.backButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backButton.Location = new System.Drawing.Point(156, 583);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(118, 51);
+            this.backButton.TabIndex = 24;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // InqueiryClientFeedbackDairy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -590,6 +603,7 @@
         public  System.Windows.Forms.Label l12;
         private System.Windows.Forms.Label label12;
         public  System.Windows.Forms.TextBox txtModeOfConduct;
+        private System.Windows.Forms.Button backButton;
 
     }
 }

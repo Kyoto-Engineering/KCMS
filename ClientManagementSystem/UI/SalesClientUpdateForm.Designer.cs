@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCauseOfUpdate = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.updateButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.accountNoTextBox = new System.Windows.Forms.TextBox();
@@ -154,8 +156,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtCauseOfUpdate = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -182,6 +182,25 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // txtCauseOfUpdate
+            // 
+            this.txtCauseOfUpdate.Location = new System.Drawing.Point(1002, 520);
+            this.txtCauseOfUpdate.Name = "txtCauseOfUpdate";
+            this.txtCauseOfUpdate.Size = new System.Drawing.Size(211, 52);
+            this.txtCauseOfUpdate.TabIndex = 70;
+            this.txtCauseOfUpdate.Text = "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Blue;
+            this.label1.Location = new System.Drawing.Point(998, 496);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 19);
+            this.label1.TabIndex = 69;
+            this.label1.Text = "Cause Of  Update";
             // 
             // updateButton
             // 
@@ -1155,6 +1174,7 @@
             this.cmbCPEmailAddress.Size = new System.Drawing.Size(264, 30);
             this.cmbCPEmailAddress.TabIndex = 87;
             this.cmbCPEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbCPEmailAddress_SelectedIndexChanged);
+            this.cmbCPEmailAddress.Enter += new System.EventHandler(this.cmbCPEmailAddress_Enter);
             // 
             // label60
             // 
@@ -1174,6 +1194,7 @@
             this.cellNumberAPTextBox.Name = "cellNumberAPTextBox";
             this.cellNumberAPTextBox.Size = new System.Drawing.Size(264, 25);
             this.cellNumberAPTextBox.TabIndex = 30;
+            this.cellNumberAPTextBox.Enter += new System.EventHandler(this.cellNumberAPTextBox_Enter);
             // 
             // designationAPTextBox
             // 
@@ -1182,6 +1203,7 @@
             this.designationAPTextBox.Name = "designationAPTextBox";
             this.designationAPTextBox.Size = new System.Drawing.Size(264, 25);
             this.designationAPTextBox.TabIndex = 29;
+            this.designationAPTextBox.Enter += new System.EventHandler(this.designationAPTextBox_Enter);
             // 
             // contactPersonNameAPTextBox
             // 
@@ -1692,25 +1714,6 @@
             this.label63.TabIndex = 1;
             this.label63.Text = "Modify  Sales Client Data if Need to Change";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(998, 496);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 19);
-            this.label1.TabIndex = 69;
-            this.label1.Text = "Cause Of  Update";
-            // 
-            // txtCauseOfUpdate
-            // 
-            this.txtCauseOfUpdate.Location = new System.Drawing.Point(1002, 520);
-            this.txtCauseOfUpdate.Name = "txtCauseOfUpdate";
-            this.txtCauseOfUpdate.Size = new System.Drawing.Size(211, 52);
-            this.txtCauseOfUpdate.TabIndex = 70;
-            this.txtCauseOfUpdate.Text = "";
-            // 
             // SalesClientUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1801,8 +1804,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.CheckBox tANotApplicable;
-        private System.Windows.Forms.CheckBox tASameAsCACheckBox;
+        public  System.Windows.Forms.CheckBox tANotApplicable;
+        public  System.Windows.Forms.CheckBox tASameAsCACheckBox;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.Label label52;
@@ -1831,9 +1834,9 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.CheckBox bASameAsTACheckBox;
-        private System.Windows.Forms.CheckBox bANotAppCheckBox;
-        private System.Windows.Forms.CheckBox bASameAsCACheckBox;
+        public  System.Windows.Forms.CheckBox bASameAsTACheckBox;
+        public  System.Windows.Forms.CheckBox bANotAppCheckBox;
+        public  System.Windows.Forms.CheckBox bASameAsCACheckBox;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.Label label47;

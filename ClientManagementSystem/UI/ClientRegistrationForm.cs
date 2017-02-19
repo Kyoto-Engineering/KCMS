@@ -1841,50 +1841,50 @@ namespace ClientManagementSystem.UI
 
         private void tPostCombo_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tDivisionCombo.Text))
-            {
-                MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tDivisionCombo.Focus();
-            }
+            //if (string.IsNullOrWhiteSpace(tDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tDivisionCombo.Focus();
+            //}
 
 
 
-            else if (string.IsNullOrWhiteSpace(tDistrictCombo.Text))
-            {
-                MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tDistrictCombo.Focus();
-            }
-            else if (string.IsNullOrWhiteSpace(tThenaCombo.Text))
-            {
-                MessageBox.Show("Please  select thana name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tThenaCombo.Focus();
-            }
+            //else if (string.IsNullOrWhiteSpace(tDistrictCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tDistrictCombo.Focus();
+            //}
+            //else if (string.IsNullOrWhiteSpace(tThenaCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select thana name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tThenaCombo.Focus();
+            //}
         }
 
         private void tThenaCombo_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tDivisionCombo.Text))
-            {
-                MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tDivisionCombo.Focus();
-            }
+            //if (string.IsNullOrWhiteSpace(tDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tDivisionCombo.Focus();
+            //}
 
 
 
-            else if (string.IsNullOrWhiteSpace(tDistrictCombo.Text))
-            {
-                MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tDistrictCombo.Focus();
-            }
+            //else if (string.IsNullOrWhiteSpace(tDistrictCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tDistrictCombo.Focus();
+            //}
         }
 
         private void tDistrictCombo_Enter(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tDivisionCombo.Text))
-            {
-                MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tDivisionCombo.Focus();
-            }
+            //if (string.IsNullOrWhiteSpace(tDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tDivisionCombo.Focus();
+            //}
         }
 
         private void clientNameTextBox_Enter(object sender, EventArgs e)

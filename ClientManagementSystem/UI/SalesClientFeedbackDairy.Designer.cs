@@ -46,12 +46,18 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.feedback2SDateTime = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.followUpDeadline2STextBox = new System.Windows.Forms.DateTimePicker();
             this.action2SMultiTextBox = new System.Windows.Forms.RichTextBox();
             this.txtResposible2SPerson = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -65,13 +71,8 @@
             this.txt2SClientName = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtModeOfConduct = new System.Windows.Forms.TextBox();
-            this.followUpDeadline2STextBox = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.backButton = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -226,6 +227,39 @@
             this.dataGridView1.Size = new System.Drawing.Size(589, 234);
             this.dataGridView1.TabIndex = 0;
             // 
+            // Column1
+            // 
+            dataGridViewCellStyle1.Format = "G";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Column1.FillWeight = 90F;
+            this.Column1.HeaderText = "DateTimes";
+            this.Column1.Name = "Column1";
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Client Inquiry";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 140;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "FeedBack";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 140;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "ResponsiblePerson";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Status";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 90;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -292,6 +326,16 @@
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Follow Up";
+            // 
+            // followUpDeadline2STextBox
+            // 
+            this.followUpDeadline2STextBox.CustomFormat = "dd/MM/yyyy HH:mm:ss";
+            this.followUpDeadline2STextBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.followUpDeadline2STextBox.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.followUpDeadline2STextBox.Location = new System.Drawing.Point(299, 213);
+            this.followUpDeadline2STextBox.Name = "followUpDeadline2STextBox";
+            this.followUpDeadline2STextBox.Size = new System.Drawing.Size(247, 29);
+            this.followUpDeadline2STextBox.TabIndex = 13;
             // 
             // action2SMultiTextBox
             // 
@@ -413,16 +457,6 @@
             this.txtModeOfConduct.Size = new System.Drawing.Size(277, 29);
             this.txtModeOfConduct.TabIndex = 36;
             // 
-            // followUpDeadline2STextBox
-            // 
-            this.followUpDeadline2STextBox.CustomFormat = "dd/MM/yyyy HH:mm:ss";
-            this.followUpDeadline2STextBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.followUpDeadline2STextBox.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.followUpDeadline2STextBox.Location = new System.Drawing.Point(299, 213);
-            this.followUpDeadline2STextBox.Name = "followUpDeadline2STextBox";
-            this.followUpDeadline2STextBox.Size = new System.Drawing.Size(247, 29);
-            this.followUpDeadline2STextBox.TabIndex = 13;
-            // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -434,45 +468,24 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Column1
+            // backButton
             // 
-            dataGridViewCellStyle1.Format = "G";
-            dataGridViewCellStyle1.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Column1.FillWeight = 90F;
-            this.Column1.HeaderText = "DateTimes";
-            this.Column1.Name = "Column1";
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Client Inquiry";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 140;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "FeedBack";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 140;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "ResponsiblePerson";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Status";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 90;
+            this.backButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backButton.Location = new System.Drawing.Point(190, 595);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(118, 51);
+            this.backButton.TabIndex = 38;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // SalesClientFeedbackDairy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(1230, 661);
+            this.Controls.Add(this.backButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtModeOfConduct);
             this.Controls.Add(this.label12);
@@ -552,5 +565,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.Button backButton;
     }
 }

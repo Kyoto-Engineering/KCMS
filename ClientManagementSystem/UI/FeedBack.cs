@@ -25,11 +25,10 @@ namespace ClientManagementSystem.UI
         private void button1_Click(object sender, EventArgs e)
         {
            
-            this.Visible = false;
-            dynamic ww=new FirstStepOfIClientFeedbackDairy();
-            ww.ShowDialog();
-            this.Visible = true;
-            //ww.nUserTextBox.Text = LoginForm.uId.ToString();  
+            this.Hide();
+  FirstStepOfIClientFeedbackDairy ww = new FirstStepOfIClientFeedbackDairy();
+               ww.Show();
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
