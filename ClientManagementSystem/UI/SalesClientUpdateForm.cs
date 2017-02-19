@@ -2316,5 +2316,73 @@ namespace ClientManagementSystem.UI
                 contactPersonNameAPTextBox.Focus();
             }
         }
+
+        private void contactPersonNameAPTextBox_Leave(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(contactPersonNameAPTextBox.Text))
+            {
+                cmbCPEmailAddress.SelectedIndex = -1;
+                designationAPTextBox.Clear();
+                cellNumberAPTextBox.Clear();
+            }
+        }
+
+        private void bankNameTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(bankNameTextBox.Text))
+            {
+                branchNameTextBox.Clear();
+                accountNoTextBox.Clear();
+            }
+        }
+
+        private void branchNameTextBox_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(bankNameTextBox.Text))
+            {
+                MessageBox.Show("Please  enter  Bank Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                bankNameTextBox.Focus();
+            }
+        }
+
+        private void accountNoTextBox_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(bankNameTextBox.Text))
+            {
+                MessageBox.Show("Please  enter  Bank Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                bankNameTextBox.Focus();
+            }
+        }
+
+        private void cContactNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
+        }
+
+        private void cellNumberAPTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
+        }
+
+        private void tContactNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
+        }
+
+        private void bContactNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
+        }
+
+        private void accountNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
+        }
     }
 }

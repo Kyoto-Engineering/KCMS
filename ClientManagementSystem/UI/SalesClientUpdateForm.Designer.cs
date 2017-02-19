@@ -240,6 +240,8 @@
             this.accountNoTextBox.Name = "accountNoTextBox";
             this.accountNoTextBox.Size = new System.Drawing.Size(199, 26);
             this.accountNoTextBox.TabIndex = 9;
+            this.accountNoTextBox.Enter += new System.EventHandler(this.accountNoTextBox_Enter);
+            this.accountNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.accountNoTextBox_KeyPress);
             // 
             // branchNameTextBox
             // 
@@ -248,6 +250,7 @@
             this.branchNameTextBox.Name = "branchNameTextBox";
             this.branchNameTextBox.Size = new System.Drawing.Size(197, 26);
             this.branchNameTextBox.TabIndex = 8;
+            this.branchNameTextBox.Enter += new System.EventHandler(this.branchNameTextBox_Enter);
             // 
             // bankNameTextBox
             // 
@@ -256,6 +259,7 @@
             this.bankNameTextBox.Name = "bankNameTextBox";
             this.bankNameTextBox.Size = new System.Drawing.Size(199, 26);
             this.bankNameTextBox.TabIndex = 7;
+            this.bankNameTextBox.Leave += new System.EventHandler(this.bankNameTextBox_Leave);
             // 
             // label16
             // 
@@ -494,6 +498,7 @@
             this.bContactNoTextBox.Name = "bContactNoTextBox";
             this.bContactNoTextBox.Size = new System.Drawing.Size(157, 26);
             this.bContactNoTextBox.TabIndex = 41;
+            this.bContactNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.bContactNoTextBox_KeyPress);
             // 
             // label6
             // 
@@ -899,6 +904,7 @@
             this.tContactNoTextBox.Name = "tContactNoTextBox";
             this.tContactNoTextBox.Size = new System.Drawing.Size(169, 26);
             this.tContactNoTextBox.TabIndex = 41;
+            this.tContactNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tContactNoTextBox_KeyPress);
             // 
             // label27
             // 
@@ -1196,6 +1202,7 @@
             this.cellNumberAPTextBox.Size = new System.Drawing.Size(264, 25);
             this.cellNumberAPTextBox.TabIndex = 30;
             this.cellNumberAPTextBox.Enter += new System.EventHandler(this.cellNumberAPTextBox_Enter);
+            this.cellNumberAPTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cellNumberAPTextBox_KeyPress);
             // 
             // designationAPTextBox
             // 
@@ -1213,6 +1220,7 @@
             this.contactPersonNameAPTextBox.Name = "contactPersonNameAPTextBox";
             this.contactPersonNameAPTextBox.Size = new System.Drawing.Size(264, 25);
             this.contactPersonNameAPTextBox.TabIndex = 28;
+            this.contactPersonNameAPTextBox.Leave += new System.EventHandler(this.contactPersonNameAPTextBox_Leave);
             // 
             // label11
             // 
@@ -1440,6 +1448,7 @@
             this.cContactNoTextBox.Name = "cContactNoTextBox";
             this.cContactNoTextBox.Size = new System.Drawing.Size(149, 26);
             this.cContactNoTextBox.TabIndex = 41;
+            this.cContactNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cContactNoTextBox_KeyPress);
             // 
             // label13
             // 
