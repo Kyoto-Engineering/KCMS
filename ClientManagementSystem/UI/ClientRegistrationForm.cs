@@ -1521,6 +1521,7 @@ namespace ClientManagementSystem.UI
                                 cmbEmailAddress.Items.Clear();
                                 EmailAddress();
                                 cmbEmailAddress.SelectedText = input;
+                                EmailCPAddress();
                             
 
 
@@ -1634,10 +1635,10 @@ namespace ClientManagementSystem.UI
                             cmd.Parameters.AddWithValue("@d2", submittedBy);
                             cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
                             cmd.ExecuteNonQuery();
-
                             con.Close();
+
                             cmbCPEmailAddress.Items.Clear();
-                            EmailAddress();
+                            EmailCPAddress();
                             cmbCPEmailAddress.SelectedText = input;
 
                         }

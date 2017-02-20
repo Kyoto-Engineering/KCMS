@@ -1473,6 +1473,7 @@ namespace ClientManagementSystem.UI
                             cmbEmailAddress.Items.Clear();
                             EmailAddress();
                             cmbEmailAddress.SelectedText = input;
+                            EmailCPAddress();
 
                         }
                         catch (Exception ex)
@@ -1585,7 +1586,7 @@ namespace ClientManagementSystem.UI
 
                             con.Close();
                             cmbCPEmailAddress.Items.Clear();
-                            EmailAddress();
+                            EmailCPAddress();
                             cmbCPEmailAddress.SelectedText = input;
 
                         }

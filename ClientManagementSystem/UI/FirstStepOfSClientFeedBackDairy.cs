@@ -325,5 +325,12 @@ namespace ClientManagementSystem.UI
                 }
             }
         }
+
+        private void FirstStepOfSClientFeedBackDairy_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            FeedBack frm = new FeedBack();
+            frm.Show();
+        }
     }
 }

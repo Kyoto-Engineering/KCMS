@@ -419,8 +419,24 @@ namespace ClientManagementSystem.UI
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FirstStepOfIClientFeedbackDairy frm=new FirstStepOfIClientFeedbackDairy();
-            frm.Show();
+            FirstStepOfIClientFeedbackDairy frm2=new FirstStepOfIClientFeedbackDairy();
+            frm2.txt1ClientId.Text = txt2ClientId.Text;
+            frm2.txt1ClientName.Text = txt2ClientName.Text;
+            frm2.feedback1TextBox.Text = feedback2TextBox.Text;
+            frm2.txtClientInquiry.Text = txtClentInquiry.Text;
+            frm2.feedback1DeadlineDateTime.Value = feedback2DateTime.Value;
+            frm2.cmbModeOfConduct.Text = txtModeOfConduct.Text;
+            frm2.action1MultiTextBox.Text = action2MultiTextBox.Text;
+            frm2.responsible1PersonComboBox.Text = txtResposible2Person.Text;
+            frm2.followUp1DeadlineDateTimePicker.Value = followUp2Deadlinedatetime.Value;
+            frm2.Show();
+        }
+
+        private void InqueiryClientFeedbackDairy_FormClosed(object sender, FormClosedEventArgs e)
+        {
+                  this.Hide();
+       FeedBack frm=new FeedBack();
+                  frm.Show();
         }
 
       

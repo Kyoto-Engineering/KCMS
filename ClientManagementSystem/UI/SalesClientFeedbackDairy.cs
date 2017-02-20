@@ -232,8 +232,17 @@ namespace ClientManagementSystem.UI
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FirstStepOfSClientFeedBackDairy frm=new FirstStepOfSClientFeedBackDairy();
-            frm.Show();
+            FirstStepOfSClientFeedBackDairy frm3=new FirstStepOfSClientFeedBackDairy();
+            frm3.txtSClientId.Text = txt2SClientId.Text;
+            frm3.txtSClientName.Text = txt2SClientName.Text;
+            frm3.txtSClientInquiry.Text = txtClientInquiry.Text;
+            frm3.feedbackSTextBox.Text = feedback2STextBox.Text;
+            frm3.cmbModeOfConduct.Text = txtModeOfConduct.Text;
+            frm3.feedbackSDeadlineDateTime.Value = feedback2SDateTime.Value;
+            frm3.actionSMultiTextBox.Text = action2SMultiTextBox.Text;
+            frm3.responsibleSPersonComboBox.Text = txtResposible2SPerson.Text;
+            frm3.followUpSDeadlinedate.Value = followUpDeadline2STextBox.Value;
+            frm3.Show();
         }
     }
 }

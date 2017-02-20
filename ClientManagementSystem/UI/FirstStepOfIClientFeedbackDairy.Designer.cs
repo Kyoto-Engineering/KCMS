@@ -50,6 +50,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nUserTextBox = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -72,11 +77,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -303,6 +303,36 @@
             this.dataGridView2.Size = new System.Drawing.Size(594, 262);
             this.dataGridView2.TabIndex = 1;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewCellStyle1.Format = "G";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTextBoxColumn1.HeaderText = "DateTimes";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Client Inquiry";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "FeedBack";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "ResponsiblePerson";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 140;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Status";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
             // nUserTextBox
             // 
             this.nUserTextBox.Location = new System.Drawing.Point(4, 643);
@@ -506,36 +536,6 @@
             this.textBox2.TabIndex = 23;
             this.textBox2.Text = "Inqueiry Client Feedback Dairy";
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewCellStyle1.Format = "G";
-            dataGridViewCellStyle1.NullValue = null;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewTextBoxColumn1.HeaderText = "DateTimes";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Client Inquiry";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "FeedBack";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "ResponsiblePerson";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 140;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Status";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
             // FirstStepOfIClientFeedbackDairy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -550,6 +550,7 @@
             this.Name = "FirstStepOfIClientFeedbackDairy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FirstStepOfIClientFeedbackDairy";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FirstStepOfIClientFeedbackDairy_FormClosed);
             this.Load += new System.EventHandler(this.FirstStepOfIClientFeedbackDairy_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -567,18 +568,18 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox responsible1PersonComboBox;
+        public  System.Windows.Forms.ComboBox responsible1PersonComboBox;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox action1MultiTextBox;
+        public  System.Windows.Forms.TextBox action1MultiTextBox;
         private System.Windows.Forms.Label labelk;
-        private System.Windows.Forms.DateTimePicker followUp1DeadlineDateTimePicker;
+        public  System.Windows.Forms.DateTimePicker followUp1DeadlineDateTimePicker;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker feedback1DeadlineDateTime;
-        private System.Windows.Forms.TextBox feedback1TextBox;
+        public  System.Windows.Forms.DateTimePicker feedback1DeadlineDateTime;
+        public  System.Windows.Forms.TextBox feedback1TextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -593,8 +594,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txt1ClientName;
-        private System.Windows.Forms.TextBox txt1ClientId;
+        public  System.Windows.Forms.TextBox txt1ClientName;
+        public  System.Windows.Forms.TextBox txt1ClientId;
         private System.Windows.Forms.Label labelh;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label10;
@@ -603,9 +604,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.RichTextBox txtClientInquiry;
+        public System.Windows.Forms.RichTextBox txtClientInquiry;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cmbModeOfConduct;
+        public  System.Windows.Forms.ComboBox cmbModeOfConduct;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

@@ -65,8 +65,8 @@ namespace ClientManagementSystem.UI
             }
             try
             {
-                this.Visible = false;
-                dynamic frm2 = new InqueiryClientFeedbackDairy();                
+                this.Hide();
+                InqueiryClientFeedbackDairy frm2 = new InqueiryClientFeedbackDairy();                
                 frm2.txt2ClientId.Text = txt1ClientId.Text;
                 frm2.txt2ClientName.Text = txt1ClientName.Text;
                 frm2.feedback2TextBox.Text = feedback1TextBox.Text;
@@ -76,8 +76,8 @@ namespace ClientManagementSystem.UI
                 frm2.action2MultiTextBox.Text = action1MultiTextBox.Text;
                 frm2.txtResposible2Person.Text = responsible1PersonComboBox.Text;
                 frm2.followUp2Deadlinedatetime.Value = followUp1DeadlineDateTimePicker.Value;
-                frm2.ShowDialog();
-                this.Visible = true;
+                frm2.Show();
+               
                
                
             }
@@ -390,6 +390,13 @@ namespace ClientManagementSystem.UI
                       MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                   }
               }
+          }
+
+          private void FirstStepOfIClientFeedbackDairy_FormClosed(object sender, FormClosedEventArgs e)
+          {
+                  this.Hide();
+              FeedBack frm=new FeedBack();
+                   frm.Show();
           }
     }
 }

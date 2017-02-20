@@ -1992,7 +1992,7 @@ namespace ClientManagementSystem.UI
 
                             con.Close();
                             cmbCPEmailAddress.Items.Clear();
-                            EmailAddress();
+                            EmailCPAddress();
                             cmbCPEmailAddress.SelectedText = input;
 
                         }
@@ -2246,11 +2246,12 @@ namespace ClientManagementSystem.UI
                             cmd.Parameters.AddWithValue("@d2", userId);
                             cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
                             cmd.ExecuteNonQuery();
-
                             con.Close();
+
                             cmbEmailAddress.Items.Clear();
                             EmailAddress();
                             cmbEmailAddress.SelectedText = input;
+                            EmailCPAddress();
 
                         }
                         catch (Exception ex)

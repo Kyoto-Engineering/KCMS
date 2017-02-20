@@ -497,7 +497,7 @@
             this.submitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.submitButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitButton.ForeColor = System.Drawing.Color.Blue;
-            this.submitButton.Location = new System.Drawing.Point(450, 570);
+            this.submitButton.Location = new System.Drawing.Point(470, 570);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(132, 52);
             this.submitButton.TabIndex = 7;
@@ -547,6 +547,7 @@
             this.Name = "FirstStepOfSClientFeedBackDairy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FirstStepOfSClientFeedBackDairy";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FirstStepOfSClientFeedBackDairy_FormClosed);
             this.Load += new System.EventHandler(this.FirstStepOfSClientFeedBackDairy_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -578,7 +579,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         public System.Windows.Forms.TextBox nUserTextBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker feedbackSDeadlineDateTime;
+        public  System.Windows.Forms.DateTimePicker feedbackSDeadlineDateTime;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -586,14 +587,14 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox responsibleSPersonComboBox;
+        public  System.Windows.Forms.ComboBox responsibleSPersonComboBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label labelk;
-        private System.Windows.Forms.DateTimePicker followUpSDeadlinedate;
+        public  System.Windows.Forms.DateTimePicker followUpSDeadlinedate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtSClientName;
-        private System.Windows.Forms.TextBox txtSClientId;
+        public  System.Windows.Forms.TextBox txtSClientName;
+        public  System.Windows.Forms.TextBox txtSClientId;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -603,11 +604,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RichTextBox feedbackSTextBox;
-        private System.Windows.Forms.RichTextBox actionSMultiTextBox;
-        private System.Windows.Forms.RichTextBox txtSClientInquiry;
+        public  System.Windows.Forms.RichTextBox feedbackSTextBox;
+        public  System.Windows.Forms.RichTextBox actionSMultiTextBox;
+        public  System.Windows.Forms.RichTextBox txtSClientInquiry;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox cmbModeOfConduct;
+        public  System.Windows.Forms.ComboBox cmbModeOfConduct;
     }
 }

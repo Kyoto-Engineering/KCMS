@@ -2073,17 +2073,17 @@ namespace ClientManagementSystem.UI
         {
             if (cmbEmailAddress.Text == "Not In The List")
             {
-                string input = Microsoft.VisualBasic.Interaction.InputBox("Please Input Mode Of Conduct  Here", "Input Here", "", -1, -1);
-                if (string.IsNullOrWhiteSpace(input))
+                string emailName = Microsoft.VisualBasic.Interaction.InputBox("Please Input Mode Of Conduct  Here", "Input Here", "", -1, -1);
+                if (string.IsNullOrWhiteSpace(emailName))
                 {
                     cmbEmailAddress.SelectedIndex = -1;
                 }
                 else
                 {
 
-                    if (!string.IsNullOrWhiteSpace(input))
+                    if (!string.IsNullOrWhiteSpace(emailName))
                     {
-                        string emailId = input.Trim();
+                        string emailId = emailName.Trim();
                         Regex mRegxExpression;
 
                         mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
@@ -2099,7 +2099,7 @@ namespace ClientManagementSystem.UI
 
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string ct2 = "select Email from EmailBank where Email='" + input + "'";
+                    string ct2 = "select Email from EmailBank where Email='" + emailName + "'";
                     cmd = new SqlCommand(ct2, con);
                     rdr = cmd.ExecuteReader();
                     if (rdr.Read() && !rdr.IsDBNull(0))
@@ -2116,15 +2116,16 @@ namespace ClientManagementSystem.UI
                             con.Open();
                             string query1 = "insert into EmailBank (Email, UserId,DateAndTime) values (@d1,@d2,@d3)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                             cmd = new SqlCommand(query1, con);
-                            cmd.Parameters.AddWithValue("@d1", input);
+                            cmd.Parameters.AddWithValue("@d1", emailName);
                             cmd.Parameters.AddWithValue("@d2", submittedBy3);
                             cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
                             cmd.ExecuteNonQuery();
-
                             con.Close();
+
                             cmbEmailAddress.Items.Clear();
                             EmailAddress();
-                            cmbEmailAddress.SelectedText = input;
+                            cmbEmailAddress.SelectedText = emailName;
+                            EmailCPAddress();
 
                         }
                         catch (Exception ex)
@@ -2188,16 +2189,16 @@ namespace ClientManagementSystem.UI
         {
             if (cmbCPEmailAddress.Text == "Not In The List")
             {
-                string input = Microsoft.VisualBasic.Interaction.InputBox("Please Input Mode Of Conduct  Here", "Input Here", "", -1, -1);
-                if (string.IsNullOrWhiteSpace(input))
+                string emailCPWindow = Microsoft.VisualBasic.Interaction.InputBox("Please Input Mode Of Conduct  Here", "Input Here", "", -1, -1);
+                if (string.IsNullOrWhiteSpace(emailCPWindow))
                 {
                     cmbCPEmailAddress.SelectedIndex = -1;
                 }
                 else
                 {
-                    if (!string.IsNullOrWhiteSpace(input))
+                    if (!string.IsNullOrWhiteSpace(emailCPWindow))
                     {
-                        string emailId = input.Trim();
+                        string emailId = emailCPWindow.Trim();
                         Regex mRegxExpression;
 
                         mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
@@ -2214,7 +2215,7 @@ namespace ClientManagementSystem.UI
 
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string ct2 = "select Email from EmailBank where Email='" + input + "'";
+                    string ct2 = "select Email from EmailBank where Email='" + emailCPWindow + "'";
                     cmd = new SqlCommand(ct2, con);
                     rdr = cmd.ExecuteReader();
                     if (rdr.Read() && !rdr.IsDBNull(0))
@@ -2231,15 +2232,16 @@ namespace ClientManagementSystem.UI
                             con.Open();
                             string query1 = "insert into EmailBank (Email, UserId,DateAndTime) values (@d1,@d2,@d3)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                             cmd = new SqlCommand(query1, con);
-                            cmd.Parameters.AddWithValue("@d1", input);
+                            cmd.Parameters.AddWithValue("@d1", emailCPWindow);
                             cmd.Parameters.AddWithValue("@d2", submittedBy3);
                             cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
                             cmd.ExecuteNonQuery();
 
                             con.Close();
                             cmbCPEmailAddress.Items.Clear();
-                            EmailAddress();
-                            cmbCPEmailAddress.SelectedText = input;
+                            EmailCPAddress();
+                            cmbCPEmailAddress.SelectedText = emailCPWindow;
+                            
 
                         }
                         catch (Exception ex)
