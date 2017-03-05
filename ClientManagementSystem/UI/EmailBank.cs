@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClientManagementSystem.DBGateway;
@@ -20,6 +21,7 @@ namespace ClientManagementSystem.UI
         ConnectionString cs=new ConnectionString();
         public string userId;
         public int currentId;
+        public string userTypemU;
         public EmailBank()
         {
             InitializeComponent();
@@ -62,6 +64,43 @@ namespace ClientManagementSystem.UI
         private void EmailBank_Load(object sender, EventArgs e)
         {
             userId = LoginForm.uId.ToString();
+            userTypemU = LoginForm.userType;
+        }
+
+        private void EmailBank_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (userTypemU == "Admin")
+            {
+                this.Hide();
+                MainUI frm = new MainUI();
+                frm.Show();
+            }
+            else if (userTypemU == "User")
+            {
+                this.Hide();
+                MainUIForUser frm = new MainUIForUser();
+                frm.Show();
+            }
+        }
+
+        private void txtBankEmailId_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBankEmailId.Text))
+            {
+                string emailId = txtBankEmailId.Text.Trim();
+                Regex mRegxExpression;
+
+                mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+                if (!mRegxExpression.IsMatch(emailId))
+                {
+
+                    MessageBox.Show("Please type your  valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtBankEmailId.Clear();
+                    txtBankEmailId.Focus();
+
+                }
+            }
         }
     }
 }

@@ -37,10 +37,7 @@ namespace ClientManagementSystem.UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //this.Visible = false;
-            //dynamic ww = new MainUIInquieryClient();
-            //ww.ShowDialog();
-            //this.Visible = true;
+           
 
             this.Hide();
             MainUIInquieryClient frm = new MainUIInquieryClient();
@@ -51,32 +48,33 @@ namespace ClientManagementSystem.UI
 
         private void userButton_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            UserManagementUI ug=new UserManagementUI();
-            ug.ShowDialog();
-            this.Visible = true;
+            this.Hide();
+            UserManagementUI frm=new UserManagementUI();
+            frm.Show();
         }
 
         private void instantClientButton_Click(object sender, EventArgs e)
         {
             
-            this.Visible = false;            
-            dynamic f2 = new FeedBack();
-            f2.ShowDialog();
-            this.Visible = true;            
+            this.Hide();
+            FeedBack f2 = new FeedBack();
+            f2.Show();
+                   
         }
 
         private void logOutButton_Click(object sender, EventArgs e)
         {
+            this.Dispose();
             LoginForm f3 = new LoginForm();
+            f3.Show();
             //if (MessageBox.Show("Are you sure you want to exit?", "Confirm exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             //{
             //    e.Cancel = true;
             //}
             //else  { 
-                this.Dispose();
+                
          //   LoginForm f3=new LoginForm();
-            f3.Show();
+           
             //}
         }
 
@@ -140,10 +138,9 @@ namespace ClientManagementSystem.UI
 
         private void emailBankButton_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            dynamic fg4 = new EmailBank();
-            fg4.ShowDialog();
-            this.Visible = true;
+           this.Hide();
+            EmailBank frm=new EmailBank();
+             frm.Show();
         }
     }
 }

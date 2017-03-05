@@ -29,6 +29,8 @@ namespace ClientManagementSystem.UI
         public string userId,rpUserId;
         public int modeOfConductId;
         
+
+
         public InqueiryClientFeedbackDairy()
         {
             InitializeComponent();
@@ -46,9 +48,11 @@ namespace ClientManagementSystem.UI
 
         }
         private void submitButton_Click(object sender, EventArgs e)
-           
+
         {
-           
+            FirstStepOfIClientFeedbackDairy fg = new  FirstStepOfIClientFeedbackDairy();
+            fg.ResetFirstStepOfIClientfeedbackDairy();
+            
             if (feedback2TextBox.Text == "")
             {
                 MessageBox.Show("Please must Write Some FeedBack", "Input error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -136,7 +140,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT RTRIM(InquieryClient.IClientId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from InquieryClient,ContactPersonDetails  where InquieryClient.IClientId=ContactPersonDetails.IClientId  order by InquieryClient.IClientId desc",con);
+                cmd = new SqlCommand("SELECT InquieryClient.IClientId,InquieryClient.ClientName,EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM  InquieryClient INNER JOIN ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId  INNER JOIN  EmailBank ON InquieryClient.EmailBankId = EmailBank.EmailBankId order by InquieryClient.IClientId desc", con);
                // cmd = new SqlCommand("SELECT RTRIM(InquieryClient.IClientId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(InquieryClient.ContactPersonName),RTRIM(InquieryClient.CellNumber) from InquieryClient  order by InquieryClient.IClientId desc", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView2.Rows.Clear();
@@ -175,6 +179,9 @@ namespace ClientManagementSystem.UI
             action2MultiTextBox.Enabled = false;
             txtResposible2Person.Enabled = false;
             txtModeOfConduct.Enabled = false;
+            feedback2DateTime.Enabled = false;
+            followUp2Deadlinedatetime.Enabled = false;
+            dataGridView2.Enabled = false;
         }
       
         private void Report2()
@@ -357,7 +364,9 @@ namespace ClientManagementSystem.UI
             feedback2TextBox.Enabled = true;
             action2MultiTextBox.Enabled = true;
             txtResposible2Person.Enabled = true;
-            txtModeOfConduct.Enabled = false;
+            txtModeOfConduct.Enabled = true;
+            dataGridView2.Enabled = true;
+
 
         }
 
@@ -405,6 +414,29 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FirstStepOfIClientFeedbackDairy frm2=new FirstStepOfIClientFeedbackDairy();
+            frm2.txt1ClientId.Text = txt2ClientId.Text;
+            frm2.txt1ClientName.Text = txt2ClientName.Text;
+            frm2.feedback1TextBox.Text = feedback2TextBox.Text;
+            frm2.txtClientInquiry.Text = txtClentInquiry.Text;
+            frm2.feedback1DeadlineDateTime.Value = feedback2DateTime.Value;
+            frm2.cmbModeOfConduct.Text = txtModeOfConduct.Text;
+            frm2.action1MultiTextBox.Text = action2MultiTextBox.Text;
+            frm2.responsible1PersonComboBox.Text = txtResposible2Person.Text;
+            frm2.followUp1DeadlineDateTimePicker.Value = followUp2Deadlinedatetime.Value;
+            frm2.Show();
+        }
+
+        private void InqueiryClientFeedbackDairy_FormClosed(object sender, FormClosedEventArgs e)
+        {
+                  this.Hide();
+       FeedBack frm=new FeedBack();
+                  frm.Show();
         }
 
       

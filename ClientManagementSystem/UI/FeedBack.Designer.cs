@@ -181,6 +181,8 @@
             this.Name = "FeedBack";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FeedBack";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FeedBack_FormClosed);
+            this.Load += new System.EventHandler(this.FeedBack_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);

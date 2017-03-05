@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtBankEmailId = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.submitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -45,16 +43,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Email Id";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(61, 97);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 22);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "DateTime";
-            // 
             // txtBankEmailId
             // 
             this.txtBankEmailId.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -62,22 +50,14 @@
             this.txtBankEmailId.Name = "txtBankEmailId";
             this.txtBankEmailId.Size = new System.Drawing.Size(309, 29);
             this.txtBankEmailId.TabIndex = 2;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(170, 94);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(309, 29);
-            this.dateTimePicker1.TabIndex = 3;
+            this.txtBankEmailId.Validating += new System.ComponentModel.CancelEventHandler(this.txtBankEmailId_Validating);
             // 
             // submitButton
             // 
             this.submitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.submitButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitButton.ForeColor = System.Drawing.Color.Yellow;
-            this.submitButton.Location = new System.Drawing.Point(356, 170);
+            this.submitButton.Location = new System.Drawing.Point(356, 108);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(123, 68);
             this.submitButton.TabIndex = 4;
@@ -92,13 +72,13 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(552, 256);
             this.Controls.Add(this.submitButton);
-            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.txtBankEmailId);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "EmailBank";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EmailBank";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmailBank_FormClosed);
             this.Load += new System.EventHandler(this.EmailBank_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -108,9 +88,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBankEmailId;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button submitButton;
     }
 }

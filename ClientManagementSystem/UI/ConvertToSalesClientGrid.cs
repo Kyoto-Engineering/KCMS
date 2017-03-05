@@ -17,6 +17,7 @@ namespace ClientManagementSystem.UI
         private SqlConnection con;
         private SqlCommand cmd;
         private SqlDataAdapter sda;
+        private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
         public ConvertToSalesClientGrid()
         {
@@ -27,6 +28,7 @@ namespace ClientManagementSystem.UI
         {
             try
             {
+                string a, b;
                 this.Hide();
                 DataGridViewRow dr = dataGridView1.CurrentRow;
                 ClientApprovedFinalForm frm = new ClientApprovedFinalForm();
@@ -58,7 +60,7 @@ namespace ClientManagementSystem.UI
                 frm.cDistrictCombo.Text = dr.Cells[19].Value.ToString();
                 frm.cThanaCombo.Text = dr.Cells[20].Value.ToString().Trim();
                 frm.cPostOfficeCombo.Text = dr.Cells[21].Value.ToString();
-                frm.cPostCodeTextBox.Text = dr.Cells[22].Value.ToString();
+               a= frm.cPostCodeTextBox.Text = dr.Cells[22].Value.ToString();
 
 
                 frm.tFlatNoTextBox.Text = dr.Cells[23].Value.ToString();
@@ -72,8 +74,31 @@ namespace ClientManagementSystem.UI
                 frm.tDistComboBox.Text = dr.Cells[30].Value.ToString();
                 frm.tThanaCombo.Text = dr.Cells[31].Value.ToString().Trim();
                 frm.tPostOfficeCombo.Text = dr.Cells[32].Value.ToString();
-                frm.tPostCodeTextBox.Text = dr.Cells[33].Value.ToString();
+               b= frm.tPostCodeTextBox.Text = dr.Cells[33].Value.ToString();
+                if (a == b)
+                {
+                   
+                    frm.tASameAsCACheckBox.Checked = true;
+                }
+                else if (string.IsNullOrEmpty(b))
+                {
 
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    string ct2 = "select RTRIM(TraddingAddresses.IClientId) from TraddingAddresses where TraddingAddresses.IClientId='" + frm.txtIClientId.Text + "'";
+                    cmd = new SqlCommand(ct2, con);
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read() && !rdr.IsDBNull(0))
+                    {
+
+                        frm.tANotApplicable.Checked = false;
+                    }
+                    else
+                    {
+
+                        frm.tANotApplicable.Checked = true;
+                    }
+                }
 
                 frm.lk.Text = lg.Text;
             }
@@ -86,7 +111,7 @@ namespace ClientManagementSystem.UI
         {
             con = new SqlConnection(cs.DBConn);
             con.Open();
-            sda = new SqlDataAdapter("Select FirstSet.Name,FirstSet.IClientId,FirstSet.ClientName,FirstSet.ClientType,FirstSet.ClientNature,FirstSet.EmailAddress,FirstSet.IndustryCategory,FirstSet.EndUser,thirdq.ContactPersonName,thirdq.Designation, thirdq.CellNumber,thirdq.EmailId,FirstSet.CFlatNo,FirstSet.CHouseNo,FirstSet.CRoadNo,FirstSet.CBlock,FirstSet.CArea,FirstSet.CContactNo,FirstSet.Division,FirstSet.District,FirstSet.Thana,FirstSet.PostOfficeName,FirstSet.PostCode,QUERYTWO.TFlatNo,QUERYTWO.THouseNo,QUERYTWO.TRoadNo,QUERYTWO.TBlock,QUERYTWO.TArea,QUERYTWO.TContactNo,QUERYTWO.Division,QUERYTWO.District,QUERYTWO.Thana,QUERYTWO.PostOfficeName,QUERYTWO.PostCode from ( SELECT Registration.Name,InquieryClient.IClientId,InquieryClient.ClientName,ClientTypes.ClientType,NatureOfClients.ClientNature,InquieryClient.EmailAddress,IndustryCategorys.IndustryCategory,InquieryClient.EndUser,CorporateAddresses.CFlatNo,CorporateAddresses.CHouseNo,CorporateAddresses.CRoadNo,CorporateAddresses.CBlock,CorporateAddresses.CArea,CorporateAddresses.CContactNo,Divisions.Division,Districts.District,Thanas.Thana,PostOffice.PostOfficeName,PostOffice.PostCode FROM  InquieryClient INNER JOIN  Registration ON InquieryClient.SuperviserId = Registration.UserId INNER JOIN ClientTypes ON InquieryClient.ClientTypeId = ClientTypes.ClientTypeId INNER JOIN NatureOfClients ON InquieryClient.NatureOfClientId = NatureOfClients.NatureOfClientId INNER JOIN IndustryCategorys ON InquieryClient.IndustryCategoryId = IndustryCategorys.IndustryCategoryId INNER JOIN CorporateAddresses ON InquieryClient.IClientId = CorporateAddresses.IClientId INNER JOIN  Divisions ON CorporateAddresses.Division_ID = Divisions.Division_ID INNER JOIN Districts ON CorporateAddresses.D_ID = Districts.D_ID INNER JOIN Thanas ON CorporateAddresses.T_ID = Thanas.T_ID INNER JOIN PostOffice ON CorporateAddresses.PostOfficeId = PostOffice.PostOfficeId ) AS FirstSet lEFT jOIN (SELECT InquieryClient.IClientId,TraddingAddresses.TFlatNo,TraddingAddresses.THouseNo,TraddingAddresses.TRoadNo,TraddingAddresses.TBlock,TraddingAddresses.TArea,TraddingAddresses.TContactNo,Divisions.Division,Districts.District,Thanas.Thana,PostOffice.PostOfficeName,PostOffice.PostCode FROM  InquieryClient INNER JOIN TraddingAddresses ON InquieryClient.IClientId = TraddingAddresses.IClientId INNER JOIN  Divisions ON TraddingAddresses.Division_ID = Divisions.Division_ID INNER JOIN Districts ON TraddingAddresses.D_ID = Districts.D_ID INNER JOIN Thanas ON TraddingAddresses.T_ID = Thanas.T_ID INNER JOIN PostOffice ON TraddingAddresses.PostOfficeId = PostOffice.PostOfficeId) aS QUERYTWO ON FirstSet.IClientId =  QUERYTWO.IClientId left join (SELECT InquieryClient.IClientId,ContactPersonDetails.ContactPersonName,ContactPersonDetails.Designation, ContactPersonDetails.CellNumber,ContactPersonDetails.EmailId FROM  InquieryClient INNER JOIN ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId) as thirdq on FirstSet.IClientId  = thirdq.IClientId", con);
+            sda = new SqlDataAdapter("Select FirstSet.Name RM,FirstSet.IClientId ClientId,FirstSet.ClientName ClientName,FirstSet.ClientType  ClientType,FirstSet.ClientNature NatureOfClient,FirstSet.Email EmailId,FirstSet.IndustryCategory ,FirstSet.EndUser,thirdq.ContactPersonName,thirdq.Designation, thirdq.CellNumber,thirdq.Email,FirstSet.CFlatNo,FirstSet.CHouseNo,FirstSet.CRoadNo,FirstSet.CBlock,FirstSet.CArea,FirstSet.CContactNo,FirstSet.Division CDivition,FirstSet.District CDistrict,FirstSet.Thana CPoliceStation,FirstSet.PostOfficeName CPostOfficeName,FirstSet.PostCode CPostCode,QUERYTWO.TFlatNo,QUERYTWO.THouseNo,QUERYTWO.TRoadNo,QUERYTWO.TBlock,QUERYTWO.TArea,QUERYTWO.TContactNo,QUERYTWO.Division TDivision,QUERYTWO.District TDistrict,QUERYTWO.Thana TThana,QUERYTWO.PostOfficeName TPostOfficeName,QUERYTWO.PostCode TPostCode from (SELECT Registration.Name,InquieryClient.IClientId,InquieryClient.ClientName,ClientTypes.ClientType,NatureOfClients.ClientNature,EmailBank.Email,IndustryCategorys.IndustryCategory,InquieryClient.EndUser,CorporateAddresses.CFlatNo,CorporateAddresses.CHouseNo,CorporateAddresses.CRoadNo,CorporateAddresses.CBlock,CorporateAddresses.CArea,CorporateAddresses.CContactNo,Divisions.Division,Districts.District,Thanas.Thana,PostOffice.PostOfficeName,PostOffice.PostCode  FROM  InquieryClient  INNER JOIN  Registration ON InquieryClient.SuperviserId = Registration.UserId INNER JOIN ClientTypes ON InquieryClient.ClientTypeId = ClientTypes.ClientTypeId  INNER JOIN NatureOfClients ON InquieryClient.NatureOfClientId = NatureOfClients.NatureOfClientId  INNER JOIN IndustryCategorys ON InquieryClient.IndustryCategoryId = IndustryCategorys.IndustryCategoryId INNER JOIN CorporateAddresses ON InquieryClient.IClientId = CorporateAddresses.IClientId  INNER JOIN PostOffice ON CorporateAddresses.PostOfficeId = PostOffice.PostOfficeId  INNER JOIN Thanas ON PostOffice.T_ID = Thanas.T_ID  INNER JOIN Districts ON Thanas.D_ID = Districts.D_ID  INNER JOIN  Divisions ON Districts.Division_ID = Divisions.Division_ID  Left Join EmailBank ON InquieryClient.EmailBankId= EmailBank.EmailBankId) AS  FirstSet  lEFT jOIN (SELECT InquieryClient.IClientId,TraddingAddresses.TFlatNo,TraddingAddresses.THouseNo,TraddingAddresses.TRoadNo,TraddingAddresses.TBlock,TraddingAddresses.TArea,TraddingAddresses.TContactNo,Divisions.Division,Districts.District,Thanas.Thana,PostOffice.PostOfficeName,PostOffice.PostCode   FROM  InquieryClient  INNER JOIN TraddingAddresses ON InquieryClient.IClientId = TraddingAddresses.IClientId INNER JOIN PostOffice ON TraddingAddresses.PostOfficeId = PostOffice.PostOfficeId  INNER JOIN Thanas ON PostOffice.T_ID = Thanas.T_ID  INNER JOIN Districts ON Thanas.D_ID = Districts.D_ID INNER JOIN  Divisions ON Districts.Division_ID = Divisions.Division_ID) aS QUERYTWO ON FirstSet.IClientId =  QUERYTWO.IClientId left join (SELECT InquieryClient.IClientId,ContactPersonDetails.ContactPersonName,ContactPersonDetails.Designation,ContactPersonDetails.CellNumber,EmailBank.Email  FROM  InquieryClient  INNER JOIN ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId left join EmailBank on ContactPersonDetails.EmailBankId=EmailBank.EmailBankId) as thirdq on FirstSet.IClientId  = thirdq.IClientId where FirstSet.IClientId not in (select  IClientId  FROM  SalesClient where IClientId is not null)", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             dataGridView1.DataSource = dt;
@@ -94,7 +119,14 @@ namespace ClientManagementSystem.UI
         }
         private void ConvertToSalesClientGrid_Load(object sender, EventArgs e)
         {
-            InquiryClientDetailsGrid();
+           InquiryClientDetailsGrid();
+        }
+
+        private void ConvertToSalesClientGrid_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            ForSalseClientMP frm = new ForSalseClientMP();
+            frm.Show();
         }
     }
 }

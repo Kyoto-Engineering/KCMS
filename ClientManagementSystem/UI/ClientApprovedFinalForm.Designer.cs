@@ -103,10 +103,12 @@
             this.label14 = new System.Windows.Forms.Label();
             this.approvedButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbEmailAddress = new System.Windows.Forms.ComboBox();
             this.cmbIndustryCategory = new System.Windows.Forms.ComboBox();
             this.cmbNatureOfClient = new System.Windows.Forms.ComboBox();
             this.cmbClientType = new System.Windows.Forms.ComboBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.cmbCPEmailAddress = new System.Windows.Forms.ComboBox();
             this.label60 = new System.Windows.Forms.Label();
             this.cellNumberAPTextBox = new System.Windows.Forms.TextBox();
             this.designationAPTextBox = new System.Windows.Forms.TextBox();
@@ -154,9 +156,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.closeButton = new System.Windows.Forms.Button();
-            this.cmbEmailAddress = new System.Windows.Forms.ComboBox();
-            this.cmbCPEmailAddress = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -198,9 +197,9 @@
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.approvedButton);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 40);
+            this.groupBox1.Location = new System.Drawing.Point(12, 44);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1247, 650);
+            this.groupBox1.Size = new System.Drawing.Size(1247, 667);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             // 
@@ -211,12 +210,12 @@
             this.groupBox5.Controls.Add(this.tASameAsCACheckBox);
             this.groupBox5.Controls.Add(this.groupBox8);
             this.groupBox5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(602, 11);
+            this.groupBox5.Location = new System.Drawing.Point(602, 14);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(635, 227);
             this.groupBox5.TabIndex = 64;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "c";
+            this.groupBox5.Text = "Factory  Address";
             // 
             // tANotApplicable
             // 
@@ -310,6 +309,7 @@
             this.tPostOfficeCombo.Size = new System.Drawing.Size(201, 27);
             this.tPostOfficeCombo.TabIndex = 97;
             this.tPostOfficeCombo.SelectedIndexChanged += new System.EventHandler(this.tPostOfficeCombo_SelectedIndexChanged);
+            this.tPostOfficeCombo.Enter += new System.EventHandler(this.tPostOfficeCombo_Enter);
             // 
             // label50
             // 
@@ -372,6 +372,7 @@
             this.tThanaCombo.Size = new System.Drawing.Size(201, 27);
             this.tThanaCombo.TabIndex = 42;
             this.tThanaCombo.SelectedIndexChanged += new System.EventHandler(this.tThanaCombo_SelectedIndexChanged);
+            this.tThanaCombo.Enter += new System.EventHandler(this.tThanaCombo_Enter);
             // 
             // tContactNoTextBox
             // 
@@ -404,6 +405,7 @@
             this.tDistComboBox.Size = new System.Drawing.Size(201, 27);
             this.tDistComboBox.TabIndex = 35;
             this.tDistComboBox.SelectedIndexChanged += new System.EventHandler(this.tDistComboBox_SelectedIndexChanged_1);
+            this.tDistComboBox.Enter += new System.EventHandler(this.tDistComboBox_Enter);
             // 
             // label22
             // 
@@ -421,6 +423,7 @@
             this.tPostCodeTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tPostCodeTextBox.Location = new System.Drawing.Point(399, 153);
             this.tPostCodeTextBox.Name = "tPostCodeTextBox";
+            this.tPostCodeTextBox.ReadOnly = true;
             this.tPostCodeTextBox.Size = new System.Drawing.Size(201, 26);
             this.tPostCodeTextBox.TabIndex = 33;
             // 
@@ -549,7 +552,7 @@
             this.groupBox4.Controls.Add(this.bASameAsCACheckBox);
             this.groupBox4.Controls.Add(this.groupBox7);
             this.groupBox4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(603, 240);
+            this.groupBox4.Location = new System.Drawing.Point(603, 250);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(635, 236);
             this.groupBox4.TabIndex = 63;
@@ -704,6 +707,7 @@
             this.bPostOfficeCombo.Size = new System.Drawing.Size(216, 27);
             this.bPostOfficeCombo.TabIndex = 88;
             this.bPostOfficeCombo.SelectedIndexChanged += new System.EventHandler(this.bPostOfficeCombo_SelectedIndexChanged);
+            this.bPostOfficeCombo.Enter += new System.EventHandler(this.bPostOfficeCombo_Enter);
             // 
             // label46
             // 
@@ -736,6 +740,7 @@
             this.bThanaCombo.Size = new System.Drawing.Size(214, 27);
             this.bThanaCombo.TabIndex = 42;
             this.bThanaCombo.SelectedIndexChanged += new System.EventHandler(this.bThanaCombo_SelectedIndexChanged);
+            this.bThanaCombo.Enter += new System.EventHandler(this.bThanaCombo_Enter);
             // 
             // bContactNoTextBox
             // 
@@ -833,6 +838,7 @@
             this.bDistrictCombo.Size = new System.Drawing.Size(214, 27);
             this.bDistrictCombo.TabIndex = 35;
             this.bDistrictCombo.SelectedIndexChanged += new System.EventHandler(this.bDistrictCombo_SelectedIndexChanged_1);
+            this.bDistrictCombo.Enter += new System.EventHandler(this.bDistrictCombo_Enter);
             // 
             // label7
             // 
@@ -850,6 +856,7 @@
             this.bPostCodeTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bPostCodeTextBox.Location = new System.Drawing.Point(391, 144);
             this.bPostCodeTextBox.Name = "bPostCodeTextBox";
+            this.bPostCodeTextBox.ReadOnly = true;
             this.bPostCodeTextBox.Size = new System.Drawing.Size(218, 26);
             this.bPostCodeTextBox.TabIndex = 33;
             // 
@@ -980,7 +987,7 @@
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(607, 485);
+            this.groupBox3.Location = new System.Drawing.Point(613, 507);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(467, 136);
             this.groupBox3.TabIndex = 62;
@@ -1049,7 +1056,7 @@
             // 
             this.approvedButton.BackColor = System.Drawing.Color.LimeGreen;
             this.approvedButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.approvedButton.Location = new System.Drawing.Point(1109, 498);
+            this.approvedButton.Location = new System.Drawing.Point(1110, 520);
             this.approvedButton.Name = "approvedButton";
             this.approvedButton.Size = new System.Drawing.Size(112, 78);
             this.approvedButton.TabIndex = 2;
@@ -1082,14 +1089,28 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.groupBox2.Location = new System.Drawing.Point(6, 11);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(590, 631);
+            this.groupBox2.Size = new System.Drawing.Size(590, 650);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Inquiery Client Parameter";
             // 
+            // cmbEmailAddress
+            // 
+            this.cmbEmailAddress.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbEmailAddress.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEmailAddress.FormattingEnabled = true;
+            this.cmbEmailAddress.Location = new System.Drawing.Point(295, 179);
+            this.cmbEmailAddress.Name = "cmbEmailAddress";
+            this.cmbEmailAddress.Size = new System.Drawing.Size(267, 30);
+            this.cmbEmailAddress.TabIndex = 86;
+            this.cmbEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbEmailAddress_SelectedIndexChanged);
+            this.cmbEmailAddress.Leave += new System.EventHandler(this.cmbEmailAddress_Leave);
+            // 
             // cmbIndustryCategory
             // 
-            this.cmbIndustryCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIndustryCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbIndustryCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbIndustryCategory.FormattingEnabled = true;
             this.cmbIndustryCategory.Location = new System.Drawing.Point(295, 214);
             this.cmbIndustryCategory.Name = "cmbIndustryCategory";
@@ -1127,12 +1148,22 @@
             this.groupBox9.Controls.Add(this.label11);
             this.groupBox9.Controls.Add(this.label10);
             this.groupBox9.Controls.Add(this.label9);
-            this.groupBox9.Location = new System.Drawing.Point(6, 485);
+            this.groupBox9.Location = new System.Drawing.Point(6, 494);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(578, 146);
             this.groupBox9.TabIndex = 71;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Contact Person Details";
+            // 
+            // cmbCPEmailAddress
+            // 
+            this.cmbCPEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCPEmailAddress.FormattingEnabled = true;
+            this.cmbCPEmailAddress.Location = new System.Drawing.Point(259, 100);
+            this.cmbCPEmailAddress.Name = "cmbCPEmailAddress";
+            this.cmbCPEmailAddress.Size = new System.Drawing.Size(264, 30);
+            this.cmbCPEmailAddress.TabIndex = 86;
+            this.cmbCPEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbCPEmailAddress_SelectedIndexChanged);
             // 
             // label60
             // 
@@ -1316,6 +1347,7 @@
             this.cPostOfficeCombo.Size = new System.Drawing.Size(186, 27);
             this.cPostOfficeCombo.TabIndex = 102;
             this.cPostOfficeCombo.SelectedIndexChanged += new System.EventHandler(this.cPostOfficeCombo_SelectedIndexChanged);
+            this.cPostOfficeCombo.Enter += new System.EventHandler(this.cPostOfficeCombo_Enter);
             // 
             // label58
             // 
@@ -1396,6 +1428,7 @@
             this.cThanaCombo.Size = new System.Drawing.Size(185, 27);
             this.cThanaCombo.TabIndex = 42;
             this.cThanaCombo.SelectedIndexChanged += new System.EventHandler(this.cThanaCombo_SelectedIndexChanged);
+            this.cThanaCombo.Enter += new System.EventHandler(this.cThanaCombo_Enter);
             // 
             // cContactNoTextBox
             // 
@@ -1492,6 +1525,7 @@
             this.cDistrictCombo.Size = new System.Drawing.Size(185, 27);
             this.cDistrictCombo.TabIndex = 19;
             this.cDistrictCombo.SelectedIndexChanged += new System.EventHandler(this.cDistrictCombo_SelectedIndexChanged);
+            this.cDistrictCombo.Enter += new System.EventHandler(this.cDistrictCombo_Enter);
             // 
             // label32
             // 
@@ -1508,6 +1542,7 @@
             this.cPostCodeTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cPostCodeTextBox.Location = new System.Drawing.Point(370, 153);
             this.cPostCodeTextBox.Name = "cPostCodeTextBox";
+            this.cPostCodeTextBox.ReadOnly = true;
             this.cPostCodeTextBox.Size = new System.Drawing.Size(185, 26);
             this.cPostCodeTextBox.TabIndex = 17;
             this.cPostCodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cPostCodeTextBox_KeyPress);
@@ -1680,55 +1715,20 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Inquiry Client Id";
             // 
-            // closeButton
-            // 
-            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.closeButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeButton.ForeColor = System.Drawing.Color.Blue;
-            this.closeButton.Location = new System.Drawing.Point(1198, 0);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(61, 41);
-            this.closeButton.TabIndex = 12;
-            this.closeButton.Text = "Close";
-            this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
-            // cmbEmailAddress
-            // 
-            this.cmbEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbEmailAddress.FormattingEnabled = true;
-            this.cmbEmailAddress.Location = new System.Drawing.Point(295, 179);
-            this.cmbEmailAddress.Name = "cmbEmailAddress";
-            this.cmbEmailAddress.Size = new System.Drawing.Size(267, 30);
-            this.cmbEmailAddress.TabIndex = 86;
-            this.cmbEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbEmailAddress_SelectedIndexChanged);
-            // 
-            // cmbCPEmailAddress
-            // 
-            this.cmbCPEmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCPEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCPEmailAddress.FormattingEnabled = true;
-            this.cmbCPEmailAddress.Location = new System.Drawing.Point(259, 100);
-            this.cmbCPEmailAddress.Name = "cmbCPEmailAddress";
-            this.cmbCPEmailAddress.Size = new System.Drawing.Size(264, 30);
-            this.cmbCPEmailAddress.TabIndex = 86;
-            this.cmbCPEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbCPEmailAddress_SelectedIndexChanged);
-            // 
             // ClientApprovedFinalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1267, 694);
-            this.ControlBox = false;
-            this.Controls.Add(this.closeButton);
+            this.ClientSize = new System.Drawing.Size(1267, 707);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBox10);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "ClientApprovedFinalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientApprovedFinalForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ClientApprovedFinalForm_FormClosed);
             this.Load += new System.EventHandler(this.ClientApprovedFinalForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
@@ -1791,8 +1791,7 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
-        public  System.Windows.Forms.Label lk;
-        private System.Windows.Forms.Button closeButton;
+        public System.Windows.Forms.Label lk;
         public System.Windows.Forms.ComboBox cThanaCombo;
         public  System.Windows.Forms.ComboBox cmbSuperviserName;
         private System.Windows.Forms.Label label41;
@@ -1826,8 +1825,8 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.CheckBox tANotApplicable;
-        private System.Windows.Forms.CheckBox tASameAsCACheckBox;
+        public  System.Windows.Forms.CheckBox tANotApplicable;
+        public  System.Windows.Forms.CheckBox tASameAsCACheckBox;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.Label label52;

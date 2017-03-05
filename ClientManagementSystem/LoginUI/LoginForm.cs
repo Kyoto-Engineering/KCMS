@@ -21,8 +21,9 @@ namespace ClientManagementSystem.LoginUI
         private SqlCommand cmd;
         private SqlDataReader rdr,rdr1;
         public  ProgressBar ProgressBar1 = new ProgressBar();
-        public string fName, designation, department, readyPassword, dbUserName, dbPassword, userType;
+        public string fName, designation, department, readyPassword, dbUserName, dbPassword;
         public static int uId;
+        public static string userType;
         public LoginForm()
         {
             InitializeComponent();
@@ -85,11 +86,7 @@ namespace ClientManagementSystem.LoginUI
                     {
                         rdr.Close();
                     }
-                    //if (dbUserName == txtUserName.Text && dbPassword == readyPassword && userType.Trim() == "SuperAdmin")
-                    //{
-                        
-
-                    //}
+                   
                     if (dbUserName == txt1UserName.Text && dbPassword == readyPassword && userType.Trim() == "Admin")
                     {
                         this.Hide();
@@ -97,13 +94,13 @@ namespace ClientManagementSystem.LoginUI
                         frm.Show();
 
                     }
-                    //if (dbUserName == txtUserName.Text && dbPassword == readyPassword && userType.Trim() == "User")
-                    //{
-                    //    this.Hide();
-                    //    FiscalYear frm = new FiscalYear();
-                    //    frm.Show();
+                    if (dbUserName == txt1UserName.Text && dbPassword == readyPassword && userType.Trim() == "User")
+                    {
+                        this.Hide();
+                        MainUIForUser frm = new MainUIForUser();
+                        frm.Show();
 
-                    //}
+                    }
 
                 }
                 else

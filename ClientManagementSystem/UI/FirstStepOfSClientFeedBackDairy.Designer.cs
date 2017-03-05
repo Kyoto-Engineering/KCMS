@@ -56,6 +56,8 @@
             this.followUpSDeadlinedate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cmbModeOfConduct = new System.Windows.Forms.ComboBox();
             this.txtSClientInquiry = new System.Windows.Forms.RichTextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.feedbackSTextBox = new System.Windows.Forms.RichTextBox();
@@ -71,8 +73,6 @@
             this.submitButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.actionSMultiTextBox = new System.Windows.Forms.RichTextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.cmbModeOfConduct = new System.Windows.Forms.ComboBox();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -371,6 +371,28 @@
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(73, 225);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(162, 22);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "Mode Of  Conduct";
+            // 
+            // cmbModeOfConduct
+            // 
+            this.cmbModeOfConduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbModeOfConduct.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbModeOfConduct.FormattingEnabled = true;
+            this.cmbModeOfConduct.Location = new System.Drawing.Point(249, 222);
+            this.cmbModeOfConduct.Name = "cmbModeOfConduct";
+            this.cmbModeOfConduct.Size = new System.Drawing.Size(334, 30);
+            this.cmbModeOfConduct.TabIndex = 27;
+            this.cmbModeOfConduct.SelectedIndexChanged += new System.EventHandler(this.cmbModeOfConduct_SelectedIndexChanged);
+            // 
             // txtSClientInquiry
             // 
             this.txtSClientInquiry.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -475,7 +497,7 @@
             this.submitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.submitButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitButton.ForeColor = System.Drawing.Color.Blue;
-            this.submitButton.Location = new System.Drawing.Point(450, 570);
+            this.submitButton.Location = new System.Drawing.Point(470, 570);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(132, 52);
             this.submitButton.TabIndex = 7;
@@ -509,28 +531,6 @@
             this.actionSMultiTextBox.TabIndex = 10;
             this.actionSMultiTextBox.Text = "";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(73, 225);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(162, 22);
-            this.label12.TabIndex = 28;
-            this.label12.Text = "Mode Of  Conduct";
-            // 
-            // cmbModeOfConduct
-            // 
-            this.cmbModeOfConduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbModeOfConduct.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbModeOfConduct.FormattingEnabled = true;
-            this.cmbModeOfConduct.Location = new System.Drawing.Point(249, 222);
-            this.cmbModeOfConduct.Name = "cmbModeOfConduct";
-            this.cmbModeOfConduct.Size = new System.Drawing.Size(334, 30);
-            this.cmbModeOfConduct.TabIndex = 27;
-            this.cmbModeOfConduct.SelectedIndexChanged += new System.EventHandler(this.cmbModeOfConduct_SelectedIndexChanged);
-            // 
             // FirstStepOfSClientFeedBackDairy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -544,10 +544,10 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FirstStepOfSClientFeedBackDairy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FirstStepOfSClientFeedBackDairy";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FirstStepOfSClientFeedBackDairy_FormClosed);
             this.Load += new System.EventHandler(this.FirstStepOfSClientFeedBackDairy_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -579,7 +579,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         public System.Windows.Forms.TextBox nUserTextBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker feedbackSDeadlineDateTime;
+        public  System.Windows.Forms.DateTimePicker feedbackSDeadlineDateTime;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -587,14 +587,14 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox responsibleSPersonComboBox;
+        public  System.Windows.Forms.ComboBox responsibleSPersonComboBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label labelk;
-        private System.Windows.Forms.DateTimePicker followUpSDeadlinedate;
+        public  System.Windows.Forms.DateTimePicker followUpSDeadlinedate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtSClientName;
-        private System.Windows.Forms.TextBox txtSClientId;
+        public  System.Windows.Forms.TextBox txtSClientName;
+        public  System.Windows.Forms.TextBox txtSClientId;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -604,11 +604,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RichTextBox feedbackSTextBox;
-        private System.Windows.Forms.RichTextBox actionSMultiTextBox;
-        private System.Windows.Forms.RichTextBox txtSClientInquiry;
+        public  System.Windows.Forms.RichTextBox feedbackSTextBox;
+        public  System.Windows.Forms.RichTextBox actionSMultiTextBox;
+        public  System.Windows.Forms.RichTextBox txtSClientInquiry;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox cmbModeOfConduct;
+        public  System.Windows.Forms.ComboBox cmbModeOfConduct;
     }
 }

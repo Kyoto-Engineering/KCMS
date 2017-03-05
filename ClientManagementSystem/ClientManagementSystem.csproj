@@ -134,6 +134,12 @@
     <Compile Include="LoginUI\ChangePassword.Designer.cs">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginUI\ChangeStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\ChangeStatus.Designer.cs">
+      <DependentUpon>ChangeStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginUI\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,24 @@
     </Compile>
     <Compile Include="LoginUI\ResetPassword.Designer.cs">
       <DependentUpon>ResetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUI\UpdateUserForAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\UpdateUserForAdmin.Designer.cs">
+      <DependentUpon>UpdateUserForAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUI\UpdateUserInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\UpdateUserInfo.Designer.cs">
+      <DependentUpon>UpdateUserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUI\UserCreationByuser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\UserCreationByuser.Designer.cs">
+      <DependentUpon>UserCreationByuser.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginUI\UserManagementUI.cs">
       <SubType>Form</SubType>
@@ -373,6 +397,12 @@
     <Compile Include="UI\MainUI.Designer.cs">
       <DependentUpon>MainUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\MainUIForUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainUIForUser.Designer.cs">
+      <DependentUpon>MainUIForUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\MainUIInquieryClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -424,11 +454,23 @@
     <EmbeddedResource Include="LoginUI\ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginUI\ChangeStatus.resx">
+      <DependentUpon>ChangeStatus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginUI\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginUI\ResetPassword.resx">
       <DependentUpon>ResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUI\UpdateUserForAdmin.resx">
+      <DependentUpon>UpdateUserForAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUI\UpdateUserInfo.resx">
+      <DependentUpon>UpdateUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUI\UserCreationByuser.resx">
+      <DependentUpon>UserCreationByuser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginUI\UserManagementUI.resx">
       <DependentUpon>UserManagementUI.cs</DependentUpon>
@@ -562,6 +604,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MainUI.resx">
       <DependentUpon>MainUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainUIForUser.resx">
+      <DependentUpon>MainUIForUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MainUIInquieryClient.resx">
       <DependentUpon>MainUIInquieryClient.cs</DependentUpon>

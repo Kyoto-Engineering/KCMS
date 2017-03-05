@@ -132,7 +132,7 @@ namespace ClientManagementSystem.UI
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct = "select RTRIM(Name) from Registration order by Name";
+                string ct = "select RTRIM(Name) from Registration where Statuss!='InActive' order by Name";
                 cmd = new SqlCommand(ct);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -196,7 +196,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT  RTRIM(SalesClient.IClientId),RTRIM(FollowUp.IClientFeedbackId),RTRIM(SalesClient.ClientName),RTRIM(SalesClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) FROM   SalesClient INNER JOIN  ContactPersonDetails ON SalesClient.SClientId = ContactPersonDetails.SClientId INNER JOIN  FollowUp ON SalesClient.SClientId = FollowUp.SClientId", con);
+                cmd = new SqlCommand("SELECT SalesClient.SClientId, FollowUp.IClientFeedbackId, SalesClient.ClientName, EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM  SalesClient INNER JOIN FollowUp ON SalesClient.SClientId = FollowUp.SClientId  INNER JOIN EmailBank ON SalesClient.EmailBankId = EmailBank.EmailBankId  INNER JOIN ContactPersonDetails ON SalesClient.SClientId = ContactPersonDetails.SClientId order by SalesClient.SClientId desc", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)
@@ -217,6 +217,8 @@ namespace ClientManagementSystem.UI
            // PopulateClientName();
             PopulateResponsiblePerson();
             userId = LoginForm.uId.ToString();
+            followUp3SDeadlineDateTimePicker.MinDate = DateTime.Today;
+            //followUp1DeadlineDateTimePicker.MaxDate = DateTime.Today.AddMonths(1); 
         }
 
         private void dataGridView2_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)

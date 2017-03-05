@@ -25,5 +25,10 @@ namespace ClientManagementSystem.UI
             this.Visible = true;
 
         }
+
+        private void ClientFeedbackGrid_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -38,14 +38,17 @@ namespace ClientManagementSystem.UI
             feedback2SDateTime.Text = DateTime.Today.ToString();
             action2SMultiTextBox.Clear();
             txtResposible2SPerson.Clear();
-            followUpDeadline2STextBox.Clear();
-            followUpDeadline2STextBox.Clear();
+            followUpDeadline2STextBox.Text=DateTime.Today.ToString();
+            followUpDeadline2STextBox.Text=DateTime.Today.ToString();
             txtClientInquiry.Clear();
+            txtModeOfConduct.Clear();
 
         }
         
         private void submitButton_Click(object sender, EventArgs e)
         {
+            FirstStepOfSClientFeedBackDairy frm=new FirstStepOfSClientFeedBackDairy();
+                     frm.ResetOfSClientFeedbackDairy();
             try
             {
                 con = new SqlConnection(cs.DBConn);
@@ -100,12 +103,12 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT RTRIM(SalesClient.SClientId),RTRIM(SalesClient.ClientName),RTRIM(SalesClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from SalesClient,ContactPersonDetails  where SalesClient.SClientId=ContactPersonDetails.SClientId  order by SalesClient.SClientId desc", con);                
+                cmd = new SqlCommand("SELECT SalesClient.SClientId, SalesClient.ClientName, EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM  SalesClient INNER JOIN ContactPersonDetails ON SalesClient.SClientId = ContactPersonDetails.SClientId INNER JOIN EmailBank ON SalesClient.EmailBankId = EmailBank.EmailBankId  order by SalesClient.SClientId desc", con);                
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView2.Rows.Clear();
                 while (rdr.Read() == true)
                 {
-                    dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3]);
+                    dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3],rdr[4]);
                 }
                 con.Close();
             }
@@ -114,12 +117,28 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void DisableMethod()
+        {
+            txt2SClientId.Enabled = false;
+            txt2SClientName.Enabled = false;
+            txtClientInquiry.Enabled = false;
+            feedback2STextBox.Enabled = false;
+            action2SMultiTextBox.Enabled = false;
+            txtResposible2SPerson.Enabled = false;
+            txtModeOfConduct.Enabled = false;
+            feedback2SDateTime.Enabled = false;
+            followUpDeadline2STextBox.Enabled = false;
+            dataGridView2.Enabled = false;
+        }
         private void SalesClientFeedbackDairy_Load(object sender, EventArgs e)
         {
             GetData();
-           
+            DisableMethod();
             userId = LoginForm.uId.ToString();
+            feedback2SDateTime.MaxDate = DateTime.Now;
+
+            //followUpDeadline2STextBox.MinDate = DateTime.Today;
+            //followUpDeadline2STextBox.MaxDate = DateTime.Today.AddMonths(1); 
         }
 
         private void dataGridView2_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -187,6 +206,43 @@ namespace ClientManagementSystem.UI
         private void txt2SClientId_TextChanged(object sender, EventArgs e)
         {
             FollowUpGridLoad();
+        }
+
+        private void SalesClientFeedbackDairy_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            FeedBack frm=new FeedBack();
+            frm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txt2SClientId.Enabled = true;
+            txt2SClientName.Enabled = true;
+            txtClientInquiry.Enabled = true;
+            feedback2STextBox.Enabled = true;
+            action2SMultiTextBox.Enabled = true;
+            txtResposible2SPerson.Enabled = true;
+            txtModeOfConduct.Enabled = true;
+            feedback2SDateTime.Enabled = true;
+            followUpDeadline2STextBox.Enabled = true;
+            dataGridView2.Enabled = true;
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FirstStepOfSClientFeedBackDairy frm3=new FirstStepOfSClientFeedBackDairy();
+            frm3.txtSClientId.Text = txt2SClientId.Text;
+            frm3.txtSClientName.Text = txt2SClientName.Text;
+            frm3.txtSClientInquiry.Text = txtClientInquiry.Text;
+            frm3.feedbackSTextBox.Text = feedback2STextBox.Text;
+            frm3.cmbModeOfConduct.Text = txtModeOfConduct.Text;
+            frm3.feedbackSDeadlineDateTime.Value = feedback2SDateTime.Value;
+            frm3.actionSMultiTextBox.Text = action2SMultiTextBox.Text;
+            frm3.responsibleSPersonComboBox.Text = txtResposible2SPerson.Text;
+            frm3.followUpSDeadlinedate.Value = followUpDeadline2STextBox.Value;
+            frm3.Show();
         }
     }
 }

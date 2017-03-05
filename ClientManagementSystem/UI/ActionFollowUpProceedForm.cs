@@ -59,7 +59,7 @@ namespace ClientManagementSystem.UI
             }
             if (string.IsNullOrWhiteSpace(responsiblePerson2ComboBox.Text))
             {
-                MessageBox.Show("You must write your Action Before Submit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);               
+                MessageBox.Show("Please Select Responsible Person Before Submit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);               
                 return;
 
             }
@@ -104,7 +104,7 @@ namespace ClientManagementSystem.UI
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct = "select RTRIM(Name) from Registration order by Name";
+                string ct = "select RTRIM(Name) from Registration where Statuss!='InActive' order by Name";
                 cmd = new SqlCommand(ct);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -149,7 +149,7 @@ namespace ClientManagementSystem.UI
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
                // cmd = new SqlCommand("SELECT  InquieryClient.IClientId, InquieryClient.ClientName, FollowUp.IClientFeedbackId, FollowUp.Actions, FollowUp.DeadLineDateTime FROM  InquieryClient INNER JOIN FollowUp ON InquieryClient.IClientId = FollowUp.IClientId",con);
-                cmd = new SqlCommand("SELECT RTRIM(InquieryClient.IClientId),RTRIM(FollowUp.IClientFeedbackId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber)  from InquieryClient INNER JOIN  ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId  INNER JOIN  FollowUp ON InquieryClient.IClientId = FollowUp.IClientId order by InquieryClient.IClientId desc", con);
+                cmd = new SqlCommand("SELECT InquieryClient.IClientId, FollowUp.IClientFeedbackId, InquieryClient.ClientName, EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM InquieryClient INNER JOIN FollowUp ON InquieryClient.IClientId = FollowUp.IClientId  INNER JOIN EmailBank ON InquieryClient.EmailBankId = EmailBank.EmailBankId  INNER JOIN ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId order by InquieryClient.IClientId desc", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)
@@ -170,6 +170,7 @@ namespace ClientManagementSystem.UI
             PopulateResponsiblePerson();
             sbUserId = LoginForm.uId.ToString();
             followUpDeadlineDateTimePicker.MinDate=DateTime.Now;
+            //followUp3SDeadlineDateTimePicker.MinDate = DateTime.Today;
          
 
         }

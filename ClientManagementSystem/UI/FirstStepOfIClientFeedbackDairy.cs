@@ -25,7 +25,11 @@ namespace ClientManagementSystem.UI
         public FirstStepOfIClientFeedbackDairy()
         {
             InitializeComponent();
+            
         }
+
+      
+
 
         private void submitButton_Click(object sender, EventArgs e)
         {
@@ -41,7 +45,12 @@ namespace ClientManagementSystem.UI
             }
             if (string.IsNullOrWhiteSpace(feedback1TextBox.Text))
             {
-                MessageBox.Show("Please select type your Feedback", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select  your Feedback", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(cmbModeOfConduct.Text))
+            {
+                MessageBox.Show("Please select  Mode of Contact", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (string.IsNullOrWhiteSpace(action1MultiTextBox.Text))
@@ -56,8 +65,8 @@ namespace ClientManagementSystem.UI
             }
             try
             {
-                this.Visible = false;
-                dynamic frm2 = new InqueiryClientFeedbackDairy();                
+                this.Hide();
+                InqueiryClientFeedbackDairy frm2 = new InqueiryClientFeedbackDairy();                
                 frm2.txt2ClientId.Text = txt1ClientId.Text;
                 frm2.txt2ClientName.Text = txt1ClientName.Text;
                 frm2.feedback2TextBox.Text = feedback1TextBox.Text;
@@ -67,10 +76,10 @@ namespace ClientManagementSystem.UI
                 frm2.action2MultiTextBox.Text = action1MultiTextBox.Text;
                 frm2.txtResposible2Person.Text = responsible1PersonComboBox.Text;
                 frm2.followUp2Deadlinedatetime.Value = followUp1DeadlineDateTimePicker.Value;
-                frm2.ShowDialog();
-                this.Visible = true;
+                frm2.Show();
                
-                Reset();
+               
+               
             }
             catch (Exception ex)
             {
@@ -88,13 +97,14 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT RTRIM(InquieryClient.IClientId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from InquieryClient,ContactPersonDetails  where InquieryClient.IClientId=ContactPersonDetails.IClientId  order by InquieryClient.IClientId desc", con);
+                cmd = new SqlCommand("SELECT InquieryClient.IClientId,InquieryClient.ClientName,EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM  InquieryClient INNER JOIN ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId  INNER JOIN  EmailBank ON InquieryClient.EmailBankId = EmailBank.EmailBankId order by InquieryClient.IClientId desc", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)
                 {
                     dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3],rdr[4]);
                 }
+                
                 con.Close();
             }
             catch (Exception ex)
@@ -116,6 +126,7 @@ namespace ClientManagementSystem.UI
                 {
                     dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4]);
                 }
+                dataGridView2.Columns[0].DefaultCellStyle.Format = "MM/dd/yyyy hh:mm:ss tt";
                 con.Close();
             }
             catch (Exception ex)
@@ -124,14 +135,14 @@ namespace ClientManagementSystem.UI
             }
         }
 
-        public void FillCombo2()
+        public void ResponsiblepersonFillCombo()
         {
             try
             {
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct = "select RTRIM(Name) from Registration order by Name";
+                string ct = "select RTRIM(Name) from Registration where Statuss!='InActive' order by Name asc";
                 cmd = new SqlCommand(ct);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -149,7 +160,7 @@ namespace ClientManagementSystem.UI
             }
         }
 
-        private void Reset()
+        public  void ResetFirstStepOfIClientfeedbackDairy()
         {
             txt1ClientId.Clear();
             txt1ClientName.Clear();
@@ -157,15 +168,21 @@ namespace ClientManagementSystem.UI
             action1MultiTextBox.Clear();
             txtClientInquiry.Clear();
             responsible1PersonComboBox.SelectedIndex = -1;
+            cmbModeOfConduct.SelectedIndex = -1;
+            feedback1DeadlineDateTime.Value=DateTime.Today;
+            followUp1DeadlineDateTimePicker.Value=DateTime.Today;
 
 
         }
         private void FirstStepOfIClientFeedbackDairy_Load (object sender, EventArgs e)
         {
             ModeOfConduct();
-                FillCombo2();
+            ResponsiblepersonFillCombo();
                 GetData();
                 userId = LoginForm.uId.ToString();
+                feedback1DeadlineDateTime.MaxDate = DateTime.Now;
+                followUp1DeadlineDateTimePicker.MinDate = DateTime.Today;
+                followUp1DeadlineDateTimePicker.MaxDate = DateTime.Today.AddMonths(1); 
             }
 
             private void dataGridView1_RowPostPaint (object sender, DataGridViewRowPostPaintEventArgs e)
@@ -373,6 +390,13 @@ namespace ClientManagementSystem.UI
                       MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                   }
               }
+          }
+
+          private void FirstStepOfIClientFeedbackDairy_FormClosed(object sender, FormClosedEventArgs e)
+          {
+                  this.Hide();
+              FeedBack frm=new FeedBack();
+                   frm.Show();
           }
     }
 }

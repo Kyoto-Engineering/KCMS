@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClientManagementSystem.DAO;
@@ -21,11 +22,12 @@ namespace ClientManagementSystem.UI
         private SqlCommand cmd;
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
+        private delegate void ChangeFocusDelegate(Control ctl);
         public string divisionIdC, divisionIdT, districtIdC, districtIdT, thanaIdC, thanaIdT, postOfficeIdC, postOfficeIdT;
         public string rMId;
         public string nUserId;
         public string clientTypeId1, natureOfClientId, industryCategoryId;
-        public int affectedRows2, affectedRows3, bankEmailId, bankCPEmailId;
+        public int affectedRows1,affectedRows2, affectedRows3, bankEmailId, bankCPEmailId;
         public EditFromGrid()
         {
             InitializeComponent();
@@ -158,7 +160,7 @@ namespace ClientManagementSystem.UI
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct = "select RTRIM(Name) from Registration order by UserId desc";
+                string ct = "select RTRIM(Name) from Registration where  Registration.Statuss!='InActive' order by UserId desc";
                 cmd = new SqlCommand(ct);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -174,6 +176,10 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void changeFocus(Control ctl)
+        {
+            ctl.Focus();
         }
         private void EditFromGrid_Load(object sender, EventArgs e)
         {
@@ -231,9 +237,9 @@ namespace ClientManagementSystem.UI
             cPostOfficeCombo.SelectedIndex = -1;
             cPostCodeTextBox.Clear();
 
-            notApplicableCheckBox.CheckedChanged -= ifApplicableCheckBox_CheckedChanged;
-            notApplicableCheckBox.Checked = false;
-            notApplicableCheckBox.CheckedChanged += ifApplicableCheckBox_CheckedChanged;
+            ifApplicableCheckBox.CheckedChanged -= ifApplicableCheckBox_CheckedChanged;
+            ifApplicableCheckBox.Checked = false;
+            ifApplicableCheckBox.CheckedChanged += ifApplicableCheckBox_CheckedChanged;
             sameAsCorporatAddCheckBox.CheckedChanged -= sameAsCorporatAddCheckBox_CheckedChanged;
             sameAsCorporatAddCheckBox.Checked = false;
             sameAsCorporatAddCheckBox.CheckedChanged += sameAsCorporatAddCheckBox_CheckedChanged;
@@ -374,8 +380,7 @@ namespace ClientManagementSystem.UI
                 cmd.Parameters.AddWithValue("@d1", txtClientName.Text);
                 cmd.Parameters.AddWithValue("@d2", clientTypeId1);
                 cmd.Parameters.AddWithValue("@d3", natureOfClientId);
-                cmd.Parameters.AddWithValue("@d4", bankEmailId);
-               // cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(txtEmailAddress.Text) ? (object)DBNull.Value : txtEmailAddress.Text));
+                cmd.Parameters.AddWithValue("@d4", bankEmailId);              
                 cmd.Parameters.AddWithValue("@d5", industryCategoryId);
                 cmd.Parameters.AddWithValue("@d6", txtEndUser.Text);
                 cmd.Parameters.AddWithValue("@d7", nUserId);
@@ -390,6 +395,47 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void SaveCorporateORTraddingAddress(string tblName1)
+        {
+            string tableName = tblName1;
+            if (tableName == "CorporateAddresses")
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string insertQ = "insert into " + tableName + "(PostOfficeId,CFlatNo,CHouseNo,CRoadNo,CBlock,CArea,CContactNo,IClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                cmd = new SqlCommand(insertQ);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdC) ? (object)DBNull.Value : postOfficeIdC));
+                cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(cFlatNoTextBox.Text) ? (object)DBNull.Value : cFlatNoTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(cHouseNoTextBox.Text) ? (object)DBNull.Value : cHouseNoTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@d7", string.IsNullOrEmpty(cRoadNoTextBox.Text) ? (object)DBNull.Value : cRoadNoTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@d8", string.IsNullOrEmpty(cBlockTextBox.Text) ? (object)DBNull.Value : cBlockTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@d9", string.IsNullOrEmpty(cAreaTextBox.Text) ? (object)DBNull.Value : cAreaTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@d10", string.IsNullOrEmpty(cContactNoTextBox.Text) ? (object)DBNull.Value : cContactNoTextBox.Text));
+
+                cmd.Parameters.AddWithValue("@d11", txtClientId.Text);
+                affectedRows1 = (int)cmd.ExecuteScalar();
+                con.Close();
+            }
+            else if (tableName == "TraddingAddresses")
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string Qry = "insert into " + tableName + "(PostOfficeId,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TContactNo,IClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                cmd = new SqlCommand(Qry);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdT) ? (object)DBNull.Value : postOfficeIdT));
+                cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(tFlatNoTextBox.Text) ? (object)DBNull.Value : tFlatNoTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(tHouseNoTextBox.Text) ? (object)DBNull.Value : tHouseNoTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@d7", string.IsNullOrEmpty(tRoadNoTextBox.Text) ? (object)DBNull.Value : tRoadNoTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@d8", string.IsNullOrEmpty(tBlockTextBox.Text) ? (object)DBNull.Value : tBlockTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@d9", string.IsNullOrEmpty(tAreaTextBox.Text) ? (object)DBNull.Value : tAreaTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@d10", string.IsNullOrEmpty(cContactNoTextBox.Text) ? (object)DBNull.Value : tContactNoTextBox.Text));
+                cmd.Parameters.AddWithValue("@d11", txtClientId.Text);
+                affectedRows2 = (int)cmd.ExecuteScalar();
+                con.Close();
+            }
+        }       
         private void UpdateClientAddress(string tablName1)
         {
             string corporatTable = tablName1;
@@ -399,11 +445,8 @@ namespace ClientManagementSystem.UI
                 {
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string query = "Update " + corporatTable + " set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,CFlatNo=@d5,CHouseNo=@d6,CRoadNo=@d7,CBlock=@d8,CArea=@d9,CContactNo=@d10  Where  CorporateAddresses.IClientId='" + txtClientId.Text + "'";
-                    cmd = new SqlCommand(query, con);
-                    cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdC) ? (object)DBNull.Value : divisionIdC));
-                    cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdC) ? (object)DBNull.Value : districtIdC));
-                    cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdC) ? (object)DBNull.Value : thanaIdC));
+                    string query = "Update " + corporatTable + " set PostOfficeId=@d4,CFlatNo=@d5,CHouseNo=@d6,CRoadNo=@d7,CBlock=@d8,CArea=@d9,CContactNo=@d10  Where  CorporateAddresses.IClientId='" + txtClientId.Text + "'";
+                    cmd = new SqlCommand(query, con);                   
                     cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdC) ? (object)DBNull.Value : postOfficeIdC));
                     cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(cFlatNoTextBox.Text) ? (object)DBNull.Value : cFlatNoTextBox.Text));
                     cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(cHouseNoTextBox.Text) ? (object)DBNull.Value : cHouseNoTextBox.Text));
@@ -419,11 +462,8 @@ namespace ClientManagementSystem.UI
                 {
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string query = "Update " + corporatTable + " set Division_ID=@d1,D_ID=@d2,T_ID=@d3,PostOfficeId=@d4,TFlatNo=@d5,THouseNo=@d6,TRoadNo=@d7,TBlock=@d8,TArea=@d9,TContactNo=@d10  Where  TraddingAddresses.IClientId='" + txtClientId.Text+ "'";
-                    cmd = new SqlCommand(query, con);
-                    cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdT) ? (object)DBNull.Value : divisionIdT));
-                    cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdT) ? (object)DBNull.Value : districtIdT));
-                    cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdT) ? (object)DBNull.Value : thanaIdT));
+                    string query = "Update " + corporatTable + " set PostOfficeId=@d4,TFlatNo=@d5,THouseNo=@d6,TRoadNo=@d7,TBlock=@d8,TArea=@d9,TContactNo=@d10  Where  TraddingAddresses.IClientId='" + txtClientId.Text+ "'";
+                    cmd = new SqlCommand(query, con);                
                     cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdT) ? (object)DBNull.Value : postOfficeIdT));
                     cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(tFlatNoTextBox.Text) ? (object)DBNull.Value : tFlatNoTextBox.Text));
                     cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(tHouseNoTextBox.Text) ? (object)DBNull.Value : tHouseNoTextBox.Text));
@@ -485,12 +525,9 @@ namespace ClientManagementSystem.UI
             string traddingAdd = tblName2;
             con = new SqlConnection(cs.DBConn);
             con.Open();
-            string Qry = "insert into " + traddingAdd + "(Division_ID,D_ID,T_ID,PostOfficeId,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TContactNo,IClientId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+            string Qry = "insert into " + traddingAdd + "(PostOfficeId,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TContactNo,IClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
             cmd = new SqlCommand(Qry);
-            cmd.Connection = con;
-            cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(divisionIdT) ? (object)DBNull.Value : divisionIdT));
-            cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(districtIdT) ? (object)DBNull.Value : districtIdT));
-            cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(thanaIdT) ? (object)DBNull.Value : thanaIdT));
+            cmd.Connection = con;          
             cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdT) ? (object)DBNull.Value : postOfficeIdT));
             cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(tFlatNoTextBox.Text) ? (object)DBNull.Value : tFlatNoTextBox.Text));
             cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(tHouseNoTextBox.Text) ? (object)DBNull.Value : tHouseNoTextBox.Text));
@@ -519,50 +556,123 @@ namespace ClientManagementSystem.UI
             }
 
         }
-        private void GetClientIdAndSaveOrUpdateTraddingAddress()
+       
+        private void GetClientIdAndSaveOrUpdateInquiryClientAddress(string tableName)
         {
-            con = new SqlConnection(cs.DBConn);
-            con.Open();
-            string ct2 = "select RTRIM(TraddingAddresses.IClientId) from TraddingAddresses where TraddingAddresses.IClientId='" + txtClientId.Text + "'";
-            cmd = new SqlCommand(ct2, con);
-            rdr = cmd.ExecuteReader();
-            if (rdr.Read() && !rdr.IsDBNull(0))
+            string checkTable = tableName;
+            if (checkTable == "CorporateAddresses")
             {
-                UpdateClientAddress("TraddingAddresses");
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct2 = "select RTRIM(CorporateAddresses.IClientId) from CorporateAddresses where CorporateAddresses.IClientId='" + txtClientId.Text + "'";
+                cmd = new SqlCommand(ct2, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read() && !rdr.IsDBNull(0))
+                {
+                    UpdateClientAddress("CorporateAddresses");
+                }
+                else
+                {
+                    SaveCorporateORTraddingAddress("CorporateAddresses");
+                }
             }
-            else
+            else if (checkTable == "TraddingAddresses")
             {
-                AddClientAddress("TraddingAddresses");
-            }
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct2 = "select RTRIM(TraddingAddresses.IClientId) from TraddingAddresses where TraddingAddresses.IClientId='" + txtClientId.Text + "'";
+                cmd = new SqlCommand(ct2, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read() && !rdr.IsDBNull(0))
+                {
+                    UpdateClientAddress("TraddingAddresses");
+                }
+                else
+                {
+                    SaveCorporateORTraddingAddress("TraddingAddresses");
+                }
+            }           
+        }
 
+        private void SaveCauseOfUpDate()
+        {
+            try
+            {
+                con=new SqlConnection(cs.DBConn);
+                con.Open();
+                string qry = "insert into UpdateLogs(CauseOfUpdate,UpdateByUId,UpdateDateTime,IClientId) Values(@d1,@d2,@d3,@d4)";
+                cmd=new SqlCommand(qry,con);
+                cmd.Parameters.AddWithValue("@d1", txtCauseOfUpdate.Text);
+                cmd.Parameters.AddWithValue("@d2", nUserId);
+                cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
+                cmd.Parameters.AddWithValue("@d4", txtClientId.Text);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                txtCauseOfUpdate.Clear();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-         
+            if (string.IsNullOrWhiteSpace(txtCauseOfUpdate.Text))
+            {
+                MessageBox.Show("Please write Cause of Update", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if ((ifApplicableCheckBox.Checked == false) && (sameAsCorporatAddCheckBox.Checked == false))
+            {
+                if (string.IsNullOrWhiteSpace(tDivisionCombo.Text))
+                {
+                    MessageBox.Show("Please select factory division", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(tDistCombo.Text))
+                {
+                    MessageBox.Show("Please Select factory district", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(tThanaCombo.Text))
+                {
+                    MessageBox.Show("Please select factory Thana", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(tPostOfficeCombo.Text))
+                {
+                    MessageBox.Show("Please Select factory Post Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(tPostCodeTextBox.Text))
+                {
+                    MessageBox.Show("Please select factory Post Code", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
             try
             {
                 //1.Corporate Address Applicable  & Tradding Address not Applicable
-                if (notApplicableCheckBox.Checked)
+                if (ifApplicableCheckBox.Checked)
                 {
                     UpdateInquiryClient();
-                    UpdateClientAddress("CorporateAddresses");                                     
+                    GetClientIdAndSaveOrUpdateInquiryClientAddress("CorporateAddresses");                                     
                 }
                 //2.Corporate Address Applicable  & Tradding Address Same as  Corporate Address                                        
                 if (sameAsCorporatAddCheckBox.Checked)
                 {
                     UpdateInquiryClient();
-                    UpdateClientAddress("CorporateAddresses");                   
-                    UpdateClientAddress("TraddingAddresses");                                      
+                    GetClientIdAndSaveOrUpdateInquiryClientAddress("CorporateAddresses");
+                    GetClientIdAndSaveOrUpdateInquiryClientAddress("TraddingAddresses");                                      
                 }
                 //3.Corporate Address Applicable  & Tradding Address  Applicable
-                if (sameAsCorporatAddCheckBox.Checked == false && notApplicableCheckBox.Checked == false)
+                if (sameAsCorporatAddCheckBox.Checked == false && ifApplicableCheckBox.Checked == false)
                 {
                     UpdateInquiryClient();
-                    UpdateClientAddress("CorporateAddresses");
-                    GetClientIdAndSaveOrUpdateTraddingAddress();
-
-
+                    GetClientIdAndSaveOrUpdateInquiryClientAddress("CorporateAddresses");
+                    GetClientIdAndSaveOrUpdateInquiryClientAddress("TraddingAddresses");
                 }
                 if (!string.IsNullOrEmpty(txtCPName.Text))
                 {
@@ -570,6 +680,7 @@ namespace ClientManagementSystem.UI
                     
                 }
                 MessageBox.Show("Successfully Updated", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SaveCauseOfUpDate();
                 Reset();
             }
             catch (Exception ex)
@@ -1009,7 +1120,7 @@ namespace ClientManagementSystem.UI
 
         private void ifApplicableCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (notApplicableCheckBox.Checked)
+            if (ifApplicableCheckBox.Checked)
             {
 
                 if (sameAsCorporatAddCheckBox.Checked)
@@ -1049,11 +1160,11 @@ namespace ClientManagementSystem.UI
             if (sameAsCorporatAddCheckBox.Checked)
             {
 
-                if (notApplicableCheckBox.Checked)
+                if (ifApplicableCheckBox.Checked)
                 {
-                    notApplicableCheckBox.CheckedChanged -= ifApplicableCheckBox_CheckedChanged;
-                    notApplicableCheckBox.Checked = false;
-                    notApplicableCheckBox.CheckedChanged += ifApplicableCheckBox_CheckedChanged;
+                    ifApplicableCheckBox.CheckedChanged -= ifApplicableCheckBox_CheckedChanged;
+                    ifApplicableCheckBox.Checked = false;
+                    ifApplicableCheckBox.CheckedChanged += ifApplicableCheckBox_CheckedChanged;
                     groupBox4.Enabled = false;
                     ClearTraddingAddress();
                 }
@@ -1067,7 +1178,7 @@ namespace ClientManagementSystem.UI
             }
             else
             {
-                if (notApplicableCheckBox.Checked)
+                if (ifApplicableCheckBox.Checked)
                 {
                     groupBox4.Enabled = false;
                     ClearTraddingAddress();
@@ -1317,6 +1428,23 @@ namespace ClientManagementSystem.UI
                 }
                 else
                 {
+                    if (!string.IsNullOrWhiteSpace(input))
+                    {
+                        string emailId = input.Trim();
+                        Regex mRegxExpression;
+
+                        mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+                        if (!mRegxExpression.IsMatch(emailId))
+                        {
+
+                            MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+
+                        }
+                    }
+
+
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
                     string ct2 = "select Email from EmailBank where Email='" + input + "'";
@@ -1345,6 +1473,7 @@ namespace ClientManagementSystem.UI
                             cmbEmailAddress.Items.Clear();
                             EmailAddress();
                             cmbEmailAddress.SelectedText = input;
+                            EmailCPAddress();
 
                         }
                         catch (Exception ex)
@@ -1415,6 +1544,22 @@ namespace ClientManagementSystem.UI
                 }
                 else
                 {
+
+                    if (!string.IsNullOrWhiteSpace(input))
+                    {
+                        string emailId = input.Trim();
+                        Regex mRegxExpression;
+
+                        mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+                        if (!mRegxExpression.IsMatch(emailId))
+                        {
+
+                            MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+
+                        }
+                    }
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
                     string ct2 = "select Email from EmailBank where Email='" + input + "'";
@@ -1441,7 +1586,7 @@ namespace ClientManagementSystem.UI
 
                             con.Close();
                             cmbCPEmailAddress.Items.Clear();
-                            EmailAddress();
+                            EmailCPAddress();
                             cmbCPEmailAddress.SelectedText = input;
 
                         }
@@ -1480,6 +1625,119 @@ namespace ClientManagementSystem.UI
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void cmbEmailAddress_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(cmbEmailAddress.Text) && !cmbEmailAddress.Items.Contains(cmbEmailAddress.Text))
+            {
+                MessageBox.Show("Please Select A Valid Email Address", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbEmailAddress.ResetText();
+                this.BeginInvoke(new ChangeFocusDelegate(changeFocus), cmbEmailAddress);
+            }
+        }
+
+        private void EditFromGrid_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            MainUIInquieryClient frm = new MainUIInquieryClient();
+            frm.Show();
+        }
+
+        private void cPostOfficeCombo_Enter(object sender, EventArgs e)
+        {
+            //if (string.IsNullOrWhiteSpace(cDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    cDivisionCombo.Focus();
+            //}
+
+
+
+            //else if (string.IsNullOrWhiteSpace(cDistCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    cDistCombo.Focus();
+            //}
+            //else if (string.IsNullOrWhiteSpace(cThanaCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select thana name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    cThanaCombo.Focus();
+            //}
+        }
+
+        private void cThanaCombo_Enter(object sender, EventArgs e)
+        {
+            //if (string.IsNullOrWhiteSpace(cDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    cDivisionCombo.Focus();
+            //}
+
+
+
+            //else if (string.IsNullOrWhiteSpace(cDistCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    cDistCombo.Focus();
+            //}
+        }
+
+        private void cDistCombo_Enter(object sender, EventArgs e)
+        {
+            //if (string.IsNullOrWhiteSpace(cDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    cDivisionCombo.Focus();
+            //}
+        }
+
+        private void tPostOfficeCombo_Enter(object sender, EventArgs e)
+        {
+            //if (string.IsNullOrWhiteSpace(tDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tDivisionCombo.Focus();
+            //}
+
+
+
+            //else if (string.IsNullOrWhiteSpace(tDistCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tDistCombo.Focus();
+            //}
+            //else if (string.IsNullOrWhiteSpace(tThanaCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select thana name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tThanaCombo.Focus();
+            //}
+        }
+
+        private void tThanaCombo_Enter(object sender, EventArgs e)
+        {
+            //if (string.IsNullOrWhiteSpace(tDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tDivisionCombo.Focus();
+            //}
+
+
+
+            //else if (string.IsNullOrWhiteSpace(tDistCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select District first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tDistCombo.Focus();
+            //}
+        }
+
+        private void tDistCombo_Enter(object sender, EventArgs e)
+        {
+            //if (string.IsNullOrWhiteSpace(tDivisionCombo.Text))
+            //{
+            //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tDivisionCombo.Focus();
+            //}
         }
     }
 }

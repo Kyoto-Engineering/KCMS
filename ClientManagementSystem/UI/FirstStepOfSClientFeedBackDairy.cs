@@ -32,7 +32,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT RTRIM(SalesClient.SClientId),RTRIM(SalesClient.ClientName),RTRIM(SalesClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from SalesClient,ContactPersonDetails  where SalesClient.SClientId=ContactPersonDetails.SClientId  order by SalesClient.SClientId desc", con); 
+                cmd = new SqlCommand("SELECT SalesClient.SClientId, SalesClient.ClientName, EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM  SalesClient INNER JOIN ContactPersonDetails ON SalesClient.SClientId = ContactPersonDetails.SClientId INNER JOIN EmailBank ON SalesClient.EmailBankId = EmailBank.EmailBankId  order by SalesClient.SClientId desc", con); 
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)
@@ -73,7 +73,7 @@ namespace ClientManagementSystem.UI
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct = "select RTRIM(Name) from Registration order by Name";
+                string ct = "select RTRIM(Name) from Registration where Statuss!='InActive' order by Name";
                 cmd = new SqlCommand(ct);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -110,20 +110,28 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void FirstStepOfSClientFeedBackDairy_Load(object sender, EventArgs e)
         {
             RPFillCombo();
-            
+            ModeOfConduct();
             GetData();
+            feedbackSDeadlineDateTime.MaxDate = DateTime.Now;
+            followUpSDeadlinedate.MinDate = DateTime.Today;
+            followUpSDeadlinedate.MaxDate = DateTime.Today.AddMonths(1); 
         }
 
-        private void Reset()
+        public  void ResetOfSClientFeedbackDairy()
         {
             txtSClientId.Clear();
             txtClientName.Clear();
             feedbackSTextBox.Clear();
             actionSMultiTextBox.Clear();
             responsibleSPersonComboBox.SelectedIndex = -1;
+            cmbModeOfConduct.SelectedIndex = -1;
+            feedbackSDeadlineDateTime.Value=DateTime.Today;
+            followUpSDeadlinedate.Value=DateTime.Today;
+            
         }
         private void submitButton_Click(object sender, EventArgs e)
         {
@@ -142,6 +150,11 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show("Please select type your Feedback", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (string.IsNullOrWhiteSpace(cmbModeOfConduct.Text))
+            {
+                MessageBox.Show("Please select Mode Of Conduct", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (string.IsNullOrWhiteSpace(actionSMultiTextBox.Text))
             {
                 MessageBox.Show("Please write your probable Action", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -155,19 +168,19 @@ namespace ClientManagementSystem.UI
 
             try
             {
-                this.Visible = false;
-                dynamic frm3 = new SalesClientFeedbackDairy();
+                this.Hide();
+                SalesClientFeedbackDairy frm3 = new SalesClientFeedbackDairy();
                 frm3.txt2SClientId.Text = txtSClientId.Text;
                 frm3.txt2SClientName.Text = txtSClientName.Text;
                 frm3.txtClientInquiry.Text = txtSClientInquiry.Text;
                 frm3.feedback2STextBox.Text = feedbackSTextBox.Text;
-                frm3.feedback2SDateTime.Text = feedbackSDeadlineDateTime.Text;
+                frm3.txtModeOfConduct.Text = cmbModeOfConduct.Text;
+                frm3.feedback2SDateTime.Value = feedbackSDeadlineDateTime.Value;
                 frm3.action2SMultiTextBox.Text = actionSMultiTextBox.Text;
                 frm3.txtResposible2SPerson.Text = responsibleSPersonComboBox.Text;
-                frm3.followUpDeadline2STextBox.Text = followUpSDeadlinedate.Text;
-                frm3.ShowDialog();
-                this.Visible = true;
-                Reset();
+                frm3.followUpDeadline2STextBox.Value = followUpSDeadlinedate.Value;
+                frm3.Show();                
+               
             }
             catch (Exception ex)
             {
@@ -203,7 +216,7 @@ namespace ClientManagementSystem.UI
         {
             try
             {
-                DataGridViewRow dr = dataGridView1.SelectedRows[0];
+                DataGridViewRow dr = dataGridView1.CurrentRow;
                 txtSClientId.Text = dr.Cells[0].Value.ToString();
                 txtSClientName.Text = dr.Cells[1].Value.ToString();
 
@@ -311,6 +324,13 @@ namespace ClientManagementSystem.UI
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void FirstStepOfSClientFeedBackDairy_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            FeedBack frm = new FeedBack();
+            frm.Show();
         }
     }
 }
