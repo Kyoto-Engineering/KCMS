@@ -53,14 +53,15 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string insertQuery = "insert into IClientFeedbackDairy(SClientId,ClientInquiry,Feedback,DateTimes,UserId) Values(@sd1,@sd2,@sd3,@sd4,@sd5)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                string insertQuery = "insert into IClientFeedbackDairy(SClientId,ClientInquiry,Feedback,DateTimes,UserId,CurrentDate) Values(@sd1,@sd2,@sd3,@sd4,@sd5,@sd6)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                 cmd = new SqlCommand(insertQuery);
                 cmd.Connection = con;             
                 cmd.Parameters.AddWithValue("@sd1", txt2SClientId.Text);
                 cmd.Parameters.AddWithValue("@sd2", txtClientInquiry.Text);
                 cmd.Parameters.AddWithValue("@sd3", feedback2STextBox.Text);                            
                 cmd.Parameters.AddWithValue("@sd4", Convert.ToDateTime(feedback2SDateTime.Text, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat));
-                cmd.Parameters.AddWithValue("@sd5", userId); 
+                cmd.Parameters.AddWithValue("@sd5", userId);
+                cmd.Parameters.AddWithValue("@sd6", DateTime.UtcNow.ToLocalTime());
                 affectedRows1 = (int)cmd.ExecuteScalar();
                 con.Close();
 

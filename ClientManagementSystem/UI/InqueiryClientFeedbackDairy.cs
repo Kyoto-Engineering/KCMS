@@ -70,7 +70,7 @@ namespace ClientManagementSystem.UI
                
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string insertQuery = "insert into IClientFeedbackDairy(IClientId,DateTimes,Feedback,ModeOfConductId,UserId) Values(@d1,@d2,@d3,@d4,@d5)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                string insertQuery = "insert into IClientFeedbackDairy(IClientId,DateTimes,Feedback,ModeOfConductId,UserId,CurrentDate) Values(@d1,@d2,@d3,@d4,@d5,@d6)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                 cmd = new SqlCommand(insertQuery);
                 cmd.Connection = con;
                 cmd.Parameters.AddWithValue("@d1",txt2ClientId.Text);
@@ -78,6 +78,7 @@ namespace ClientManagementSystem.UI
                 cmd.Parameters.AddWithValue("@d3", feedback2TextBox.Text);
                 cmd.Parameters.AddWithValue("@d4", modeOfConductId);
                 cmd.Parameters.AddWithValue("@d5", userId);
+                cmd.Parameters.AddWithValue("@d6", DateTime.UtcNow.ToLocalTime());
                 currentClientId = (int)cmd.ExecuteScalar();
                 con.Close();
 

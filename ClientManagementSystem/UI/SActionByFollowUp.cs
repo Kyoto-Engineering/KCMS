@@ -85,7 +85,7 @@ namespace ClientManagementSystem.UI
             {                                
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string insertQuery = "insert into IClientFeedbackDairy(SClientId,ClientInquiry,Feedback,DateTimes,UserId,ModeOfConductId) Values(@cd1,@cd2,@cd3,@cd4,@cd5,@cd6)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                    string insertQuery = "insert into IClientFeedbackDairy(SClientId,ClientInquiry,Feedback,DateTimes,UserId,ModeOfConductId,CurrentDate) Values(@cd1,@cd2,@cd3,@cd4,@cd5,@cd6,@cd7)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                     cmd = new SqlCommand(insertQuery,con);                    
                     cmd.Parameters.AddWithValue("@cd1", txtSClientId.Text);
                     cmd.Parameters.AddWithValue("@cd2", txtSInquiryClient.Text);
@@ -93,6 +93,7 @@ namespace ClientManagementSystem.UI
                     cmd.Parameters.AddWithValue("@cd4", txtDeadlineTime.Text);                 
                     cmd.Parameters.AddWithValue("@cd5", nUserId);
                     cmd.Parameters.AddWithValue("@cd6", modeOfConductId);
+                    cmd.Parameters.AddWithValue("@cd7", DateTime.UtcNow.ToLocalTime());
                     currentId = (int) cmd.ExecuteScalar();
                     con.Close();
                     SaveStatus();
