@@ -248,5 +248,10 @@ namespace ClientManagementSystem.LoginUI
         {
             txt1UserName.Focus();
         }
+
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
