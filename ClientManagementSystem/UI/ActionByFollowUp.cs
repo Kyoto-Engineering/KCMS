@@ -220,7 +220,7 @@ namespace ClientManagementSystem.UI
             {                             
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    string insertQuery = "insert into IClientFeedbackDairy(IClientId,DateTimes,Feedback,UserId,ClientInquiry,ModeOfConductId) Values(@d1,@d2,@d3,@d4,@d5,@d6)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                    string insertQuery = "insert into IClientFeedbackDairy(IClientId,DateTimes,Feedback,UserId,ClientInquiry,ModeOfConductId,CurrentDate) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                     cmd = new SqlCommand(insertQuery);
                     cmd.Connection = con;
                     cmd.Parameters.AddWithValue("@d1", clientIdTextBox.Text);
@@ -228,7 +228,8 @@ namespace ClientManagementSystem.UI
                     cmd.Parameters.AddWithValue("@d3", youHaveToDoTextBox.Text);
                     cmd.Parameters.AddWithValue("@d4", nUserId);
                     cmd.Parameters.AddWithValue("@d5", txtClientInquiryOrFeedback.Text);
-                    cmd.Parameters.AddWithValue("@d6", modeOfConductId); 
+                    cmd.Parameters.AddWithValue("@d6", modeOfConductId);
+                    cmd.Parameters.AddWithValue("@d7", DateTime.UtcNow.ToLocalTime());
                     affectedRows6 = (int) cmd.ExecuteScalar();
                     con.Close();
                     SaveStatus();
