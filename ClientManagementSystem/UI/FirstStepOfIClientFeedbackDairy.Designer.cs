@@ -534,7 +534,7 @@
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(413, 34);
             this.textBox2.TabIndex = 23;
-            this.textBox2.Text = "Inqueiry Client Feedback Dairy";
+            this.textBox2.Text = "Inquiry Client Feedback Dairy";
             // 
             // FirstStepOfIClientFeedbackDairy
             // 

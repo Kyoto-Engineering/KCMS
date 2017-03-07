@@ -92,7 +92,7 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(413, 34);
             this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Inqueiry Client Feedback Dairy";
+            this.textBox1.Text = "Inquiry Client Feedback Dairy";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // groupBox1
