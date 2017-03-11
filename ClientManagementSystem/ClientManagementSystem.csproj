@@ -25,7 +25,7 @@
     <ProductName>Kyoto Client Management System</ProductName>
     <PublisherName>IT Department, Kyoto Engineering &amp; Automation Ltd</PublisherName>
     <MinimumRequiredVersion>1.0.1.0</MinimumRequiredVersion>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

@@ -58,7 +58,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string cty = "Select RTRIM(FollowUpId) from FollowUp Where FollowUp.IClientId is not NULL and  FollowUp.Statuss!='Done' order by FollowUp.FollowUpId desc";
+                string cty = "Select RTRIM(FollowUpId) from FollowUp Where FollowUp.IClientId is not NULL and  FollowUp.Statuss!='Done' and RPUserId='" + nUserId + "' order by FollowUp.FollowUpId desc";
                 cmd = new SqlCommand(cty);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
