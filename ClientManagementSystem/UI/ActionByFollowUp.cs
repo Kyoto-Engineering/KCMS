@@ -79,7 +79,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string qry = "SELECT InquieryClient.IClientId,InquieryClient.ClientName,ContactPersonDetails.ContactPersonName,ContactPersonDetails.CellNumber,FollowUp.Actions,FollowUp.DeadLineDateTime, Registration.Name FROM InquieryClient  INNER JOIN  ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId  INNER JOIN  FollowUp ON InquieryClient.IClientId = FollowUp.IClientId  INNER JOIN  Registration ON InquieryClient.UserId = Registration.UserId Where FollowUp.SBUserId=Registration.UserId and  FollowUp.FollowUpId='" + cmbFollowUpId.Text + "' ";
+                string qry = "SELECT InquieryClient.IClientId,InquieryClient.ClientName,ContactPersonDetails.ContactPersonName,ContactPersonDetails.CellNumber,FollowUp.Actions,FollowUp.DeadLineDateTime, Registration.Name FROM InquieryClient  INNER JOIN  ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId  INNER JOIN  FollowUp ON InquieryClient.IClientId = FollowUp.IClientId  INNER JOIN  Registration ON FollowUp.SBUserId = Registration.UserId Where   FollowUp.FollowUpId='" + cmbFollowUpId.Text + "' ";
                 cmd = new SqlCommand(qry, con);
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())

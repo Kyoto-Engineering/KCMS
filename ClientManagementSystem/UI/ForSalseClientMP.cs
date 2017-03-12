@@ -296,7 +296,7 @@ namespace ClientManagementSystem.UI
                 frm.tRoadNoTextBox.Text = dr.Cells[21].Value.ToString();
                 frm.tBlockTextBox.Text = dr.Cells[22].Value.ToString();
                 frm.tAreaTextBox.Text = dr.Cells[23].Value.ToString();
-                frm.cThanaCombo.Text = dr.Cells[24].Value.ToString();
+                frm.tThanaCombo.Text = dr.Cells[24].Value.ToString();
                 frm.tPostCodeTextBox.Text = dr.Cells[25].Value.ToString();
                 frm.tDistComboBox.Text = dr.Cells[26].Value.ToString();
                 frm.tContactNoTextBox.Text = dr.Cells[27].Value.ToString();
@@ -337,8 +337,8 @@ namespace ClientManagementSystem.UI
                 frm.cHouseNoTextBox.Text = dr.Cells[13].Value.ToString();
                 frm.cRoadNoTextBox.Text = dr.Cells[14].Value.ToString();
                 frm.cBlockTextBox.Text = dr.Cells[15].Value.ToString();
-                frm.cContactNoTextBox.Text = dr.Cells[16].Value.ToString();
-                frm.cAreaTextBox.Text = dr.Cells[17].Value.ToString();
+                frm.cContactNoTextBox.Text =dr.Cells[17].Value.ToString() ;
+                frm.cAreaTextBox.Text = dr.Cells[16].Value.ToString();
 
                 frm.cDivisionCombo.Text = dr.Cells[18].Value.ToString();
                 frm.cDistrictCombo.Text = dr.Cells[19].Value.ToString();
