@@ -121,7 +121,10 @@ namespace ClientManagementSystem.UI
                  {
                   con = new SqlConnection(cs.DBConn);
                   con.Open();
-                  cmd = new SqlCommand("SELECT RTRIM(FollowUp.DeadLineDateTime),RTRIM(IClientFeedbackDairy.Feedback),RTRIM(FollowUp.Actions),RTRIM(Registration.Name),RTRIM(FollowUp.Statuss) FROM  (FollowUp INNER JOIN IClientFeedbackDairy ON FollowUp.IClientFeedbackId = IClientFeedbackDairy.IClientFeedbackId) LEFT JOIN  Registration ON IClientFeedbackDairy.UserId = Registration.UserId  where FollowUp.Statuss='Pending' and IClientFeedbackDairy.IClientId='" + txt2ClientId.Text + "' order by FollowUp.FollowUpId desc", con);
+                     cmd =
+                         new SqlCommand(
+                             "SELECT IClientFeedbackDairy.DateTimes,IClientFeedbackDairy.ClientInquiry, IClientFeedbackDairy.Feedback, Registration.Name, FollowUp.Statuss FROM Registration INNER JOIN IClientFeedbackDairy ON Registration.UserId = IClientFeedbackDairy.UserId INNER JOIN FollowUp ON IClientFeedbackDairy.IClientFeedbackId = FollowUp.IClientFeedbackId  where IClientFeedbackDairy.IClientId='" +
+                             txt2ClientId.Text + "' order by IClientFeedbackDairy.IClientFeedbackId desc", con);
                    rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                    dataGridView1.Rows.Clear();
                     while (rdr.Read() == true)

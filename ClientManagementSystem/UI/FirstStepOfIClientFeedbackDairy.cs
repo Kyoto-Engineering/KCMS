@@ -118,7 +118,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT RTRIM(FollowUp.DeadLineDateTime),RTRIM(IClientFeedbackDairy.Feedback),RTRIM(FollowUp.Actions),RTRIM(Registration.Name),RTRIM(FollowUp.Statuss) FROM  (FollowUp INNER JOIN IClientFeedbackDairy ON FollowUp.IClientFeedbackId = IClientFeedbackDairy.IClientFeedbackId) LEFT JOIN  Registration ON IClientFeedbackDairy.UserId = Registration.UserId  where FollowUp.Statuss='Pending' and IClientFeedbackDairy.IClientId='" + txt1ClientId.Text+ "' order by FollowUp.FollowUpId desc", con);
+                cmd = new SqlCommand("SELECT IClientFeedbackDairy.DateTimes,IClientFeedbackDairy.ClientInquiry, IClientFeedbackDairy.Feedback, Registration.Name, FollowUp.Statuss FROM Registration INNER JOIN IClientFeedbackDairy ON Registration.UserId = IClientFeedbackDairy.UserId INNER JOIN FollowUp ON IClientFeedbackDairy.IClientFeedbackId = FollowUp.IClientFeedbackId  where IClientFeedbackDairy.IClientId='" + txt1ClientId.Text + "' order by IClientFeedbackDairy.IClientFeedbackId desc", con);
                // cmd = new SqlCommand("SELECT RTRIM(FollowUp.IClientId),RTRIM(FollowUp.DeadLineDateTime),RTRIM(FollowUp.Actions),RTRIM(Registration.Name),RTRIM(FollowUp.Status) FROM  FollowUp,InquieryClient,Registration  where  Registration.UserId=FollowUp.RPUserId and FollowUp.Status='Pending' order by FollowUp.FollowUpId desc", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView2.Rows.Clear();
@@ -126,7 +126,7 @@ namespace ClientManagementSystem.UI
                 {
                     dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4]);
                 }
-                dataGridView2.Columns[0].DefaultCellStyle.Format = "MM/dd/yyyy hh:mm:ss tt";
+                //dataGridView2.Columns[0].DefaultCellStyle.Format = "MM/dd/yyyy hh:mm:ss tt";
                 con.Close();
             }
             catch (Exception ex)
