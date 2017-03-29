@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-//design By shimul
+
 namespace ClientManagementSystem.Reports {
     using System;
     using System.ComponentModel;
@@ -16,14 +16,14 @@ namespace ClientManagementSystem.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Industry_Category_Wise : ReportClass {
+    public class ClientTypes : ReportClass {
         
-        public Industry_Category_Wise() {
+        public ClientTypes() {
         }
         
         public override string ResourceName {
             get {
-                return "Industry Category Wise.rpt";
+                return "ClientTypes.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ClientManagementSystem.Reports {
         
         public override string FullResourceName {
             get {
-                return "ClientManagementSystem.Reports.Industry Category Wise.rpt";
+                return "ClientManagementSystem.Reports.ClientTypes.rpt";
             }
             set {
                 // Do nothing
@@ -90,7 +90,7 @@ namespace ClientManagementSystem.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_IndustryCategory {
+        public CrystalDecisions.Shared.IParameterField Parameter_clientType {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,9 +98,9 @@ namespace ClientManagementSystem.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedIndustry_Category_Wise : Component, ICachedReport {
+    public class CachedClientTypes : Component, ICachedReport {
         
-        public CachedIndustry_Category_Wise() {
+        public CachedClientTypes() {
         }
         
         [Browsable(false)]
@@ -137,7 +137,7 @@ namespace ClientManagementSystem.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Industry_Category_Wise rpt = new Industry_Category_Wise();
+            ClientTypes rpt = new ClientTypes();
             rpt.Site = this.Site;
             return rpt;
         }

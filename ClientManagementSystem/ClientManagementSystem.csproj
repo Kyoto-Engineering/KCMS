@@ -196,6 +196,15 @@
       <DependentUpon>All Contact Person.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\ClientTypes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ClientTypes1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientTypes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\FeedbackDiary.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -224,6 +233,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FeedBackInput.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\IndustryCategoryClients.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\IndustryCategoryClients1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IndustryCategoryClients.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\InquiryClientList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\InquiryClientList1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InquiryClientList.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\InquiryClientProfile.cs">
@@ -256,6 +283,11 @@
       <DependentUpon>ListofSalesClientContactPoints.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\NatureofClients.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NatureofClients.rpt</DependentUpon>
+    </Compile>
     <Compile Include="Reports\ReportViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,6 +310,20 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesClientIProfile.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SalesClientList.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesClientList.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SalesClients.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SalesClients1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesClients.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\ActionByFollowUp.cs">
@@ -507,6 +553,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>All Contact Person.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ClientTypes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ClientTypes1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\FeedbackDiary.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>FeedbackDiary.cs</LastGenOutput>
@@ -526,6 +576,14 @@
     <EmbeddedResource Include="Reports\FeedBackInput.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>FeedBackInput.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\IndustryCategoryClients.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>IndustryCategoryClients1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InquiryClientList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InquiryClientList1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\InquiryClientProfile.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -547,6 +605,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ListofSalesClientContactPoints.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\NatureofClients.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NatureofClients.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\ReportViewer.resx">
       <DependentUpon>ReportViewer.cs</DependentUpon>
     </EmbeddedResource>
@@ -561,6 +623,14 @@
     <EmbeddedResource Include="Reports\SalesClientIProfile.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SalesClientIProfile.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SalesClientList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalesClientList.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SalesClients.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalesClients1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ActionByFollowUp.resx">
       <DependentUpon>ActionByFollowUp.cs</DependentUpon>
