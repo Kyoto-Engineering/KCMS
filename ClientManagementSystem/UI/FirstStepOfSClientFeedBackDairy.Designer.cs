@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.searchBySClientIDTextBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtClientName = new System.Windows.Forms.TextBox();
@@ -83,7 +83,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.searchBySClientIDTextBox);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.txtClientName);
@@ -98,14 +98,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Sales Client List";
             // 
-            // textBox6
+            // searchBySClientIDTextBox
             // 
-            this.textBox6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(34, 40);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(192, 29);
-            this.textBox6.TabIndex = 6;
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.searchBySClientIDTextBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchBySClientIDTextBox.Location = new System.Drawing.Point(34, 40);
+            this.searchBySClientIDTextBox.Name = "searchBySClientIDTextBox";
+            this.searchBySClientIDTextBox.Size = new System.Drawing.Size(192, 29);
+            this.searchBySClientIDTextBox.TabIndex = 6;
+            this.searchBySClientIDTextBox.TextChanged += new System.EventHandler(this.searchBySClientIDTextBox_TextChanged);
             // 
             // label10
             // 
@@ -134,6 +134,7 @@
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.Size = new System.Drawing.Size(192, 29);
             this.txtClientName.TabIndex = 3;
+            this.txtClientName.TextChanged += new System.EventHandler(this.txtClientName_TextChanged);
             // 
             // label4
             // 
@@ -569,7 +570,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox searchBySClientIDTextBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtClientName;

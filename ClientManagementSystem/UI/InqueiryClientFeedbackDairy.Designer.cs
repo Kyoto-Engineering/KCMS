@@ -139,9 +139,9 @@
             this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(94, 274);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(157, 22);
+            this.label12.Size = new System.Drawing.Size(153, 22);
             this.label12.TabIndex = 23;
-            this.label12.Text = "Mode  of Conduct";
+            this.label12.Text = "Mode  of Contact";
             // 
             // txtModeOfConduct
             // 
