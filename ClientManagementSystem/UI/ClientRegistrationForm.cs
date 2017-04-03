@@ -688,6 +688,15 @@ namespace ClientManagementSystem.UI
 
             FillCDivisionCombo();
             FillTDivisionCombo();
+
+            cDistCombo.Enabled = false;
+            cThanaCombo.Enabled = false;
+            cPostOfficeCombo.Enabled = false;
+
+            tDistrictCombo.Enabled = false;
+            tThenaCombo.Enabled = false;
+            tPostCombo.Enabled = false;
+
         }
         private void Report2()
         {
@@ -752,6 +761,8 @@ namespace ClientManagementSystem.UI
 
         private void cmbIndustryCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
+          
+
             try
             {
                 con = new SqlConnection(cs.DBConn);
@@ -786,64 +797,70 @@ namespace ClientManagementSystem.UI
             
         }
 
+       
         private void cDistCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
+           
 
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string ctk = "SELECT  RTRIM(Districts.D_ID)  from Districts WHERE Districts.District=@find";
-
-                cmd = new SqlCommand(ctk);
-                cmd.Connection = con;
-                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "District"));
-                cmd.Parameters["@find"].Value = cDistCombo.Text;
-                rdr = cmd.ExecuteReader();
-                if (rdr.Read())
+                try
                 {
-                    districtIdC = (rdr.GetString(0));                   
 
-                }
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    string ctk = "SELECT  RTRIM(Districts.D_ID)  from Districts WHERE Districts.District=@find";
 
-                if ((rdr != null))
-                {
-                    rdr.Close();
-                }
-                if (con.State == ConnectionState.Open)
-                {
+                    cmd = new SqlCommand(ctk);
+                    cmd.Connection = con;
+                    cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "District"));
+                    cmd.Parameters["@find"].Value = cDistCombo.Text;
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read())
+                    {
+                        districtIdC = (rdr.GetString(0));
+
+                    }
+
+                    if ((rdr != null))
+                    {
+                        rdr.Close();
+                    }
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+
+
+                    cDistCombo.Text = cDistCombo.Text.Trim();
+                    cThanaCombo.Items.Clear();
+                    cThanaCombo.ResetText();
+                    cPostOfficeCombo.Items.Clear();
+                    cPostOfficeCombo.ResetText();
+                    cPostOfficeCombo.SelectedIndex = -1;
+                    cPostOfficeCombo.Enabled = false;
+                    cPostCodeTextBox.Clear();
+                    cThanaCombo.Enabled = true;
+                    cThanaCombo.Focus();
+
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    string ct = "select RTRIM(Thanas.Thana) from Thanas  Where Thanas.D_ID = '" + districtIdC + "' order by Thanas.D_ID desc";
+                    cmd = new SqlCommand(ct);
+                    cmd.Connection = con;
+                    rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        cThanaCombo.Items.Add(rdr[0]);
+                    }
                     con.Close();
+
                 }
 
-
-                cDistCombo.Text = cDistCombo.Text.Trim();
-                cThanaCombo.Items.Clear();
-                cThanaCombo.Text = "";
-                cPostOfficeCombo.SelectedIndex= -1;
-                cPostCodeTextBox.Clear();
-                cThanaCombo.Enabled = true;
-                cThanaCombo.Focus();
-
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string ct = "select RTRIM(Thanas.Thana) from Thanas  Where Thanas.D_ID = '" + districtIdC + "' order by Thanas.D_ID desc";
-                cmd = new SqlCommand(ct);
-                cmd.Connection = con;
-                rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
+                catch (Exception ex)
                 {
-                    cThanaCombo.Items.Add(rdr[0]);
-                }
-                con.Close();
-
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }   
+            }           
 
         private void tDistrictCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -873,14 +890,24 @@ namespace ClientManagementSystem.UI
                     con.Close();
                 }
 
-
-                tDistrictCombo.Text = tDistrictCombo.Text.Trim();
+                tDistrictCombo.Text = cDistCombo.Text.Trim();
                 tThenaCombo.Items.Clear();
-                tThenaCombo.Text = "";
+                tThenaCombo.ResetText();
+                tPostCombo.Items.Clear();
+                tPostCombo.ResetText();
                 tPostCombo.SelectedIndex = -1;
+                tPostCombo.Enabled = false;
                 tPostCodeTextBox.Clear();
                 tThenaCombo.Enabled = true;
-                tThenaCombo.Focus();
+                tPostCombo.Focus();
+
+                //tDistrictCombo.Text = tDistrictCombo.Text.Trim();
+                //tThenaCombo.Items.Clear();
+                //tThenaCombo.Text = "";
+                //tPostCombo.SelectedIndex = -1;
+                //tPostCodeTextBox.Clear();
+                //tThenaCombo.Enabled = true;
+                //tThenaCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
@@ -1024,11 +1051,18 @@ namespace ClientManagementSystem.UI
 
         private void cDivisionCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+              
+            cDistCombo.Items.Clear();
+            cDistCombo.ResetText();
+            cThanaCombo.Items.Clear();
+            cThanaCombo.ResetText();
+            cPostOfficeCombo.Items.Clear();
+            cPostOfficeCombo.ResetText();
             try
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ctk = "SELECT  RTRIM(Divisions.Division_ID)  from Divisions WHERE Divisions.Division=@find";
+                string ctk = "SELECT RTRIM(Divisions.Division_ID) from Divisions WHERE Divisions.Division=@find";
 
                 cmd = new SqlCommand(ctk);
                 cmd.Connection = con;
@@ -1053,16 +1087,20 @@ namespace ClientManagementSystem.UI
 
                 cDivisionCombo.Text = cDivisionCombo.Text.Trim();
                 cDistCombo.Items.Clear();
-                cDistCombo.Text = "";
+                cDistCombo.ResetText();
+                cThanaCombo.Items.Clear();
+                cThanaCombo.ResetText();
                 cThanaCombo.SelectedIndex = -1;
+                cPostOfficeCombo.Items.Clear();
+                cPostOfficeCombo.ResetText();
                 cPostOfficeCombo.SelectedIndex = -1;
                 cPostCodeTextBox.Clear();
-                cDistCombo.Enabled = true;
+                cDistCombo.Enabled = true;               
                 cDistCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct = "select RTRIM(Districts.District) from Districts  Where Districts.Division_ID = '" + divisionIdC + "' order by Districts.Division_ID desc";
+                string ct = "select RTRIM(Districts.District) from Districts  Where Districts.Division_ID = '" + divisionIdC + "'  order by Districts.Division_ID desc";
                 cmd = new SqlCommand(ct);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -1079,6 +1117,9 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            cThanaCombo.Enabled = false;
+            cPostOfficeCombo.Enabled = false;
         }
 
         private void cThanaCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1111,13 +1152,15 @@ namespace ClientManagementSystem.UI
 
                 cThanaCombo.Text = cThanaCombo.Text.Trim();
                 cPostOfficeCombo.Items.Clear();
-                cPostOfficeCombo.Text = "";
+                cPostOfficeCombo.ResetText();
+               // cPostOfficeCombo.Text = "";
                 cPostCodeTextBox.Clear();
                 cPostOfficeCombo.Enabled = true;
                 cPostOfficeCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
+                //string ct = "select RTRIM(PostOffice.PostOfficeName) from PostOffice  Where PostOffice.T_ID = '" + thanaIdC + "' order by PostOffice.T_ID desc";
                 string ct = "select RTRIM(PostOffice.PostOfficeName) from PostOffice  Where PostOffice.T_ID = '" + thanaIdC + "' order by PostOffice.T_ID desc";
                 cmd = new SqlCommand(ct);
                 cmd.Connection = con;
@@ -1130,11 +1173,12 @@ namespace ClientManagementSystem.UI
                 con.Close();
 
             }
-
+            
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            cPostOfficeCombo.SelectedIndex = -1;
         }
 
         private void cPostOfficeCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1176,6 +1220,12 @@ namespace ClientManagementSystem.UI
 
         private void tDivisionCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            tDistrictCombo.Items.Clear();
+            tDistrictCombo.ResetText();
+            tThenaCombo.Items.Clear();
+            tThenaCombo.ResetText();
+            tPostCombo.Items.Clear();
+            tPostCombo.ResetText();
             try
             {
                 con = new SqlConnection(cs.DBConn);
@@ -1202,15 +1252,27 @@ namespace ClientManagementSystem.UI
                     con.Close();
                 }
 
-
-                tDivisionCombo.Text = tDivisionCombo.Text.Trim();
+                tDivisionCombo.Text = cDivisionCombo.Text.Trim();
                 tDistrictCombo.Items.Clear();
-                tDistrictCombo.Text = "";
+                tDistrictCombo.ResetText();
+                tThenaCombo.Items.Clear();
+                tThenaCombo.ResetText();
                 tThenaCombo.SelectedIndex = -1;
+                tPostCombo.Items.Clear();
+                tPostCombo.ResetText();
                 tPostCombo.SelectedIndex = -1;
                 tPostCodeTextBox.Clear();
                 tDistrictCombo.Enabled = true;
                 tDistrictCombo.Focus();
+
+                //tDivisionCombo.Text = tDivisionCombo.Text.Trim();
+                //tDistrictCombo.Items.Clear();
+                //tDistrictCombo.Text = "";
+                //tThenaCombo.SelectedIndex = -1;
+                //tPostCombo.SelectedIndex = -1;
+                //tPostCodeTextBox.Clear();
+                //tDistrictCombo.Enabled = true;
+                //tDistrictCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
@@ -1231,6 +1293,8 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            tThenaCombo.Enabled = false;
+            tPostCombo.Enabled = false;
         }
 
         private void tThenaCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1260,13 +1324,19 @@ namespace ClientManagementSystem.UI
                     con.Close();
                 }
 
-
-                tThenaCombo.Text = tThenaCombo.Text.Trim();
+                tThenaCombo.Text = cThanaCombo.Text.Trim();
                 tPostCombo.Items.Clear();
-                tPostCombo.Text = "";
+                tPostCombo.ResetText();              
                 tPostCodeTextBox.Clear();
                 tPostCombo.Enabled = true;
                 tPostCombo.Focus();
+
+                //tThenaCombo.Text = tThenaCombo.Text.Trim();
+                //tPostCombo.Items.Clear();
+                //tPostCombo.Text = "";
+                //tPostCodeTextBox.Clear();
+                //tPostCombo.Enabled = true;
+                //tPostCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
@@ -1589,7 +1659,7 @@ namespace ClientManagementSystem.UI
         {
             if (cmbCPEmailAddress.Text == "Not In The List")
             {
-                string input = Microsoft.VisualBasic.Interaction.InputBox("Please Input Mode Of Conduct  Here", "Input Here", "", -1, -1);
+                string input = Microsoft.VisualBasic.Interaction.InputBox("Please Input Email Here", "Input Here", "", -1, -1);
                 if (string.IsNullOrWhiteSpace(input))
                 {
                     cmbCPEmailAddress.SelectedIndex = -1;
@@ -1896,5 +1966,7 @@ namespace ClientManagementSystem.UI
             //    cmbSuperviser.Focus();
             //}
         }
+
+     
     }
 }

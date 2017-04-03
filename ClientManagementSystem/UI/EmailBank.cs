@@ -22,6 +22,8 @@ namespace ClientManagementSystem.UI
         public string userId;
         public int currentId;
         public string userTypemU;
+
+        private SqlDataReader rdr;
         public EmailBank()
         {
             InitializeComponent();
@@ -33,32 +35,62 @@ namespace ClientManagementSystem.UI
         }
         private void submitButton_Click(object sender, EventArgs e)
         {
-            try
+            if (string.IsNullOrEmpty(txtBankEmailId.Text))
             {
+                MessageBox.Show("Please Input Email", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-
+            if (!string.IsNullOrEmpty(txtBankEmailId.Text))
+            {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct = "insert into EmailBank(Email,UserId,DateAndTime) Values(@d1,@d2,@d3) " + "SELECT CONVERT(int, SCOPE_IDENTITY())";
-                cmd = new SqlCommand(ct,con);              
-                cmd.Parameters.AddWithValue("@d1", txtBankEmailId.Text);
-                cmd.Parameters.AddWithValue("@d2",userId );   
-                cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());     
-                currentId = (int)cmd.ExecuteScalar();
-                con.Close();
-                MessageBox.Show("Saccesfully Submitted", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Reset();
-               
+                string ct3 = "select Email from EmailBank where Email='" + txtBankEmailId.Text + "'";
+                cmd = new SqlCommand(ct3, con);
 
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read() && !rdr.IsDBNull(0))
+                {
+                    MessageBox.Show("This email already exists", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close();
+                    txtBankEmailId.Clear();
+                }
+
+
+                else
+                {
+                    try
+                    {
+
+
+                        con = new SqlConnection(cs.DBConn);
+                        con.Open();
+                        string ct = "insert into EmailBank(Email,UserId,DateAndTime) Values(@d1,@d2,@d3) " +
+                                    "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                        cmd = new SqlCommand(ct, con);
+                        cmd.Parameters.AddWithValue("@d1", txtBankEmailId.Text);
+                        cmd.Parameters.AddWithValue("@d2", userId);
+                        cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
+                        currentId = (int) cmd.ExecuteScalar();
+                        con.Close();
+                        MessageBox.Show("Saccesfully Submitted", "Record", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                        Reset();
+
+
+                    }
+                    catch (FormatException formatException)
+                    {
+                        MessageBox.Show("Please Enter Input in Correct Format", formatException.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
-            catch (FormatException formatException)
-            {
-                MessageBox.Show("Please Enter Input in Correct Format", formatException.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
         }
 
         private void EmailBank_Load(object sender, EventArgs e)

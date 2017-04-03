@@ -221,8 +221,9 @@ namespace ClientManagementSystem.UI
                 {
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    String sql = "SELECT RTRIM(InquieryClient.IClientId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from InquieryClient,ContactPersonDetails  where InquieryClient.IClientId=ContactPersonDetails.IClientId and InquieryClient.IClientId like '" + textBox6.Text + "%' order by InquieryClient.IClientId desc";
+                    //String sql = "SELECT RTRIM(InquieryClient.IClientId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from InquieryClient,ContactPersonDetails  where InquieryClient.IClientId=ContactPersonDetails.IClientId and InquieryClient.IClientId like '" + textBox6.Text + "%' order by InquieryClient.IClientId desc";
                     //String sql ="SELECT InquieryClient.IClientId,InquieryClient.ClientName,InquieryClient.EmailAddress,InquieryClient.ContactPersonName,InquieryClient.CellNumber from InquieryClient where InquieryClient.IClientId like '" +textBox6.Text + "%'order by InquieryClient.IClientId desc";
+                    String sql = "SELECT InquieryClient.IClientId,InquieryClient.ClientName, EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM InquieryClient INNER JOIN ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId INNER JOIN EmailBank ON InquieryClient.EmailBankId = EmailBank.EmailBankId WHERE (InquieryClient.IClientId LIKE '" + textBox6.Text + "%')";
                     cmd = new SqlCommand(sql, con);
                     rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                     dataGridView1.Rows.Clear();
@@ -244,7 +245,8 @@ namespace ClientManagementSystem.UI
                 {
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
-                    String sql = "SELECT RTRIM(InquieryClient.IClientId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from InquieryClient,ContactPersonDetails  where InquieryClient.IClientId=ContactPersonDetails.IClientId and InquieryClient.ClientName like '" + txtClientName.Text + "%' order by InquieryClient.IClientId desc";
+                    //String sql = "SELECT RTRIM(InquieryClient.IClientId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from InquieryClient,ContactPersonDetails  where InquieryClient.IClientId=ContactPersonDetails.IClientId and InquieryClient.ClientName like '" + txtClientName.Text + "%' order by InquieryClient.IClientId desc";
+                    String sql = "SELECT InquieryClient.IClientId,InquieryClient.ClientName, EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM InquieryClient INNER JOIN ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId INNER JOIN EmailBank ON InquieryClient.EmailBankId = EmailBank.EmailBankId WHERE (InquieryClient.ClientName LIKE '" + txtClientName.Text + "%')order by InquieryClient.IClientId desc";
                     cmd = new SqlCommand(sql, con);
                     rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                     dataGridView1.Rows.Clear();

@@ -89,12 +89,12 @@ namespace ClientManagementSystem.UI
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
 
-                string cb = "insert into IndustryCategorys(IndustryCategory,CreatedByUId,CreatedDTime) VALUES (@d1)";
+                string cb = "insert into IndustryCategorys(IndustryCategory,CreatedByUId,CreatedDTime) VALUES (@d1,@d2,@d3)";
 
                 cmd = new SqlCommand(cb,con);
                 cmd.Parameters.AddWithValue("@d1", txtIndustryCategory.Text);
-                cmd.Parameters.AddWithValue("@d1", userId);
-                cmd.Parameters.AddWithValue("@d1", DateTime.UtcNow.ToLocalTime());
+                cmd.Parameters.AddWithValue("@d2", userId);
+                cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
                 cmd.ExecuteReader();
                 con.Close();
                 MessageBox.Show("Successfully saved", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -106,6 +106,8 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            LoadIndustryCategoryGrid();
         }
         public void LoadIndustryCategoryGrid()
         {

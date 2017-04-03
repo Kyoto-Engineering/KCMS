@@ -74,7 +74,6 @@
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.txtBankEmailId);
             this.Controls.Add(this.label1);
-            this.MaximizeBox = false;
             this.Name = "EmailBank";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EmailBank";

@@ -27,7 +27,8 @@ namespace ClientManagementSystem.UI
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (txtClientType.Text == "")
+           // if (txtClientType.Text == "")
+            if (string.IsNullOrEmpty(txtClientType.Text))
             {
                 MessageBox.Show("Please enter Client Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtClientType.Focus();
@@ -69,8 +70,8 @@ namespace ClientManagementSystem.UI
 
                 cmd = new SqlCommand(cb, con);
                 cmd.Parameters.AddWithValue("@d1", txtClientType.Text);
-                cmd.Parameters.AddWithValue("@d1", userId);
-                cmd.Parameters.AddWithValue("@d1", DateTime.UtcNow.ToLocalTime());
+                cmd.Parameters.AddWithValue("@d2", userId);
+                cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
                 cmd.ExecuteReader();
                 con.Close();
                 MessageBox.Show("Successfully saved", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -82,6 +83,8 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            LoadClientTypeGrid();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

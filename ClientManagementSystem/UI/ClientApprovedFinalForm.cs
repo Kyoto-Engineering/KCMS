@@ -1135,7 +1135,20 @@ namespace ClientManagementSystem.UI
 
             FillCDivisionCombo();
             FillTDivisionCombo();
-            FillBDivisionCombo();            
+            FillBDivisionCombo();
+
+
+            cDistrictCombo.Enabled = false;
+            cThanaCombo.Enabled = false;
+            cPostOfficeCombo.Enabled = false;
+
+            tDistComboBox.Enabled = false;
+            tThanaCombo.Enabled = false;
+            tPostOfficeCombo.Enabled = false;
+
+            bDistrictCombo.Enabled = false;
+            bThanaCombo.Enabled = false;
+            bPostOfficeCombo.Enabled = false;
         }
         private void Report2()
         {
@@ -1314,11 +1327,22 @@ namespace ClientManagementSystem.UI
 
                 cDistrictCombo.Text = cDistrictCombo.Text.Trim();
                 cThanaCombo.Items.Clear();
-                cThanaCombo.Text = "";
+                cThanaCombo.ResetText();
+                cPostOfficeCombo.Items.Clear();
+                cPostOfficeCombo.ResetText();
                 cPostOfficeCombo.SelectedIndex = -1;
+                cPostOfficeCombo.Enabled = false;
                 cPostCodeTextBox.Clear();
                 cThanaCombo.Enabled = true;
                 cThanaCombo.Focus();
+
+                //cDistrictCombo.Text = cDistrictCombo.Text.Trim();
+                //cThanaCombo.Items.Clear();
+                //cThanaCombo.Text = "";
+                //cPostOfficeCombo.SelectedIndex = -1;
+                //cPostCodeTextBox.Clear();
+                //cThanaCombo.Enabled = true;
+                //cThanaCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
@@ -1407,11 +1431,23 @@ namespace ClientManagementSystem.UI
 
                 tDistComboBox.Text = tDistComboBox.Text.Trim();
                 tThanaCombo.Items.Clear();
-                tThanaCombo.Text = "";
+                tThanaCombo.ResetText();
+                tPostOfficeCombo.Items.Clear();
+                tPostOfficeCombo.ResetText();
                 tPostOfficeCombo.SelectedIndex = -1;
+                tPostOfficeCombo.Enabled = false;
                 tPostCodeTextBox.Clear();
                 tThanaCombo.Enabled = true;
                 tThanaCombo.Focus();
+
+
+                //tDistComboBox.Text = tDistComboBox.Text.Trim();
+                //tThanaCombo.Items.Clear();
+                //tThanaCombo.Text = "";
+                //tPostOfficeCombo.SelectedIndex = -1;
+                //tPostCodeTextBox.Clear();
+                //tThanaCombo.Enabled = true;
+                //tThanaCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
@@ -1464,11 +1500,22 @@ namespace ClientManagementSystem.UI
 
                 bDistrictCombo.Text = bDistrictCombo.Text.Trim();
                 bThanaCombo.Items.Clear();
-                bThanaCombo.Text = "";
+                bThanaCombo.ResetText();
+                bPostOfficeCombo.Items.Clear();
+                bPostOfficeCombo.ResetText();
                 bPostOfficeCombo.SelectedIndex = -1;
+                bPostOfficeCombo.Enabled = false;
                 bPostCodeTextBox.Clear();
                 bThanaCombo.Enabled = true;
                 bThanaCombo.Focus();
+
+                //bDistrictCombo.Text = bDistrictCombo.Text.Trim();
+                //bThanaCombo.Items.Clear();
+                //bThanaCombo.Text = "";
+                //bPostOfficeCombo.SelectedIndex = -1;
+                //bPostCodeTextBox.Clear();
+                //bThanaCombo.Enabled = true;
+                //bThanaCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
@@ -1493,6 +1540,14 @@ namespace ClientManagementSystem.UI
 
         private void cDivisionCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cDistrictCombo.Items.Clear();
+            cDivisionCombo.ResetText();
+            cThanaCombo.Items.Clear();
+            cThanaCombo.ResetText();
+            cPostOfficeCombo.Items.Clear();
+            cPostOfficeCombo.ResetText();
+
+
             try
             {
 
@@ -1523,12 +1578,25 @@ namespace ClientManagementSystem.UI
 
                 cDivisionCombo.Text = cDivisionCombo.Text.Trim();
                 cDistrictCombo.Items.Clear();
-                cDistrictCombo.Text = "";
+                cDistrictCombo.ResetText();
+                cThanaCombo.Items.Clear();
+                cThanaCombo.ResetText();
                 cThanaCombo.SelectedIndex = -1;
+                cPostOfficeCombo.Items.Clear();
+                cPostOfficeCombo.ResetText();
                 cPostOfficeCombo.SelectedIndex = -1;
                 cPostCodeTextBox.Clear();
                 cDistrictCombo.Enabled = true;
                 cDistrictCombo.Focus();
+
+                //cDivisionCombo.Text = cDivisionCombo.Text.Trim();
+                //cDistrictCombo.Items.Clear();
+                //cDistrictCombo.Text = "";
+                //cThanaCombo.SelectedIndex = -1;
+                //cPostOfficeCombo.SelectedIndex = -1;
+                //cPostCodeTextBox.Clear();
+                //cDistrictCombo.Enabled = true;
+                //cDistrictCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
@@ -1549,6 +1617,9 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            cThanaCombo.Enabled = false;
+            cPostOfficeCombo.Enabled = false;
         }
 
         private void cThanaCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1581,10 +1652,18 @@ namespace ClientManagementSystem.UI
 
                 cThanaCombo.Text = cThanaCombo.Text.Trim();
                 cPostOfficeCombo.Items.Clear();
-                cPostOfficeCombo.Text = "";
+                cPostOfficeCombo.ResetText();
+                // cPostOfficeCombo.Text = "";
                 cPostCodeTextBox.Clear();
                 cPostOfficeCombo.Enabled = true;
                 cPostOfficeCombo.Focus();
+
+                //cThanaCombo.Text = cThanaCombo.Text.Trim();
+                //cPostOfficeCombo.Items.Clear();
+                //cPostOfficeCombo.Text = "";
+                //cPostCodeTextBox.Clear();
+                //cPostOfficeCombo.Enabled = true;
+                //cPostOfficeCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
@@ -1646,6 +1725,14 @@ namespace ClientManagementSystem.UI
 
         private void tDivitionCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            tDistComboBox.Items.Clear();
+            tDivitionCombo.ResetText();
+            tThanaCombo.Items.Clear();
+            tThanaCombo.ResetText();
+            tPostOfficeCombo.Items.Clear();
+            tPostOfficeCombo.ResetText();
+
+
             try
             {
                 con = new SqlConnection(cs.DBConn);
@@ -1671,15 +1758,29 @@ namespace ClientManagementSystem.UI
                     con.Close();
                 }
 
-
                 tDivitionCombo.Text = tDivitionCombo.Text.Trim();
                 tDistComboBox.Items.Clear();
-                tDistComboBox.Text = "";
+                tDistComboBox.ResetText();
+                tThanaCombo.Items.Clear();
+                tThanaCombo.ResetText();
                 tThanaCombo.SelectedIndex = -1;
+                tPostOfficeCombo.Items.Clear();
+                tPostOfficeCombo.ResetText();
                 tPostOfficeCombo.SelectedIndex = -1;
                 tPostCodeTextBox.Clear();
                 tDistComboBox.Enabled = true;
                 tDistComboBox.Focus();
+
+
+
+                //tDivitionCombo.Text = tDivitionCombo.Text.Trim();
+                //tDistComboBox.Items.Clear();
+                //tDistComboBox.Text = "";
+                //tThanaCombo.SelectedIndex = -1;
+                //tPostOfficeCombo.SelectedIndex = -1;
+                //tPostCodeTextBox.Clear();
+                //tDistComboBox.Enabled = true;
+                //tDistComboBox.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
@@ -1700,6 +1801,9 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            tThanaCombo.Enabled = false;
+            tPostOfficeCombo.Enabled = false;
         }
 
         private void tThanaCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1732,10 +1836,19 @@ namespace ClientManagementSystem.UI
 
                 tThanaCombo.Text = tThanaCombo.Text.Trim();
                 tPostOfficeCombo.Items.Clear();
-                tPostOfficeCombo.Text = "";
+                tPostOfficeCombo.ResetText();
                 tPostCodeTextBox.Clear();
                 tPostOfficeCombo.Enabled = true;
                 tPostOfficeCombo.Focus();
+
+
+
+                //tThanaCombo.Text = tThanaCombo.Text.Trim();
+                //tPostOfficeCombo.Items.Clear();
+                //tPostOfficeCombo.Text = "";
+                //tPostCodeTextBox.Clear();
+                //tPostOfficeCombo.Enabled = true;
+                //tPostOfficeCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
@@ -1797,6 +1910,15 @@ namespace ClientManagementSystem.UI
 
         private void bDivisionCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            bDistrictCombo.Items.Clear();
+            bDivisionCombo.ResetText();
+            bThanaCombo.Items.Clear();
+            bThanaCombo.ResetText();
+            bPostOfficeCombo.Items.Clear();
+            bPostOfficeCombo.ResetText();
+
+
             try
             {
                 con = new SqlConnection(cs.DBConn);
@@ -1826,12 +1948,25 @@ namespace ClientManagementSystem.UI
 
                 bDivisionCombo.Text = bDivisionCombo.Text.Trim();
                 bDistrictCombo.Items.Clear();
-                bDistrictCombo.Text = "";
+                bDistrictCombo.ResetText();
+                bThanaCombo.Items.Clear();
+                bThanaCombo.ResetText();
                 bThanaCombo.SelectedIndex = -1;
+                bPostOfficeCombo.Items.Clear();
+                bPostOfficeCombo.ResetText();
                 bPostOfficeCombo.SelectedIndex = -1;
                 bPostCodeTextBox.Clear();
                 bDistrictCombo.Enabled = true;
-                bDistrictCombo.Focus();
+                bPostOfficeCombo.Focus();
+
+                //bDivisionCombo.Text = bDivisionCombo.Text.Trim();
+                //bDistrictCombo.Items.Clear();
+                //bDistrictCombo.Text = "";
+                //bThanaCombo.SelectedIndex = -1;
+                //bPostOfficeCombo.SelectedIndex = -1;
+                //bPostCodeTextBox.Clear();
+                //bDistrictCombo.Enabled = true;
+                //bDistrictCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
@@ -1852,6 +1987,10 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            bThanaCombo.Enabled = false;
+            bPostOfficeCombo.Enabled = false;
+
         }
 
         private void bThanaCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1882,12 +2021,19 @@ namespace ClientManagementSystem.UI
                 }
 
 
-                bThanaCombo.Text = bThanaCombo.Text.Trim();
+                bThanaCombo.Text = tThanaCombo.Text.Trim();
                 bPostOfficeCombo.Items.Clear();
-                bPostOfficeCombo.Text = "";
+                bPostOfficeCombo.ResetText();
                 bPostCodeTextBox.Clear();
                 bPostOfficeCombo.Enabled = true;
                 bPostOfficeCombo.Focus();
+
+                //bThanaCombo.Text = bThanaCombo.Text.Trim();
+                //bPostOfficeCombo.Items.Clear();
+                //bPostOfficeCombo.Text = "";
+                //bPostCodeTextBox.Clear();
+                //bPostOfficeCombo.Enabled = true;
+                //bPostOfficeCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
@@ -2665,6 +2811,16 @@ namespace ClientManagementSystem.UI
             //    bDivisionCombo.Focus();
             //}
 
+        }
+
+        private void cmbCPEmailAddress_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(cmbCPEmailAddress.Text) && !cmbCPEmailAddress.Items.Contains(cmbCPEmailAddress.Text))
+            {
+                MessageBox.Show("Please Select A Valid Email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbCPEmailAddress.ResetText();
+                this.BeginInvoke(new ChangeFocusDelegate(changeFocus), cmbCPEmailAddress);
+            }
         }
     }
 }

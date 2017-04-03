@@ -1157,6 +1157,8 @@
             // 
             // cmbCPEmailAddress
             // 
+            this.cmbCPEmailAddress.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbCPEmailAddress.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCPEmailAddress.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCPEmailAddress.FormattingEnabled = true;
             this.cmbCPEmailAddress.Location = new System.Drawing.Point(259, 100);
@@ -1164,6 +1166,7 @@
             this.cmbCPEmailAddress.Size = new System.Drawing.Size(264, 30);
             this.cmbCPEmailAddress.TabIndex = 86;
             this.cmbCPEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbCPEmailAddress_SelectedIndexChanged);
+            this.cmbCPEmailAddress.Leave += new System.EventHandler(this.cmbCPEmailAddress_Leave);
             // 
             // label60
             // 
@@ -1724,7 +1727,6 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBox10);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
             this.Name = "ClientApprovedFinalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientApprovedFinalForm";
