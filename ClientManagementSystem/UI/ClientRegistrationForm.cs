@@ -761,7 +761,12 @@ namespace ClientManagementSystem.UI
 
         private void cmbIndustryCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 0;
+            toolTip1.InitialDelay = 0;
+            toolTip1.ReshowDelay = 0;
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(this.cmbIndustryCategory, cmbIndustryCategory.Items[cmbIndustryCategory.SelectedIndex].ToString());
 
             try
             {
@@ -1967,6 +1972,49 @@ namespace ClientManagementSystem.UI
             //}
         }
 
-     
+        private void txtCellNumber_Leave(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void txtCellNumber_Validating(object sender, CancelEventArgs e)
+        {
+            //string emailId = txtEmail.Text.Trim();
+            //Regex mRegxExpression;
+
+            //mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+            //if (!mRegxExpression.IsMatch(emailId))
+            //{
+            //    MessageBox.Show("E-mail address format is incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    txtEmail.Focus();
+            //}
+
+            //int sum = 0;
+            //foreach (Control ctrl in this.Controls)
+            //{
+            //    if ((ctrl as TextBox) != null)
+            //    {
+            //        TextBox txt = ctrl as TextBox;
+            //        int val = Convert.ToInt32(txt.Text);
+            //        sum += val;
+            //    }
+            //}
+
+            int sum = 0;
+            int num=Convert.ToInt32(txtCellNumber.Text);
+            while(num>0)
+            {
+                sum = sum + (num / 10);
+                num=num/10;
+            }
+
+            if(sum==0)
+            {
+                txtCellNumber.Clear();
+            }
+            
+        }    
     }
 }

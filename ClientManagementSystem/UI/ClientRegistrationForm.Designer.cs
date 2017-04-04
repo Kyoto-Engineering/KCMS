@@ -232,6 +232,8 @@
             this.txtCellNumber.TabIndex = 2;
             this.txtCellNumber.Enter += new System.EventHandler(this.txtCellNumber_Enter);
             this.txtCellNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cellNumberTextBox_KeyPress_1);
+            this.txtCellNumber.Leave += new System.EventHandler(this.txtCellNumber_Leave);
+            this.txtCellNumber.Validating += new System.ComponentModel.CancelEventHandler(this.txtCellNumber_Validating);
             // 
             // txtDesignation
             // 
@@ -1030,7 +1032,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(36, 178);
+            this.label1.Location = new System.Drawing.Point(38, 179);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(170, 22);
             this.label1.TabIndex = 57;
