@@ -163,6 +163,7 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -172,6 +173,7 @@
             this.dataGridViewTextBoxColumn5});
             this.dataGridView2.Location = new System.Drawing.Point(9, 74);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(541, 239);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseClick);
@@ -208,6 +210,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -226,6 +229,7 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(6, 371);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(589, 234);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -243,13 +247,11 @@
             // 
             this.Column2.HeaderText = "Client Inquiry";
             this.Column2.Name = "Column2";
-            this.Column2.Width = 140;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "FeedBack";
             this.Column3.Name = "Column3";
-            this.Column3.Width = 140;
             // 
             // Column4
             // 
@@ -260,7 +262,6 @@
             // 
             this.Column5.HeaderText = "Status";
             this.Column5.Name = "Column5";
-            this.Column5.Width = 90;
             // 
             // label6
             // 

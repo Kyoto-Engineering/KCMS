@@ -250,14 +250,15 @@ namespace ClientManagementSystem.UI
 
         }
 
-      private void textBox6_TextChanged(object sender, EventArgs e)
+        private void searchByClientIDTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string sql = "SELECT RTRIM(InquieryClient.IClientId),RTRIM(FollowUp.IClientFeedbackId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from InquieryClient,ContactPersonDetails,FollowUp  where InquieryClient.IClientId=ContactPersonDetails.IClientId  and  InquieryClient.IClientId=FollowUp.IClientId and InquieryClient.IClientId like '" + textBox6.Text + "%' order by InquieryClient.IClientId desc";
+                //string sql = "SELECT RTRIM(InquieryClient.IClientId),RTRIM(FollowUp.IClientFeedbackId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from InquieryClient,ContactPersonDetails,FollowUp  where InquieryClient.IClientId=ContactPersonDetails.IClientId  and  InquieryClient.IClientId=FollowUp.IClientId and InquieryClient.IClientId like '" + searchByClientIDTextBox.Text + "%' order by InquieryClient.IClientId desc";
                // String sql = "SELECT RTRIM(IClientId),RTRIM(ClientName),RTRIM(EmailAddress),RTRIM(ContactPersonName),RTRIM(CellNumber) from InquieryClient where InquieryClient.IClientId like '" + textBox6.Text + "%'order by InquieryClient.IClientId desc";
+                String sql = "SELECT InquieryClient.IClientId, FollowUp.IClientFeedbackId, InquieryClient.ClientName, EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM InquieryClient INNER JOIN FollowUp ON InquieryClient.IClientId = FollowUp.IClientId INNER JOIN ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId INNER JOIN EmailBank ON InquieryClient.EmailBankId = EmailBank.EmailBankId WHERE (InquieryClient.IClientId LIKE '" + searchByClientIDTextBox.Text + "%')";
                 cmd = new SqlCommand(sql, con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
@@ -279,8 +280,9 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string sql = "SELECT RTRIM(InquieryClient.IClientId),RTRIM(FollowUp.IClientFeedbackId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from InquieryClient,ContactPersonDetails,FollowUp  where InquieryClient.IClientId=ContactPersonDetails.IClientId  and  InquieryClient.IClientId=FollowUp.IClientId and InquieryClient.ClientName like '" + txtClientName.Text + "%' order by InquieryClient.IClientId desc";
+                //string sql = "SELECT RTRIM(InquieryClient.IClientId),RTRIM(FollowUp.IClientFeedbackId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from InquieryClient,ContactPersonDetails,FollowUp  where InquieryClient.IClientId=ContactPersonDetails.IClientId  and  InquieryClient.IClientId=FollowUp.IClientId and InquieryClient.ClientName like '" + txtClientName.Text + "%' order by InquieryClient.IClientId desc";
                 //String sql = "SELECT RTRIM(InquieryClient.IClientId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(InquieryClient.ContactPersonName),RTRIM(InquieryClient.CellNumber) from InquieryClient where InquieryClient.ClientName like '" + txtClientName.Text + "%'order by InquieryClient.IClientId desc";
+                String sql = "SELECT InquieryClient.IClientId, FollowUp.IClientFeedbackId, InquieryClient.ClientName, EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM InquieryClient INNER JOIN FollowUp ON InquieryClient.IClientId = FollowUp.IClientId INNER JOIN ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId INNER JOIN EmailBank ON InquieryClient.EmailBankId = EmailBank.EmailBankId WHERE (InquieryClient.ClientName LIKE '" + txtClientName.Text + "%')";
                 cmd = new SqlCommand(sql, con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
@@ -358,6 +360,7 @@ namespace ClientManagementSystem.UI
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            submitButton.Enabled = true;
             try
             {
                 DataGridViewRow dr = dataGridView1.CurrentRow;
@@ -377,5 +380,7 @@ namespace ClientManagementSystem.UI
         {
            
         }
+
+     
     }
 }

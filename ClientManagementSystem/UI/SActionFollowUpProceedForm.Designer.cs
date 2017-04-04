@@ -59,7 +59,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.searchByIDTextBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtClientName = new System.Windows.Forms.TextBox();
@@ -99,6 +99,7 @@
             // 
             this.txt3SClientName.Location = new System.Drawing.Point(352, 41);
             this.txt3SClientName.Name = "txt3SClientName";
+            this.txt3SClientName.ReadOnly = true;
             this.txt3SClientName.Size = new System.Drawing.Size(186, 29);
             this.txt3SClientName.TabIndex = 22;
             // 
@@ -106,6 +107,7 @@
             // 
             this.txt3SClientId.Location = new System.Drawing.Point(80, 41);
             this.txt3SClientId.Name = "txt3SClientId";
+            this.txt3SClientId.ReadOnly = true;
             this.txt3SClientId.Size = new System.Drawing.Size(158, 29);
             this.txt3SClientId.TabIndex = 21;
             this.txt3SClientId.TextChanged += new System.EventHandler(this.txt3SClientId_TextChanged);
@@ -249,7 +251,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dataGridView2);
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.searchByIDTextBox);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtClientName);
@@ -273,6 +275,7 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column7,
@@ -282,6 +285,7 @@
             this.Column10});
             this.dataGridView2.Location = new System.Drawing.Point(15, 308);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(662, 172);
             this.dataGridView2.TabIndex = 12;
             // 
@@ -289,34 +293,30 @@
             // 
             this.Column7.HeaderText = "Date";
             this.Column7.Name = "Column7";
-            this.Column7.Width = 130;
             // 
             // Column11
             // 
             this.Column11.HeaderText = "Feedback";
             this.Column11.Name = "Column11";
-            this.Column11.Width = 120;
             // 
             // Column8
             // 
             this.Column8.HeaderText = "Action";
             this.Column8.Name = "Column8";
-            this.Column8.Width = 120;
             // 
             // Column9
             // 
             this.Column9.HeaderText = "SubmittedBy";
             this.Column9.Name = "Column9";
-            this.Column9.Width = 120;
             // 
             // Column10
             // 
             this.Column10.HeaderText = "Status";
             this.Column10.Name = "Column10";
-            this.Column10.Width = 120;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -327,6 +327,7 @@
             this.Column6});
             this.dataGridView1.Location = new System.Drawing.Point(15, 81);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(650, 172);
             this.dataGridView1.TabIndex = 11;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
@@ -361,14 +362,14 @@
             this.Column6.HeaderText = "CellNumber";
             this.Column6.Name = "Column6";
             // 
-            // textBox6
+            // searchByIDTextBox
             // 
-            this.textBox6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(15, 44);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(267, 29);
-            this.textBox6.TabIndex = 10;
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.searchByIDTextBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchByIDTextBox.Location = new System.Drawing.Point(15, 44);
+            this.searchByIDTextBox.Name = "searchByIDTextBox";
+            this.searchByIDTextBox.Size = new System.Drawing.Size(267, 29);
+            this.searchByIDTextBox.TabIndex = 10;
+            this.searchByIDTextBox.TextChanged += new System.EventHandler(this.searchByIDTextBox_TextChanged);
             // 
             // label10
             // 
@@ -397,6 +398,7 @@
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.Size = new System.Drawing.Size(309, 29);
             this.txtClientName.TabIndex = 7;
+            this.txtClientName.TextChanged += new System.EventHandler(this.txtClientName_TextChanged);
             // 
             // SActionFollowUpProceedForm
             // 
@@ -434,7 +436,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button submitButton;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox searchByIDTextBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtClientName;

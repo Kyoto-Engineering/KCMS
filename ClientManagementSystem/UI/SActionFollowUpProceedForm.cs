@@ -226,10 +226,7 @@ namespace ClientManagementSystem.UI
            
         }
 
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+    
 
         private void groupBox2_Enter(object sender, EventArgs e)
         {
@@ -262,6 +259,54 @@ namespace ClientManagementSystem.UI
         private void cmbModeOfConduct_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void searchByIDTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                //string sql = "SELECT RTRIM(InquieryClient.IClientId),RTRIM(FollowUp.IClientFeedbackId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from InquieryClient,ContactPersonDetails,FollowUp  where InquieryClient.IClientId=ContactPersonDetails.IClientId  and  InquieryClient.IClientId=FollowUp.IClientId and InquieryClient.IClientId like '" + searchByClientIDTextBox.Text + "%' order by InquieryClient.IClientId desc";
+                // String sql = "SELECT RTRIM(IClientId),RTRIM(ClientName),RTRIM(EmailAddress),RTRIM(ContactPersonName),RTRIM(CellNumber) from InquieryClient where InquieryClient.IClientId like '" + textBox6.Text + "%'order by InquieryClient.IClientId desc";
+                String sql = "SELECT InquieryClient.IClientId, FollowUp.IClientFeedbackId, InquieryClient.ClientName, EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM InquieryClient INNER JOIN FollowUp ON InquieryClient.IClientId = FollowUp.IClientId INNER JOIN ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId INNER JOIN EmailBank ON InquieryClient.EmailBankId = EmailBank.EmailBankId WHERE (InquieryClient.IClientId LIKE '" + searchByIDTextBox.Text + "%')";
+                cmd = new SqlCommand(sql, con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView1.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtClientName_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                //string sql = "SELECT RTRIM(InquieryClient.IClientId),RTRIM(FollowUp.IClientFeedbackId),RTRIM(InquieryClient.ClientName),RTRIM(InquieryClient.EmailAddress),RTRIM(ContactPersonDetails.ContactPersonName),RTRIM(ContactPersonDetails.CellNumber) from InquieryClient,ContactPersonDetails,FollowUp  where InquieryClient.IClientId=ContactPersonDetails.IClientId  and  InquieryClient.IClientId=FollowUp.IClientId and InquieryClient.IClientId like '" + searchByClientIDTextBox.Text + "%' order by InquieryClient.IClientId desc";
+                // String sql = "SELECT RTRIM(IClientId),RTRIM(ClientName),RTRIM(EmailAddress),RTRIM(ContactPersonName),RTRIM(CellNumber) from InquieryClient where InquieryClient.IClientId like '" + textBox6.Text + "%'order by InquieryClient.IClientId desc";
+                String sql = "SELECT InquieryClient.IClientId, FollowUp.IClientFeedbackId, InquieryClient.ClientName, EmailBank.Email, ContactPersonDetails.ContactPersonName, ContactPersonDetails.CellNumber FROM InquieryClient INNER JOIN FollowUp ON InquieryClient.IClientId = FollowUp.IClientId INNER JOIN ContactPersonDetails ON InquieryClient.IClientId = ContactPersonDetails.IClientId INNER JOIN EmailBank ON InquieryClient.EmailBankId = EmailBank.EmailBankId WHERE (InquieryClient.ClientName LIKE '" + txtClientName.Text + "%')";
+                cmd = new SqlCommand(sql, con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView1.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
