@@ -167,7 +167,7 @@
             this.txtCauseOfUpdate.Location = new System.Drawing.Point(165, 457);
             this.txtCauseOfUpdate.Name = "txtCauseOfUpdate";
             this.txtCauseOfUpdate.Size = new System.Drawing.Size(300, 59);
-            this.txtCauseOfUpdate.TabIndex = 109;
+            this.txtCauseOfUpdate.TabIndex = 8;
             this.txtCauseOfUpdate.Text = "";
             // 
             // cmbEmailAddress
@@ -179,7 +179,7 @@
             this.cmbEmailAddress.Location = new System.Drawing.Point(229, 177);
             this.cmbEmailAddress.Name = "cmbEmailAddress";
             this.cmbEmailAddress.Size = new System.Drawing.Size(215, 30);
-            this.cmbEmailAddress.TabIndex = 108;
+            this.cmbEmailAddress.TabIndex = 5;
             this.cmbEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbEmailAddress_SelectedIndexChanged);
             this.cmbEmailAddress.Leave += new System.EventHandler(this.cmbEmailAddress_Leave);
             // 
@@ -204,7 +204,7 @@
             this.cmbIndustryCategory.Location = new System.Drawing.Point(229, 213);
             this.cmbIndustryCategory.Name = "cmbIndustryCategory";
             this.cmbIndustryCategory.Size = new System.Drawing.Size(213, 27);
-            this.cmbIndustryCategory.TabIndex = 105;
+            this.cmbIndustryCategory.TabIndex = 6;
             this.cmbIndustryCategory.SelectedIndexChanged += new System.EventHandler(this.cmbIndustryCategory_SelectedIndexChanged);
             // 
             // cmbRM
@@ -215,7 +215,7 @@
             this.cmbRM.Location = new System.Drawing.Point(229, 14);
             this.cmbRM.Name = "cmbRM";
             this.cmbRM.Size = new System.Drawing.Size(213, 27);
-            this.cmbRM.TabIndex = 107;
+            this.cmbRM.TabIndex = 0;
             this.cmbRM.SelectedIndexChanged += new System.EventHandler(this.cmbRM_SelectedIndexChanged);
             // 
             // txtEndUser
@@ -224,7 +224,7 @@
             this.txtEndUser.Location = new System.Drawing.Point(229, 246);
             this.txtEndUser.Name = "txtEndUser";
             this.txtEndUser.Size = new System.Drawing.Size(214, 26);
-            this.txtEndUser.TabIndex = 105;
+            this.txtEndUser.TabIndex = 7;
             // 
             // label10
             // 
@@ -247,7 +247,7 @@
             this.cmbNatureOfClient.Location = new System.Drawing.Point(229, 144);
             this.cmbNatureOfClient.Name = "cmbNatureOfClient";
             this.cmbNatureOfClient.Size = new System.Drawing.Size(214, 27);
-            this.cmbNatureOfClient.TabIndex = 104;
+            this.cmbNatureOfClient.TabIndex = 4;
             this.cmbNatureOfClient.SelectedIndexChanged += new System.EventHandler(this.cmbNatureOfClient_SelectedIndexChanged);
             // 
             // cmbClientType
@@ -258,7 +258,7 @@
             this.cmbClientType.Location = new System.Drawing.Point(229, 111);
             this.cmbClientType.Name = "cmbClientType";
             this.cmbClientType.Size = new System.Drawing.Size(214, 27);
-            this.cmbClientType.TabIndex = 103;
+            this.cmbClientType.TabIndex = 3;
             this.cmbClientType.SelectedIndexChanged += new System.EventHandler(this.cmbClientType_SelectedIndexChanged);
             // 
             // groupBox2
@@ -288,7 +288,7 @@
             this.cmbCPEmailAddress.Location = new System.Drawing.Point(198, 121);
             this.cmbCPEmailAddress.Name = "cmbCPEmailAddress";
             this.cmbCPEmailAddress.Size = new System.Drawing.Size(214, 30);
-            this.cmbCPEmailAddress.TabIndex = 108;
+            this.cmbCPEmailAddress.TabIndex = 3;
             this.cmbCPEmailAddress.SelectedIndexChanged += new System.EventHandler(this.cmbCPEmailAddress_SelectedIndexChanged);
             // 
             // label34
@@ -309,7 +309,7 @@
             this.cellPhoneTextBox.MaxLength = 11;
             this.cellPhoneTextBox.Name = "cellPhoneTextBox";
             this.cellPhoneTextBox.Size = new System.Drawing.Size(214, 26);
-            this.cellPhoneTextBox.TabIndex = 106;
+            this.cellPhoneTextBox.TabIndex = 2;
             this.cellPhoneTextBox.Enter += new System.EventHandler(this.cellPhoneTextBox_Enter);
             this.cellPhoneTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cellPhoneTextBox_KeyPress);
             // 
@@ -320,7 +320,7 @@
             this.txtDesignation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDesignation.Name = "txtDesignation";
             this.txtDesignation.Size = new System.Drawing.Size(214, 26);
-            this.txtDesignation.TabIndex = 103;
+            this.txtDesignation.TabIndex = 1;
             this.txtDesignation.Enter += new System.EventHandler(this.txtDesignation_Enter);
             // 
             // txtCPName
@@ -330,7 +330,7 @@
             this.txtCPName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCPName.Name = "txtCPName";
             this.txtCPName.Size = new System.Drawing.Size(214, 26);
-            this.txtCPName.TabIndex = 102;
+            this.txtCPName.TabIndex = 0;
             this.txtCPName.Leave += new System.EventHandler(this.txtCPName_Leave);
             // 
             // label9
@@ -407,7 +407,7 @@
             this.cPostOfficeCombo.Location = new System.Drawing.Point(360, 119);
             this.cPostOfficeCombo.Name = "cPostOfficeCombo";
             this.cPostOfficeCombo.Size = new System.Drawing.Size(209, 30);
-            this.cPostOfficeCombo.TabIndex = 47;
+            this.cPostOfficeCombo.TabIndex = 9;
             this.cPostOfficeCombo.SelectedIndexChanged += new System.EventHandler(this.cPostOfficeCombo_SelectedIndexChanged);
             this.cPostOfficeCombo.SelectedValueChanged += new System.EventHandler(this.cPostOfficeCombo_SelectedValueChanged);
             this.cPostOfficeCombo.Enter += new System.EventHandler(this.cPostOfficeCombo_Enter);
@@ -420,7 +420,7 @@
             this.cThanaCombo.Location = new System.Drawing.Point(360, 84);
             this.cThanaCombo.Name = "cThanaCombo";
             this.cThanaCombo.Size = new System.Drawing.Size(209, 30);
-            this.cThanaCombo.TabIndex = 46;
+            this.cThanaCombo.TabIndex = 8;
             this.cThanaCombo.SelectedIndexChanged += new System.EventHandler(this.cThanaCombo_SelectedIndexChanged);
             this.cThanaCombo.Enter += new System.EventHandler(this.cThanaCombo_Enter);
             // 
@@ -432,7 +432,7 @@
             this.cDistCombo.Location = new System.Drawing.Point(360, 49);
             this.cDistCombo.Name = "cDistCombo";
             this.cDistCombo.Size = new System.Drawing.Size(209, 30);
-            this.cDistCombo.TabIndex = 45;
+            this.cDistCombo.TabIndex = 7;
             this.cDistCombo.SelectedIndexChanged += new System.EventHandler(this.cDistCombo_SelectedIndexChanged);
             this.cDistCombo.Enter += new System.EventHandler(this.cDistCombo_Enter);
             // 
@@ -454,7 +454,7 @@
             this.cDivisionCombo.Location = new System.Drawing.Point(360, 14);
             this.cDivisionCombo.Name = "cDivisionCombo";
             this.cDivisionCombo.Size = new System.Drawing.Size(209, 30);
-            this.cDivisionCombo.TabIndex = 42;
+            this.cDivisionCombo.TabIndex = 6;
             this.cDivisionCombo.SelectedIndexChanged += new System.EventHandler(this.cDivisionCombo_SelectedIndexChanged);
             // 
             // label30
@@ -473,7 +473,7 @@
             this.cContactNoTextBox.MaxLength = 11;
             this.cContactNoTextBox.Name = "cContactNoTextBox";
             this.cContactNoTextBox.Size = new System.Drawing.Size(140, 22);
-            this.cContactNoTextBox.TabIndex = 39;
+            this.cContactNoTextBox.TabIndex = 4;
             this.cContactNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cContactNoTextBox_KeyPress);
             // 
             // label27
@@ -503,7 +503,7 @@
             this.cPostCodeTextBox.Name = "cPostCodeTextBox";
             this.cPostCodeTextBox.ReadOnly = true;
             this.cPostCodeTextBox.Size = new System.Drawing.Size(209, 29);
-            this.cPostCodeTextBox.TabIndex = 17;
+            this.cPostCodeTextBox.TabIndex = 10;
             // 
             // cAreaTextBox
             // 
@@ -511,7 +511,7 @@
             this.cAreaTextBox.Location = new System.Drawing.Point(128, 160);
             this.cAreaTextBox.Name = "cAreaTextBox";
             this.cAreaTextBox.Size = new System.Drawing.Size(140, 22);
-            this.cAreaTextBox.TabIndex = 15;
+            this.cAreaTextBox.TabIndex = 5;
             // 
             // label20
             // 
@@ -549,7 +549,7 @@
             this.cBlockTextBox.Location = new System.Drawing.Point(128, 103);
             this.cBlockTextBox.Name = "cBlockTextBox";
             this.cBlockTextBox.Size = new System.Drawing.Size(140, 22);
-            this.cBlockTextBox.TabIndex = 11;
+            this.cBlockTextBox.TabIndex = 3;
             // 
             // cRoadNoTextBox
             // 
@@ -557,7 +557,7 @@
             this.cRoadNoTextBox.Location = new System.Drawing.Point(128, 76);
             this.cRoadNoTextBox.Name = "cRoadNoTextBox";
             this.cRoadNoTextBox.Size = new System.Drawing.Size(140, 22);
-            this.cRoadNoTextBox.TabIndex = 10;
+            this.cRoadNoTextBox.TabIndex = 2;
             // 
             // cHouseNoTextBox
             // 
@@ -565,7 +565,7 @@
             this.cHouseNoTextBox.Location = new System.Drawing.Point(128, 50);
             this.cHouseNoTextBox.Name = "cHouseNoTextBox";
             this.cHouseNoTextBox.Size = new System.Drawing.Size(140, 22);
-            this.cHouseNoTextBox.TabIndex = 9;
+            this.cHouseNoTextBox.TabIndex = 1;
             // 
             // cFlatNoTextBox
             // 
@@ -573,7 +573,7 @@
             this.cFlatNoTextBox.Location = new System.Drawing.Point(128, 24);
             this.cFlatNoTextBox.Name = "cFlatNoTextBox";
             this.cFlatNoTextBox.Size = new System.Drawing.Size(140, 22);
-            this.cFlatNoTextBox.TabIndex = 8;
+            this.cFlatNoTextBox.TabIndex = 0;
             // 
             // label14
             // 
@@ -692,7 +692,7 @@
             this.tPostOfficeCombo.Location = new System.Drawing.Point(375, 124);
             this.tPostOfficeCombo.Name = "tPostOfficeCombo";
             this.tPostOfficeCombo.Size = new System.Drawing.Size(193, 30);
-            this.tPostOfficeCombo.TabIndex = 48;
+            this.tPostOfficeCombo.TabIndex = 9;
             this.tPostOfficeCombo.SelectedIndexChanged += new System.EventHandler(this.tPostOfficeCombo_SelectedIndexChanged);
             this.tPostOfficeCombo.Enter += new System.EventHandler(this.tPostOfficeCombo_Enter);
             // 
@@ -704,7 +704,7 @@
             this.tThanaCombo.Location = new System.Drawing.Point(375, 89);
             this.tThanaCombo.Name = "tThanaCombo";
             this.tThanaCombo.Size = new System.Drawing.Size(194, 30);
-            this.tThanaCombo.TabIndex = 47;
+            this.tThanaCombo.TabIndex = 8;
             this.tThanaCombo.SelectedIndexChanged += new System.EventHandler(this.tThanaCombo_SelectedIndexChanged);
             this.tThanaCombo.Enter += new System.EventHandler(this.tThanaCombo_Enter);
             // 
@@ -716,7 +716,7 @@
             this.tDistCombo.Location = new System.Drawing.Point(375, 54);
             this.tDistCombo.Name = "tDistCombo";
             this.tDistCombo.Size = new System.Drawing.Size(193, 30);
-            this.tDistCombo.TabIndex = 46;
+            this.tDistCombo.TabIndex = 7;
             this.tDistCombo.SelectedIndexChanged += new System.EventHandler(this.tDistCombo_SelectedIndexChanged);
             this.tDistCombo.Enter += new System.EventHandler(this.tDistCombo_Enter);
             // 
@@ -738,7 +738,7 @@
             this.tDivisionCombo.Location = new System.Drawing.Point(375, 19);
             this.tDivisionCombo.Name = "tDivisionCombo";
             this.tDivisionCombo.Size = new System.Drawing.Size(193, 30);
-            this.tDivisionCombo.TabIndex = 44;
+            this.tDivisionCombo.TabIndex = 6;
             this.tDivisionCombo.SelectedIndexChanged += new System.EventHandler(this.tDivisionCombo_SelectedIndexChanged);
             // 
             // label32
@@ -758,7 +758,7 @@
             this.tContactNoTextBox.MaxLength = 11;
             this.tContactNoTextBox.Name = "tContactNoTextBox";
             this.tContactNoTextBox.Size = new System.Drawing.Size(147, 26);
-            this.tContactNoTextBox.TabIndex = 37;
+            this.tContactNoTextBox.TabIndex = 4;
             this.tContactNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tContactNoTextBox_KeyPress);
             // 
             // label26
@@ -790,7 +790,7 @@
             this.tPostCodeTextBox.Name = "tPostCodeTextBox";
             this.tPostCodeTextBox.ReadOnly = true;
             this.tPostCodeTextBox.Size = new System.Drawing.Size(194, 29);
-            this.tPostCodeTextBox.TabIndex = 33;
+            this.tPostCodeTextBox.TabIndex = 10;
             // 
             // tAreaTextBox
             // 
@@ -798,7 +798,7 @@
             this.tAreaTextBox.Location = new System.Drawing.Point(130, 170);
             this.tAreaTextBox.Name = "tAreaTextBox";
             this.tAreaTextBox.Size = new System.Drawing.Size(147, 26);
-            this.tAreaTextBox.TabIndex = 31;
+            this.tAreaTextBox.TabIndex = 5;
             // 
             // label5
             // 
@@ -839,7 +839,7 @@
             this.tBlockTextBox.Location = new System.Drawing.Point(130, 110);
             this.tBlockTextBox.Name = "tBlockTextBox";
             this.tBlockTextBox.Size = new System.Drawing.Size(147, 26);
-            this.tBlockTextBox.TabIndex = 27;
+            this.tBlockTextBox.TabIndex = 3;
             // 
             // tRoadNoTextBox
             // 
@@ -847,7 +847,7 @@
             this.tRoadNoTextBox.Location = new System.Drawing.Point(130, 80);
             this.tRoadNoTextBox.Name = "tRoadNoTextBox";
             this.tRoadNoTextBox.Size = new System.Drawing.Size(147, 26);
-            this.tRoadNoTextBox.TabIndex = 26;
+            this.tRoadNoTextBox.TabIndex = 2;
             // 
             // tHouseNoTextBox
             // 
@@ -855,7 +855,7 @@
             this.tHouseNoTextBox.Location = new System.Drawing.Point(130, 50);
             this.tHouseNoTextBox.Name = "tHouseNoTextBox";
             this.tHouseNoTextBox.Size = new System.Drawing.Size(146, 26);
-            this.tHouseNoTextBox.TabIndex = 25;
+            this.tHouseNoTextBox.TabIndex = 1;
             // 
             // tFlatNoTextBox
             // 
@@ -863,7 +863,7 @@
             this.tFlatNoTextBox.Location = new System.Drawing.Point(130, 20);
             this.tFlatNoTextBox.Name = "tFlatNoTextBox";
             this.tFlatNoTextBox.Size = new System.Drawing.Size(146, 26);
-            this.tFlatNoTextBox.TabIndex = 24;
+            this.tFlatNoTextBox.TabIndex = 0;
             // 
             // label22
             // 
@@ -917,7 +917,7 @@
             this.saveButton.Location = new System.Drawing.Point(591, 478);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(119, 53);
-            this.saveButton.TabIndex = 99;
+            this.saveButton.TabIndex = 9;
             this.saveButton.Text = "Update";
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -929,7 +929,7 @@
             this.txtClientId.Name = "txtClientId";
             this.txtClientId.ReadOnly = true;
             this.txtClientId.Size = new System.Drawing.Size(213, 26);
-            this.txtClientId.TabIndex = 94;
+            this.txtClientId.TabIndex = 1;
             // 
             // labelh
             // 
@@ -998,7 +998,7 @@
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.ReadOnly = true;
             this.txtClientName.Size = new System.Drawing.Size(214, 26);
-            this.txtClientName.TabIndex = 71;
+            this.txtClientName.TabIndex = 2;
             // 
             // label3
             // 

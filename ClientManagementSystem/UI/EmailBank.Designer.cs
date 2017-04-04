@@ -49,7 +49,7 @@
             this.txtBankEmailId.Location = new System.Drawing.Point(170, 49);
             this.txtBankEmailId.Name = "txtBankEmailId";
             this.txtBankEmailId.Size = new System.Drawing.Size(309, 29);
-            this.txtBankEmailId.TabIndex = 2;
+            this.txtBankEmailId.TabIndex = 0;
             this.txtBankEmailId.Validating += new System.ComponentModel.CancelEventHandler(this.txtBankEmailId_Validating);
             // 
             // submitButton
@@ -60,7 +60,7 @@
             this.submitButton.Location = new System.Drawing.Point(356, 108);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(123, 68);
-            this.submitButton.TabIndex = 4;
+            this.submitButton.TabIndex = 1;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = false;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);

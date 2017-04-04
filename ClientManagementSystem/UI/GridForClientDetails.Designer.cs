@@ -74,7 +74,7 @@
             this.addNewButton.Location = new System.Drawing.Point(32, 89);
             this.addNewButton.Name = "addNewButton";
             this.addNewButton.Size = new System.Drawing.Size(155, 38);
-            this.addNewButton.TabIndex = 8;
+            this.addNewButton.TabIndex = 0;
             this.addNewButton.Text = "Add New Client";
             this.addNewButton.UseVisualStyleBackColor = true;
             this.addNewButton.Click += new System.EventHandler(this.addNewButton_Click);

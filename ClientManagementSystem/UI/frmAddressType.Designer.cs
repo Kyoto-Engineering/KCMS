@@ -51,7 +51,7 @@
             this.txtAddressType.Location = new System.Drawing.Point(150, 37);
             this.txtAddressType.Name = "txtAddressType";
             this.txtAddressType.Size = new System.Drawing.Size(268, 29);
-            this.txtAddressType.TabIndex = 1;
+            this.txtAddressType.TabIndex = 0;
             // 
             // label1
             // 
@@ -71,7 +71,7 @@
             this.saveButton.Location = new System.Drawing.Point(302, 163);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(121, 62);
-            this.saveButton.TabIndex = 5;
+            this.saveButton.TabIndex = 0;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);

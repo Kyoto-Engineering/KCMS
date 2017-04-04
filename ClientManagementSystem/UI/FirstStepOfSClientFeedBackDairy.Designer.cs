@@ -104,7 +104,7 @@
             this.searchBySClientIDTextBox.Location = new System.Drawing.Point(34, 40);
             this.searchBySClientIDTextBox.Name = "searchBySClientIDTextBox";
             this.searchBySClientIDTextBox.Size = new System.Drawing.Size(192, 29);
-            this.searchBySClientIDTextBox.TabIndex = 6;
+            this.searchBySClientIDTextBox.TabIndex = 0;
             this.searchBySClientIDTextBox.TextChanged += new System.EventHandler(this.searchBySClientIDTextBox_TextChanged);
             // 
             // label10
@@ -133,7 +133,7 @@
             this.txtClientName.Location = new System.Drawing.Point(326, 39);
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.Size = new System.Drawing.Size(192, 29);
-            this.txtClientName.TabIndex = 3;
+            this.txtClientName.TabIndex = 1;
             this.txtClientName.TextChanged += new System.EventHandler(this.txtClientName_TextChanged);
             // 
             // label4
@@ -305,7 +305,7 @@
             this.responsibleSPersonComboBox.Location = new System.Drawing.Point(267, 185);
             this.responsibleSPersonComboBox.Name = "responsibleSPersonComboBox";
             this.responsibleSPersonComboBox.Size = new System.Drawing.Size(292, 29);
-            this.responsibleSPersonComboBox.TabIndex = 5;
+            this.responsibleSPersonComboBox.TabIndex = 1;
             // 
             // label8
             // 
@@ -337,7 +337,7 @@
             this.followUpSDeadlinedate.Location = new System.Drawing.Point(268, 225);
             this.followUpSDeadlinedate.Name = "followUpSDeadlinedate";
             this.followUpSDeadlinedate.Size = new System.Drawing.Size(292, 29);
-            this.followUpSDeadlinedate.TabIndex = 6;
+            this.followUpSDeadlinedate.TabIndex = 2;
             // 
             // label5
             // 
@@ -393,7 +393,7 @@
             this.cmbModeOfConduct.Location = new System.Drawing.Point(249, 222);
             this.cmbModeOfConduct.Name = "cmbModeOfConduct";
             this.cmbModeOfConduct.Size = new System.Drawing.Size(334, 30);
-            this.cmbModeOfConduct.TabIndex = 27;
+            this.cmbModeOfConduct.TabIndex = 2;
             this.cmbModeOfConduct.SelectedIndexChanged += new System.EventHandler(this.cmbModeOfConduct_SelectedIndexChanged);
             // 
             // txtSClientInquiry
@@ -402,7 +402,7 @@
             this.txtSClientInquiry.Location = new System.Drawing.Point(15, 77);
             this.txtSClientInquiry.Name = "txtSClientInquiry";
             this.txtSClientInquiry.Size = new System.Drawing.Size(290, 139);
-            this.txtSClientInquiry.TabIndex = 24;
+            this.txtSClientInquiry.TabIndex = 0;
             this.txtSClientInquiry.Text = "";
             // 
             // label11
@@ -422,7 +422,7 @@
             this.feedbackSTextBox.Location = new System.Drawing.Point(332, 72);
             this.feedbackSTextBox.Name = "feedbackSTextBox";
             this.feedbackSTextBox.Size = new System.Drawing.Size(252, 144);
-            this.feedbackSTextBox.TabIndex = 22;
+            this.feedbackSTextBox.TabIndex = 1;
             this.feedbackSTextBox.Text = "";
             // 
             // txtSClientName
@@ -504,7 +504,7 @@
             this.submitButton.Location = new System.Drawing.Point(470, 570);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(132, 52);
-            this.submitButton.TabIndex = 7;
+            this.submitButton.TabIndex = 4;
             this.submitButton.Text = "Save";
             this.submitButton.UseVisualStyleBackColor = false;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
@@ -532,7 +532,7 @@
             this.actionSMultiTextBox.Location = new System.Drawing.Point(14, 51);
             this.actionSMultiTextBox.Name = "actionSMultiTextBox";
             this.actionSMultiTextBox.Size = new System.Drawing.Size(544, 119);
-            this.actionSMultiTextBox.TabIndex = 10;
+            this.actionSMultiTextBox.TabIndex = 0;
             this.actionSMultiTextBox.Text = "";
             // 
             // FirstStepOfSClientFeedBackDairy

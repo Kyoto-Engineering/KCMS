@@ -92,7 +92,7 @@
             this.responsible1PersonComboBox.Location = new System.Drawing.Point(259, 196);
             this.responsible1PersonComboBox.Name = "responsible1PersonComboBox";
             this.responsible1PersonComboBox.Size = new System.Drawing.Size(288, 29);
-            this.responsible1PersonComboBox.TabIndex = 5;
+            this.responsible1PersonComboBox.TabIndex = 1;
             // 
             // label8
             // 
@@ -110,7 +110,7 @@
             this.action1MultiTextBox.Multiline = true;
             this.action1MultiTextBox.Name = "action1MultiTextBox";
             this.action1MultiTextBox.Size = new System.Drawing.Size(404, 149);
-            this.action1MultiTextBox.TabIndex = 4;
+            this.action1MultiTextBox.TabIndex = 0;
             // 
             // labelk
             // 
@@ -130,7 +130,7 @@
             this.followUp1DeadlineDateTimePicker.Location = new System.Drawing.Point(259, 236);
             this.followUp1DeadlineDateTimePicker.Name = "followUp1DeadlineDateTimePicker";
             this.followUp1DeadlineDateTimePicker.Size = new System.Drawing.Size(288, 29);
-            this.followUp1DeadlineDateTimePicker.TabIndex = 6;
+            this.followUp1DeadlineDateTimePicker.TabIndex = 2;
             // 
             // label5
             // 
@@ -150,7 +150,7 @@
             this.submitButton.Location = new System.Drawing.Point(445, 592);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(128, 57);
-            this.submitButton.TabIndex = 7;
+            this.submitButton.TabIndex = 4;
             this.submitButton.Text = "Save";
             this.submitButton.UseVisualStyleBackColor = false;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
@@ -217,7 +217,7 @@
             this.cmbModeOfConduct.Location = new System.Drawing.Point(238, 258);
             this.cmbModeOfConduct.Name = "cmbModeOfConduct";
             this.cmbModeOfConduct.Size = new System.Drawing.Size(251, 30);
-            this.cmbModeOfConduct.TabIndex = 25;
+            this.cmbModeOfConduct.TabIndex = 3;
             this.cmbModeOfConduct.SelectedIndexChanged += new System.EventHandler(this.cmbModeOfConduct_SelectedIndexChanged);
             // 
             // txtClientInquiry
@@ -226,7 +226,7 @@
             this.txtClientInquiry.Location = new System.Drawing.Point(16, 100);
             this.txtClientInquiry.Name = "txtClientInquiry";
             this.txtClientInquiry.Size = new System.Drawing.Size(278, 99);
-            this.txtClientInquiry.TabIndex = 24;
+            this.txtClientInquiry.TabIndex = 0;
             this.txtClientInquiry.Text = "";
             // 
             // label11
@@ -363,7 +363,7 @@
             this.textBox6.Location = new System.Drawing.Point(20, 42);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(198, 26);
-            this.textBox6.TabIndex = 6;
+            this.textBox6.TabIndex = 0;
             this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label10
@@ -392,7 +392,7 @@
             this.txtClientName.Location = new System.Drawing.Point(310, 42);
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.Size = new System.Drawing.Size(208, 26);
-            this.txtClientName.TabIndex = 3;
+            this.txtClientName.TabIndex = 1;
             this.txtClientName.TextChanged += new System.EventHandler(this.txtClientName_TextChanged);
             // 
             // label4
@@ -471,7 +471,7 @@
             this.feedback1DeadlineDateTime.Location = new System.Drawing.Point(238, 216);
             this.feedback1DeadlineDateTime.Name = "feedback1DeadlineDateTime";
             this.feedback1DeadlineDateTime.Size = new System.Drawing.Size(251, 29);
-            this.feedback1DeadlineDateTime.TabIndex = 3;
+            this.feedback1DeadlineDateTime.TabIndex = 2;
             // 
             // feedback1TextBox
             // 
@@ -480,7 +480,7 @@
             this.feedback1TextBox.Multiline = true;
             this.feedback1TextBox.Name = "feedback1TextBox";
             this.feedback1TextBox.Size = new System.Drawing.Size(267, 101);
-            this.feedback1TextBox.TabIndex = 2;
+            this.feedback1TextBox.TabIndex = 1;
             // 
             // label3
             // 

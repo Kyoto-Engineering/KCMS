@@ -74,7 +74,7 @@
             this.emailBankButton.Location = new System.Drawing.Point(6, 482);
             this.emailBankButton.Name = "emailBankButton";
             this.emailBankButton.Size = new System.Drawing.Size(127, 58);
-            this.emailBankButton.TabIndex = 9;
+            this.emailBankButton.TabIndex = 7;
             this.emailBankButton.Text = "E-mail Bank";
             this.emailBankButton.UseVisualStyleBackColor = true;
             this.emailBankButton.Click += new System.EventHandler(this.emailBankButton_Click);
@@ -85,7 +85,7 @@
             this.buttonNatureOfClient.Location = new System.Drawing.Point(6, 340);
             this.buttonNatureOfClient.Name = "buttonNatureOfClient";
             this.buttonNatureOfClient.Size = new System.Drawing.Size(127, 52);
-            this.buttonNatureOfClient.TabIndex = 8;
+            this.buttonNatureOfClient.TabIndex = 5;
             this.buttonNatureOfClient.Text = "Nature Of  Client";
             this.buttonNatureOfClient.UseVisualStyleBackColor = true;
             this.buttonNatureOfClient.Click += new System.EventHandler(this.buttonNatureOfClient_Click);
@@ -96,7 +96,7 @@
             this.buttonClientType.Location = new System.Drawing.Point(6, 214);
             this.buttonClientType.Name = "buttonClientType";
             this.buttonClientType.Size = new System.Drawing.Size(127, 51);
-            this.buttonClientType.TabIndex = 7;
+            this.buttonClientType.TabIndex = 3;
             this.buttonClientType.Text = "ClientType";
             this.buttonClientType.UseVisualStyleBackColor = true;
             this.buttonClientType.Click += new System.EventHandler(this.buttonClientType_Click);
@@ -107,7 +107,7 @@
             this.btnIndustryCategory.Location = new System.Drawing.Point(6, 275);
             this.btnIndustryCategory.Name = "btnIndustryCategory";
             this.btnIndustryCategory.Size = new System.Drawing.Size(127, 54);
-            this.btnIndustryCategory.TabIndex = 5;
+            this.btnIndustryCategory.TabIndex = 4;
             this.btnIndustryCategory.Text = "Industry Category";
             this.btnIndustryCategory.UseVisualStyleBackColor = true;
             this.btnIndustryCategory.Click += new System.EventHandler(this.btnIndustryCategory_Click);
@@ -118,7 +118,7 @@
             this.aboutButton.Location = new System.Drawing.Point(20, 585);
             this.aboutButton.Name = "aboutButton";
             this.aboutButton.Size = new System.Drawing.Size(108, 54);
-            this.aboutButton.TabIndex = 4;
+            this.aboutButton.TabIndex = 8;
             this.aboutButton.Text = "About";
             this.aboutButton.UseVisualStyleBackColor = true;
             this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
@@ -130,7 +130,7 @@
             this.feedbackButton.Location = new System.Drawing.Point(6, 148);
             this.feedbackButton.Name = "feedbackButton";
             this.feedbackButton.Size = new System.Drawing.Size(127, 53);
-            this.feedbackButton.TabIndex = 3;
+            this.feedbackButton.TabIndex = 2;
             this.feedbackButton.Text = "Feed Back";
             this.feedbackButton.UseVisualStyleBackColor = false;
             this.feedbackButton.Click += new System.EventHandler(this.instantClientButton_Click);
@@ -141,7 +141,7 @@
             this.userButton.Location = new System.Drawing.Point(6, 406);
             this.userButton.Name = "userButton";
             this.userButton.Size = new System.Drawing.Size(127, 61);
-            this.userButton.TabIndex = 2;
+            this.userButton.TabIndex = 6;
             this.userButton.Text = "User Management";
             this.userButton.UseVisualStyleBackColor = true;
             this.userButton.Click += new System.EventHandler(this.userButton_Click);
@@ -152,7 +152,7 @@
             this.button2.Location = new System.Drawing.Point(6, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(127, 63);
-            this.button2.TabIndex = 1;
+            this.button2.TabIndex = 0;
             this.button2.Text = "Inquiry Client";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -163,7 +163,7 @@
             this.button1.Location = new System.Drawing.Point(6, 81);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(127, 56);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 1;
             this.button1.Text = "Sales Client";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);

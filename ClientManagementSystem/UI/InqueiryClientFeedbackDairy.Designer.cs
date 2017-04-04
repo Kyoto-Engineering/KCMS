@@ -127,7 +127,7 @@
             this.backButton.Location = new System.Drawing.Point(156, 583);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(118, 51);
-            this.backButton.TabIndex = 24;
+            this.backButton.TabIndex = 4;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
@@ -149,7 +149,7 @@
             this.txtModeOfConduct.Location = new System.Drawing.Point(259, 271);
             this.txtModeOfConduct.Name = "txtModeOfConduct";
             this.txtModeOfConduct.Size = new System.Drawing.Size(332, 29);
-            this.txtModeOfConduct.TabIndex = 22;
+            this.txtModeOfConduct.TabIndex = 3;
             this.txtModeOfConduct.TextChanged += new System.EventHandler(this.txtModeOfConduct_TextChanged);
             // 
             // button1
@@ -158,7 +158,7 @@
             this.button1.Location = new System.Drawing.Point(295, 581);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 58);
-            this.button1.TabIndex = 21;
+            this.button1.TabIndex = 5;
             this.button1.Text = "Edit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -168,7 +168,7 @@
             this.feedback2TextBox.Location = new System.Drawing.Point(330, 81);
             this.feedback2TextBox.Name = "feedback2TextBox";
             this.feedback2TextBox.Size = new System.Drawing.Size(261, 132);
-            this.feedback2TextBox.TabIndex = 20;
+            this.feedback2TextBox.TabIndex = 1;
             this.feedback2TextBox.Text = "";
             // 
             // txtClentInquiry
@@ -177,7 +177,7 @@
             this.txtClentInquiry.Location = new System.Drawing.Point(16, 81);
             this.txtClentInquiry.Name = "txtClentInquiry";
             this.txtClentInquiry.Size = new System.Drawing.Size(286, 132);
-            this.txtClentInquiry.TabIndex = 19;
+            this.txtClentInquiry.TabIndex = 0;
             this.txtClentInquiry.Text = "";
             // 
             // label4
@@ -228,7 +228,7 @@
             this.feedback2DateTime.Location = new System.Drawing.Point(259, 223);
             this.feedback2DateTime.Name = "feedback2DateTime";
             this.feedback2DateTime.Size = new System.Drawing.Size(334, 29);
-            this.feedback2DateTime.TabIndex = 3;
+            this.feedback2DateTime.TabIndex = 2;
             // 
             // groupBox3
             // 
@@ -253,7 +253,7 @@
             this.textBox6.Location = new System.Drawing.Point(22, 42);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(189, 29);
-            this.textBox6.TabIndex = 12;
+            this.textBox6.TabIndex = 0;
             this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label10
@@ -284,7 +284,7 @@
             this.txtClientName.Location = new System.Drawing.Point(372, 38);
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.Size = new System.Drawing.Size(191, 29);
-            this.txtClientName.TabIndex = 9;
+            this.txtClientName.TabIndex = 1;
             this.txtClientName.TextChanged += new System.EventHandler(this.txtClientName_TextChanged);
             // 
             // label11
@@ -400,7 +400,7 @@
             this.submitButton.Location = new System.Drawing.Point(444, 579);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(105, 57);
-            this.submitButton.TabIndex = 7;
+            this.submitButton.TabIndex = 6;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
@@ -427,7 +427,7 @@
             this.action2MultiTextBox.Location = new System.Drawing.Point(137, 25);
             this.action2MultiTextBox.Name = "action2MultiTextBox";
             this.action2MultiTextBox.Size = new System.Drawing.Size(448, 152);
-            this.action2MultiTextBox.TabIndex = 11;
+            this.action2MultiTextBox.TabIndex = 0;
             this.action2MultiTextBox.Text = "";
             // 
             // txtResposible2Person
@@ -436,7 +436,7 @@
             this.txtResposible2Person.Name = "txtResposible2Person";
             this.txtResposible2Person.ReadOnly = true;
             this.txtResposible2Person.Size = new System.Drawing.Size(353, 29);
-            this.txtResposible2Person.TabIndex = 10;
+            this.txtResposible2Person.TabIndex = 1;
             this.txtResposible2Person.TextChanged += new System.EventHandler(this.txtResposible2Person_TextChanged);
             // 
             // label8
@@ -469,7 +469,7 @@
             this.followUp2Deadlinedatetime.Location = new System.Drawing.Point(314, 227);
             this.followUp2Deadlinedatetime.Name = "followUp2Deadlinedatetime";
             this.followUp2Deadlinedatetime.Size = new System.Drawing.Size(259, 29);
-            this.followUp2Deadlinedatetime.TabIndex = 6;
+            this.followUp2Deadlinedatetime.TabIndex = 2;
             // 
             // label5
             // 

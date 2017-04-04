@@ -96,9 +96,9 @@
             this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(99, 390);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(162, 22);
+            this.label12.Size = new System.Drawing.Size(158, 22);
             this.label12.TabIndex = 59;
-            this.label12.Text = "Mode Of  Conduct";
+            this.label12.Text = "Mode Of  Contact";
             // 
             // cmbModeOfConduct
             // 
@@ -108,7 +108,7 @@
             this.cmbModeOfConduct.Location = new System.Drawing.Point(285, 384);
             this.cmbModeOfConduct.Name = "cmbModeOfConduct";
             this.cmbModeOfConduct.Size = new System.Drawing.Size(277, 30);
-            this.cmbModeOfConduct.TabIndex = 58;
+            this.cmbModeOfConduct.TabIndex = 10;
             this.cmbModeOfConduct.SelectedIndexChanged += new System.EventHandler(this.cmbModeOfConduct_SelectedIndexChanged);
             // 
             // txtSInquiryClient
@@ -117,7 +117,7 @@
             this.txtSInquiryClient.Location = new System.Drawing.Point(281, 150);
             this.txtSInquiryClient.Name = "txtSInquiryClient";
             this.txtSInquiryClient.Size = new System.Drawing.Size(281, 189);
-            this.txtSInquiryClient.TabIndex = 57;
+            this.txtSInquiryClient.TabIndex = 8;
             this.txtSInquiryClient.Text = "";
             // 
             // txtHaveDone
@@ -126,7 +126,7 @@
             this.txtHaveDone.Location = new System.Drawing.Point(588, 150);
             this.txtHaveDone.Name = "txtHaveDone";
             this.txtHaveDone.Size = new System.Drawing.Size(304, 189);
-            this.txtHaveDone.TabIndex = 55;
+            this.txtHaveDone.TabIndex = 9;
             this.txtHaveDone.Text = "";
             // 
             // txtHaveToDo
@@ -136,7 +136,7 @@
             this.txtHaveToDo.Name = "txtHaveToDo";
             this.txtHaveToDo.ReadOnly = true;
             this.txtHaveToDo.Size = new System.Drawing.Size(246, 189);
-            this.txtHaveToDo.TabIndex = 54;
+            this.txtHaveToDo.TabIndex = 7;
             this.txtHaveToDo.Text = "";
             // 
             // txtDeadlineTime
@@ -146,7 +146,7 @@
             this.txtDeadlineTime.Name = "txtDeadlineTime";
             this.txtDeadlineTime.ReadOnly = true;
             this.txtDeadlineTime.Size = new System.Drawing.Size(237, 29);
-            this.txtDeadlineTime.TabIndex = 53;
+            this.txtDeadlineTime.TabIndex = 6;
             // 
             // label11
             // 
@@ -166,7 +166,7 @@
             this.submitButton.Location = new System.Drawing.Point(681, 377);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(155, 79);
-            this.submitButton.TabIndex = 45;
+            this.submitButton.TabIndex = 12;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = false;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
@@ -178,7 +178,7 @@
             this.txtSReferredBy.Name = "txtSReferredBy";
             this.txtSReferredBy.ReadOnly = true;
             this.txtSReferredBy.Size = new System.Drawing.Size(232, 29);
-            this.txtSReferredBy.TabIndex = 44;
+            this.txtSReferredBy.TabIndex = 3;
             // 
             // label5
             // 
@@ -209,7 +209,7 @@
             this.txtFollowUpDeadline.MinDate = new System.DateTime(2016, 8, 25, 23, 59, 59, 0);
             this.txtFollowUpDeadline.Name = "txtFollowUpDeadline";
             this.txtFollowUpDeadline.Size = new System.Drawing.Size(277, 32);
-            this.txtFollowUpDeadline.TabIndex = 40;
+            this.txtFollowUpDeadline.TabIndex = 11;
             this.txtFollowUpDeadline.Value = new System.DateTime(2016, 8, 25, 23, 59, 59, 0);
             // 
             // label7
@@ -249,7 +249,7 @@
             this.txtSClientId.Name = "txtSClientId";
             this.txtSClientId.ReadOnly = true;
             this.txtSClientId.Size = new System.Drawing.Size(233, 26);
-            this.txtSClientId.TabIndex = 34;
+            this.txtSClientId.TabIndex = 1;
             this.txtSClientId.TextChanged += new System.EventHandler(this.txtSClientId_TextChanged);
             // 
             // txtSCContactNo
@@ -259,7 +259,7 @@
             this.txtSCContactNo.Name = "txtSCContactNo";
             this.txtSCContactNo.ReadOnly = true;
             this.txtSCContactNo.Size = new System.Drawing.Size(236, 29);
-            this.txtSCContactNo.TabIndex = 33;
+            this.txtSCContactNo.TabIndex = 5;
             this.txtSCContactNo.TextChanged += new System.EventHandler(this.txtSCContactNo_TextChanged);
             // 
             // txtSCPName
@@ -269,7 +269,7 @@
             this.txtSCPName.Name = "txtSCPName";
             this.txtSCPName.ReadOnly = true;
             this.txtSCPName.Size = new System.Drawing.Size(233, 26);
-            this.txtSCPName.TabIndex = 32;
+            this.txtSCPName.TabIndex = 2;
             // 
             // txtSClientName
             // 
@@ -278,7 +278,7 @@
             this.txtSClientName.Name = "txtSClientName";
             this.txtSClientName.ReadOnly = true;
             this.txtSClientName.Size = new System.Drawing.Size(236, 29);
-            this.txtSClientName.TabIndex = 31;
+            this.txtSClientName.TabIndex = 4;
             // 
             // label10
             // 
@@ -328,7 +328,7 @@
             this.cmbSFollowUpId.Location = new System.Drawing.Point(10, 48);
             this.cmbSFollowUpId.Name = "cmbSFollowUpId";
             this.cmbSFollowUpId.Size = new System.Drawing.Size(193, 27);
-            this.cmbSFollowUpId.TabIndex = 25;
+            this.cmbSFollowUpId.TabIndex = 0;
             this.cmbSFollowUpId.SelectedIndexChanged += new System.EventHandler(this.cmbSFollowUpId_SelectedIndexChanged);
             // 
             // label2

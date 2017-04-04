@@ -62,7 +62,7 @@
             this.button2.Location = new System.Drawing.Point(6, 206);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(135, 61);
-            this.button2.TabIndex = 1;
+            this.button2.TabIndex = 2;
             this.button2.Text = "New Followup";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -74,7 +74,7 @@
             this.button3.Location = new System.Drawing.Point(6, 122);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(135, 58);
-            this.button3.TabIndex = 2;
+            this.button3.TabIndex = 1;
             this.button3.Text = "My Pending Followup";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -97,7 +97,7 @@
             this.salesClientButton.Location = new System.Drawing.Point(6, 47);
             this.salesClientButton.Name = "salesClientButton";
             this.salesClientButton.Size = new System.Drawing.Size(160, 55);
-            this.salesClientButton.TabIndex = 4;
+            this.salesClientButton.TabIndex = 0;
             this.salesClientButton.Text = "New FeedBack ";
             this.salesClientButton.UseVisualStyleBackColor = true;
             this.salesClientButton.Click += new System.EventHandler(this.salesClientButton_Click);
@@ -149,7 +149,7 @@
             this.button6.Location = new System.Drawing.Point(12, 209);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(154, 55);
-            this.button6.TabIndex = 6;
+            this.button6.TabIndex = 2;
             this.button6.Text = "New Follow Up";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
@@ -161,7 +161,7 @@
             this.button5.Location = new System.Drawing.Point(12, 122);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(154, 58);
-            this.button5.TabIndex = 5;
+            this.button5.TabIndex = 1;
             this.button5.Text = "MY Pending Follow Up";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);

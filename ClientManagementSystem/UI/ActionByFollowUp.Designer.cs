@@ -112,7 +112,7 @@
             this.cmbModeOfConduct.Location = new System.Drawing.Point(320, 448);
             this.cmbModeOfConduct.Name = "cmbModeOfConduct";
             this.cmbModeOfConduct.Size = new System.Drawing.Size(251, 30);
-            this.cmbModeOfConduct.TabIndex = 34;
+            this.cmbModeOfConduct.TabIndex = 10;
             this.cmbModeOfConduct.SelectedIndexChanged += new System.EventHandler(this.cmbModeOfConduct_SelectedIndexChanged);
             // 
             // label3
@@ -131,7 +131,7 @@
             this.txtClientInquiryOrFeedback.Location = new System.Drawing.Point(282, 217);
             this.txtClientInquiryOrFeedback.Name = "txtClientInquiryOrFeedback";
             this.txtClientInquiryOrFeedback.Size = new System.Drawing.Size(291, 193);
-            this.txtClientInquiryOrFeedback.TabIndex = 32;
+            this.txtClientInquiryOrFeedback.TabIndex = 8;
             this.txtClientInquiryOrFeedback.Text = "";
             // 
             // txtDeadlineTime
@@ -140,7 +140,7 @@
             this.txtDeadlineTime.Name = "txtDeadlineTime";
             this.txtDeadlineTime.ReadOnly = true;
             this.txtDeadlineTime.Size = new System.Drawing.Size(251, 29);
-            this.txtDeadlineTime.TabIndex = 31;
+            this.txtDeadlineTime.TabIndex = 3;
             // 
             // label1
             // 
@@ -156,7 +156,7 @@
             this.whDoneTextBox.Location = new System.Drawing.Point(599, 217);
             this.whDoneTextBox.Name = "whDoneTextBox";
             this.whDoneTextBox.Size = new System.Drawing.Size(326, 193);
-            this.whDoneTextBox.TabIndex = 29;
+            this.whDoneTextBox.TabIndex = 9;
             this.whDoneTextBox.Text = "";
             // 
             // youHaveToDoTextBox
@@ -165,7 +165,7 @@
             this.youHaveToDoTextBox.Name = "youHaveToDoTextBox";
             this.youHaveToDoTextBox.ReadOnly = true;
             this.youHaveToDoTextBox.Size = new System.Drawing.Size(266, 193);
-            this.youHaveToDoTextBox.TabIndex = 28;
+            this.youHaveToDoTextBox.TabIndex = 7;
             this.youHaveToDoTextBox.Text = "";
             // 
             // txtReferredBy
@@ -174,7 +174,7 @@
             this.txtReferredBy.Name = "txtReferredBy";
             this.txtReferredBy.ReadOnly = true;
             this.txtReferredBy.Size = new System.Drawing.Size(277, 29);
-            this.txtReferredBy.TabIndex = 27;
+            this.txtReferredBy.TabIndex = 6;
             // 
             // submitButton
             // 
@@ -182,7 +182,7 @@
             this.submitButton.Location = new System.Drawing.Point(760, 433);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(165, 78);
-            this.submitButton.TabIndex = 6;
+            this.submitButton.TabIndex = 12;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
@@ -204,7 +204,7 @@
             this.clientIdTextBox.Name = "clientIdTextBox";
             this.clientIdTextBox.ReadOnly = true;
             this.clientIdTextBox.Size = new System.Drawing.Size(251, 29);
-            this.clientIdTextBox.TabIndex = 24;
+            this.clientIdTextBox.TabIndex = 1;
             this.clientIdTextBox.TextChanged += new System.EventHandler(this.clientIdTextBox_TextChanged);
             // 
             // cellNoTextBox
@@ -213,7 +213,7 @@
             this.cellNoTextBox.Name = "cellNoTextBox";
             this.cellNoTextBox.ReadOnly = true;
             this.cellNoTextBox.Size = new System.Drawing.Size(277, 29);
-            this.cellNoTextBox.TabIndex = 23;
+            this.cellNoTextBox.TabIndex = 5;
             this.cellNoTextBox.TextChanged += new System.EventHandler(this.cellNoTextBox_TextChanged);
             // 
             // cPNameTextBox
@@ -222,7 +222,7 @@
             this.cPNameTextBox.Name = "cPNameTextBox";
             this.cPNameTextBox.ReadOnly = true;
             this.cPNameTextBox.Size = new System.Drawing.Size(251, 29);
-            this.cPNameTextBox.TabIndex = 22;
+            this.cPNameTextBox.TabIndex = 2;
             // 
             // clientNameTextBox
             // 
@@ -230,7 +230,7 @@
             this.clientNameTextBox.Name = "clientNameTextBox";
             this.clientNameTextBox.ReadOnly = true;
             this.clientNameTextBox.Size = new System.Drawing.Size(278, 29);
-            this.clientNameTextBox.TabIndex = 21;
+            this.clientNameTextBox.TabIndex = 4;
             // 
             // label10
             // 
@@ -319,7 +319,7 @@
             this.followUpDeadlineDateTimePicker.MinDate = new System.DateTime(2016, 8, 25, 23, 59, 59, 0);
             this.followUpDeadlineDateTimePicker.Name = "followUpDeadlineDateTimePicker";
             this.followUpDeadlineDateTimePicker.Size = new System.Drawing.Size(251, 29);
-            this.followUpDeadlineDateTimePicker.TabIndex = 4;
+            this.followUpDeadlineDateTimePicker.TabIndex = 11;
             this.followUpDeadlineDateTimePicker.Value = new System.DateTime(2016, 8, 25, 23, 59, 59, 0);
             // 
             // label5

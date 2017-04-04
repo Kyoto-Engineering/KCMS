@@ -137,7 +137,7 @@
             this.action3SMultiTextBox.Location = new System.Drawing.Point(18, 116);
             this.action3SMultiTextBox.Name = "action3SMultiTextBox";
             this.action3SMultiTextBox.Size = new System.Drawing.Size(520, 163);
-            this.action3SMultiTextBox.TabIndex = 18;
+            this.action3SMultiTextBox.TabIndex = 0;
             this.action3SMultiTextBox.Text = "";
             // 
             // m
@@ -167,7 +167,7 @@
             this.submitButton.Location = new System.Drawing.Point(357, 407);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(161, 67);
-            this.submitButton.TabIndex = 14;
+            this.submitButton.TabIndex = 3;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = false;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
@@ -200,7 +200,7 @@
             this.cmb3SRP.Location = new System.Drawing.Point(248, 310);
             this.cmb3SRP.Name = "cmb3SRP";
             this.cmb3SRP.Size = new System.Drawing.Size(290, 29);
-            this.cmb3SRP.TabIndex = 2;
+            this.cmb3SRP.TabIndex = 1;
             this.cmb3SRP.SelectedIndexChanged += new System.EventHandler(this.responsible3SPerson2ComboBox_SelectedIndexChanged);
             // 
             // label8
@@ -233,7 +233,7 @@
             this.followUp3SDeadlineDateTimePicker.Location = new System.Drawing.Point(248, 364);
             this.followUp3SDeadlineDateTimePicker.Name = "followUp3SDeadlineDateTimePicker";
             this.followUp3SDeadlineDateTimePicker.Size = new System.Drawing.Size(290, 29);
-            this.followUp3SDeadlineDateTimePicker.TabIndex = 3;
+            this.followUp3SDeadlineDateTimePicker.TabIndex = 2;
             // 
             // label5
             // 
@@ -368,7 +368,7 @@
             this.searchByIDTextBox.Location = new System.Drawing.Point(15, 44);
             this.searchByIDTextBox.Name = "searchByIDTextBox";
             this.searchByIDTextBox.Size = new System.Drawing.Size(267, 29);
-            this.searchByIDTextBox.TabIndex = 10;
+            this.searchByIDTextBox.TabIndex = 0;
             this.searchByIDTextBox.TextChanged += new System.EventHandler(this.searchByIDTextBox_TextChanged);
             // 
             // label10
@@ -397,7 +397,7 @@
             this.txtClientName.Location = new System.Drawing.Point(356, 44);
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.Size = new System.Drawing.Size(309, 29);
-            this.txtClientName.TabIndex = 7;
+            this.txtClientName.TabIndex = 1;
             this.txtClientName.TextChanged += new System.EventHandler(this.txtClientName_TextChanged);
             // 
             // SActionFollowUpProceedForm

@@ -30,8 +30,8 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtIndustryCategory = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,17 +57,7 @@
             this.txtIndustryCategory.Location = new System.Drawing.Point(195, 36);
             this.txtIndustryCategory.Name = "txtIndustryCategory";
             this.txtIndustryCategory.Size = new System.Drawing.Size(268, 29);
-            this.txtIndustryCategory.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(7, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 22);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Industry  Category";
+            this.txtIndustryCategory.TabIndex = 0;
             // 
             // saveButton
             // 
@@ -81,6 +71,16 @@
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(7, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(164, 22);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Industry  Category";
             // 
             // groupBox2
             // 

@@ -35,6 +35,11 @@
             this.submitButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,11 +64,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.followUpDeadlineDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -112,7 +112,7 @@
             this.submitButton.Location = new System.Drawing.Point(372, 453);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(176, 99);
-            this.submitButton.TabIndex = 4;
+            this.submitButton.TabIndex = 0;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
@@ -145,6 +145,36 @@
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(650, 226);
             this.dataGridView2.TabIndex = 19;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Date";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Feed Back";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Action";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Submited by";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Status";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
             // 
             // groupBox4
             // 
@@ -225,7 +255,7 @@
             this.searchByClientIDTextBox.Location = new System.Drawing.Point(11, 36);
             this.searchByClientIDTextBox.Name = "searchByClientIDTextBox";
             this.searchByClientIDTextBox.Size = new System.Drawing.Size(202, 29);
-            this.searchByClientIDTextBox.TabIndex = 6;
+            this.searchByClientIDTextBox.TabIndex = 0;
             this.searchByClientIDTextBox.TextChanged += new System.EventHandler(this.searchByClientIDTextBox_TextChanged);
             // 
             // label10
@@ -254,7 +284,7 @@
             this.txtClientName.Location = new System.Drawing.Point(402, 33);
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.Size = new System.Drawing.Size(188, 29);
-            this.txtClientName.TabIndex = 3;
+            this.txtClientName.TabIndex = 1;
             this.txtClientName.TextChanged += new System.EventHandler(this.txtClientName_TextChanged);
             // 
             // label4
@@ -290,7 +320,7 @@
             this.action2MultiTextBox.Location = new System.Drawing.Point(6, 85);
             this.action2MultiTextBox.Name = "action2MultiTextBox";
             this.action2MultiTextBox.Size = new System.Drawing.Size(576, 181);
-            this.action2MultiTextBox.TabIndex = 16;
+            this.action2MultiTextBox.TabIndex = 0;
             this.action2MultiTextBox.Text = "";
             // 
             // txt3ClientName
@@ -335,7 +365,7 @@
             this.responsiblePerson2ComboBox.Location = new System.Drawing.Point(242, 302);
             this.responsiblePerson2ComboBox.Name = "responsiblePerson2ComboBox";
             this.responsiblePerson2ComboBox.Size = new System.Drawing.Size(332, 29);
-            this.responsiblePerson2ComboBox.TabIndex = 2;
+            this.responsiblePerson2ComboBox.TabIndex = 1;
             this.responsiblePerson2ComboBox.SelectedIndexChanged += new System.EventHandler(this.responsiblePerson2ComboBox_SelectedIndexChanged);
             // 
             // label8
@@ -366,7 +396,7 @@
             this.followUpDeadlineDateTimePicker.Location = new System.Drawing.Point(242, 363);
             this.followUpDeadlineDateTimePicker.Name = "followUpDeadlineDateTimePicker";
             this.followUpDeadlineDateTimePicker.Size = new System.Drawing.Size(332, 29);
-            this.followUpDeadlineDateTimePicker.TabIndex = 3;
+            this.followUpDeadlineDateTimePicker.TabIndex = 2;
             // 
             // label5
             // 
@@ -377,36 +407,6 @@
             this.label5.Size = new System.Drawing.Size(208, 22);
             this.label5.TabIndex = 2;
             this.label5.Text = "Deadline Date and Time";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Date";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "Feed Back";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Action";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Submited by";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Status";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
             // 
             // ActionFollowUpProceedForm
             // 
