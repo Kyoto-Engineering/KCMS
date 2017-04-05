@@ -434,6 +434,13 @@ namespace ClientManagementSystem.UI
 
         private void txtClientComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //ToolTip toolTip1 = new ToolTip();
+            //toolTip1.AutoPopDelay = 0;
+            //toolTip1.InitialDelay = 0;
+            //toolTip1.ReshowDelay = 0;
+            //toolTip1.ShowAlways = true;
+            //toolTip1.SetToolTip(this.txtClientComboBox, txtClientComboBox.Items[txtClientComboBox.SelectedIndex].ToString());
+
             GetClientTypeId();
 
         }
@@ -735,6 +742,12 @@ namespace ClientManagementSystem.UI
 
         private void cmbNatureOfClient_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 0;
+            toolTip1.InitialDelay = 0;
+            toolTip1.ReshowDelay = 0;
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(this.cmbNatureOfClient, cmbNatureOfClient.Items[cmbNatureOfClient.SelectedIndex].ToString());
             try
             {
                 con = new SqlConnection(cs.DBConn);
@@ -1539,6 +1552,14 @@ namespace ClientManagementSystem.UI
         }
         private void cmbEmailAddress_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 0;
+            toolTip1.InitialDelay = 0;
+            toolTip1.ReshowDelay = 0;
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(this.cmbEmailAddress, cmbEmailAddress.Items[cmbEmailAddress.SelectedIndex].ToString());
+
+
             if (cmbEmailAddress.Text == "Not In The List")
             {
                 string input = Microsoft.VisualBasic.Interaction.InputBox("Please Input Mode Of Conduct  Here", "Input Here", "", -1, -1);
@@ -1662,6 +1683,13 @@ namespace ClientManagementSystem.UI
         }
         private void cmbCPEmailAddress_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 0;
+            toolTip1.InitialDelay = 0;
+            toolTip1.ReshowDelay = 0;
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(this.cmbCPEmailAddress, cmbCPEmailAddress.Items[cmbCPEmailAddress.SelectedIndex].ToString());
+
             if (cmbCPEmailAddress.Text == "Not In The List")
             {
                 string input = Microsoft.VisualBasic.Interaction.InputBox("Please Input Email Here", "Input Here", "", -1, -1);
@@ -1979,17 +2007,7 @@ namespace ClientManagementSystem.UI
         }
 
         private void txtCellNumber_Validating(object sender, CancelEventArgs e)
-        {
-            //string emailId = txtEmail.Text.Trim();
-            //Regex mRegxExpression;
-
-            //mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
-
-            //if (!mRegxExpression.IsMatch(emailId))
-            //{
-            //    MessageBox.Show("E-mail address format is incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    txtEmail.Focus();
-            //}
+        {        
 
             //int sum = 0;
             //foreach (Control ctrl in this.Controls)
@@ -2013,8 +2031,39 @@ namespace ClientManagementSystem.UI
             if(sum==0)
             {
                 txtCellNumber.Clear();
+            }        
+        }
+
+        private void cContactNoTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            int sum = 0;
+            int num = Convert.ToInt32(cContactNoTextBox.Text);
+            while (num > 0)
+            {
+                sum = sum + (num / 10);
+                num = num / 10;
             }
-            
+
+            if (sum == 0)
+            {
+                cContactNoTextBox.Clear();
+            } 
+        }
+
+        private void tContactNoTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            int sum = 0;
+            int num = Convert.ToInt32(tContactNoTextBox.Text);
+            while (num > 0)
+            {
+                sum = sum + (num / 10);
+                num = num / 10;
+            }
+
+            if (sum == 0)
+            {
+                tContactNoTextBox.Clear();
+            } 
         }    
     }
 }

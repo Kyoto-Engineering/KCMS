@@ -175,9 +175,10 @@ namespace ClientManagementSystem.UI
         }       
         private void SActionByFollowUp_Load(object sender, EventArgs e)
         {
-            PopulateFollowUpId();
+            
             ModeOfConduct();
             nUserId = LoginForm.uId.ToString();
+            PopulateFollowUpId();
         }
         private void GetClientDetails()
         {

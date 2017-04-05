@@ -100,9 +100,9 @@
             this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(61, 451);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(162, 22);
+            this.label12.Size = new System.Drawing.Size(158, 22);
             this.label12.TabIndex = 35;
-            this.label12.Text = "Mode Of  Conduct";
+            this.label12.Text = "Mode Of  Contact";
             // 
             // cmbModeOfConduct
             // 

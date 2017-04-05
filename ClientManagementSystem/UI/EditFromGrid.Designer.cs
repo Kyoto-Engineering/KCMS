@@ -201,9 +201,9 @@
             this.cmbIndustryCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbIndustryCategory.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbIndustryCategory.FormattingEnabled = true;
-            this.cmbIndustryCategory.Location = new System.Drawing.Point(229, 213);
+            this.cmbIndustryCategory.Location = new System.Drawing.Point(230, 213);
             this.cmbIndustryCategory.Name = "cmbIndustryCategory";
-            this.cmbIndustryCategory.Size = new System.Drawing.Size(213, 27);
+            this.cmbIndustryCategory.Size = new System.Drawing.Size(215, 27);
             this.cmbIndustryCategory.TabIndex = 6;
             this.cmbIndustryCategory.SelectedIndexChanged += new System.EventHandler(this.cmbIndustryCategory_SelectedIndexChanged);
             // 
@@ -212,9 +212,9 @@
             this.cmbRM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRM.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbRM.FormattingEnabled = true;
-            this.cmbRM.Location = new System.Drawing.Point(229, 14);
+            this.cmbRM.Location = new System.Drawing.Point(230, 14);
             this.cmbRM.Name = "cmbRM";
-            this.cmbRM.Size = new System.Drawing.Size(213, 27);
+            this.cmbRM.Size = new System.Drawing.Size(215, 27);
             this.cmbRM.TabIndex = 0;
             this.cmbRM.SelectedIndexChanged += new System.EventHandler(this.cmbRM_SelectedIndexChanged);
             // 
@@ -223,7 +223,7 @@
             this.txtEndUser.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEndUser.Location = new System.Drawing.Point(229, 246);
             this.txtEndUser.Name = "txtEndUser";
-            this.txtEndUser.Size = new System.Drawing.Size(214, 26);
+            this.txtEndUser.Size = new System.Drawing.Size(215, 26);
             this.txtEndUser.TabIndex = 7;
             // 
             // label10
@@ -246,7 +246,7 @@
             this.cmbNatureOfClient.FormattingEnabled = true;
             this.cmbNatureOfClient.Location = new System.Drawing.Point(229, 144);
             this.cmbNatureOfClient.Name = "cmbNatureOfClient";
-            this.cmbNatureOfClient.Size = new System.Drawing.Size(214, 27);
+            this.cmbNatureOfClient.Size = new System.Drawing.Size(215, 27);
             this.cmbNatureOfClient.TabIndex = 4;
             this.cmbNatureOfClient.SelectedIndexChanged += new System.EventHandler(this.cmbNatureOfClient_SelectedIndexChanged);
             // 
@@ -257,7 +257,7 @@
             this.cmbClientType.FormattingEnabled = true;
             this.cmbClientType.Location = new System.Drawing.Point(229, 111);
             this.cmbClientType.Name = "cmbClientType";
-            this.cmbClientType.Size = new System.Drawing.Size(214, 27);
+            this.cmbClientType.Size = new System.Drawing.Size(215, 27);
             this.cmbClientType.TabIndex = 3;
             this.cmbClientType.SelectedIndexChanged += new System.EventHandler(this.cmbClientType_SelectedIndexChanged);
             // 
@@ -854,7 +854,7 @@
             this.tHouseNoTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tHouseNoTextBox.Location = new System.Drawing.Point(130, 50);
             this.tHouseNoTextBox.Name = "tHouseNoTextBox";
-            this.tHouseNoTextBox.Size = new System.Drawing.Size(146, 26);
+            this.tHouseNoTextBox.Size = new System.Drawing.Size(147, 26);
             this.tHouseNoTextBox.TabIndex = 1;
             // 
             // tFlatNoTextBox
@@ -862,7 +862,7 @@
             this.tFlatNoTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tFlatNoTextBox.Location = new System.Drawing.Point(130, 20);
             this.tFlatNoTextBox.Name = "tFlatNoTextBox";
-            this.tFlatNoTextBox.Size = new System.Drawing.Size(146, 26);
+            this.tFlatNoTextBox.Size = new System.Drawing.Size(147, 26);
             this.tFlatNoTextBox.TabIndex = 0;
             // 
             // label22
@@ -925,10 +925,10 @@
             // txtClientId
             // 
             this.txtClientId.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClientId.Location = new System.Drawing.Point(229, 47);
+            this.txtClientId.Location = new System.Drawing.Point(230, 47);
             this.txtClientId.Name = "txtClientId";
             this.txtClientId.ReadOnly = true;
-            this.txtClientId.Size = new System.Drawing.Size(213, 26);
+            this.txtClientId.Size = new System.Drawing.Size(215, 26);
             this.txtClientId.TabIndex = 1;
             // 
             // labelh
@@ -997,7 +997,7 @@
             this.txtClientName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.ReadOnly = true;
-            this.txtClientName.Size = new System.Drawing.Size(214, 26);
+            this.txtClientName.Size = new System.Drawing.Size(215, 26);
             this.txtClientName.TabIndex = 2;
             // 
             // label3

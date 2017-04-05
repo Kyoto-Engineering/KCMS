@@ -50,7 +50,6 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tBlockTextBox2 = new wmgCMS.WaterMarkTextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.tDivisionCombo = new System.Windows.Forms.ComboBox();
             this.label48 = new System.Windows.Forms.Label();
@@ -78,7 +77,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cBlockTextBox1 = new wmgCMS.WaterMarkTextBox();
             this.cPostOfficeCombo = new System.Windows.Forms.ComboBox();
             this.label44 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
@@ -122,6 +120,8 @@
             this.editButton = new System.Windows.Forms.Button();
             this.getDataButton = new System.Windows.Forms.Button();
             this.newButton = new System.Windows.Forms.Button();
+            this.tBlockTextBox2 = new wmgCMS.WaterMarkTextBox();
+            this.cBlockTextBox1 = new wmgCMS.WaterMarkTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -427,16 +427,6 @@
             this.groupBox3.TabIndex = 60;
             this.groupBox3.TabStop = false;
             // 
-            // tBlockTextBox2
-            // 
-            this.tBlockTextBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBlockTextBox2.Location = new System.Drawing.Point(156, 106);
-            this.tBlockTextBox2.Name = "tBlockTextBox2";
-            this.tBlockTextBox2.Size = new System.Drawing.Size(163, 26);
-            this.tBlockTextBox2.TabIndex = 3;
-            this.tBlockTextBox2.WaterMarkColor = System.Drawing.Color.Gray;
-            this.tBlockTextBox2.WaterMarkText = "if Any";
-            // 
             // label47
             // 
             this.label47.AutoSize = true;
@@ -561,6 +551,7 @@
             this.tContactNoTextBox.Size = new System.Drawing.Size(162, 26);
             this.tContactNoTextBox.TabIndex = 4;
             this.tContactNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tContactNoTextBox_KeyPress);
+            this.tContactNoTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.tContactNoTextBox_Validating);
             // 
             // label27
             // 
@@ -734,16 +725,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Address or Corporate Address";
             // 
-            // cBlockTextBox1
-            // 
-            this.cBlockTextBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBlockTextBox1.Location = new System.Drawing.Point(155, 109);
-            this.cBlockTextBox1.Name = "cBlockTextBox1";
-            this.cBlockTextBox1.Size = new System.Drawing.Size(171, 26);
-            this.cBlockTextBox1.TabIndex = 3;
-            this.cBlockTextBox1.WaterMarkColor = System.Drawing.Color.Gray;
-            this.cBlockTextBox1.WaterMarkText = "if Any";
-            // 
             // cPostOfficeCombo
             // 
             this.cPostOfficeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -853,6 +834,7 @@
             this.cContactNoTextBox.Size = new System.Drawing.Size(171, 26);
             this.cContactNoTextBox.TabIndex = 5;
             this.cContactNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cContactNoTextBox_KeyPress);
+            this.cContactNoTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.cContactNoTextBox_Validating);
             // 
             // label26
             // 
@@ -1210,6 +1192,26 @@
             this.newButton.TabIndex = 7;
             this.newButton.UseVisualStyleBackColor = false;
             this.newButton.Click += new System.EventHandler(this.newButton_Click);
+            // 
+            // tBlockTextBox2
+            // 
+            this.tBlockTextBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBlockTextBox2.Location = new System.Drawing.Point(156, 106);
+            this.tBlockTextBox2.Name = "tBlockTextBox2";
+            this.tBlockTextBox2.Size = new System.Drawing.Size(163, 26);
+            this.tBlockTextBox2.TabIndex = 3;
+            this.tBlockTextBox2.WaterMarkColor = System.Drawing.Color.Gray;
+            this.tBlockTextBox2.WaterMarkText = "if Any";
+            // 
+            // cBlockTextBox1
+            // 
+            this.cBlockTextBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBlockTextBox1.Location = new System.Drawing.Point(155, 109);
+            this.cBlockTextBox1.Name = "cBlockTextBox1";
+            this.cBlockTextBox1.Size = new System.Drawing.Size(171, 26);
+            this.cBlockTextBox1.TabIndex = 3;
+            this.cBlockTextBox1.WaterMarkColor = System.Drawing.Color.Gray;
+            this.cBlockTextBox1.WaterMarkText = "if Any";
             // 
             // ClientRegistrationForm
             // 
