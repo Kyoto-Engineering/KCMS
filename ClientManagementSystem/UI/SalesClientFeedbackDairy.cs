@@ -23,7 +23,7 @@ namespace ClientManagementSystem.UI
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
         public string fName, designation, department ,userId;
-        public int rPUserId;
+        public int rPUserId, modeOfConductId;
         public SalesClientFeedbackDairy()
         {
             InitializeComponent();
@@ -47,6 +47,29 @@ namespace ClientManagementSystem.UI
         
         private void submitButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select ModeOfConductId from ModeOfConducts where ModesOfConduct='" + txtModeOfConduct.Text + "'";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    modeOfConductId = (rdr.GetInt32(0));
+                }
+
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
             FirstStepOfSClientFeedBackDairy frm=new FirstStepOfSClientFeedBackDairy();
                      frm.ResetOfSClientFeedbackDairy();
 
@@ -54,7 +77,7 @@ namespace ClientManagementSystem.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string insertQuery = "insert into IClientFeedbackDairy(SClientId,ClientInquiry,Feedback,DateTimes,UserId,CurrentDate) Values(@sd1,@sd2,@sd3,@sd4,@sd5,@sd6)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                string insertQuery = "insert into IClientFeedbackDairy(SClientId,ClientInquiry,Feedback,DateTimes,UserId,CurrentDate,ModeOfConductId) Values(@sd1,@sd2,@sd3,@sd4,@sd5,@sd6,@sd7)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                 cmd = new SqlCommand(insertQuery);
                 cmd.Connection = con;             
                 cmd.Parameters.AddWithValue("@sd1", txt2SClientId.Text);
@@ -63,6 +86,7 @@ namespace ClientManagementSystem.UI
                 cmd.Parameters.AddWithValue("@sd4", Convert.ToDateTime(feedback2SDateTime.Text, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat));
                 cmd.Parameters.AddWithValue("@sd5", userId);
                 cmd.Parameters.AddWithValue("@sd6", DateTime.UtcNow.ToLocalTime());
+                cmd.Parameters.AddWithValue("@sd7", modeOfConductId);
                 affectedRows1 = (int)cmd.ExecuteScalar();
                 con.Close();
 
