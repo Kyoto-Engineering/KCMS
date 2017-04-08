@@ -53,8 +53,9 @@ namespace ClientManagementSystem.UI
                 frm.cHouseNoTextBox.Text = dr.Cells[13].Value.ToString();
                 frm.cRoadNoTextBox.Text = dr.Cells[14].Value.ToString();
                 frm.cBlockTextBox.Text = dr.Cells[15].Value.ToString();
-                frm.cContactNoTextBox.Text = dr.Cells[16].Value.ToString();
-                frm.cAreaTextBox.Text = dr.Cells[17].Value.ToString();
+                //Changed by Runju
+                frm.cContactNoTextBox.Text = dr.Cells[17].Value.ToString();
+                frm.cAreaTextBox.Text = dr.Cells[16].Value.ToString();
 
                 frm.cDivisionCombo.Text = dr.Cells[18].Value.ToString();
                 frm.cDistrictCombo.Text = dr.Cells[19].Value.ToString();
