@@ -398,6 +398,7 @@
             this.groupBox5.TabIndex = 101;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Address or Corporate Address";
+            this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
             // cPostOfficeCombo
             // 

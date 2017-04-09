@@ -28,6 +28,7 @@ namespace ClientManagementSystem.UI
         public string nUserId;
         public string clientTypeId1, natureOfClientId, industryCategoryId;
         public int affectedRows1,affectedRows2, affectedRows3, bankEmailId, bankCPEmailId;
+        public int thana_id, district_id;
         public EditFromGrid()
         {
             InitializeComponent();
@@ -198,6 +199,10 @@ namespace ClientManagementSystem.UI
             cDistCombo.Enabled = false;
             cThanaCombo.Enabled = false;
             cPostOfficeCombo.Enabled = false;
+
+            tDistCombo.Enabled = false;
+            tThanaCombo.Enabled = false;
+            tPostOfficeCombo.Enabled = false;
         }
 
         public void ClearTraddingAddress()
@@ -857,11 +862,32 @@ namespace ClientManagementSystem.UI
 
         private void cThanaCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            con = new SqlConnection(cs.DBConn);
+            con.Open();
+            cmd = con.CreateCommand();
+
+            cmd.CommandText = "select D_ID from Districts WHERE District= '" + cDistCombo.Text + "'";
+
+            rdr = cmd.ExecuteReader();
+            if (rdr.Read())
+            {
+                district_id = rdr.GetInt32(0);
+            }
+            if ((rdr != null))
+            {
+                rdr.Close();
+            }
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+
+
             try
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ctk = "SELECT  RTRIM(Thanas.T_ID)  from Thanas WHERE Thanas.Thana=@find";
+                string ctk = "SELECT  RTRIM(Thanas.T_ID)  from Thanas WHERE Thanas.Thana=@find And D_ID='" + district_id + "'";
                 cmd = new SqlCommand(ctk);
                 cmd.Connection = con;
                 cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "Thana"));
@@ -919,6 +945,26 @@ namespace ClientManagementSystem.UI
 
         private void cPostOfficeCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            con = new SqlConnection(cs.DBConn);
+            con.Open();
+            cmd = con.CreateCommand();
+
+            cmd.CommandText = "select T_ID from Thanas WHERE Thana= '" + cThanaCombo.Text + "'";
+
+            rdr = cmd.ExecuteReader();
+            if (rdr.Read())
+            {
+                thana_id = rdr.GetInt32(0);
+            }
+            if ((rdr != null))
+            {
+                rdr.Close();
+            }
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            //And PostOffice.T_ID='" + thana_id + "'
             try
             {
                 con = new SqlConnection(cs.DBConn);
@@ -982,12 +1028,22 @@ namespace ClientManagementSystem.UI
                     con.Close();
                 }
 
-
                 tDistCombo.Text = tDistCombo.Text.Trim();
                 tThanaCombo.Items.Clear();
-                tThanaCombo.Text = "";
+                tThanaCombo.ResetText();
+                tPostOfficeCombo.Items.Clear();
+                tPostOfficeCombo.ResetText();
+                tPostOfficeCombo.SelectedIndex = -1;
+                tPostOfficeCombo.Enabled = false;
+                tPostCodeTextBox.Clear();
                 tThanaCombo.Enabled = true;
                 tThanaCombo.Focus();
+
+                //tDistCombo.Text = tDistCombo.Text.Trim();
+                //tThanaCombo.Items.Clear();
+                //tThanaCombo.Text = "";
+                //tThanaCombo.Enabled = true;
+                //tThanaCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
@@ -1040,9 +1096,17 @@ namespace ClientManagementSystem.UI
 
                 tThanaCombo.Text = tThanaCombo.Text.Trim();
                 tPostOfficeCombo.Items.Clear();
-                tPostOfficeCombo.Text = "";
+                tPostOfficeCombo.ResetText();
+                // cPostOfficeCombo.Text = "";
+                tPostCodeTextBox.Clear();
                 tPostOfficeCombo.Enabled = true;
                 tPostOfficeCombo.Focus();
+
+                //tThanaCombo.Text = tThanaCombo.Text.Trim();
+                //tPostOfficeCombo.Items.Clear();
+                //tPostOfficeCombo.Text = "";
+                //tPostOfficeCombo.Enabled = true;
+                //tPostOfficeCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
@@ -1104,6 +1168,12 @@ namespace ClientManagementSystem.UI
 
         private void tDivisionCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            tDistCombo.Items.Clear();
+            tDistCombo.ResetText();
+            tThanaCombo.Items.Clear();
+            tThanaCombo.ResetText();
+            tPostOfficeCombo.Items.Clear();
+            tPostOfficeCombo.ResetText();
             try
             {
                 con = new SqlConnection(cs.DBConn);
@@ -1130,12 +1200,24 @@ namespace ClientManagementSystem.UI
                     con.Close();
                 }
 
-
-                tDivisionCombo.Text = tDivisionCombo.Text.Trim();
+                tDivisionCombo.Text = cDivisionCombo.Text.Trim();
                 tDistCombo.Items.Clear();
-                tDistCombo.Text = "";
+                tDistCombo.ResetText();
+                tThanaCombo.Items.Clear();
+                tThanaCombo.ResetText();
+                tThanaCombo.SelectedIndex = -1;
+                tPostOfficeCombo.Items.Clear();
+                tPostOfficeCombo.ResetText();
+                tPostOfficeCombo.SelectedIndex = -1;
+                tPostCodeTextBox.Clear();
                 tDistCombo.Enabled = true;
                 tDistCombo.Focus();
+
+                //tDivisionCombo.Text = tDivisionCombo.Text.Trim();
+                //tDistCombo.Items.Clear();
+                //tDistCombo.Text = "";
+                //tDistCombo.Enabled = true;
+                //tDistCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
@@ -1156,6 +1238,9 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            tThanaCombo.Enabled = false;
+            tPostOfficeCombo.Enabled = false;
         }
 
         private void ifApplicableCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -1778,6 +1863,11 @@ namespace ClientManagementSystem.UI
             //    MessageBox.Show("Please  select Division  first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //    tDivisionCombo.Focus();
             //}
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
         }
 
        
