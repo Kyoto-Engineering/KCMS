@@ -28,7 +28,7 @@ namespace ClientManagementSystem.UI
         private delegate void ChangeFocusDelegate(Control ctl);
         public int affectedRowsI,affectedRows1,affectedRows2,affectedRows3, currentClientId, clientTypeId, natureOfClientId, industryCategoryId,addTypeId1,addTypeId2,addTypeId3;
         public string fullName3, submittedBy3, districtIdC, districtIdT, districtIdB, divisionIdC, divisionIdT, divisionIdB, thanaIdC, thanaIdT, thanaIdB, iClientId, postOfficeIdC, postOfficeIdB, postOfficeIdT;
-        public int superviserId, bankEmailId, bankCPEmailId;
+        public int superviserId, bankEmailId, bankCPEmailId, cdistrict_id, tdistrict_id, bdistrict_id;
         public InstantClientEntryForm()
         {
             InitializeComponent();
@@ -1308,11 +1308,31 @@ namespace ClientManagementSystem.UI
 
         private void cThanaCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            con = new SqlConnection(cs.DBConn);
+            con.Open();
+            cmd = con.CreateCommand();
+
+            cmd.CommandText = "select D_ID from Districts WHERE District= '" + cDistrictCombo.Text + "'";
+
+            rdr = cmd.ExecuteReader();
+            if (rdr.Read())
+            {
+                cdistrict_id = rdr.GetInt32(0);
+            }
+            if ((rdr != null))
+            {
+                rdr.Close();
+            }
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+
             try
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ctk = "SELECT  RTRIM(Thanas.T_ID)  from Thanas WHERE Thanas.Thana=@find";
+                string ctk = "SELECT  RTRIM(Thanas.T_ID)  from Thanas WHERE Thanas.Thana=@find AND Thanas.D_ID='" + cdistrict_id + "'";
                 cmd = new SqlCommand(ctk);
                 cmd.Connection = con;
                 cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "Thana"));
@@ -1457,11 +1477,31 @@ namespace ClientManagementSystem.UI
 
         private void tThanaCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            con = new SqlConnection(cs.DBConn);
+            con.Open();
+            cmd = con.CreateCommand();
+
+            cmd.CommandText = "select D_ID from Districts WHERE District= '" + tDistCombo.Text + "'";
+
+            rdr = cmd.ExecuteReader();
+            if (rdr.Read())
+            {
+                tdistrict_id = rdr.GetInt32(0);
+            }
+            if ((rdr != null))
+            {
+                rdr.Close();
+            }
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+
             try
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ctk = "SELECT  RTRIM(Thanas.T_ID)  from Thanas WHERE Thanas.Thana=@find";
+                string ctk = "SELECT  RTRIM(Thanas.T_ID)  from Thanas WHERE Thanas.Thana=@find AND Thanas.D_ID='" + tdistrict_id + "'";
                 cmd = new SqlCommand(ctk);
                 cmd.Connection = con;
                 cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "Thana"));
@@ -1605,11 +1645,30 @@ namespace ClientManagementSystem.UI
 
         private void bThanaCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            con = new SqlConnection(cs.DBConn);
+            con.Open();
+            cmd = con.CreateCommand();
+
+            cmd.CommandText = "select D_ID from Districts WHERE District= '" + bDistrictCombo.Text + "'";
+
+            rdr = cmd.ExecuteReader();
+            if (rdr.Read())
+            {
+                bdistrict_id = rdr.GetInt32(0);
+            }
+            if ((rdr != null))
+            {
+                rdr.Close();
+            }
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
             try
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ctk = "SELECT  RTRIM(Thanas.T_ID)  from Thanas WHERE Thanas.Thana=@find";
+                string ctk = "SELECT  RTRIM(Thanas.T_ID)  from Thanas WHERE Thanas.Thana=@find AND Thanas.D_ID='"+bdistrict_id+"'";
                 cmd = new SqlCommand(ctk);
                 cmd.Connection = con;
                 cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "Thana"));
