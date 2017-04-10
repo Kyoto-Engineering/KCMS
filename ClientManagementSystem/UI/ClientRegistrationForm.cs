@@ -286,10 +286,14 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show("Please Enter Input in Correct Format", formatException.Message);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           
+         
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }  
+            
+            
   
         }
         
@@ -2063,15 +2067,17 @@ namespace ClientManagementSystem.UI
             //    }
             //}
 
-            int sum = 0;
-            int num=Convert.ToInt32(txtCellNumber.Text);
-            while(num>0)
+
+
+            decimal sum = 0;
+            decimal num = Convert.ToDecimal(txtCellNumber.Text);
+            while (num > 0)
             {
                 sum = sum + (num / 10);
-                num=num/10;
+                num = num / 10;
             }
 
-            if(sum==0)
+            if (sum == 0)
             {
                 txtCellNumber.Clear();
             }        
@@ -2079,8 +2085,8 @@ namespace ClientManagementSystem.UI
 
         private void cContactNoTextBox_Validating(object sender, CancelEventArgs e)
         {
-            int sum = 0;
-            int num = Convert.ToInt32(cContactNoTextBox.Text);
+            decimal sum = 0;
+            decimal num = Convert.ToDecimal(cContactNoTextBox.Text);
             while (num > 0)
             {
                 sum = sum + (num / 10);
@@ -2107,6 +2113,6 @@ namespace ClientManagementSystem.UI
             {
                 tContactNoTextBox.Clear();
             } 
-        }    
+        }       
     }
 }
