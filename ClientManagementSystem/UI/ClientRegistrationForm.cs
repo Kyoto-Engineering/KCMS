@@ -1296,7 +1296,7 @@ namespace ClientManagementSystem.UI
                     con.Close();
                 }
 
-                tDivisionCombo.Text = cDivisionCombo.Text.Trim();
+                tDivisionCombo.Text = tDivisionCombo.Text.Trim();
                 tDistrictCombo.Items.Clear();
                 tDistrictCombo.ResetText();
                 tThenaCombo.Items.Clear();
@@ -1589,6 +1589,8 @@ namespace ClientManagementSystem.UI
                 while (rdr.Read())
                 {
                     cmbEmailAddress.Items.Add(rdr.GetValue(0).ToString());
+
+                   
                 }
                 cmbEmailAddress.Items.Add("Not In The List");
             }
@@ -1599,12 +1601,16 @@ namespace ClientManagementSystem.UI
         }
         private void cmbEmailAddress_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ToolTip toolTip1 = new ToolTip();
-            toolTip1.AutoPopDelay = 0;
-            toolTip1.InitialDelay = 0;
-            toolTip1.ReshowDelay = 0;
-            toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(this.cmbEmailAddress, cmbEmailAddress.Items[cmbEmailAddress.SelectedIndex].ToString());
+            if (!(cmbCPEmailAddress.SelectedIndex==-1))
+            {
+                ToolTip toolTip1 = new ToolTip();
+                toolTip1.AutoPopDelay = 0;
+                toolTip1.InitialDelay = 0;
+                toolTip1.ReshowDelay = 0;
+                toolTip1.ShowAlways = true;
+                toolTip1.SetToolTip(this.cmbEmailAddress, cmbEmailAddress.Items[cmbEmailAddress.SelectedIndex].ToString());  
+            }
+            
 
 
             if (cmbEmailAddress.Text == "Not In The List")
@@ -1730,12 +1736,16 @@ namespace ClientManagementSystem.UI
         }
         private void cmbCPEmailAddress_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ToolTip toolTip1 = new ToolTip();
-            toolTip1.AutoPopDelay = 0;
-            toolTip1.InitialDelay = 0;
-            toolTip1.ReshowDelay = 0;
-            toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(this.cmbCPEmailAddress, cmbCPEmailAddress.Items[cmbCPEmailAddress.SelectedIndex].ToString());
+            if (!(cmbCPEmailAddress.SelectedIndex==-1))
+            {
+                ToolTip toolTip1 = new ToolTip();
+                toolTip1.AutoPopDelay = 0;
+                toolTip1.InitialDelay = 0;
+                toolTip1.ReshowDelay = 0;
+                toolTip1.ShowAlways = true;
+                toolTip1.SetToolTip(this.cmbCPEmailAddress, cmbCPEmailAddress.Items[cmbCPEmailAddress.SelectedIndex].ToString()); 
+            }
+            
 
             if (cmbCPEmailAddress.Text == "Not In The List")
             {
@@ -1743,6 +1753,8 @@ namespace ClientManagementSystem.UI
                 if (string.IsNullOrWhiteSpace(input))
                 {
                     cmbCPEmailAddress.SelectedIndex = -1;
+                    //cmbCPEmailAddress.ResetText();
+                    
                 }
                 else
                 {
@@ -2113,6 +2125,19 @@ namespace ClientManagementSystem.UI
             {
                 tContactNoTextBox.Clear();
             } 
+        }
+
+        private void cmbEmailAddress_MouseHover(object sender, EventArgs e)
+        {
+            if (!(cmbCPEmailAddress.SelectedIndex == -1))
+            {
+                ToolTip toolTip1 = new ToolTip();
+                toolTip1.AutoPopDelay = 0;
+                toolTip1.InitialDelay = 0;
+                toolTip1.ReshowDelay = 0;
+                toolTip1.ShowAlways = true;
+                toolTip1.SetToolTip(this.cmbEmailAddress, cmbEmailAddress.Items[cmbEmailAddress.SelectedIndex].ToString());
+            }
         }       
     }
 }
