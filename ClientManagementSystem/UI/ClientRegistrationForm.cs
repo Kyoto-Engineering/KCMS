@@ -1081,6 +1081,7 @@ namespace ClientManagementSystem.UI
             cThanaCombo.ResetText();
             cPostOfficeCombo.Items.Clear();
             cPostOfficeCombo.ResetText();
+
             try
             {
                 con = new SqlConnection(cs.DBConn);
@@ -1389,7 +1390,7 @@ namespace ClientManagementSystem.UI
                     con.Close();
                 }
 
-                tThenaCombo.Text = cThanaCombo.Text.Trim();
+                tThenaCombo.Text = tThenaCombo.Text.Trim();
                 tPostCombo.Items.Clear();
                 tPostCombo.ResetText();              
                 tPostCodeTextBox.Clear();
@@ -2125,19 +2126,6 @@ namespace ClientManagementSystem.UI
             {
                 tContactNoTextBox.Clear();
             } 
-        }
-
-        private void cmbEmailAddress_MouseHover(object sender, EventArgs e)
-        {
-            if (!(cmbCPEmailAddress.SelectedIndex == -1))
-            {
-                ToolTip toolTip1 = new ToolTip();
-                toolTip1.AutoPopDelay = 0;
-                toolTip1.InitialDelay = 0;
-                toolTip1.ReshowDelay = 0;
-                toolTip1.ShowAlways = true;
-                toolTip1.SetToolTip(this.cmbEmailAddress, cmbEmailAddress.Items[cmbEmailAddress.SelectedIndex].ToString());
-            }
-        }       
+        }     
     }
 }
