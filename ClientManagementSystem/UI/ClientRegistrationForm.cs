@@ -24,10 +24,10 @@ namespace ClientManagementSystem.UI
         private delegate void ChangeFocusDelegate(Control ctl);
         private int affectedRows1, currentClientId, affectedRows2, affectedRows3, affectedRows12;
         private SqlConnection con;
-        ConnectionString cs=new ConnectionString();
+        ConnectionString cs = new ConnectionString();
         private SqlDataReader rdr;
-        private  SqlCommand cmd;
-        public string fullName, submittedBy, districtIdC, districtIdT, divisionIdC, divisionIdT, thanaIdC,thanaIdC2, thanaIdT,postofficeIdC,postOfficeIdT,userType1;
+        private SqlCommand cmd;
+        public string fullName, submittedBy, districtIdC, districtIdT, divisionIdC, divisionIdT, thanaIdC, thanaIdC2, thanaIdT, postofficeIdC, postOfficeIdT, userType1;
         public int clientTypeId, natureOfClientId, industryCategoryId, addressTypeId1, addressTypeId2, superviserId, bankEmailId, bankCPEmailId;
         public int cdistrict_id, tdistrict_id;
         public ClientRegistrationForm()
@@ -50,10 +50,10 @@ namespace ClientManagementSystem.UI
             cmd.Parameters.AddWithValue("@d1", clientNameTextBox.Text);
             cmd.Parameters.AddWithValue("@d2", clientTypeId);
             cmd.Parameters.AddWithValue("@d3", natureOfClientId);
-           // cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(bankEmailId) ? (object)DBNull.Value : cmbEmailAddress.Text));
+            // cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(bankEmailId) ? (object)DBNull.Value : cmbEmailAddress.Text));
             cmd.Parameters.AddWithValue("@d4", bankEmailId);
             cmd.Parameters.AddWithValue("@d5", industryCategoryId);
-            cmd.Parameters.AddWithValue("@d6", endUserTextBox.Text);            
+            cmd.Parameters.AddWithValue("@d6", endUserTextBox.Text);
             cmd.Parameters.AddWithValue("@d7", submittedBy);
             cmd.Parameters.AddWithValue("@d8", DateTime.UtcNow.ToLocalTime());
             cmd.Parameters.AddWithValue("@d9", superviserId);
@@ -61,7 +61,7 @@ namespace ClientManagementSystem.UI
             con.Close();
         }
 
-        private void TASameAsCA(string  tblName1)
+        private void TASameAsCA(string tblName1)
         {
             string tableName = tblName1;
             con = new SqlConnection(cs.DBConn);
@@ -78,18 +78,18 @@ namespace ClientManagementSystem.UI
             cmd.Parameters.Add(new SqlParameter("@d10", string.IsNullOrEmpty(cContactNoTextBox.Text) ? (object)DBNull.Value : cContactNoTextBox.Text));
             cmd.Parameters.AddWithValue("@d11", currentClientId);
             affectedRows2 = (int)cmd.ExecuteScalar();
-            con.Close();              
+            con.Close();
         }
         private void SaveCorporateORTraddingAddress(string tblName1)
         {
-           string tableName = tblName1;
-           if (tableName == "CorporateAddresses")
+            string tableName = tblName1;
+            if (tableName == "CorporateAddresses")
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
                 string insertQ = "insert into " + tableName + "(PostOfficeId,CFlatNo,CHouseNo,CRoadNo,CBlock,CArea,CContactNo,IClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                 cmd = new SqlCommand(insertQ);
-                cmd.Connection = con;               
+                cmd.Connection = con;
                 cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postofficeIdC) ? (object)DBNull.Value : postofficeIdC));
                 cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(cFlatNoTextBox.Text) ? (object)DBNull.Value : cFlatNoTextBox.Text));
                 cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(cHouseNoTextBox.Text) ? (object)DBNull.Value : cHouseNoTextBox.Text));
@@ -102,25 +102,25 @@ namespace ClientManagementSystem.UI
                 affectedRows1 = (int)cmd.ExecuteScalar();
                 con.Close();
             }
-           else if (tableName == "TraddingAddresses")
-           {
-               con = new SqlConnection(cs.DBConn);
-               con.Open();
-               string Qry = "insert into " + tableName + "(PostOfficeId,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TContactNo,IClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
-               cmd = new SqlCommand(Qry);
-               cmd.Connection = con;              
-               cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdT) ? (object)DBNull.Value : postOfficeIdT));
-               cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(tFlatNoTextBox.Text) ? (object)DBNull.Value : tFlatNoTextBox.Text));
-               cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(tHouseNoTextBox.Text) ? (object)DBNull.Value : tHouseNoTextBox.Text));
-               cmd.Parameters.Add(new SqlParameter("@d7", string.IsNullOrEmpty(tRoadNoTextBox.Text) ? (object)DBNull.Value : tRoadNoTextBox.Text));
-               cmd.Parameters.Add(new SqlParameter("@d8", string.IsNullOrEmpty(tBlockTextBox2.Text) ? (object)DBNull.Value : tBlockTextBox2.Text));
-               cmd.Parameters.Add(new SqlParameter("@d9", string.IsNullOrEmpty(tAreaTextBox.Text) ? (object)DBNull.Value : tAreaTextBox.Text));
-               cmd.Parameters.Add(new SqlParameter("@d10", string.IsNullOrEmpty(tContactNoTextBox.Text) ? (object)DBNull.Value : tContactNoTextBox.Text));
-               cmd.Parameters.AddWithValue("@d11", currentClientId);
-               affectedRows2 = (int)cmd.ExecuteScalar();
-               con.Close();              
-           }
-        }       
+            else if (tableName == "TraddingAddresses")
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string Qry = "insert into " + tableName + "(PostOfficeId,TFlatNo,THouseNo,TRoadNo,TBlock,TArea,TContactNo,IClientId) Values(@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                cmd = new SqlCommand(Qry);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@d4", string.IsNullOrEmpty(postOfficeIdT) ? (object)DBNull.Value : postOfficeIdT));
+                cmd.Parameters.Add(new SqlParameter("@d5", string.IsNullOrEmpty(tFlatNoTextBox.Text) ? (object)DBNull.Value : tFlatNoTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@d6", string.IsNullOrEmpty(tHouseNoTextBox.Text) ? (object)DBNull.Value : tHouseNoTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@d7", string.IsNullOrEmpty(tRoadNoTextBox.Text) ? (object)DBNull.Value : tRoadNoTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@d8", string.IsNullOrEmpty(tBlockTextBox2.Text) ? (object)DBNull.Value : tBlockTextBox2.Text));
+                cmd.Parameters.Add(new SqlParameter("@d9", string.IsNullOrEmpty(tAreaTextBox.Text) ? (object)DBNull.Value : tAreaTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@d10", string.IsNullOrEmpty(tContactNoTextBox.Text) ? (object)DBNull.Value : tContactNoTextBox.Text));
+                cmd.Parameters.AddWithValue("@d11", currentClientId);
+                affectedRows2 = (int)cmd.ExecuteScalar();
+                con.Close();
+            }
+        }
 
         private void SaveContactPersonDetails()
         {
@@ -131,12 +131,12 @@ namespace ClientManagementSystem.UI
             cmd.Connection = con;
             cmd.Parameters.Add(new SqlParameter("@d1", string.IsNullOrEmpty(txtContactPerson.Text) ? (object)DBNull.Value : txtContactPerson.Text));
             cmd.Parameters.Add(new SqlParameter("@d2", string.IsNullOrEmpty(txtDesignation.Text) ? (object)DBNull.Value : txtDesignation.Text));
-            cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(txtCellNumber.Text) ? (object)DBNull.Value : txtCellNumber.Text));           
+            cmd.Parameters.Add(new SqlParameter("@d3", string.IsNullOrEmpty(txtCellNumber.Text) ? (object)DBNull.Value : txtCellNumber.Text));
             cmd.Parameters.AddWithValue("@d4", bankCPEmailId);
             cmd.Parameters.AddWithValue("@d5", currentClientId);
             affectedRows3 = (int)cmd.ExecuteScalar();
             con.Close();
-        }  
+        }
 
         private void ClearContactPersonDetails()
         {
@@ -149,7 +149,7 @@ namespace ClientManagementSystem.UI
 
             if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
             {
-                MessageBox.Show("Please Enter Valid Client name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                MessageBox.Show("Please Enter Valid Client name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (cmbClientType.Text == "")
@@ -201,35 +201,35 @@ namespace ClientManagementSystem.UI
                 cPostCodeTextBox.Focus();
                 return;
             }
-            if ((notApplicableCheckBox.Checked==false) && (sameAsCorporatAddCheckBox.Checked == false))
+            if ((notApplicableCheckBox.Checked == false) && (sameAsCorporatAddCheckBox.Checked == false))
             {
                 if (string.IsNullOrWhiteSpace(tDivisionCombo.Text))
                 {
-                    MessageBox.Show("Please select factory division", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                   
+                    MessageBox.Show("Please select factory division", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (string.IsNullOrWhiteSpace(tDistrictCombo.Text))
                 {
-                    MessageBox.Show("Please Select factory district", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                    
+                    MessageBox.Show("Please Select factory district", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (string.IsNullOrWhiteSpace(tThenaCombo.Text))
                 {
-                    MessageBox.Show("Please select factory Thana", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                    
+                    MessageBox.Show("Please select factory Thana", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (string.IsNullOrWhiteSpace(tPostCombo.Text))
                 {
-                    MessageBox.Show("Please Select factory Post Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                    
+                    MessageBox.Show("Please Select factory Post Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (string.IsNullOrWhiteSpace(tPostCodeTextBox.Text))
                 {
-                    MessageBox.Show("Please select factory Post Code", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                   
+                    MessageBox.Show("Please select factory Post Code", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
-           
+
             try
             {
                 con = new SqlConnection(cs.DBConn);
@@ -253,26 +253,26 @@ namespace ClientManagementSystem.UI
                     }
                     return;
                 }
-               //1.Corporate Address Applicable  & Tradding Address not Applicable
+                //1.Corporate Address Applicable  & Tradding Address not Applicable
                 if (notApplicableCheckBox.Checked)
                 {
                     SaveInquiryClient();
-                    SaveCorporateORTraddingAddress("CorporateAddresses");                                       
+                    SaveCorporateORTraddingAddress("CorporateAddresses");
                 }
-               //2.Corporate Address Applicable  & Tradding Address Same as  Corporate Address                                        
+                //2.Corporate Address Applicable  & Tradding Address Same as  Corporate Address                                        
                 if (sameAsCorporatAddCheckBox.Checked)
                 {
                     SaveInquiryClient();
                     SaveCorporateORTraddingAddress("CorporateAddresses");
                     TASameAsCA("TraddingAddresses");
-                                               
+
                 }
                 //3.Corporate Address Applicable  & Tradding Address  Applicable
                 if (sameAsCorporatAddCheckBox.Checked == false && notApplicableCheckBox.Checked == false)
                 {
                     SaveInquiryClient();
                     SaveCorporateORTraddingAddress("CorporateAddresses");
-                    SaveCorporateORTraddingAddress("TraddingAddresses");                   
+                    SaveCorporateORTraddingAddress("TraddingAddresses");
                 }
                 if (!string.IsNullOrEmpty(txtContactPerson.Text))
                 {
@@ -286,31 +286,31 @@ namespace ClientManagementSystem.UI
             {
                 MessageBox.Show("Please Enter Input in Correct Format", formatException.Message);
             }
-           
-         
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }  
-            
-            
-  
+
+
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}  
+
+
+
         }
-        
+
 
         private void editButton_Click(object sender, EventArgs e)
         {
-        
+
         }
 
         private void getDataButton_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void ResetTradingAddress()
         {
-           
+
             tFlatNoTextBox.Clear();
             tHouseNoTextBox.Clear();
             tRoadNoTextBox.Clear();
@@ -323,10 +323,10 @@ namespace ClientManagementSystem.UI
             tThenaCombo.SelectedIndex = -1;
             tDistrictCombo.SelectedIndex = -1;
             tDivisionCombo.SelectedIndex = -1;
-           
-           
-            
-            
+
+
+
+
         }
         private void FilStar()
         {
@@ -348,32 +348,32 @@ namespace ClientManagementSystem.UI
 
         private void Reset()
         {
-            
-            cmbClientType.SelectedIndex=-1;
+
+            cmbClientType.SelectedIndex = -1;
             cmbNatureOfClient.SelectedIndex = -1;
             cmbEmailAddress.SelectedIndex = -1;
-            cmbIndustryCategory.SelectedIndex=-1;
+            cmbIndustryCategory.SelectedIndex = -1;
             cmbCPEmailAddress.SelectedIndex = -1;
-            endUserTextBox.Clear();  
+            endUserTextBox.Clear();
             clientNameTextBox.Clear();
             cmbSuperviser.SelectedIndex = -1;
 
-            
+
             cFlatNoTextBox.Clear();
             cHouseNoTextBox.Clear();
             cRoadNoTextBox.Clear();
             cBlockTextBox1.Clear();
             cAreaTextBox.Clear();
             cContactNoTextBox.Clear();
-           
-            
-           
+
+
+
             cPostCodeTextBox.Clear();
             cPostOfficeCombo.SelectedIndex = -1;
             cThanaCombo.SelectedIndex = -1;
             cDistCombo.SelectedIndex = -1;
             cDivisionCombo.SelectedIndex = -1;
-            
+
 
             notApplicableCheckBox.CheckedChanged -= NotApplicableCheckBox_CheckedChanged;
             notApplicableCheckBox.Checked = false;
@@ -382,13 +382,13 @@ namespace ClientManagementSystem.UI
             sameAsCorporatAddCheckBox.CheckedChanged -= sameAsCorporatAddCheckBox_CheckedChanged;
             sameAsCorporatAddCheckBox.Checked = false;
             sameAsCorporatAddCheckBox.CheckedChanged += sameAsCorporatAddCheckBox_CheckedChanged;
-            if ((notApplicableCheckBox.Checked== false) && (sameAsCorporatAddCheckBox.Checked == false))
+            if ((notApplicableCheckBox.Checked == false) && (sameAsCorporatAddCheckBox.Checked == false))
             {
-                ResetTradingAddress(); 
-            }   
-      
-            
-            
+                ResetTradingAddress();
+            }
+
+
+
             txtCellNumber.Clear();
             txtDesignation.Clear();
             txtContactPerson.Clear();
@@ -399,13 +399,13 @@ namespace ClientManagementSystem.UI
         private void newButton_Click(object sender, EventArgs e)
         {
             Reset();
-            
+
         }
 
         private void closeButton_Click(object sender, EventArgs e)
-        {  
+        {
             this.Hide();
-          MainUIInquieryClient aMainUi=new MainUIInquieryClient();
+            MainUIInquieryClient aMainUi = new MainUIInquieryClient();
             aMainUi.ShowDialog();
 
         }
@@ -426,7 +426,7 @@ namespace ClientManagementSystem.UI
                 {
                     clientTypeId = (rdr.GetInt32(0));
                 }
-                
+
 
             }
 
@@ -463,12 +463,12 @@ namespace ClientManagementSystem.UI
         private void cellNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != '.'))
+                (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
 
-           
+
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
@@ -479,13 +479,13 @@ namespace ClientManagementSystem.UI
         {
             if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
                 e.Handled = true;
-            
+
             //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             //{
             //    e.Handled = true;
             //}
 
-            
+
             //if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             //{
             //    e.Handled = true;
@@ -495,12 +495,12 @@ namespace ClientManagementSystem.UI
         private void cPostCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-       (e.KeyChar != '.'))
+                (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
 
-           
+
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
@@ -511,7 +511,7 @@ namespace ClientManagementSystem.UI
         {
             if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
                 e.Handled = true;
-            
+
             //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
             // (e.KeyChar != '.'))
             //{
@@ -526,19 +526,19 @@ namespace ClientManagementSystem.UI
         private void tPostCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != '.'))
+                (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
 
-            
+
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
         }
-       
-        
+
+
         public void FillNatureOfClient()
         {
             try
@@ -660,8 +660,8 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-       
-       
+
+
         public void FillCMBSuperviserName()
         {
             try
@@ -689,7 +689,7 @@ namespace ClientManagementSystem.UI
         private void ClientRegistrationForm_Load(object sender, EventArgs e)
         {
             userType1 = LoginForm.userType;
-            submittedBy = LoginForm.uId.ToString();            
+            submittedBy = LoginForm.uId.ToString();
             FillCMBSuperviserName();
             EmailAddress();
             EmailCPAddress();
@@ -714,7 +714,7 @@ namespace ClientManagementSystem.UI
         {
             ParameterField paramField = new ParameterField();
             ParameterFields paramFields = new ParameterFields();
-            ParameterDiscreteValue paramDiscreteValue = new ParameterDiscreteValue(); 
+            ParameterDiscreteValue paramDiscreteValue = new ParameterDiscreteValue();
             paramField.Name = "id2";
             paramDiscreteValue.Value = affectedRows1;
             paramField.CurrentValues.Add(paramDiscreteValue);
@@ -737,22 +737,26 @@ namespace ClientManagementSystem.UI
                 reportLogonInfo.ConnectionInfo = reportConInfo;
                 table.ApplyLogOnInfo(reportLogonInfo);
             }
-            f2.crystalReportViewer1.ParameterFieldInfo = paramFields; 
+            f2.crystalReportViewer1.ParameterFieldInfo = paramFields;
             f2.crystalReportViewer1.ReportSource = cr;
-            
+
 
             f2.ShowDialog();
-          
+
         }
 
         private void cmbNatureOfClient_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ToolTip toolTip1 = new ToolTip();
-            toolTip1.AutoPopDelay = 0;
-            toolTip1.InitialDelay = 0;
-            toolTip1.ReshowDelay = 0;
-            toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(this.cmbNatureOfClient, cmbNatureOfClient.Items[cmbNatureOfClient.SelectedIndex].ToString());
+            if (!(cmbNatureOfClient.SelectedIndex == -1))
+            {
+                ToolTip toolTip1 = new ToolTip();
+                toolTip1.AutoPopDelay = 0;
+                toolTip1.InitialDelay = 0;
+                toolTip1.ReshowDelay = 0;
+                toolTip1.ShowAlways = true;
+                toolTip1.SetToolTip(this.cmbNatureOfClient, cmbNatureOfClient.Items[cmbNatureOfClient.SelectedIndex].ToString());
+            }
+
             try
             {
                 con = new SqlConnection(cs.DBConn);
@@ -812,78 +816,78 @@ namespace ClientManagementSystem.UI
 
         private void cmbAddressType1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void cmbAddressType2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
-       
+
         private void cDistCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
 
-                try
+
+            try
+            {
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctk = "SELECT  RTRIM(Districts.D_ID)  from Districts WHERE Districts.District=@find";
+
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "District"));
+                cmd.Parameters["@find"].Value = cDistCombo.Text;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
                 {
-
-                    con = new SqlConnection(cs.DBConn);
-                    con.Open();
-                    string ctk = "SELECT  RTRIM(Districts.D_ID)  from Districts WHERE Districts.District=@find";
-
-                    cmd = new SqlCommand(ctk);
-                    cmd.Connection = con;
-                    cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "District"));
-                    cmd.Parameters["@find"].Value = cDistCombo.Text;
-                    rdr = cmd.ExecuteReader();
-                    if (rdr.Read())
-                    {
-                        districtIdC = (rdr.GetString(0));
-
-                    }
-
-                    if ((rdr != null))
-                    {
-                        rdr.Close();
-                    }
-                    if (con.State == ConnectionState.Open)
-                    {
-                        con.Close();
-                    }
-
-
-                    cDistCombo.Text = cDistCombo.Text.Trim();
-                    cThanaCombo.Items.Clear();
-                    cThanaCombo.ResetText();
-                    cPostOfficeCombo.Items.Clear();
-                    cPostOfficeCombo.ResetText();
-                    cPostOfficeCombo.SelectedIndex = -1;
-                    cPostOfficeCombo.Enabled = false;
-                    cPostCodeTextBox.Clear();
-                    cThanaCombo.Enabled = true;
-                    cThanaCombo.Focus();
-
-                    con = new SqlConnection(cs.DBConn);
-                    con.Open();
-                    string ct = "select RTRIM(Thanas.Thana) from Thanas  Where Thanas.D_ID = '" + districtIdC + "' order by Thanas.D_ID desc";
-                    cmd = new SqlCommand(ct);
-                    cmd.Connection = con;
-                    rdr = cmd.ExecuteReader();
-
-                    while (rdr.Read())
-                    {
-                        cThanaCombo.Items.Add(rdr[0]);
-                    }
-                    con.Close();
+                    districtIdC = (rdr.GetString(0));
 
                 }
 
-                catch (Exception ex)
+                if ((rdr != null))
                 {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }   
-            }           
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+
+
+                cDistCombo.Text = cDistCombo.Text.Trim();
+                cThanaCombo.Items.Clear();
+                cThanaCombo.ResetText();
+                cPostOfficeCombo.Items.Clear();
+                cPostOfficeCombo.ResetText();
+                cPostOfficeCombo.SelectedIndex = -1;
+                cPostOfficeCombo.Enabled = false;
+                cPostCodeTextBox.Clear();
+                cThanaCombo.Enabled = true;
+                cThanaCombo.Focus();
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select RTRIM(Thanas.Thana) from Thanas  Where Thanas.D_ID = '" + districtIdC + "' order by Thanas.D_ID desc";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    cThanaCombo.Items.Add(rdr[0]);
+                }
+                con.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void tDistrictCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1020,7 +1024,7 @@ namespace ClientManagementSystem.UI
         private void closeButton_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            MainUIInquieryClient frm=new MainUIInquieryClient();
+            MainUIInquieryClient frm = new MainUIInquieryClient();
             frm.Show();
         }
 
@@ -1028,7 +1032,7 @@ namespace ClientManagementSystem.UI
         {
             if (sameAsCorporatAddCheckBox.Checked)
             {
-               
+
                 if (notApplicableCheckBox.Checked)
                 {
                     notApplicableCheckBox.CheckedChanged -= NotApplicableCheckBox_CheckedChanged;
@@ -1063,18 +1067,18 @@ namespace ClientManagementSystem.UI
                     FilStar();
                 }
             }
-            
+
         }
 
         private void ifApplicableCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-           
-            
+
+
         }
 
         private void cDivisionCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-              
+
             cDistCombo.Items.Clear();
             cDistCombo.ResetText();
             cThanaCombo.Items.Clear();
@@ -1092,7 +1096,7 @@ namespace ClientManagementSystem.UI
                 cmd.Connection = con;
                 cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "Division"));
                 cmd.Parameters["@find"].Value = cDivisionCombo.Text;
-                rdr = cmd.ExecuteReader();               
+                rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
                     divisionIdC = (rdr.GetString(0));
@@ -1119,7 +1123,7 @@ namespace ClientManagementSystem.UI
                 cPostOfficeCombo.ResetText();
                 cPostOfficeCombo.SelectedIndex = -1;
                 cPostCodeTextBox.Clear();
-                cDistCombo.Enabled = true;               
+                cDistCombo.Enabled = true;
                 cDistCombo.Focus();
 
                 con = new SqlConnection(cs.DBConn);
@@ -1198,7 +1202,7 @@ namespace ClientManagementSystem.UI
                 cThanaCombo.Text = cThanaCombo.Text.Trim();
                 cPostOfficeCombo.Items.Clear();
                 cPostOfficeCombo.ResetText();
-               // cPostOfficeCombo.Text = "";
+                // cPostOfficeCombo.Text = "";
                 cPostCodeTextBox.Clear();
                 cPostOfficeCombo.Enabled = true;
                 cPostOfficeCombo.Focus();
@@ -1218,7 +1222,7 @@ namespace ClientManagementSystem.UI
                 con.Close();
 
             }
-            
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1237,7 +1241,7 @@ namespace ClientManagementSystem.UI
                 cmd.Connection = con;
                 cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "PostOfficeName"));
                 cmd.Parameters["@find"].Value = cPostOfficeCombo.Text;
-                rdr = cmd.ExecuteReader();                
+                rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
                     postofficeIdC = (rdr.GetString(0));
@@ -1392,7 +1396,7 @@ namespace ClientManagementSystem.UI
 
                 tThenaCombo.Text = tThenaCombo.Text.Trim();
                 tPostCombo.Items.Clear();
-                tPostCombo.ResetText();              
+                tPostCombo.ResetText();
                 tPostCodeTextBox.Clear();
                 tPostCombo.Enabled = true;
                 tPostCombo.Focus();
@@ -1437,7 +1441,7 @@ namespace ClientManagementSystem.UI
                 cmd.Connection = con;
                 cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "PostOfficeName"));
                 cmd.Parameters["@find"].Value = tPostCombo.Text;
-                rdr = cmd.ExecuteReader();                
+                rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
                     postOfficeIdT = (rdr.GetString(0));
@@ -1492,8 +1496,8 @@ namespace ClientManagementSystem.UI
         {
             if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
                 e.Handled = true;
-            
-           
+
+
         }
 
         private void designationTextBox_Enter(object sender, EventArgs e)
@@ -1503,7 +1507,7 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show("Please  enter Contact Person Name first", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtContactPerson.Focus();
             }
-            
+
         }
 
         private void txtCellNumber_Enter(object sender, EventArgs e)
@@ -1556,10 +1560,7 @@ namespace ClientManagementSystem.UI
             }
         }
 
-        private void txtContactPerson_MouseLeave(object sender, EventArgs e)
-        {
-           
-        }
+     
 
         private void txtContactPerson_Leave(object sender, EventArgs e)
         {
@@ -1591,7 +1592,7 @@ namespace ClientManagementSystem.UI
                 {
                     cmbEmailAddress.Items.Add(rdr.GetValue(0).ToString());
 
-                   
+
                 }
                 cmbEmailAddress.Items.Add("Not In The List");
             }
@@ -1602,16 +1603,7 @@ namespace ClientManagementSystem.UI
         }
         private void cmbEmailAddress_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!(cmbCPEmailAddress.SelectedIndex==-1))
-            {
-                ToolTip toolTip1 = new ToolTip();
-                toolTip1.AutoPopDelay = 0;
-                toolTip1.InitialDelay = 0;
-                toolTip1.ReshowDelay = 0;
-                toolTip1.ShowAlways = true;
-                toolTip1.SetToolTip(this.cmbEmailAddress, cmbEmailAddress.Items[cmbEmailAddress.SelectedIndex].ToString());  
-            }
-            
+
 
 
             if (cmbEmailAddress.Text == "Not In The List")
@@ -1621,27 +1613,27 @@ namespace ClientManagementSystem.UI
                 {
                     cmbEmailAddress.SelectedIndex = -1;
                 }
-                
+
                 else
                 {
-                   
-                         if (!string.IsNullOrWhiteSpace(input))
-                            {
-                                string emailId = input.Trim();
-                                Regex mRegxExpression;
 
-                                mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+                    if (!string.IsNullOrWhiteSpace(input))
+                    {
+                        string emailId = input.Trim();
+                        Regex mRegxExpression;
 
-                                if (!mRegxExpression.IsMatch(emailId))
-                                {
+                        mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
 
-                                    MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);                                 
-                                   return;
+                        if (!mRegxExpression.IsMatch(emailId))
+                        {
 
-                                }
-                            }
-                          
-                   
+                            MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+
+                        }
+                    }
+
+
                     con = new SqlConnection(cs.DBConn);
                     con.Open();
                     string ct2 = "select Email from EmailBank where Email='" + input + "'";
@@ -1657,25 +1649,25 @@ namespace ClientManagementSystem.UI
                     {
                         try
                         {
-                           
-                                con = new SqlConnection(cs.DBConn);
-                                con.Open();
-                                string query1 = "insert into EmailBank (Email, UserId,DateAndTime) values (@d1,@d2,@d3)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
-                                cmd = new SqlCommand(query1, con);
-                                cmd.Parameters.AddWithValue("@d1", input);
-                                cmd.Parameters.AddWithValue("@d2", submittedBy);
-                                cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
-                                cmd.ExecuteNonQuery();
 
-                                con.Close();
-                                cmbEmailAddress.Items.Clear();
-                                EmailAddress();
-                                cmbEmailAddress.SelectedText = input;
-                                EmailCPAddress();
-                            
+                            con = new SqlConnection(cs.DBConn);
+                            con.Open();
+                            string query1 = "insert into EmailBank (Email, UserId,DateAndTime) values (@d1,@d2,@d3)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                            cmd = new SqlCommand(query1, con);
+                            cmd.Parameters.AddWithValue("@d1", input);
+                            cmd.Parameters.AddWithValue("@d2", submittedBy);
+                            cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
+                            cmd.ExecuteNonQuery();
+
+                            con.Close();
+                            cmbEmailAddress.Items.Clear();
+                            EmailAddress();
+                            cmbEmailAddress.SelectedText = input;
+                            EmailCPAddress();
 
 
-                            
+
+
 
                         }
                         catch (Exception ex)
@@ -1737,16 +1729,16 @@ namespace ClientManagementSystem.UI
         }
         private void cmbCPEmailAddress_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!(cmbCPEmailAddress.SelectedIndex==-1))
+            if (!(cmbCPEmailAddress.SelectedIndex == -1))
             {
                 ToolTip toolTip1 = new ToolTip();
                 toolTip1.AutoPopDelay = 0;
                 toolTip1.InitialDelay = 0;
                 toolTip1.ReshowDelay = 0;
                 toolTip1.ShowAlways = true;
-                toolTip1.SetToolTip(this.cmbCPEmailAddress, cmbCPEmailAddress.Items[cmbCPEmailAddress.SelectedIndex].ToString()); 
+                toolTip1.SetToolTip(this.cmbCPEmailAddress, cmbCPEmailAddress.Items[cmbCPEmailAddress.SelectedIndex].ToString());
             }
-            
+
 
             if (cmbCPEmailAddress.Text == "Not In The List")
             {
@@ -1755,7 +1747,7 @@ namespace ClientManagementSystem.UI
                 {
                     cmbCPEmailAddress.SelectedIndex = -1;
                     //cmbCPEmailAddress.ResetText();
-                    
+
                 }
                 else
                 {
@@ -1954,7 +1946,7 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show("Please  Select Supervisor  Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cmbSuperviser.Focus();
             }
-            else  if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
+            else if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
             {
                 MessageBox.Show("Please  enter Client Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 clientNameTextBox.Focus();
@@ -1968,7 +1960,7 @@ namespace ClientManagementSystem.UI
                 MessageBox.Show("Please  Select Supervisor  Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cmbSuperviser.Focus();
             }
-            else  if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
+            else if (string.IsNullOrWhiteSpace(clientNameTextBox.Text))
             {
                 MessageBox.Show("Please  enter Client Name first.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 clientNameTextBox.Focus();
@@ -2059,15 +2051,10 @@ namespace ClientManagementSystem.UI
             //    cmbSuperviser.Focus();
             //}
         }
-
-        private void txtCellNumber_Leave(object sender, EventArgs e)
-        {
-            
-
-        }
+     
 
         private void txtCellNumber_Validating(object sender, CancelEventArgs e)
-        {        
+        {
 
             //int sum = 0;
             //foreach (Control ctrl in this.Controls)
@@ -2081,51 +2068,80 @@ namespace ClientManagementSystem.UI
             //}
 
 
+            //if (!string.IsNullOrEmpty(txtCellNumber.Text))
+            //{
+            //    decimal sum = 0;
+            //    decimal num;
+            //    num = Convert.ToDecimal(txtCellNumber.Text);
+            //    while (num > 0)
+            //    {
+            //        sum = sum + (num / 10);
+            //        num = num / 10;
+            //    }
 
-            decimal sum = 0;
-            decimal num = Convert.ToDecimal(txtCellNumber.Text);
-            while (num > 0)
+            //    if (num == 0)
+            //    {
+            //        txtCellNumber.Clear();
+            //    }      
+            //}
+
+            if (!string.IsNullOrEmpty(txtCellNumber.Text))
             {
-                sum = sum + (num / 10);
-                num = num / 10;
+                decimal sum = 0;
+                decimal num;
+                num = Convert.ToDecimal(txtCellNumber.Text);
+                while (num > 0)
+                {
+                    sum = sum + (num / 10);
+                    num = num / 10;
+                }
+
+                if (sum == 0)
+                {
+                    txtCellNumber.Clear();
+                }
             }
-
-            if (sum == 0)
-            {
-                txtCellNumber.Clear();
-            }        
+           
         }
 
         private void cContactNoTextBox_Validating(object sender, CancelEventArgs e)
         {
-            decimal sum = 0;
-            decimal num = Convert.ToDecimal(cContactNoTextBox.Text);
-            while (num > 0)
+            if (!string.IsNullOrEmpty(cContactNoTextBox.Text))
             {
-                sum = sum + (num / 10);
-                num = num / 10;
-            }
+                decimal sum = 0;
+                decimal num;
+                num = Convert.ToDecimal(cContactNoTextBox.Text);
+                while (num > 0)
+                {
+                    sum = sum + (num / 10);
+                    num = num / 10;
+                }
 
-            if (sum == 0)
-            {
-                cContactNoTextBox.Clear();
-            } 
+                if (sum == 0)
+                {
+                    cContactNoTextBox.Clear();
+                }
+            }
         }
 
         private void tContactNoTextBox_Validating(object sender, CancelEventArgs e)
         {
-            int sum = 0;
-            int num = Convert.ToInt32(tContactNoTextBox.Text);
-            while (num > 0)
+            if (!string.IsNullOrEmpty(tContactNoTextBox.Text))
             {
-                sum = sum + (num / 10);
-                num = num / 10;
-            }
+                decimal sum = 0;
+                decimal num;
+                num = Convert.ToDecimal(tContactNoTextBox.Text);
+                while (num > 0)
+                {
+                    sum = sum + (num / 10);
+                    num = num / 10;
+                }
 
-            if (sum == 0)
-            {
-                tContactNoTextBox.Clear();
-            } 
-        }     
+                if (sum == 0)
+                {
+                    tContactNoTextBox.Clear();
+                }
+            }
+        }
     }
 }
